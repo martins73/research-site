@@ -5,128 +5,286 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martin Gonzalez-Cabello | UCLA Anderson</title>
     <style>
-        /* Minimalist, scholarly styling */
+        /* DESIGN SYSTEM ---------------- */
         :root {
-            --text: #333;
-            --bg: #fff;
+            --bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #6c757d;
             --accent: #2774AE; /* UCLA Blue */
-            --gray: #666;
+            --accent-hover: #1e5f8e;
+            --border: #eaeaea;
         }
+
+        /* LAYOUT & TYPOGRAPHY ---------- */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--text);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
         }
-        header {
-            margin-bottom: 3rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 1rem;
+
+        .container {
+            max-width: 960px;
+            margin: 3rem auto;
+            background: var(--bg);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.2rem;
+
+        /* SIDEBAR (Profile) ------------ */
+        .sidebar {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid #f0f0f0;
+        }
+
+        .name {
+            font-size: 1.6rem;
             font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: #000;
             letter-spacing: -0.5px;
         }
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-        }
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            font-weight: 400;
-        }
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .intro {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .paper {
+
+        .affiliation {
+            font-size: 0.95rem;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
         }
-        .paper-title {
-            font-weight: 600;
-            display: block;
-        }
-        .paper-meta {
-            color: var(--gray);
+
+        /* SIDEBAR BUTTONS */
+        .sidebar-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.6rem 0;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-sizing: border-box; /* Ensures padding doesn't widen element */
         }
-        .contact-list {
-            list-style: none;
-            padding: 0;
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
         }
-        .contact-list li {
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            fill: var(--text-light);
+            transition: fill 0.2s;
+        }
+        .social-link:hover .social-icon {
+            fill: var(--accent);
+        }
+
+        /* MAIN CONTENT ----------------- */
+        .content section {
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+            color: #000;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        /* PAPERS LIST ------------------ */
+        .paper {
+            margin-bottom: 2.5rem;
+        }
+
+        .paper-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .paper-authors {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .paper-venue {
+            display: block;
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
-        footer {
-            margin-top: 4rem;
-            color: var(--gray);
-            font-size: 0.8rem;
-            text-align: center;
+
+        .abstract {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: #f9f9f9;
+            padding: 1rem;
+            border-left: 3px solid var(--accent);
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .paper-links {
+            display: flex;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .paper-link {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .paper-link:hover {
+            background-color: #f0f7fb;
+        }
+
+        /* MOBILE RESPONSIVE ------------ */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+            }
+            .sidebar {
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 2rem;
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Martin Gonzalez-Cabello</h1>
-        <div class="subtitle">PhD Candidate, UCLA Anderson School of Management</div>
-        <div class="subtitle">Decisions, Operations, and Technology Management</div>
-        <div style="margin-top: 1rem;">
-        <a href="cv.html">Curriculum Vitae</a>
-        </div>
-    </header>
-
-    <section class="intro">
-        <p>
-            I study the human supply chain of AI.
-        </p>
-        <p>
-            Artificial intelligence relies on invisible human labor. My research examines <strong>crowdwork platforms</strong>—the digital assembly lines where workers label data and train algorithms. I use econometric methods to understand fairness, task estimation, and worker retention in these marketplaces.
-        </p>
-        <p>
-            I am particularly interested in how platform design creates frictions for workers and how we can solve them.
-        </p>
-    </section>
-
-    <section id="research">
-        <h2>Working Papers</h2>
+    <div class="container">
         
-        <div class="paper">
-            <span class="paper-title">Procedural Fairness and Task Underestimation in Crowdwork</span>
-            <span class="paper-meta">Work in Progress</span>
-            <p>
-                We investigate how dynamic task duration estimates affect worker retention. Using instrumental variables based on peer speed, we isolate the causal impact of "underestimated" tasks on worker churn.
-            </p>
-        </div>
-        
-        </section>
+        <aside class="sidebar">
+            <img src="profile.jpg" alt="Martin Gonzalez-Cabello" class="profile-img">
+            
+            <h1 class="name">Martin Gonzalez-Cabello</h1>
+            
+            <div class="affiliation">
+                PhD Candidate<br>
+                Decisions, Operations &<br> Technology Management<br>
+                <strong>UCLA Anderson</strong>
+            </div>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <ul class="contact-list">
-            <li><strong>Email:</strong> <a href="mailto:martin@gonzalezcabello.com">martin@gonzalezcabello.com</a></li>
-            <li><strong>School:</strong> <a href="https://www.anderson.ucla.edu/">UCLA Anderson School of Management</a></li>
-            <li><strong>Location:</strong> Los Angeles, CA</li>
-        </ul>
-    </section>
+            <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
+            <a href="cv.html" class="sidebar-btn btn-outline">Curriculum Vitae</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank">
+                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank">
+                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+                </a>
+            </div>
+        </aside>
 
-    <footer>
-        &copy; 2026 Martin Gonzalez-Cabello. 
-    </footer>
+        <main class="content">
+            
+            <section id="about">
+                <h2>About Me</h2>
+                <p>
+                    I study the human supply chain of Artificial Intelligence.
+                </p>
+                <p>
+                    AI relies on invisible human labor. My research examines <strong>crowdwork platforms</strong>—the digital assembly lines where workers label data and train algorithms. I use econometric methods to understand fairness, task estimation, and worker retention in these marketplaces.
+                </p>
+                <p>
+                    Before joining UCLA, I was the Head of Advanced Analytics at ACHS in Chile and a management consultant at Oliver Wyman. I hold an MBA from MIT Sloan.
+                </p>
+            </section>
+
+            <section id="publications">
+                <h2>Publications</h2>
+                
+                <div class="paper">
+                    <span class="paper-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</span>
+                    <span class="paper-authors">with Auyon Siddiq, Charles Corbett, and Catherine Hu</span>
+                    <span class="paper-venue">Business Horizons (2025), Vol. 68, No. 5</span>
+                    <div class="paper-links">
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0007681324001265" class="paper-link" target="_blank">Journal Version</a>
+                        <a href="https://osf.io/preprints/socarxiv/ve8mx" class="paper-link" target="_blank">Preprint</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="working-papers">
+                <h2>Working Papers</h2>
+
+                <div class="paper">
+                    <span class="paper-title">The Impact of Information Systems on Experts' Decisions: Evidence from Physicians</span>
+                    <span class="paper-authors">with Jorge Alé-Chilet and Juan Pablo Atal</span>
+                    <span class="paper-venue">Submitted</span>
+                    <div class="abstract">
+                        How do professionals respond to computerized, data-driven guidance in practice? We analyze a workers’ compensation insurance program where physicians make coverage and diagnosis decisions. We study the introduction of an automated system that flagged diagnoses with historically low coverage. We develop a model that yields testable predictions to distinguish between informational and persuasive effects. Consistent with persuasion, physicians granted coverage less often when confronted with alerts, but they also avoided alerts by recoding diagnoses. Data from secondary reviews show that the system aligned physicians’ decisions with management’s preferences.
+                    </div>
+                    <div class="paper-links">
+                        <a href="mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems" class="paper-link">Request Draft</a>
+                    </div>
+                </div>
+
+                <div class="paper">
+                    <span class="paper-title">Searching for Serendipity</span>
+                    <span class="paper-authors">with Isaac Tucker and Olav Sorenson</span>
+                    <span class="paper-venue">Submitted to Strategic Management Journal</span>
+                </div>
+            </section>
+        </main>
+
+    </div>
 
 </body>
 </html>
