@@ -5,83 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Martin Gonzalez-Cabello</title>
     <style>
-        /* Reusing your consistent scholarly theme */
+        /* DESIGN SYSTEM (Matches Homepage) */
         :root {
-            --text: #333;
-            --bg: #fff;
+            --bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #6c757d;
             --accent: #2774AE; /* UCLA Blue */
-            --gray: #666;
+            --accent-hover: #1e5f8e;
+            --border: #eaeaea;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--text);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
         }
-        header {
-            margin-bottom: 3rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 1rem;
+
+        .container {
+            max-width: 960px;
+            margin: 3rem auto;
+            background: var(--bg);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.2rem;
+
+        /* SIDEBAR */
+        .sidebar {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid #f0f0f0;
+        }
+
+        .name {
+            font-size: 1.6rem;
             font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: #000;
             letter-spacing: -0.5px;
         }
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 3rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-            color: var(--text);
-        }
-        .nav-link {
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-        }
-        .entry {
+
+        .affiliation {
+            font-size: 0.95rem;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
         }
-        .entry-header {
+
+        .sidebar-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.6rem 0;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            fill: var(--text-light);
+            transition: fill 0.2s;
+        }
+        .social-link:hover .social-icon {
+            fill: var(--accent);
+        }
+
+        /* MAIN CONTENT */
+        .content section {
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+            color: #000;
+        }
+
+        /* CV SPECIFIC STYLES */
+        .cv-entry {
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
         }
-        .entry-title {
-            font-weight: 600;
-            font-size: 1.1rem;
+
+        .cv-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-main);
         }
-        .entry-subtitle {
-            font-style: italic;
-            color: var(--gray);
-        }
-        .entry-date {
-            font-family: monospace; /* Tabular numbers for alignment */
-            color: var(--gray);
+
+        .cv-date {
+            font-family: monospace;
+            color: var(--text-light);
             font-size: 0.9rem;
         }
-        .entry-desc {
-            margin-top: 0.2rem;
+
+        .cv-subtitle {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .cv-desc {
             font-size: 0.95rem;
+            margin-top: 0.3rem;
         }
+
         ul {
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
             padding-left: 1.2rem;
+            margin-bottom: 0;
         }
-        a {
-            color: var(--accent);
-            text-decoration: none;
+        
+        li {
+            margin-bottom: 0.3rem;
         }
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            .entry-header {
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+            }
+            .sidebar {
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 2rem;
+                margin-bottom: 2rem;
+            }
+            .cv-header {
                 flex-direction: column;
             }
         }
@@ -89,134 +192,157 @@
 </head>
 <body>
 
-    <a href="index.html" class="nav-link">← Back to Home</a>
-
-    <header>
-        <h1>Martin Gonzalez-Cabello</h1>
-        <div>PhD Candidate, Decisions, Operations & Technology Management</div>
-        <div><a href="mailto:martin@gonzalezcabello.com">martin@gonzalezcabello.com</a></div>
-    </header>
-
-    <section id="education">
-        <h2>Education</h2>
+    <div class="container">
         
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">UCLA Anderson School of Management</span>
-                <span class="entry-date">2021 – Present</span>
+        <aside class="sidebar">
+            <img src="profile.jpg" alt="Martin Gonzalez-Cabello" class="profile-img">
+            
+            <h1 class="name">Martin Gonzalez-Cabello</h1>
+            
+            <div class="affiliation">
+                PhD Candidate<br>
+                Decisions, Operations &<br> Technology Management<br>
+                <strong>UCLA Anderson</strong>
             </div>
-            <div class="entry-subtitle">PhD Candidate in Decisions, Operations, and Technology Management</div>
-            <div class="entry-desc">Los Angeles, CA</div>
-        </div>
 
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">MIT Sloan School of Management</span>
-                <span class="entry-date">2013 – 2015</span>
+            <a href="index.html" class="sidebar-btn btn-primary">Back to Home</a>
+            <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-outline">Email Me</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank">
+                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank">
+                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+                </a>
             </div>
-            <div class="entry-subtitle">Master of Business Administration (MBA)</div>
-            <div class="entry-desc">Cambridge, MA</div>
-        </div>
+        </aside>
 
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Illinois Institute of Technology</span>
-                <span class="entry-date">2010</span>
-            </div>
-            <div class="entry-subtitle">Master in Industrial Technology & Operations</div>
-            <div class="entry-desc">Chicago, IL</div>
-        </div>
+        <main class="content">
+            
+            <section id="education">
+                <h2>Education</h2>
+                
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">UCLA Anderson School of Management</span>
+                        <span class="cv-date">2021 – Present</span>
+                    </div>
+                    <div class="cv-subtitle">PhD Candidate in Decisions, Operations, and Technology Management</div>
+                    <div class="cv-desc">Los Angeles, CA</div>
+                </div>
 
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Universidad Politécnica de Madrid</span>
-                <span class="entry-date">2005 – 2010</span>
-            </div>
-            <div class="entry-subtitle">B.S. & M.Sc. in Industrial Engineering</div>
-            <div class="entry-desc">Madrid, Spain</div>
-        </div>
-    </section>
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">MIT Sloan School of Management</span>
+                        <span class="cv-date">2013 – 2015</span>
+                    </div>
+                    <div class="cv-subtitle">Master of Business Administration (MBA)</div>
+                    <div class="cv-desc">Cambridge, MA</div>
+                </div>
 
-    <section id="research">
-        <h2>Research</h2>
-        
-        <div class="entry">
-            <div class="entry-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</div>
-            <div class="entry-desc">
-                with Auyon Siddiq, Charles Corbett, and Catherine Hu.<br>
-                <em>Business Horizons</em>, Vol. 68, No. 5 (2025): 645-657.
-            </div>
-        </div>
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">Illinois Institute of Technology</span>
+                        <span class="cv-date">2010</span>
+                    </div>
+                    <div class="cv-subtitle">Master in Industrial Technology & Operations</div>
+                    <div class="cv-desc">Chicago, IL</div>
+                </div>
 
-        <div class="entry">
-            <div class="entry-title">The Impact of Recommendation Systems on Experts: Evidence from Physicians</div>
-            <div class="entry-desc">
-                with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez.<br>
-                Submitted to <em>American Economic Journal: Applied Economics</em> (2025).
-            </div>
-        </div>
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">Universidad Politécnica de Madrid</span>
+                        <span class="cv-date">2005 – 2010</span>
+                    </div>
+                    <div class="cv-subtitle">B.S. & M.Sc. in Industrial Engineering</div>
+                    <div class="cv-desc">Madrid, Spain</div>
+                </div>
+            </section>
 
-        <div class="entry">
-            <div class="entry-title">Searching for Serendipity</div>
-            <div class="entry-desc">
-                with Isaac Tucker and Olav Sorenson.<br>
-                Submitted to <em>Strategic Management Journal</em> (2025).
-            </div>
-        </div>
-    </section>
+            <section id="research">
+                <h2>Research</h2>
+                
+                <div class="cv-entry">
+                    <div class="cv-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</div>
+                    <div class="cv-desc">
+                        with Auyon Siddiq, Charles Corbett, and Catherine Hu.<br>
+                        <em>Business Horizons</em>, Vol. [cite_start]68, No. 5 (2025): 645-657[cite: 23, 25].
+                    </div>
+                </div>
 
-    <section id="teaching">
-        <h2>Teaching Experience</h2>
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">UCLA Anderson School of Management</span>
-                <span class="entry-date">2022 – Present</span>
-            </div>
-            <div class="entry-desc">
-                <ul>
-                    <li><strong>Data and Decisions (MBA Core):</strong> Teaching Assistant (2022–Present)</li>
-                    <li><strong>Optimization (MSBA):</strong> Teaching Assistant (2025)</li>
-                    <li><strong>Prescriptive Models & Data Analytics (MSBA):</strong> Teaching Assistant (2024)</li>
-                    <li><strong>Operations & Technology Management (Global Executive MBA):</strong> Teaching Assistant (2024)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+                <div class="cv-entry">
+                    <div class="cv-title">The Impact of Information Systems on Experts' Decisions: Evidence from Physicians</div>
+                    <div class="cv-desc">
+                        with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez.<br>
+                        [cite_start]Submitted[cite: 27].
+                    </div>
+                </div>
 
-    <section id="industry">
-        <h2>Industry Experience</h2>
-        
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">ACHS (Safety Association of Chile)</span>
-                <span class="entry-date">2018 – 2021</span>
-            </div>
-            <div class="entry-subtitle">Head of Advanced Analytics & Customer Experience</div>
-            <div class="entry-desc">
-                <ul>
-                    <li>Established the analytics department to integrate machine learning into healthcare and job safety decision-making.</li>
-                    <li>Launched the Research and Innovation division, leading 10+ research collaborations with universities.</li>
-                </ul>
-            </div>
-        </div>
+                <div class="cv-entry">
+                    <div class="cv-title">Searching for Serendipity</div>
+                    <div class="cv-desc">
+                        with Isaac Tucker and Olav Sorenson.<br>
+                        [cite_start]Submitted to <em>Strategic Management Journal</em>[cite: 29, 31].
+                    </div>
+                </div>
+            </section>
 
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Oliver Wyman</span>
-                <span class="entry-date">2011 – 2017</span>
-            </div>
-            <div class="entry-subtitle">Management Consultant</div>
-            <div class="entry-desc">
-                <ul>
-                    <li>Advised clients in Europe, Latin America, and the US on digital strategy, product launches, and customer retention.</li>
-                    <li>Specialized in telecommunications and financial services sectors.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <div style="margin-top: 4rem; text-align: center; color: var(--gray); font-size: 0.9rem;">
-        <p>References available upon request.</p>
+            <section id="teaching">
+                <h2>Teaching Experience</h2>
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">UCLA Anderson School of Management</span>
+                        <span class="cv-date">2022 – Present</span>
+                    </div>
+                    <div class="cv-desc">
+                        Teaching Assistant for:
+                        <ul>
+                            [cite_start]<li><strong>Data and Decisions</strong> (MBA Core) [cite: 33]</li>
+                            [cite_start]<li><strong>Optimization</strong> (MSBA) [cite: 33]</li>
+                            [cite_start]<li><strong>Prescriptive Models & Data Analytics</strong> (MSBA) [cite: 33]</li>
+                            [cite_start]<li><strong>Operations & Technology Management</strong> (Global Executive MBA) [cite: 33]</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="industry">
+                <h2>Industry Experience</h2>
+                
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">ACHS (Safety Association of Chile)</span>
+                        <span class="cv-date">2018 – 2021</span>
+                    </div>
+                    <div class="cv-subtitle">Head of Advanced Analytics & Customer Experience</div>
+                    <div class="cv-desc">
+                        <ul>
+                            [cite_start]<li>Founded the analytics department to integrate machine learning into healthcare and job safety decision-making[cite: 40].</li>
+                            [cite_start]<li>Launched the Research and Innovation division, leading 10+ research collaborations with universities[cite: 40, 41].</li>
+                            [cite_start]<li>Managed customer experience strategies and remote channels for a network covering 50% of Chilean workers [cite: 43-46].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-entry">
+                    <div class="cv-header">
+                        <span class="cv-title">Oliver Wyman</span>
+                        <span class="cv-date">2011 – 2017</span>
+                    </div>
+                    <div class="cv-subtitle">Management Consultant</div>
+                    <div class="cv-desc">
+                        <ul>
+                            [cite_start]<li>Advised clients in Europe, Latin America, and the US on digital strategy and product launches[cite: 49, 50].</li>
+                            [cite_start]<li>Designed retention strategies that reduced churn by 17% for a major European operator[cite: 50].</li>
+                            [cite_start]<li>Developed 4G/LTE launch strategies and restructured debt for telecom clients[cite: 52, 54].</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
     </div>
 
 </body>
