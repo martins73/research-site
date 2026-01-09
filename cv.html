@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Martin Gonzalez-Cabello</title>
+    <style>
+        /* Reusing your consistent scholarly theme */
+        :root {
+            --text: #333;
+            --bg: #fff;
+            --accent: #2774AE; /* UCLA Blue */
+            --gray: #666;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            color: var(--text);
+        }
+        .nav-link {
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        .entry {
+            margin-bottom: 1.5rem;
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .entry-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .entry-subtitle {
+            font-style: italic;
+            color: var(--gray);
+        }
+        .entry-date {
+            font-family: monospace; /* Tabular numbers for alignment */
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        .entry-desc {
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+        }
+        ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .entry-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="nav-link">← Back to Home</a>
+
+    <header>
+        <h1>Martin Gonzalez-Cabello</h1>
+        <div>PhD Candidate, Decisions, Operations & Technology Management</div>
+        <div><a href="mailto:martin@gonzalezcabello.com">martin@gonzalezcabello.com</a></div>
+    </header>
+
+    <section id="education">
+        <h2>Education</h2>
+        
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">UCLA Anderson School of Management</span>
+                <span class="entry-date">2021 – Present</span>
+            </div>
+            <div class="entry-subtitle">PhD Candidate in Decisions, Operations, and Technology Management</div>
+            <div class="entry-desc">Los Angeles, CA</div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">MIT Sloan School of Management</span>
+                <span class="entry-date">2013 – 2015</span>
+            </div>
+            <div class="entry-subtitle">Master of Business Administration (MBA)</div>
+            <div class="entry-desc">Cambridge, MA</div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Illinois Institute of Technology</span>
+                <span class="entry-date">2010</span>
+            </div>
+            <div class="entry-subtitle">Master in Industrial Technology & Operations</div>
+            <div class="entry-desc">Chicago, IL</div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Universidad Politécnica de Madrid</span>
+                <span class="entry-date">2005 – 2010</span>
+            </div>
+            <div class="entry-subtitle">B.S. & M.Sc. in Industrial Engineering</div>
+            <div class="entry-desc">Madrid, Spain</div>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research</h2>
+        
+        <div class="entry">
+            <div class="entry-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</div>
+            <div class="entry-desc">
+                with Auyon Siddiq, Charles Corbett, and Catherine Hu.<br>
+                <em>Business Horizons</em>, Vol. 68, No. 5 (2025): 645-657.
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-title">The Impact of Recommendation Systems on Experts: Evidence from Physicians</div>
+            <div class="entry-desc">
+                with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez.<br>
+                Submitted to <em>American Economic Journal: Applied Economics</em> (2025).
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-title">Searching for Serendipity</div>
+            <div class="entry-desc">
+                with Isaac Tucker and Olav Sorenson.<br>
+                Submitted to <em>Strategic Management Journal</em> (2025).
+            </div>
+        </div>
+    </section>
+
+    <section id="teaching">
+        <h2>Teaching Experience</h2>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">UCLA Anderson School of Management</span>
+                <span class="entry-date">2022 – Present</span>
+            </div>
+            <div class="entry-desc">
+                <ul>
+                    <li><strong>Data and Decisions (MBA Core):</strong> Teaching Assistant (2022–Present)</li>
+                    <li><strong>Optimization (MSBA):</strong> Teaching Assistant (2025)</li>
+                    <li><strong>Prescriptive Models & Data Analytics (MSBA):</strong> Teaching Assistant (2024)</li>
+                    <li><strong>Operations & Technology Management (Global Executive MBA):</strong> Teaching Assistant (2024)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="industry">
+        <h2>Industry Experience</h2>
+        
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">ACHS (Safety Association of Chile)</span>
+                <span class="entry-date">2018 – 2021</span>
+            </div>
+            <div class="entry-subtitle">Head of Advanced Analytics & Customer Experience</div>
+            <div class="entry-desc">
+                <ul>
+                    <li>Established the analytics department to integrate machine learning into healthcare and job safety decision-making.</li>
+                    <li>Launched the Research and Innovation division, leading 10+ research collaborations with universities.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Oliver Wyman</span>
+                <span class="entry-date">2011 – 2017</span>
+            </div>
+            <div class="entry-subtitle">Management Consultant</div>
+            <div class="entry-desc">
+                <ul>
+                    <li>Advised clients in Europe, Latin America, and the US on digital strategy, product launches, and customer retention.</li>
+                    <li>Specialized in telecommunications and financial services sectors.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <div style="margin-top: 4rem; text-align: center; color: var(--gray); font-size: 0.9rem;">
+        <p>References available upon request.</p>
+    </div>
+
+</body>
+</html>
