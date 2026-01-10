@@ -4,35 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teaching | Martin Gonzalez-Cabello</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg"> <style>
-        /* REUSING YOUR DESIGN SYSTEM */
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        /* DESIGN SYSTEM */
         :root { --bg: #ffffff; --text-main: #2c3e50; --text-light: #6c757d; --accent: #2774AE; --accent-hover: #1e5f8e; --border: #eaeaea; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-main); line-height: 1.6; background-color: #fafafa; margin: 0; padding: 0; }
         .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; }
         
-        /* SIDEBAR */
+        /* UNIVERSAL SIDEBAR STYLES */
         .sidebar { text-align: center; }
         .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #f0f0f0; }
         .name { font-size: 1.6rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.5px; color: #000; }
         .affiliation { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; }
         
-        /* SIDEBAR BUTTONS */
         .sidebar-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem 0; margin-bottom: 0.5rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-sizing: border-box; transition: all 0.2s; }
         .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); }
         .btn-primary:hover { background-color: var(--accent-hover); }
         .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
         .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
         
-        /* SOCIAL ICONS */
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-icon { fill: var(--text-light); transition: fill 0.2s; }
         .social-link:hover .social-icon { fill: var(--accent); }
 
-        /* CONTENT */
+        /* TEACHING CONTENT */
         h2 { font-size: 1.4rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 0; color: #000; }
         p { margin-bottom: 1.2rem; }
         
-        /* TEACHING SPECIFIC */
         .course-list { list-style: none; padding: 0; }
         .course-item { margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
         .course-title { font-weight: 700; display: block; }
@@ -47,11 +45,12 @@
             <img src="profile.jpg" alt="Martin Gonzalez-Cabello" class="profile-img">
             <h1 class="name">Martin Gonzalez-Cabello</h1>
             <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
-            
-            <a href="index.html" class="sidebar-btn btn-primary">Back to Home</a>
-            <a href="cv.html" class="sidebar-btn btn-outline">Curriculum Vitae</a>
-            <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-outline">Email Me</a>
 
+            <a href="index.html" class="sidebar-btn btn-outline">Home</a>
+            <a href="cv.html" class="sidebar-btn btn-outline">Curriculum Vitae</a>
+            <a href="teaching.html" class="sidebar-btn btn-outline">Teaching</a>
+            <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
+            
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -65,14 +64,9 @@
         <main class="content">
             <section>
                 <h2>Teaching Philosophy</h2>
-                <p>
-                    My goal in the classroom is to bridge the gap between abstract econometric theory and messy, real-world operations. Drawing on my industry experience leading analytics teams at ACHS and Oliver Wyman, I design coursework that emphasizes <strong>applicability</strong> and <strong>intuition</strong> over rote memorization.
-                </p>
-                <p>
-                    I believe students learn best when they are asked to solve problems that have no single correct answer—much like the problems they will face in the supply chain of AI.
-                </p>
+                <p>My goal in the classroom is to bridge the gap between abstract econometric theory and messy, real-world operations. Drawing on my industry experience leading analytics teams at ACHS and Oliver Wyman, I design coursework that emphasizes <strong>applicability</strong> and <strong>intuition</strong> over rote memorization.</p>
+                <p>I believe students learn best when they are asked to solve problems that have no single correct answer—much like the problems they will face in the supply chain of AI.</p>
             </section>
-
             <section>
                 <h2>Teaching Experience</h2>
                 <ul class="course-list">
