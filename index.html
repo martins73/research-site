@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martin Gonzalez-Cabello | UCLA Anderson</title>
+    <title>Teaching | Martin Gonzalez-Cabello</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         /* DESIGN SYSTEM */
         :root { --bg: #ffffff; --text-main: #2c3e50; --text-light: #6c757d; --accent: #2774AE; --accent-hover: #1e5f8e; --border: #eaeaea; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-main); line-height: 1.6; margin: 0; padding: 0; background-color: #fafafa; }
-        .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; }
-
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-main); line-height: 1.6; background-color: #fafafa; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* Main Layout */
+        .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; flex: 1; }
+        
         /* SIDEBAR STYLES */
         .sidebar { text-align: center; }
         .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #f0f0f0; }
-        .name { font-size: 1.6rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #000; letter-spacing: -0.5px; }
+        .name { font-size: 1.6rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.5px; color: #000; }
         .affiliation { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; }
         
         /* BUTTONS */
@@ -30,19 +32,18 @@
         .social-link:hover .social-icon { fill: var(--accent); }
 
         /* CONTENT */
-        .content section { margin-bottom: 3.5rem; }
         h2 { font-size: 1.4rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 0; color: #000; }
-        p { margin-bottom: 1.2rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.05rem; }
         
-        /* PAPERS */
-        .paper { margin-bottom: 2.5rem; }
-        .paper-title { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 0.3rem; color: var(--text-main); }
-        .paper-authors { display: block; color: var(--text-main); margin-bottom: 0.3rem; }
-        .paper-venue { display: block; color: var(--text-light); font-style: italic; font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .abstract { font-size: 0.95rem; color: var(--text-main); background: #f9f9f9; padding: 1rem; border-left: 3px solid var(--accent); margin: 0.5rem 0 1rem 0; line-height: 1.5; }
-        .paper-links { display: flex; gap: 0.8rem; font-size: 0.85rem; }
-        .paper-link { color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; }
-        .paper-link:hover { background-color: #f0f7fb; }
+        .course-list { list-style: none; padding: 0; margin-top: 2.5rem; }
+        .course-item { margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
+        .course-title { font-weight: 700; display: block; color: #000; }
+        .course-meta { font-size: 0.9rem; color: var(--text-light); display: block; margin-bottom: 0.3rem; }
+        
+        /* FOOTER (FAITH EASTER EGG) */
+        .site-footer { text-align: center; padding: 2rem 0; margin-top: auto; }
+        .amdg { font-size: 0.75rem; color: #e0e0e0; letter-spacing: 2px; font-weight: 600; user-select: none; }
+        .amdg:hover { color: var(--accent); transition: color 0.5s ease; }
 
         @media (max-width: 768px) { .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; } .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } }
     </style>
@@ -54,8 +55,8 @@
             <h1 class="name">Martin Gonzalez-Cabello</h1>
             <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
 
+            <a href="index.html" class="sidebar-btn btn-outline">Back to Home</a>
             <a href="cv.html" class="sidebar-btn btn-outline">Curriculum Vitae</a>
-            <a href="teaching.html" class="sidebar-btn btn-outline">Teaching</a>
             <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
             
             <div class="social-links">
@@ -69,42 +70,49 @@
         </aside>
 
         <main class="content">
-            <section id="about">
-                <h2>About Me</h2>
-                <p>I study the human supply chain of Artificial Intelligence.</p>
-                <p>AI relies on invisible human labor. My research examines <strong>crowdwork platforms</strong>—the digital assembly lines where workers label data and train algorithms. I use econometric methods to understand fairness, task estimation, and worker retention in these marketplaces.</p>
-                <p>Before joining UCLA, I was the Head of Advanced Analytics at ACHS in Chile and a management consultant at Oliver Wyman. I hold an MBA from MIT Sloan.</p>
+            <section>
+                <h2>Teaching Statement</h2>
+                
+                <p>My journey into academia was not traditional. After five years as a Management Consultant and four years as the Head of Advanced Analytics at a large healthcare network in Chile, I returned to the university environment inspired by the mentors who shaped my own career. These professors did more than transfer knowledge; they facilitated my personal growth and helped me navigate the complexities of the real world. As an educator, I am driven by that same purpose: to find joy in the interactions with my students and to help them see the impact of their decisions on their companies, their peers, and society.</p>
+
+                <p>Because of my background, I view the classroom as a bridge between abstract theory and professional practice. I do not simply teach concepts; I leverage my corporate experience to make those concepts tangible. I am a firm believer in "learning by doing." I design assignments that require students to actively engage with the material rather than passively consume it. For instance, during my time in the industry, I fostered collaborations with universities, including hosting a project for the MIT Analytics Lab where students solved live business problems using our data. I am committed to bringing these types of real-world challenges into my curriculum, ensuring that students leave my class with skills they can apply immediately.</p>
+
+                <p>In fields like Operations and Data Analytics, technical skills are only half the equation. My teaching places a heavy emphasis on critical thinking and ethical decision-making. I challenge my students to consider the broader consequences of their work—not just the "how," but the "why." I also advocate for the thoughtful integration of technology. We cannot ignore tools like Generative AI; instead, I encourage students to use them in their assignments to understand both their capabilities and their limitations. My goal is to prepare them for a future where these tools are ubiquitous, but where human judgment remains paramount.</p>
+
+                <p>Looking forward, I am particularly interested in teaching <strong>Data Analytics</strong> and <strong>Artificial Intelligence</strong> courses. These subjects are the perfect venue to demonstrate the power of advanced analytics while tackling the ethical issues that arise with new technologies. I hope to inspire my students to leverage data not just to drive innovation, but to make informed, responsible decisions in their careers.</p>
             </section>
-            <section id="publications">
-                <h2>Publications</h2>
-                <div class="paper">
-                    <span class="paper-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</span>
-                    <span class="paper-authors">with Auyon Siddiq, Charles Corbett, and Catherine Hu</span>
-                    <span class="paper-venue">Business Horizons (2025), Vol. 68, No. 5</span>
-                    <div class="abstract">AI relies on manual data annotation, often sourced through unregulated crowdwork platforms. Surveying workers in the AI supply chain, we find significant variability in perceived fairness and identify how platform design affects welfare. Drawing on physical supply chain management, we offer guidance for responsibly sourcing AI technologies.</div>
-                    <div class="paper-links">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S0007681324001265" class="paper-link" target="_blank">Journal Version</a>
-                    </div>
-                </div>
-            </section>
-            <section id="working-papers">
-                <h2>Working Papers</h2>
-                <div class="paper">
-                    <span class="paper-title">The Impact of Information Systems on Experts' Decisions: Evidence from Physicians</span>
-                    <span class="paper-authors">with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez</span>
-                    <span class="paper-venue">Submitted</span>
-                    <div class="abstract">How do professionals respond to computerized guidance? We analyze a system in a workers’ compensation program that flagged diagnoses with historically low coverage. While physicians denied coverage more often when alerted, they also evaded alerts by recoding diagnoses. The results suggest the system acted through persuasion rather than by providing new information.</div>
-                    <div class="paper-links"><a href="mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems" class="paper-link">Request Draft</a></div>
-                </div>
-                <div class="paper">
-                    <span class="paper-title">Searching for Serendipity</span>
-                    <span class="paper-authors">with Isaac Tucker and Olav Sorenson</span>
-                    <span class="paper-venue">Submitted to Strategic Management Journal</span>
-                    <div class="abstract">Does purposeful search kill serendipity? Using an NK modeling framework, we find that searchers with clear hypotheses who move in incremental steps are best at converting luck into value. The model demonstrates how intent and information distinctively drive novel discovery, even in rugged search terrains.</div>
-                    <div class="paper-links"><a href="https://osf.io/preprints/socarxiv/ve8mx" class="paper-link" target="_blank">Preprint</a></div>
-                </div>
+
+            <section>
+                <h2>Teaching History</h2>
+                <ul class="course-list">
+                    <li class="course-item">
+                        <span class="course-title">Prescriptive Models & Data Analytics</span>
+                        <span class="course-meta">Teaching Assistant | UCLA Anderson | 2024</span>
+                        <span class="course-meta">Graduate Level (30 students)</span>
+                    </li>
+                    <li class="course-item">
+                        <span class="course-title">Data and Decisions (MBA Core)</span>
+                        <span class="course-meta">Teaching Assistant | UCLA Anderson | 2022–2024</span>
+                        <span class="course-meta">Graduate Level (140 students)</span>
+                    </li>
+                    <li class="course-item">
+                        <span class="course-title">Operations and Technology Management</span>
+                        <span class="course-meta">Teaching Assistant | UCLA Anderson | 2024</span>
+                        <span class="course-meta">Graduate Level (40 students)</span>
+                    </li>
+                    <li class="course-item">
+                        <span class="course-title">Introduction to Organizations</span>
+                        <span class="course-meta">Teaching Assistant | U. Politécnica de Madrid | 2009</span>
+                        <span class="course-meta">Graduate Level (30 students)</span>
+                    </li>
+                </ul>
             </section>
         </main>
     </div>
+
+    <footer class="site-footer">
+        <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
+    </footer>
+
 </body>
 </html>
