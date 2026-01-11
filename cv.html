@@ -8,8 +8,8 @@
     <style>
         /* DESIGN SYSTEM */
         :root { --bg: #ffffff; --text-main: #2c3e50; --text-light: #6c757d; --accent: #2774AE; --accent-hover: #1e5f8e; --border: #eaeaea; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-main); line-height: 1.6; margin: 0; padding: 0; background-color: #fafafa; }
-        .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-main); line-height: 1.6; margin: 0; padding: 0; background-color: #fafafa; min-height: 100vh; display: flex; flex-direction: column; }
+        .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; flex: 1; }
 
         /* SIDEBAR STYLES */
         .sidebar { text-align: center; }
@@ -40,6 +40,12 @@
         ul { margin-top: 0.3rem; padding-left: 1.2rem; margin-bottom: 0; }
         li { margin-bottom: 0.3rem; }
         
+        /* FOOTER */
+        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid #eaeaea; }
+        .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
+        .amdg { font-size: 0.75rem; color: #e0e0e0; letter-spacing: 2px; font-weight: 600; user-select: none; }
+        .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
+
         @media (max-width: 768px) { .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; } .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } .cv-header { flex-direction: column; } }
     </style>
 </head>
@@ -100,6 +106,7 @@
                     <div class="cv-desc">Madrid, Spain</div>
                 </div>
             </section>
+            
             <section id="research">
                 <h2>Research</h2>
                 <div class="cv-entry">
@@ -115,6 +122,7 @@
                     <div class="cv-desc">with Isaac Tucker and Olav Sorenson.<br>Submitted to <em>Strategic Management Journal</em>.</div>
                 </div>
             </section>
+            
             <section id="teaching">
                 <h2>Teaching Experience</h2>
                 <div class="cv-entry">
@@ -132,6 +140,7 @@
                     </div>
                 </div>
             </section>
+            
             <section id="industry">
                 <h2>Industry Experience</h2>
                 <div class="cv-entry">
@@ -165,8 +174,11 @@
             </section>
         </main>
     </div>
+
     <footer class="site-footer">
+        <div class="credits">Created with the invaluable help of Gemini</div>
         <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
     </footer>
+
 </body>
 </html>
