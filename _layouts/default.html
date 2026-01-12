@@ -69,6 +69,60 @@
         .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
 
         @media (max-width: 768px) { .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; } .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } }
+        /* --- NEW: JMP SPOTLIGHT STYLES --- */
+        .jmp-spotlight {
+            background-color: #F0F7FB; /* Your brand's light blue */
+            border: 1px solid #2774AE; /* Darker blue border */
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative; /* For the tag */
+        }
+        
+        .jmp-tag {
+            background-color: #2774AE;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 4px;
+            position: absolute;
+            top: -12px;
+            left: 2rem; /* Indented slightly */
+            letter-spacing: 0.5px;
+        }
+        
+        .jmp-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            display: block;
+        }
+        
+        /* --- NEW: NEWS SECTION STYLES --- */
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+        .news-item {
+            display: grid;
+            grid-template-columns: 80px 1fr; /* Date on left, text on right */
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            align-items: baseline;
+        }
+        .news-date {
+            font-family: monospace; /* Academic look */
+            color: #6c757d;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+        .news-text {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
