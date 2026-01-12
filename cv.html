@@ -1,213 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-SKK42FETN2');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV | Martin Gonzalez-Cabello</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <style>
-        /* DESIGN SYSTEM */
-        :root { --bg: #ffffff; --text-main: #2c3e50; --text-light: #6c757d; --accent: #2774AE; --accent-hover: #1e5f8e; --border: #eaeaea; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-main); line-height: 1.6; margin: 0; padding: 0; background-color: #fafafa; min-height: 100vh; display: flex; flex-direction: column; }
-        .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; flex: 1; }
+---
+layout: default
+title: CV
+---
 
-        /* SIDEBAR STYLES */
-        .sidebar { text-align: center; }
-        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #f0f0f0; }
-        .name { font-size: 1.6rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #000; letter-spacing: -0.5px; }
-        .affiliation { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; }
-        
-        .sidebar-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem 0; margin-bottom: 0.5rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-sizing: border-box; transition: all 0.2s; }
-        .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); }
-        .btn-primary:hover { background-color: var(--accent-hover); }
-        .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-        
-        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
-        .social-icon { fill: var(--text-light); transition: fill 0.2s; }
-        .social-link:hover .social-icon { fill: var(--accent); }
-
-        /* CV CONTENT */
-        .content section { margin-bottom: 3.5rem; }
-        h2 { font-size: 1.4rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 0; color: #000; }
-        
-        .cv-entry { margin-bottom: 1.5rem; }
-        .cv-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
-        .cv-title { font-weight: 700; font-size: 1.05rem; color: var(--text-main); }
-        .cv-date { font-family: monospace; color: var(--text-light); font-size: 0.9rem; }
-        .cv-subtitle { font-style: italic; color: var(--text-light); margin-bottom: 0.2rem; }
-        .cv-desc { font-size: 0.95rem; margin-top: 0.3rem; }
-        ul { margin-top: 0.3rem; padding-left: 1.2rem; margin-bottom: 0; }
-        li { margin-bottom: 0.3rem; }
-        
-        /* FOOTER */
-        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid #eaeaea; }
-        .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
-        .amdg { font-size: 0.75rem; color: #e0e0e0; letter-spacing: 2px; font-weight: 600; user-select: none; }
-        .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
-
-        @media (max-width: 768px) { .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; } .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } .cv-header { flex-direction: column; } }
-        /* Add this to your existing CSS */
-        .gemini-logo {
-            width: 14px;
-            height: 14px;
-            vertical-align: middle;
-            margin-left: 4px;
-            margin-bottom: 2px; /* Slight adjustment for alignment */
-            fill: url(#gemini-gradient); /* Uses the gradient defined in the HTML */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <img src="profile.jpg" alt="Martin Gonzalez-Cabello" class="profile-img">
-            <h1 class="name">Martin Gonzalez-Cabello</h1>
-            <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
-
-            <a href="index.html" class="sidebar-btn btn-outline">Back to Home</a>
-            <a href="teaching.html" class="sidebar-btn btn-outline">Teaching</a>
-            <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank">
-                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-                <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank">
-                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
-                </a>
-            </div>
-        </aside>
-
-        <main class="content">
-            <section id="education">
-                <h2>Education</h2>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">UCLA Anderson School of Management</span>
-                        <span class="cv-date">2021 – Present</span>
-                    </div>
-                    <div class="cv-subtitle">PhD Candidate in Decisions, Operations, and Technology Management</div>
-                    <div class="cv-desc">Los Angeles, CA</div>
-                </div>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">MIT Sloan School of Management</span>
-                        <span class="cv-date">2013 – 2015</span>
-                    </div>
-                    <div class="cv-subtitle">Master of Business Administration (MBA)</div>
-                    <div class="cv-desc">Cambridge, MA</div>
-                </div>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">Illinois Institute of Technology</span>
-                        <span class="cv-date">2010</span>
-                    </div>
-                    <div class="cv-subtitle">Master in Industrial Technology & Operations</div>
-                    <div class="cv-desc">Chicago, IL</div>
-                </div>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">Universidad Politécnica de Madrid</span>
-                        <span class="cv-date">2005 – 2010</span>
-                    </div>
-                    <div class="cv-subtitle">B.S. & M.Sc. in Industrial Engineering</div>
-                    <div class="cv-desc">Madrid, Spain</div>
-                </div>
-            </section>
-            
-            <section id="research">
-                <h2>Research</h2>
-                <div class="cv-entry">
-                    <div class="cv-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</div>
-                    <div class="cv-desc">with Auyon Siddiq, Charles Corbett, and Catherine Hu.<br><em>Business Horizons</em>, Vol. 68, No. 5 (2025): 645-657.</div>
-                </div>
-                <div class="cv-entry">
-                    <div class="cv-title">The Impact of Information Systems on Experts' Decisions: Evidence from Physicians</div>
-                    <div class="cv-desc">with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez.<br>Submitted.</div>
-                </div>
-                <div class="cv-entry">
-                    <div class="cv-title">Searching for Serendipity</div>
-                    <div class="cv-desc">with Isaac Tucker and Olav Sorenson.<br>Submitted to <em>Strategic Management Journal</em>.</div>
-                </div>
-            </section>
-            
-            <section id="teaching">
-                <h2>Teaching Experience</h2>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">UCLA Anderson School of Management</span>
-                        <span class="cv-date">2022 – Present</span>
-                    </div>
-                    <div class="cv-desc">Teaching Assistant for:
-                        <ul>
-                            <li><strong>Data and Decisions</strong> (MBA Core)</li>
-                            <li><strong>Optimization</strong> (MSBA)</li>
-                            <li><strong>Prescriptive Models & Data Analytics</strong> (MSBA)</li>
-                            <li><strong>Operations & Technology Management</strong> (Global Executive MBA)</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="industry">
-                <h2>Industry Experience</h2>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">ACHS (Safety Association of Chile)</span>
-                        <span class="cv-date">2018 – 2021</span>
-                    </div>
-                    <div class="cv-subtitle">Head of Advanced Analytics & Customer Experience</div>
-                    <div class="cv-desc">
-                        <ul>
-                            <li>Founded the analytics department to integrate machine learning into healthcare and job safety decision-making.</li>
-                            <li>Launched the Research and Innovation division, leading 10+ research collaborations with universities.</li>
-                            <li>Managed customer experience strategies and remote channels for a network covering 50% of Chilean workers.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cv-entry">
-                    <div class="cv-header">
-                        <span class="cv-title">Oliver Wyman</span>
-                        <span class="cv-date">2011 – 2017</span>
-                    </div>
-                    <div class="cv-subtitle">Management Consultant</div>
-                    <div class="cv-desc">
-                        <ul>
-                            <li>Advised clients in Europe, Latin America, and the US on digital strategy and product launches.</li>
-                            <li>Designed retention strategies that reduced churn by 17% for a major European operator.</li>
-                            <li>Developed 4G/LTE launch strategies and restructured debt for telecom clients.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <footer class="site-footer">
-        <div class="credits">
-            Created with the invaluable help of Gemini
-            <svg class="gemini-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="gemini-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#4E89E1;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#9063CD;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <path d="M10.8 1.5c.3-1 .9-1 1.2 0l2.6 8.3c.3 1 1 1.7 2.1 2l8.3 2.6c1 .3 1 .9 0 1.2l-8.3 2.6c-1 .3-1.7 1-2.1 2l-2.6 8.3c-.3 1-.9 1-1.2 0l-2.6-8.3c-.3-1-1-1.7-2.1-2L1.5 13c-1-.3-1-.9 0-1.2l8.3-2.6c1-.3 1.7-1 2.1-2l2.6-8.3z"/>
-            </svg>
+<section id="education">
+    <h2>Education</h2>
+    <div class="cv-entry">
+        <div class="cv-header">
+            <span class="cv-title">UCLA Anderson School of Management</span>
+            <span class="cv-date">2021 – Present</span>
         </div>
-        <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
-    </footer>
+        <div class="cv-subtitle">PhD Candidate in Decisions, Operations, and Technology Management</div>
+        <div class="cv-desc">Los Angeles, CA</div>
+    </div>
+    <div class="cv-entry">
+        <div class="cv-header">
+            <span class="cv-title">MIT Sloan School of Management</span>
+            <span class="cv-date">2013 – 2015</span>
+        </div>
+        <div class="cv-subtitle">Master of Business Administration (MBA)</div>
+        <div class="cv-desc">Cambridge, MA</div>
+    </div>
+    <div class="cv-entry">
+        <div class="cv-header">
+            <span class="cv-title">Illinois Institute of Technology</span>
+            <span class="cv-date">2010</span>
+        </div>
+        <div class="cv-subtitle">Master in Industrial Technology & Operations</div>
+        <div class="cv-desc">Chicago, IL</div>
+    </div>
+    <div class="cv-entry">
+        <div class="cv-header">
+            <span class="cv-title">Universidad Politécnica de Madrid</span>
+            <span class="cv-date">2005 – 2010</span>
+        </div>
+        <div class="cv-subtitle">B.S. & M.Sc. in Industrial Engineering</div>
+        <div class="cv-desc">Madrid, Spain</div>
+    </div>
+</section>
 
-</body>
-</html>
+<section id="research">
+    <h2>Research</h2>
+    <div class="cv-entry">
+        <div class="cv-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</div>
+        <div class="cv-desc">with Auyon Siddiq, Charles Corbett, and Catherine Hu.<br><em>Business Horizons</em>, Vol. 68, No. 5 (2025): 645-657.</div>
+    </div>
+    <div class="cv-entry">
+        <div class="cv-title">The Impact of Information Systems on Experts' Decisions: Evidence from Physicians</div>
+        <div class="cv-desc">with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez.<br>Submitted.</div>
+    </div>
+    <div class="cv-entry">
+        <div class="cv-title">Searching for Serendipity</div>
+        <div class="cv-desc">with Isaac Tucker and Olav Sorenson.<br>Submitted to <em>Strategic Management Journal</em>.</div>
+    </div>
+</section>
+
+<section id="teaching">
+    <h2>Teaching Experience</h2>
+    <div class="cv-entry">
+        <div class="cv-header">
+            <span class="cv-title">UCLA Anderson School of Management</span>
+            <span class="cv-date">2022 – Present</span>
+        </div>
+        <div class="cv-desc">Teaching Assistant for:
+            <ul>
+                <li><strong>Data and Decisions</strong> (MBA Core)</li>
+                <li><strong>Optimization</strong> (MSBA)</li>
+                <li><strong>Prescriptive Models & Data Analytics</strong> (MSBA)</li>
+                <li><strong>Operations & Technology Management</strong> (Global Executive MBA)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="industry">
+    <h2>Industry Experience</h2>
+    <div class="cv-entry">
+        <div class="cv-header">
