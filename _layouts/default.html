@@ -25,10 +25,17 @@
         .affiliation { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; }
         
         .sidebar-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem 0; margin-bottom: 0.5rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-sizing: border-box; transition: all 0.2s; }
+        
+        /* BUTTON VARIANTS */
         .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); }
         .btn-primary:hover { background-color: var(--accent-hover); }
+        
         .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
         .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+        
+        /* NEW: Active State (Light Blue) */
+        .btn-active { background-color: #F0F7FB; color: var(--accent); border: 1px solid var(--accent); }
+        .btn-active:hover { background-color: #e1eff8; }
         
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-icon { fill: var(--text-light); transition: fill 0.2s; }
@@ -49,10 +56,13 @@
         .paper-link { color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; }
         .paper-link:hover { background-color: #f0f7fb; }
         
-        /* GEMINI LOGO */
-        .gemini-logo { width: 14px; height: 14px; vertical-align: middle; margin-left: 4px; margin-bottom: 2px; fill: url(#gemini-gradient); }
+        /* COURSE LIST (Teaching Page) */
+        .course-list { list-style: none; padding: 0; margin-top: 2.5rem; }
+        .course-item { margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
+        .course-title { font-weight: 700; display: block; color: #000; }
+        .course-meta { font-size: 0.9rem; color: var(--text-light); display: block; margin-bottom: 0.3rem; }
 
-        /* FOOTER */
+        /* FOOTER & LOGO */
         .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid #eaeaea; }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #e0e0e0; letter-spacing: 2px; font-weight: 600; user-select: none; }
@@ -68,9 +78,12 @@
             <h1 class="name">Martin Gonzalez-Cabello</h1>
             <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
 
-            <a href="index.html" class="sidebar-btn {% if page.url == '/' or page.url == '/index.html' %}btn-primary{% else %}btn-outline{% endif %}">Home</a>
-            <a href="teaching.html" class="sidebar-btn {% if page.url contains 'teaching' %}btn-primary{% else %}btn-outline{% endif %}">Teaching</a>
-            <a href="cv.html" class="sidebar-btn {% if page.url contains 'cv' %}btn-primary{% else %}btn-outline{% endif %}">Curriculum Vitae</a>
+            <a href="index.html" class="sidebar-btn {% if page.active_page == 'home' %}btn-active{% else %}btn-outline{% endif %}">Home</a>
+            
+            <a href="teaching.html" class="sidebar-btn {% if page.active_page == 'teaching' %}btn-active{% else %}btn-outline{% endif %}">Teaching</a>
+            
+            <a href="cv.html" class="sidebar-btn {% if page.active_page == 'cv' %}btn-active{% else %}btn-outline{% endif %}">Curriculum Vitae</a>
+            
             <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
             
             <div class="social-links">
