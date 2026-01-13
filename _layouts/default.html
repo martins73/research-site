@@ -1,59 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SKK42FETN2');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | Martin Gonzalez-Cabello</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+
     <style>
         /* DESIGN SYSTEM */
-        :root { --bg: #ffffff; --text-main: #2c3e50; --text-light: #6c757d; --accent: #2774AE; --accent-hover: #1e5f8e; --border: #eaeaea; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-main); line-height: 1.6; margin: 0; padding: 0; background-color: #fafafa; min-height: 100vh; display: flex; flex-direction: column; }
-        .container { max-width: 960px; margin: 3rem auto; background: var(--bg); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: grid; grid-template-columns: 260px 1fr; gap: 3rem; flex: 1; }
+        :root { 
+            --bg: #ffffff; 
+            --text-main: #2c3e50; 
+            --text-light: #6c757d; 
+            --accent: #2774AE; 
+            --accent-hover: #1e5f8e; 
+            --border: #eaeaea; 
+        }
 
-        /* SIDEBAR STYLES */
-        .sidebar { text-align: center; }
-        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #f0f0f0; }
-        .name { font-size: 1.6rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #000; letter-spacing: -0.5px; }
-        .affiliation { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; }
+        /* 2. UPDATED: FONTS */
+        body { 
+            font-family: 'Inter', sans-serif; /* Clean body font */
+            color: var(--text-main); 
+            line-height: 1.7; /* Slightly more breathing room */
+            margin: 0; padding: 0; 
+            background-color: #fafafa; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        h1, h2, h3, .name {
+            font-family: 'Merriweather', serif; /* Scholarly heading font */
+        }
+
+        .container { 
+            max-width: 960px; 
+            margin: 3rem auto; 
+            background: var(--bg); 
+            padding: 3rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            display: grid; 
+            grid-template-columns: 260px 1fr; 
+            gap: 4rem; /* Increased gap for elegance */
+            flex: 1; 
+            align-items: start; /* Crucial for sticky sidebar */
+        }
+
+        /* 3. UPDATED: STICKY SIDEBAR */
+        .sidebar { 
+            text-align: center; 
+            position: sticky; /* Make it stick */
+            top: 2rem;        /* Stay 2rem from the top of the window */
+        }
         
-        .sidebar-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem 0; margin-bottom: 0.5rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-sizing: border-box; transition: all 0.2s; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #f0f0f0; }
+        .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #000; letter-spacing: -0.5px; }
+        .affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: 'Inter', sans-serif; }
         
-        /* BUTTON VARIANTS */
+        .sidebar-btn { 
+            display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem 0; margin-bottom: 0.5rem; border-radius: 4px; 
+            text-decoration: none; font-size: 0.9rem; font-weight: 600; box-sizing: border-box; transition: all 0.2s; 
+            font-family: 'Inter', sans-serif; /* Keep buttons clean sans-serif */
+        }
+        
+        /* ... (Keep your existing .btn-primary, .btn-outline, .btn-active classes here) ... */
         .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); }
         .btn-primary:hover { background-color: var(--accent-hover); }
-        
         .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
         .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-        
-        /* NEW: Active State (Light Blue) */
         .btn-active { background-color: #F0F7FB; color: var(--accent); border: 1px solid var(--accent); }
         .btn-active:hover { background-color: #e1eff8; }
-        
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-icon { fill: var(--text-light); transition: fill 0.2s; }
         .social-link:hover .social-icon { fill: var(--accent); }
 
         /* CONTENT */
-        .content section { margin-bottom: 3.5rem; }
-        h2 { font-size: 1.4rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 0; color: #000; }
-        p { margin-bottom: 1.2rem; }
+        .content section { margin-bottom: 4rem; }
         
+        h2 { 
+            font-size: 1.5rem; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 0.5rem; 
+            margin-bottom: 1.5rem; 
+            margin-top: 0; 
+            color: #000; 
+            font-weight: 700;
+        }
+        
+        /* 4. NEW: HERO LEAD PARAGRAPH */
+        /* You will need to wrap your first sentence in <p class="lead"> in index.html */
+        .lead {
+            font-size: 1.25rem;
+            color: #2c3e50;
+            font-weight: 300; /* Lighter font weight */
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-family: 'Merriweather', serif;
+        }
+
+        /* ... (Keep your Paper, CV, and Footer styles below. No changes needed there) ... */
+        /* ... (Paste the rest of your existing CSS for .paper, .jmp-spotlight, etc.) ... */
+        /* Just make sure to keep the .news-date font-family: monospace; */
+        
+        /* --- COPY YOUR EXISTING JMP & NEWS CSS HERE --- */
+        .jmp-spotlight { background-color: #F0F7FB; border: 1px solid #2774AE; border-radius: 6px; padding: 2rem; margin-bottom: 3rem; position: relative; }
+        .jmp-tag { background-color: #2774AE; color: white; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; position: absolute; top: -12px; left: 2rem; letter-spacing: 0.5px; font-family: 'Inter', sans-serif; }
+        .jmp-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: #2c3e50; display: block; font-family: 'Merriweather', serif; }
+        .news-list { list-style: none; padding: 0; }
+        .news-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; margin-bottom: 1rem; align-items: baseline; }
+        .news-date { font-family: monospace; color: #6c757d; font-size: 0.9rem; text-align: right; }
+        .news-text { font-size: 1rem; color: #2c3e50; }
+        /* ----------------------------------------------- */
+
         /* PAPERS & CV */
         .paper, .cv-entry { margin-bottom: 2.5rem; }
-        .paper-title, .cv-title { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 0.3rem; color: var(--text-main); }
+        .paper-title, .cv-title { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 0.3rem; color: var(--text-main); font-family: 'Inter', sans-serif; }
         .paper-authors { display: block; color: var(--text-main); margin-bottom: 0.3rem; }
         .paper-venue, .cv-date { display: block; color: var(--text-light); font-style: italic; font-size: 0.95rem; margin-bottom: 0.5rem; }
         .abstract { font-size: 0.95rem; color: var(--text-main); background: #f9f9f9; padding: 1rem; border-left: 3px solid var(--accent); margin: 0.5rem 0 1rem 0; line-height: 1.5; }
         .paper-links { display: flex; gap: 0.8rem; font-size: 0.85rem; }
-        .paper-link { color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; }
+        .paper-link { color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; font-family: 'Inter', sans-serif; }
         .paper-link:hover { background-color: #f0f7fb; }
         
         /* COURSE LIST (Teaching Page) */
@@ -61,67 +132,16 @@
         .course-item { margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
         .course-title { font-weight: 700; display: block; color: #000; }
         .course-meta { font-size: 0.9rem; color: var(--text-light); display: block; margin-bottom: 0.3rem; }
-
-        /* FOOTER & LOGO */
+        
+        /* FOOTER */
         .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid #eaeaea; }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #e0e0e0; letter-spacing: 2px; font-weight: 600; user-select: none; }
         .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
 
-        @media (max-width: 768px) { .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; } .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } }
-        /* --- NEW: JMP SPOTLIGHT STYLES --- */
-        .jmp-spotlight {
-            background-color: #F0F7FB; /* Your brand's light blue */
-            border: 1px solid #2774AE; /* Darker blue border */
-            border-radius: 6px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            position: relative; /* For the tag */
-        }
-        
-        .jmp-tag {
-            background-color: #2774AE;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 4px 12px;
-            border-radius: 4px;
-            position: absolute;
-            top: -12px;
-            left: 2rem; /* Indented slightly */
-            letter-spacing: 0.5px;
-        }
-        
-        .jmp-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-            display: block;
-        }
-        
-        /* --- NEW: NEWS SECTION STYLES --- */
-        .news-list {
-            list-style: none;
-            padding: 0;
-        }
-        .news-item {
-            display: grid;
-            grid-template-columns: 80px 1fr; /* Date on left, text on right */
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            align-items: baseline;
-        }
-        .news-date {
-            font-family: monospace; /* Academic look */
-            color: #6c757d;
-            font-size: 0.9rem;
-            text-align: right;
-        }
-        .news-text {
-            font-size: 1rem;
-            color: #2c3e50;
+        @media (max-width: 768px) { 
+            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; } 
+            .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
         }
     </style>
 </head>
