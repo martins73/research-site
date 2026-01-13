@@ -128,10 +128,10 @@
             font-family: 'Merriweather', serif;
         }
 
-        /* --- 3. NEW: BENTO GRID SYSTEM --- */
+        /* --- 3. UPDATED: 4x1 WIDE LIST VIEW --- */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr; /* Force 1 column */
             gap: 1.5rem;
             margin-top: 1rem;
         }
@@ -140,7 +140,7 @@
             background: white;
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 1.75rem;
+            padding: 2.5rem; /* More padding for a premium feel */
             transition: all 0.2s ease-out;
             display: flex;
             flex-direction: column;
@@ -148,9 +148,18 @@
         }
 
         .paper-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1); /* Elegant lift */
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
             border-color: #cbd5e1;
+        }
+
+        /* TYPOGRAPHY OPTIMIZATION FOR WIDE CARDS */
+        .card-abstract {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            max-width: 780px; /* IMPORTANT: Keeps lines readable */
         }
 
         .paper-tag {
@@ -164,33 +173,26 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .paper-tag.job-market { color: #D97706; } /* Special Amber color for JMP */
+        .paper-tag.job-market { color: #D97706; }
 
         .card-title {
             font-family: 'Merriweather', serif;
-            font-size: 1.15rem;
+            font-size: 1.4rem; /* Larger title */
             font-weight: 700;
             margin: 0 0 0.75rem 0;
             color: #1e293b;
-            line-height: 1.35;
-        }
-
-        .card-abstract {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            flex-grow: 1; /* Pushes button to bottom */
+            line-height: 1.3;
         }
 
         .card-link {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-main);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            margin-top: auto; /* Stays at bottom */
+            margin-top: auto;
+            width: fit-content;
         }
         
         .card-link:hover { color: var(--accent); }
