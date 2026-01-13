@@ -104,17 +104,18 @@
         .content section { margin-bottom: 4rem; }
         
         /* ... (Keep your profile image, button, and typography styles below) ... */
-        
         .profile-img { 
             width: 180px; height: 180px; 
             border-radius: 50%; 
             object-fit: cover; 
             margin-bottom: 1.5rem; 
-            border: 4px solid #f8fafc; /* Lighter border to blend with paper */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            pointer-events: none;       /* Makes it ignore mouse clicks */
-            user-select: none;          /* Prevents highlighting */
-            -webkit-user-drag: none;    /* Prevents dragging to desktop */
+            border: 4px solid #f8fafc; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+            
+            /* GHOST MODE ENABLED */
+            pointer-events: none;       /* Ignores all clicks */
+            user-select: none;          /* Cannot be highlighted */
+            -webkit-user-drag: none;    /* Cannot be dragged */
         }
         
         .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #1e293b; letter-spacing: -0.5px; }
