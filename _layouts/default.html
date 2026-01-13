@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="{{ page.title }} | Martin Gonzalez-Cabello">
+    <meta property="og:description" content="PhD Candidate in Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI and crowdwork platforms.">
+    <meta property="og:image" content="https://gonzalezcabello.com/profile.jpg"> <meta property="og:url" content="https://gonzalezcabello.com{{ page.url }}">
+    <meta name="twitter:card" content="summary_large_image">
     <title>{{ page.title }} | Martin Gonzalez-Cabello</title>
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -142,6 +146,21 @@
         @media (max-width: 768px) { 
             .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; } 
             .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
+        }
+        
+        /* METHODOLOGY BADGES */
+        .badge-container { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .tech-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #6c757d;
+            background-color: #f1f3f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+            border: 1px solid #eaeaea;
         }
     </style>
 </head>
