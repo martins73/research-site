@@ -9,10 +9,10 @@
     <meta property="og:url" content="https://martin.gonzalezcabello.com{{ page.url }}">
     <meta property="og:site_name" content="Martin Gonzalez Cabello">
     
-    <meta property="og:image" content="https://martin.gonzalezcabello.com/social-vcard.jpg">
+    <meta property="og:image" content="https://martin.gonzalezcabello.com/card-v2.jpg">
     <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="2292">
-    <meta property="og:image:height" content="1200">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -22,155 +22,203 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 
     <style>
         /* DESIGN SYSTEM */
         :root { 
             --bg: #ffffff; 
             --text-main: #2c3e50; 
-            --text-light: #6c757d; 
-            --accent: #2774AE; 
+            --text-light: #64748b; /* Slightly cooler grey for modern feel */
+            --accent: #2774AE;     /* UCLA Blue */
             --accent-hover: #1e5f8e; 
-            --border: #eaeaea; 
+            --border: #e2e8f0;     /* Lighter, cleaner border */
         }
 
-        /* 2. UPDATED: FONTS */
+        /* 1. GLOBAL STYLES & BACKGROUND */
         body { 
-            font-family: 'Inter', sans-serif; /* Clean body font */
+            font-family: 'Inter', sans-serif;
             color: var(--text-main); 
-            line-height: 1.7; /* Slightly more breathing room */
+            line-height: 1.7; 
             margin: 0; padding: 0; 
-            background-color: #fafafa; 
+            background-color: #f8fafc; /* Slate-50: A very light cool grey */
+            
+            /* SUBTLE NETWORK PATTERN */
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 32px 32px; /* Creates a clean, engineered grid texture */
+            
             min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
         }
 
         h1, h2, h3, .name {
-            font-family: 'Merriweather', serif; /* Scholarly heading font */
+            font-family: 'Merriweather', serif;
         }
 
         .container { 
-            max-width: 960px; 
+            max-width: 1080px; /* Slightly wider to accommodate the grid */
             margin: 3rem auto; 
             background: var(--bg); 
-            padding: 3rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            padding: 3.5rem; 
+            border-radius: 12px; /* Softer corners */
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); /* Modern "Float" shadow */
             display: grid; 
             grid-template-columns: 260px 1fr; 
-            gap: 4rem; /* Increased gap for elegance */
+            gap: 4.5rem; 
             flex: 1; 
-            align-items: start; /* Crucial for sticky sidebar */
+            align-items: start; 
         }
 
-        /* 3. UPDATED: STICKY SIDEBAR */
+        /* 2. SIDEBAR */
         .sidebar { 
             text-align: center; 
-            position: sticky; /* Make it stick */
-            top: 2rem;        /* Stay 2rem from the top of the window */
+            position: sticky; 
+            top: 2rem; 
         }
         
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #f0f0f0; }
-        .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #000; letter-spacing: -0.5px; }
+        .profile-img { 
+            width: 180px; height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 1.5rem; 
+            border: 4px solid white; /* White halo to separate from bg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #1e293b; letter-spacing: -0.5px; }
         .affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: 'Inter', sans-serif; }
         
         .sidebar-btn { 
-            display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem 0; margin-bottom: 0.5rem; border-radius: 4px; 
-            text-decoration: none; font-size: 0.9rem; font-weight: 600; box-sizing: border-box; transition: all 0.2s; 
-            font-family: 'Inter', sans-serif; /* Keep buttons clean sans-serif */
+            display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; margin-bottom: 0.75rem; border-radius: 6px; 
+            text-decoration: none; font-size: 0.9rem; font-weight: 500; box-sizing: border-box; transition: all 0.2s; 
+            font-family: 'Inter', sans-serif; 
         }
         
-        /* ... (Keep your existing .btn-primary, .btn-outline, .btn-active classes here) ... */
-        .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); }
-        .btn-primary:hover { background-color: var(--accent-hover); }
+        .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); box-shadow: 0 2px 4px rgba(39, 116, 174, 0.2); }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
         .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-        .btn-active { background-color: #F0F7FB; color: var(--accent); border: 1px solid var(--accent); }
-        .btn-active:hover { background-color: #e1eff8; }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background-color: #f8fafc; }
+        .btn-active { background-color: #F0F9FF; color: var(--accent); border: 1px solid #BAE6FD; font-weight: 600; }
+        .btn-active:hover { background-color: #E0F2FE; }
+        
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-icon { fill: var(--text-light); transition: fill 0.2s; }
-        .social-link:hover .social-icon { fill: var(--accent); }
+        .social-link:hover .social-icon { fill: var(--accent); transform: scale(1.1); }
 
-        /* CONTENT */
+        /* CONTENT GENERAL */
         .content section { margin-bottom: 4rem; }
         
         h2 { 
             font-size: 1.5rem; 
             border-bottom: 1px solid var(--border); 
-            padding-bottom: 0.5rem; 
-            margin-bottom: 1.5rem; 
+            padding-bottom: 0.75rem; 
+            margin-bottom: 2rem; 
             margin-top: 0; 
-            color: #000; 
+            color: #1e293b; 
             font-weight: 700;
         }
         
-        /* 4. NEW: HERO LEAD PARAGRAPH */
-        /* You will need to wrap your first sentence in <p class="lead"> in index.html */
         .lead {
             font-size: 1.25rem;
-            color: #2c3e50;
-            font-weight: 300; /* Lighter font weight */
+            color: #334155;
+            font-weight: 300; 
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-family: 'Merriweather', serif;
         }
 
-        /* ... (Keep your Paper, CV, and Footer styles below. No changes needed there) ... */
-        /* ... (Paste the rest of your existing CSS for .paper, .jmp-spotlight, etc.) ... */
-        /* Just make sure to keep the .news-date font-family: monospace; */
-        
-        /* --- COPY YOUR EXISTING JMP & NEWS CSS HERE --- */
-        .jmp-spotlight { background-color: #F0F7FB; border: 1px solid #2774AE; border-radius: 6px; padding: 2rem; margin-bottom: 3rem; position: relative; }
-        .jmp-tag { background-color: #2774AE; color: white; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; position: absolute; top: -12px; left: 2rem; letter-spacing: 0.5px; font-family: 'Inter', sans-serif; }
-        .jmp-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: #2c3e50; display: block; font-family: 'Merriweather', serif; }
-        .news-list { list-style: none; padding: 0; }
-        .news-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; margin-bottom: 1rem; align-items: baseline; }
-        .news-date { font-family: monospace; color: #6c757d; font-size: 0.9rem; text-align: right; }
-        .news-text { font-size: 1rem; color: #2c3e50; }
-        /* ----------------------------------------------- */
+        /* --- 3. NEW: BENTO GRID SYSTEM --- */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
 
-        /* PAPERS & CV */
-        .paper, .cv-entry { margin-bottom: 2.5rem; }
-        .paper-title, .cv-title { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 0.3rem; color: var(--text-main); font-family: 'Inter', sans-serif; }
-        .paper-authors { display: block; color: var(--text-main); margin-bottom: 0.3rem; }
-        .paper-venue, .cv-date { display: block; color: var(--text-light); font-style: italic; font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .abstract { font-size: 0.95rem; color: var(--text-main); background: #f9f9f9; padding: 1rem; border-left: 3px solid var(--accent); margin: 0.5rem 0 1rem 0; line-height: 1.5; }
-        .paper-links { display: flex; gap: 0.8rem; font-size: 0.85rem; }
-        .paper-link { color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; font-family: 'Inter', sans-serif; }
-        .paper-link:hover { background-color: #f0f7fb; }
+        .paper-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: all 0.2s ease-out;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1); /* Elegant lift */
+            border-color: #cbd5e1;
+        }
+
+        .paper-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .paper-tag.job-market { color: #D97706; } /* Special Amber color for JMP */
+
+        .card-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem 0;
+            color: #1e293b;
+            line-height: 1.35;
+        }
+
+        .card-abstract {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1; /* Pushes button to bottom */
+        }
+
+        .card-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto; /* Stays at bottom */
+        }
         
-        /* COURSE LIST (Teaching Page) */
-        .course-list { list-style: none; padding: 0; margin-top: 2.5rem; }
-        .course-item { margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
-        .course-title { font-weight: 700; display: block; color: #000; }
-        .course-meta { font-size: 0.9rem; color: var(--text-light); display: block; margin-bottom: 0.3rem; }
+        .card-link:hover { color: var(--accent); }
+        .card-link::after { content: "→"; margin-left: 4px; transition: margin 0.2s; }
+        .card-link:hover::after { margin-left: 8px; }
+
+
+        /* 4. LIST STYLES (Keep your existing styles for News/CV) */
+        .news-list { list-style: none; padding: 0; }
+        .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; align-items: baseline; }
+        .news-date { font-family: 'Inter', sans-serif; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
+        .news-text { font-size: 1rem; color: var(--text-main); }
         
+        .cv-entry { margin-bottom: 2rem; padding-left: 1rem; border-left: 2px solid transparent; transition: border 0.2s; }
+        .cv-entry:hover { border-left-color: var(--accent); }
+        .cv-title { font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 0.25rem; color: #1e293b; }
+        .cv-date { color: #64748b; font-style: italic; font-size: 0.9rem; }
+
         /* FOOTER */
-        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid #eaeaea; }
+        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid var(--border); background: var(--bg); }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
-        .amdg { font-size: 0.75rem; color: #e0e0e0; letter-spacing: 2px; font-weight: 600; user-select: none; }
+        .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
         .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
 
         @media (max-width: 768px) { 
-            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; } 
+            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; margin: 0; border-radius: 0; box-shadow: none; } 
             .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
-        }
-        
-        /* METHODOLOGY BADGES */
-        .badge-container { margin-top: 0.5rem; margin-bottom: 0.5rem; }
-        .tech-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: #6c757d;
-            background-color: #f1f3f5;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-right: 6px;
-            border: 1px solid #eaeaea;
+            .research-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
