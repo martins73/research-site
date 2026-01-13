@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     
-    <title>{{ page.title }} | Martin Gonzalez-Cabello</title>
+    <title>{{ page.title }} | Martin Gonzalez Cabello</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -280,12 +280,39 @@
             .research-grid { grid-template-columns: 1fr; }
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Martin Gonzalez Cabello",
+      "jobTitle": "PhD Candidate",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "UCLA Anderson School of Management"
+      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "MIT Sloan School of Management"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad Politécnica de Madrid"
+        }
+      ],
+      "url": "https://martin.gonzalezcabello.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/martingc/",
+        "https://scholar.google.com/citations?user=5OSLJwQAAAAJ"
+      ]
+    }
+    </script>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
-            <img src="profile.jpg" alt="Martin Gonzalez-Cabello" class="profile-img">
-            <h1 class="name">Martin Gonzalez-Cabello</h1>
+            <img src="profile.jpg" alt="Martin Gonzalez Cabello" class="profile-img">
+            <h1 class="name">Martin Gonzalez Cabello</h1>
             <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
 
             <a href="index.html" class="sidebar-btn {% if page.active_page == 'home' %}btn-active{% else %}btn-outline{% endif %}">Home</a>
