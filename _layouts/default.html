@@ -25,35 +25,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 
     <style>
-        /* DESIGN SYSTEM: Clean Academic Paper */
+        /* DESIGN SYSTEM: Unified Academic Paper */
         :root { 
-            /* 1. The "Paper" Palette */
-            --bg-body: #FAFAF9;    /* Stone-50: A warm, premium off-white */
-            --bg-card: #ffffff;    /* Pure white for the text areas */
+            --bg-body: #FAFAF9;    /* The Desk: Warm off-white */
+            --bg-paper: #ffffff;   /* The Page: Pure white */
             
-            /* 2. Text Colors */
-            --text-main: #1e293b;  /* Slate-800: Softer than pure black */
-            --text-light: #64748b; /* Slate-500: For meta info */
+            --text-main: #1e293b;  
+            --text-light: #64748b; 
             
-            /* 3. The UCLA Accent */
             --accent: #2774AE;     /* UCLA Blue */
             --accent-hover: #1e5f8e; 
             
-            --border: #e2e8f0;     /* Light grey border */
+            --border: #e2e8f0;     
         }
 
-        /* 1. GLOBAL STYLES & BACKGROUND */
+        /* 1. GLOBAL STYLES */
         body { 
             font-family: 'Inter', sans-serif;
             color: var(--text-main); 
             line-height: 1.7; 
             margin: 0; padding: 0; 
             
-            /* The "Paper" Background */
+            /* The Desk Background */
             background-color: var(--bg-body); 
-            
-            /* Optional: Very faint grain texture (like real paper) */
-            /* If you don't like texture, you can remove the next two lines */
             background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
             background-size: 32px 32px; 
             
@@ -66,13 +60,19 @@
             font-family: 'Merriweather', serif;
         }
 
+        /* 2. THE UNIFIED CONTAINER (The Single Sheet of Paper) */
         .container { 
-            max-width: 1080px; /* Slightly wider to accommodate the grid */
+            max-width: 1080px; 
             margin: 3rem auto; 
-            background: var(--bg); 
-            padding: 3.5rem; 
-            border-radius: 12px; /* Softer corners */
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); /* Modern "Float" shadow */
+            
+            /* This is the ONLY background now */
+            background-color: var(--bg-paper); 
+            border: 1px solid #d1d5db; /* Subtle edge definition */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); /* Soft lift off the desk */
+            border-radius: 4px; /* Slightly sharper corners for a paper feel */
+            
+            padding: 4rem; /* Generous internal breathing room */
+            
             display: grid; 
             grid-template-columns: 260px 1fr; 
             gap: 4.5rem; 
@@ -80,25 +80,37 @@
             align-items: start; 
         }
 
-        /* 2. SIDEBAR */
-        /* ENSURE SIDEBAR & CONTENT ARE WHITE */
-        .sidebar, .content {
-            background-color: var(--bg-card); /* Force White */
-            border: 1px solid var(--border);  /* Subtle border definition */
-            /* ... previous styling like padding/radius remains ... */
-        }
+        /* 3. SIDEBAR (Clean, no box) */
         .sidebar { 
             text-align: center; 
             position: sticky; 
             top: 2rem; 
+            /* REMOVED: Background, Border, Shadow */
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0; 
         }
+        
+        /* 4. CONTENT (Clean, no box) */
+        .content {
+            /* REMOVED: Background, Border, Shadow */
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .content section { margin-bottom: 4rem; }
+        
+        /* ... (Keep your profile image, button, and typography styles below) ... */
         
         .profile-img { 
             width: 180px; height: 180px; 
             border-radius: 50%; 
             object-fit: cover; 
             margin-bottom: 1.5rem; 
-            border: 4px solid white; /* White halo to separate from bg */
+            border: 4px solid #f8fafc; /* Lighter border to blend with paper */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
         }
         
@@ -122,9 +134,6 @@
         .social-icon { fill: var(--text-light); transition: fill 0.2s; }
         .social-link:hover .social-icon { fill: var(--accent); transform: scale(1.1); }
 
-        /* CONTENT GENERAL */
-        .content section { margin-bottom: 4rem; }
-        
         h2 { 
             font-size: 1.5rem; 
             border-bottom: 1px solid var(--border); 
@@ -144,7 +153,7 @@
             font-family: 'Merriweather', serif;
         }
 
-        /* --- 3. UPDATED: 4x1 WIDE LIST VIEW --- */
+        /* 3. UPDATED: 4x1 WIDE LIST VIEW */
         .research-grid {
             display: grid;
             grid-template-columns: 1fr; /* Force 1 column */
@@ -216,7 +225,7 @@
         .card-link:hover::after { margin-left: 8px; }
 
 
-        /* 4. LIST STYLES (Keep your existing styles for News/CV) */
+        /* 4. LIST STYLES */
         .news-list { list-style: none; padding: 0; }
         .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; align-items: baseline; }
         .news-date { font-family: 'Inter', sans-serif; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
@@ -227,7 +236,7 @@
         .cv-title { font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 0.25rem; color: #1e293b; }
         .cv-date { color: #64748b; font-style: italic; font-size: 0.9rem; }
 
-        /* --- NEW COOL BADGES --- */
+        /* COOL BADGES */
         .tech-badge {
             display: inline-block;
             font-size: 0.7rem;
@@ -235,13 +244,10 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            
-            /* Blue Tint Look */
             color: #0284c7;           
             background-color: #e0f2fe; 
             padding: 4px 10px;         
-            border-radius: 9999px; /* Pill shape */
-            
+            border-radius: 9999px; 
             margin-right: 6px;
             margin-bottom: 4px;
             transition: all 0.2s ease;
@@ -251,14 +257,15 @@
             background-color: #bae6fd;
             color: #0369a1;
         }
-    
+        
         /* FOOTER */
         .site-footer { 
             text-align: center; 
             padding: 3rem 0; 
             margin-top: auto; 
             border-top: 1px solid #e2e8f0; 
-            background: var(--bg-body); /* FIXED: Uses the new 'Paper' color */
+            /* FIXED: Matches the desk color */
+            background: var(--bg-body); 
         }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
