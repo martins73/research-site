@@ -257,16 +257,19 @@
             background-color: #bae6fd;
             color: #0369a1;
         }
-        
         /* FOOTER */
         .site-footer { 
             text-align: center; 
             padding: 3rem 0; 
             margin-top: auto; 
-            border-top: 1px solid #e2e8f0; 
-            /* FIXED: Matches the desk color */
-            background: var(--bg-body); 
+            
+            /* 1. Remove the tiny line */
+            border-top: none; 
+            
+            /* 2. Make transparent so the dots show through */
+            background: transparent; 
         }
+        
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
         .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
