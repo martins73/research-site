@@ -9,10 +9,10 @@
     <meta property="og:url" content="https://martin.gonzalezcabello.com{{ page.url }}">
     <meta property="og:site_name" content="Martin Gonzalez Cabello">
     
-    <meta property="og:image" content="https://martin.gonzalezcabello.com/card-v2.jpg">
+    <meta property="og:image" content="https://martin.gonzalezcabello.com/social-vcard.jpg">
     <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:width" content="2292">
+    <meta property="og:image:height" content="1200">
     
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -25,14 +25,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 
     <style>
-        /* DESIGN SYSTEM */
+        /* DESIGN SYSTEM: Clean Academic Paper */
         :root { 
-            --bg: #ffffff; 
-            --text-main: #2c3e50; 
-            --text-light: #64748b; /* Slightly cooler grey for modern feel */
+            /* 1. The "Paper" Palette */
+            --bg-body: #FAFAF9;    /* Stone-50: A warm, premium off-white */
+            --bg-card: #ffffff;    /* Pure white for the text areas */
+            
+            /* 2. Text Colors */
+            --text-main: #1e293b;  /* Slate-800: Softer than pure black */
+            --text-light: #64748b; /* Slate-500: For meta info */
+            
+            /* 3. The UCLA Accent */
             --accent: #2774AE;     /* UCLA Blue */
             --accent-hover: #1e5f8e; 
-            --border: #e2e8f0;     /* Lighter, cleaner border */
+            
+            --border: #e2e8f0;     /* Light grey border */
         }
 
         /* 1. GLOBAL STYLES & BACKGROUND */
@@ -41,11 +48,14 @@
             color: var(--text-main); 
             line-height: 1.7; 
             margin: 0; padding: 0; 
-            background-color: #f8fafc; /* Slate-50: A very light cool grey */
             
-            /* SUBTLE NETWORK PATTERN */
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-            background-size: 32px 32px; /* Creates a clean, engineered grid texture */
+            /* The "Paper" Background */
+            background-color: var(--bg-body); 
+            
+            /* Optional: Very faint grain texture (like real paper) */
+            /* If you don't like texture, you can remove the next two lines */
+            background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
+            background-size: 32px 32px; 
             
             min-height: 100vh; 
             display: flex; 
@@ -71,6 +81,12 @@
         }
 
         /* 2. SIDEBAR */
+        /* ENSURE SIDEBAR & CONTENT ARE WHITE */
+        .sidebar, .content {
+            background-color: var(--bg-card); /* Force White */
+            border: 1px solid var(--border);  /* Subtle border definition */
+            /* ... previous styling like padding/radius remains ... */
+        }
         .sidebar { 
             text-align: center; 
             position: sticky; 
@@ -237,7 +253,13 @@
         }
     
         /* FOOTER */
-        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: 1px solid var(--border); background: var(--bg); }
+        .site-footer { 
+            text-align: center; 
+            padding: 3rem 0; 
+            margin-top: auto; 
+            border-top: 1px solid #e2e8f0; 
+            background: var(--bg-body); /* FIXED: Uses the new 'Paper' color */
+        }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
         .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
