@@ -20,10 +20,6 @@
     <title>{{ page.title }} | Martin Gonzalez Cabello</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
-
     <style>
         /* DESIGN SYSTEM: Unified Academic Paper */
         :root { 
@@ -41,7 +37,7 @@
 
         /* 1. GLOBAL STYLES */
         body { 
-            font-family: 'Inter', sans-serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text-main); 
             line-height: 1.7; 
             margin: 0; padding: 0; 
@@ -57,7 +53,8 @@
         }
 
         h1, h2, h3, .name {
-            font-family: 'Merriweather', serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-weight: 600; /* Keeps them bold without needing a bold font file */
         }
 
         /* 2. THE UNIFIED CONTAINER (The Single Sheet of Paper) */
@@ -124,12 +121,12 @@
         }
         
         .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #1e293b; letter-spacing: -0.5px; }
-        .affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: 'Inter', sans-serif; }
+        .affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: inherit; }
         
         .sidebar-btn { 
             display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; margin-bottom: 0.75rem; border-radius: 6px; 
             text-decoration: none; font-size: 0.9rem; font-weight: 500; box-sizing: border-box; transition: all 0.2s; 
-            font-family: 'Inter', sans-serif; 
+            font-family: inherit; 
         }
         
         .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); box-shadow: 0 2px 4px rgba(39, 116, 174, 0.2); }
@@ -159,7 +156,7 @@
             font-weight: 300; 
             line-height: 1.6;
             margin-bottom: 2rem;
-            font-family: 'Merriweather', serif;
+            font-family: inherit;
         }
 
         /* 3. UPDATED: 4x1 WIDE LIST VIEW */
@@ -204,13 +201,13 @@
             font-weight: 700;
             margin-bottom: 0.75rem;
             display: inline-block;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
         }
 
         .paper-tag.job-market { color: #D97706; }
 
         .card-title {
-            font-family: 'Merriweather', serif;
+            font-family: inherit;
             font-size: 1.4rem; /* Larger title */
             font-weight: 700;
             margin: 0 0 0.75rem 0;
@@ -237,7 +234,7 @@
         /* 4. LIST STYLES */
         .news-list { list-style: none; padding: 0; }
         .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; align-items: baseline; }
-        .news-date { font-family: 'Inter', sans-serif; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
+        .news-date { font-family: inherit; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
         .news-text { font-size: 1rem; color: var(--text-main); }
         
         .cv-entry { margin-bottom: 2rem; padding-left: 1rem; border-left: 2px solid transparent; transition: border 0.2s; }
@@ -249,7 +246,7 @@
         .tech-badge {
             display: inline-block;
             font-size: 0.7rem;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
