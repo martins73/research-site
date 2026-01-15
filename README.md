@@ -5,7 +5,7 @@ This is the source code for my personal academic website, hosted at [martin.gonz
 I use this platform to share my research on the **Supply Chain of AI**, **Crowdwork**, and **Algorithmic Fairness**.
 
 ## Tech Stack
-* **Framework:** [Jekyll](https://jekyllrb.com/) (Static Site Generator)
+* **Core:** HTML5 & CSS3 (Handmade)
 * **Hosting:** GitHub Pages & Cloudflare
 * **Analytics:** Google Analytics 4 (GA4)
 
@@ -14,7 +14,7 @@ I use this platform to share my research on the **Supply Chain of AI**, **Crowdw
 ### 🌱 Sustainable Design
 This site is designed to have a low carbon footprint.
 * **Optimized Assets:** All imagery uses high-compression **WebP** format.
-* **Minimalist Code:** No bloatware or heavy JavaScript frameworks.
+* **Minimalist Code:** Zero JavaScript frameworks or dependencies.
 
 ### 🛡️ AI & Privacy Protection
 * **Robots.txt:** Configured to block unauthorized scraping by major AI training bots (GPTBot, CCBot, Anthropic).
@@ -22,25 +22,22 @@ This site is designed to have a low carbon footprint.
 
 ## Local Development
 
-To run this website locally:
+Since this site uses pure HTML/CSS, you do not need to install Ruby or Jekyll.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/martins73/research-site.git)
+    git clone [https://github.com/martins73/research-site.git](https://github.com/martins73/research-site.git)
     cd research-site
     ```
 
-2.  **Install dependencies:**
+2.  **Preview the site:**
+    You can simply open `index.html` in your browser. 
+    
+    *Optional (for better link testing):* Run a simple local server using Python (pre-installed on macOS):
     ```bash
-    bundle install
+    python3 -m http.server
     ```
-
-3.  **Run the server:**
-    ```bash
-    bundle exec jekyll serve
-    ```
-
-4.  **View:** Open `http://localhost:4000` in your browser.
+    Then open `http://localhost:8000`.
 
 ## License
 © 2026 Martin Gonzalez Cabello. All rights reserved.
