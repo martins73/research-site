@@ -294,6 +294,21 @@
             .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
             .research-grid { grid-template-columns: 1fr; }
         }
+        /* GEMINI ICON ANIMATION */
+        .gemini-icon {
+            /* DEFAULT: Grey and subtle */
+            filter: grayscale(100%) brightness(0.9);
+            opacity: 0.7;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* HOVER: When hovering the specific link wrapping the icon */
+        /* We target the 'a' tag inside .credits so the effect triggers easily */
+        .credits a:hover .gemini-icon {
+            filter: grayscale(0%) brightness(1); /* Full Color */
+            opacity: 1;
+            transform: scale(1.15) rotate(5deg); /* Pop effect */
+        }
     </style>
     <script type="application/ld+json">
     {
