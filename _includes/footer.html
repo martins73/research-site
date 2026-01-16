@@ -1,9 +1,25 @@
+<style>
+    .gemini-icon {
+        /* Default: Grey and subtle */
+        filter: grayscale(100%) brightness(0.9);
+        opacity: 0.7;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Hover: When you mouse over the link, wake up the icon */
+    .gemini-link:hover .gemini-icon {
+        filter: grayscale(0%) brightness(1); /* Full Color */
+        opacity: 1;
+        transform: scale(1.15) rotate(5deg);
+    }
+</style>
+
 <footer class="site-footer">
     <div class="credits" style="display: flex; align-items: center; justify-content: center; gap: 6px;">
         <span>Created with the invaluable help of Gemini</span>
         
-        <a href="https://gemini.google.com" target="_blank" title="Gemini" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_aurora_33f86dc0c0257da337c63.svg" alt="Gemini" width="20" height="20">
+        <a href="https://gemini.google.com" target="_blank" title="Gemini" class="gemini-link" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_aurora_33f86dc0c0257da337c63.svg" alt="Gemini" width="20" height="20" class="gemini-icon">
         </a>
     </div>
     
