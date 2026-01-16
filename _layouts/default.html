@@ -40,8 +40,12 @@
         /* 1. GLOBAL STYLES */
         body { 
             font-family: 'Atkinson Hyperlegible', sans-serif;
+            
+            /* NEW: Increase size from default (16px) to 18px */
+            font-size: 1.125rem; 
+            
             color: var(--text-main); 
-            line-height: 1.7; 
+            line-height: 1.7; /* This is perfect for this size, keep it */
             margin: 0; padding: 0; 
             
             /* The Desk Background */
@@ -83,11 +87,15 @@
             text-align: center; 
             position: sticky; 
             top: 2rem; 
+            
             /* REMOVED: Background, Border, Shadow */
             background: transparent;
             border: none;
             box-shadow: none;
             padding: 0; 
+            
+            /* NEW: Keep sidebar compact (16px) while body is big (18px) */
+            font-size: 1rem; 
         }
         
         /* 4. CONTENT (Clean, no box) */
