@@ -4,48 +4,79 @@ title: CV
 active_page: cv
 ---
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1.5rem;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
     <h2 style="margin: 0; border: none; padding: 0;">Curriculum Vitae</h2>
-    <a href="assets/Martin_Gonzalez_Cabello_CV.pdf" class="btn-primary" style="padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-size: 0.9rem;" target="_blank">Download PDF ↓</a>
+    
+    <div style="display: flex; gap: 1rem;">
+        <a href="https://www.linkedin.com/in/martingc/" class="btn-outline" style="padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-size: 0.9rem;" target="_blank">View LinkedIn ↗</a>
+        
+        <a href="assets/Martin_Gonzalez_Cabello_CV.pdf" class="btn-primary" style="padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-size: 0.9rem;" target="_blank">Download PDF ↓</a>
+    </div>
 </div>
+
+<style>
+    .cv-header-group { display: flex; align-items: center; gap: 12px; }
+    .cv-logo { 
+        width: 28px; 
+        height: 28px; 
+        object-fit: contain; 
+        opacity: 0.9; 
+        transition: transform 0.2s;
+    }
+    .cv-logo:hover { transform: scale(1.1); opacity: 1; }
+    .cv-institution-link { color: inherit; text-decoration: none; font-weight: 600; }
+    .cv-institution-link:hover { color: #2774AE; text-decoration: underline; }
+</style>
 
 <section id="education">
     <h3 style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">Education</h3>
     
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">UCLA Anderson School of Management</span>
+            <div class="cv-header-group">
+                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
+                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank" class="cv-institution-link cv-title">UCLA Anderson School of Management</a>
+            </div>
             <span class="cv-date">2021 – Present</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">PhD Candidate in Decisions, Operations, and Technology Management</div>
-        <div class="cv-desc">Los Angeles, CA</div>
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">PhD Candidate in Decisions, Operations, and Technology Management</div>
+        <div class="cv-desc" style="margin-left: 40px;">Los Angeles, CA</div>
     </div>
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">MIT Sloan School of Management</span>
+            <div class="cv-header-group">
+                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank"><img src="/assets/logos/mit.png" alt="MIT" class="cv-logo"></a>
+                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank" class="cv-institution-link cv-title">MIT Sloan School of Management</a>
+            </div>
             <span class="cv-date">2013 – 2015</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">Master of Business Administration (MBA)</div>
-        <div class="cv-desc">Cambridge, MA. Entrepreneurship & Innovation Track.</div>
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Master of Business Administration (MBA)</div>
+        <div class="cv-desc" style="margin-left: 40px;">Cambridge, MA. Entrepreneurship & Innovation Track.</div>
     </div>
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">Illinois Institute of Technology</span>
+            <div class="cv-header-group">
+                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank"><img src="/assets/logos/iit.png" alt="IIT" class="cv-logo"></a>
+                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank" class="cv-institution-link cv-title">Illinois Institute of Technology</a>
+            </div>
             <span class="cv-date">2010</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">Master in Industrial Technology & Operations</div>
-        <div class="cv-desc">Chicago, IL. GPA: 3.9/4.0</div>
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Master in Industrial Technology & Operations</div>
+        <div class="cv-desc" style="margin-left: 40px;">Chicago, IL. GPA: 3.9/4.0</div>
     </div>
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">Universidad Politécnica de Madrid</span>
+            <div class="cv-header-group">
+                <a href="https://www.industriales.upm.es/" target="_blank"><img src="/assets/logos/upm.png" alt="UPM" class="cv-logo"></a>
+                <a href="https://www.industriales.upm.es/" target="_blank" class="cv-institution-link cv-title">Universidad Politécnica de Madrid</a>
+            </div>
             <span class="cv-date">2005 – 2010</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">B.S. & M.Sc. in Industrial Engineering</div>
-        <div class="cv-desc">Madrid, Spain. Top 5% of class.</div>
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">B.S. & M.Sc. in Industrial Engineering</div>
+        <div class="cv-desc" style="margin-left: 40px;">Madrid, Spain. Top 5% of class.</div>
     </div>
 </section>
 
@@ -73,10 +104,13 @@ active_page: cv
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">UCLA Anderson School of Management</span>
+            <div class="cv-header-group">
+                <a href="https://www.anderson.ucla.edu" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
+                <span class="cv-title">UCLA Anderson School of Management</span>
+            </div>
             <span class="cv-date">2022 – Present</span>
         </div>
-        <div class="cv-desc">
+        <div class="cv-desc" style="margin-left: 40px;">
             Teaching Assistant for:
             <ul style="margin-top: 0.5rem; color: #475569;">
                 <li><strong>Data and Decisions</strong> (MBA Core)</li>
@@ -86,14 +120,6 @@ active_page: cv
             </ul>
         </div>
     </div>
-
-    <div class="cv-entry">
-        <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">Universidad Politécnica de Madrid</span>
-            <span class="cv-date">2009</span>
-        </div>
-        <div class="cv-desc">Teaching Assistant for Erasmus Mundus Master of Industrial Management.</div>
-    </div>
 </section>
 
 <section id="industry" style="margin-top: 4rem;">
@@ -101,11 +127,14 @@ active_page: cv
     
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">ACHS (Safety Association of Chile)</span>
+            <div class="cv-header-group">
+                <a href="https://www.achs.cl/" target="_blank"><img src="/assets/logos/achs.png" alt="ACHS" class="cv-logo"></a>
+                <a href="https://www.achs.cl/" target="_blank" class="cv-institution-link cv-title">ACHS (Safety Association of Chile)</a>
+            </div>
             <span class="cv-date">2019 – 2021</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">Head of Advanced Analytics</div>
-        <div class="cv-desc">
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Head of Advanced Analytics</div>
+        <div class="cv-desc" style="margin-left: 40px;">
             <ul style="margin-top: 0.5rem; color: #475569;">
                 <li>Created and led the analytics department to integrate machine learning into healthcare and job safety decision-making.</li>
                 <li>Launched the Research and Innovation area, leading ~10 research collaborations with universities.</li>
@@ -116,11 +145,14 @@ active_page: cv
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">ACHS</span>
+            <div class="cv-header-group">
+                <a href="https://www.achs.cl/" target="_blank"><img src="/assets/logos/achs.png" alt="ACHS" class="cv-logo"></a>
+                <a href="https://www.achs.cl/" target="_blank" class="cv-institution-link cv-title">ACHS</a>
+            </div>
             <span class="cv-date">2018 – 2019</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">Head of Customer Experience, Analytics and Remote Channels</div>
-        <div class="cv-desc">
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Head of Customer Experience, Analytics and Remote Channels</div>
+        <div class="cv-desc" style="margin-left: 40px;">
             <ul style="margin-top: 0.5rem; color: #475569;">
                 <li>Managed CX strategies for a network covering 50% of Chilean workers.</li>
                 <li>Oversaw the call center (~200 agents) and digital channels.</li>
@@ -130,11 +162,28 @@ active_page: cv
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">Oliver Wyman</span>
+            <div class="cv-header-group">
+                <a href="https://asociaciondec-cl.org/" target="_blank"><img src="/assets/logos/dec.png" alt="DEC" class="cv-logo"></a>
+                <a href="https://asociaciondec-cl.org/" target="_blank" class="cv-institution-link cv-title">Asociación DEC Chile</a>
+            </div>
+            <span class="cv-date">2018 – 2021</span>
+        </div>
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Founder and President</div>
+        <div class="cv-desc" style="margin-left: 40px;">
+            Founded the Chilean chapter of the Association for the Development of Customer Experience.
+        </div>
+    </div>
+
+    <div class="cv-entry">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <div class="cv-header-group">
+                <a href="https://www.oliverwyman.com/" target="_blank"><img src="/assets/logos/oliver.png" alt="Oliver Wyman" class="cv-logo"></a>
+                <a href="https://www.oliverwyman.com/" target="_blank" class="cv-institution-link cv-title">Oliver Wyman</a>
+            </div>
             <span class="cv-date">2011 – 2017</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">Management Consultant</div>
-        <div class="cv-desc">
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Management Consultant</div>
+        <div class="cv-desc" style="margin-left: 40px;">
             <ul style="margin-top: 0.5rem; color: #475569;">
                 <li>Advised clients in Europe, Latin America, the Middle East, and the US on digital strategy and products.</li>
                 <li>Designed retention strategies that reduced churn by 17% for a major European operator.</li>
@@ -145,22 +194,28 @@ active_page: cv
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">Thinkids Project</span>
+            <div class="cv-header-group">
+                <a href="http://www.thinkids.es" target="_blank"><img src="/assets/logos/thinkids.png" alt="Thinkids" class="cv-logo"></a>
+                <a href="http://www.thinkids.es" target="_blank" class="cv-institution-link cv-title">Thinkids Project</a>
+            </div>
             <span class="cv-date">2012 – Present</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">Co-Founder</div>
-        <div class="cv-desc">
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">Co-Founder</div>
+        <div class="cv-desc" style="margin-left: 40px;">
             Co-founded a company to teach entrepreneurship to children (ages 8-14) in Spain, Nepal, Pakistan, Peru, and the Philippines.
         </div>
     </div>
 
     <div class="cv-entry">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span class="cv-title">Telefonica</span>
+            <div class="cv-header-group">
+                <a href="https://www.telefonica.com/" target="_blank"><img src="/assets/logos/telefonica.png" alt="Telefonica" class="cv-logo"></a>
+                <a href="https://www.telefonica.com/" target="_blank" class="cv-institution-link cv-title">Telefonica</a>
+            </div>
             <span class="cv-date">Summer 2014</span>
         </div>
-        <div style="color: #2774AE; font-weight: 500; margin-bottom: 0.5rem;">MBA Intern</div>
-        <div class="cv-desc">Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.</div>
+        <div style="color: #2774AE; font-weight: 500; margin: 0.5rem 0 0.5rem 40px;">MBA Intern</div>
+        <div class="cv-desc" style="margin-left: 40px;">Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.</div>
     </div>
 </section>
 
@@ -179,11 +234,10 @@ active_page: cv
     </div>
 
     <div class="cv-entry">
-        <span class="cv-title">Skills & Service</span>
+        <span class="cv-title">Languages</span>
         <div class="cv-desc">
             <ul style="margin-top: 0.5rem; color: #475569;">
-                <li><strong>Languages:</strong> Spanish (Native), Fluent in English and Portuguese, Basic French.</li>
-                <li><strong>Service:</strong> Founder and president of the Chilean chapter of Asociación DEC.</li>
+                <li>Spanish (Native), Fluent in English and Portuguese, Basic French.</li>
             </ul>
         </div>
     </div>
