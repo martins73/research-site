@@ -476,23 +476,59 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const trigger = document.getElementById('family-trigger');
             const modal = document.getElementById('family-modal');
-            
-            if (trigger && modal) {
-                // Open
-                trigger.addEventListener('click', function() {
-                    modal.style.display = 'flex';
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+            const triggers = document.querySelectorAll('.family-link');
+    
+            // THE COMPLETE FAMILY DATABASE
+            // 1. "family" key is for the group photo
+            // 2. Individual keys are for specific people
+            const familyData = {
+                "family": {
+                    img: "/assets/family.jpg",
+                    text: "The real reason for everything."
+                },
+                "andrea": {
+                    img: "/assets/andrea.jpg",
+                    text: "My partner in crime and biggest support."
+                },
+                "carlota": {
+                    img: "/assets/carlota.jpg",
+                    text: "Birthday: June 10, 2018" /* Example date */
+                },
+                "martin": {
+                    img: "/assets/martin.jpg",
+                    text: "Birthday: [Add Date]"
+                },
+                "joaquin": {
+                    img: "/assets/joaquin.jpg",
+                    text: "Birthday: [Add Date]"
+                },
+                "juanpablo": {
+                    img: "/assets/juanpablo.jpg",
+                    text: "Birthday: [Add Date]"
+                }
+            };
+    
+            if (modal && triggers.length > 0) {
+                triggers.forEach(trigger => {
+                    trigger.addEventListener('click', function() {
+                        const personKey = this.getAttribute('data-person');
+                        const personData = familyData[personKey];
+    
+                        if (personData) {
+                            modalImg.src = personData.img;
+                            modalCaption.innerText = personData.text;
+                            modal.style.display = 'flex';
+                        }
+                    });
                 });
-                // Close (Click Overlay)
-                modal.addEventListener('click', function() {
-                    modal.style.display = 'none';
-                });
-                // Close (ESC Key)
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === "Escape" && modal.style.display === 'flex') {
-                        modal.style.display = 'none';
-                    }
+    
+                // Close Logic
+                modal.addEventListener('click', () => modal.style.display = 'none');
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === "Escape") modal.style.display = 'none';
                 });
             }
         });
