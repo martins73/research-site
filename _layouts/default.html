@@ -7,12 +7,10 @@
     <meta property="og:title" content="Martin Gonzalez Cabello">
     <meta property="og:description" content="PhD Candidate in Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI and crowdwork platforms.">
     <meta property="og:url" content="https://martin.gonzalezcabello.com{{ page.url }}">
-
     <meta property="og:image" content="https://martin.gonzalezcabello.com/assets/social_preview.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     
@@ -20,61 +18,55 @@
     <link rel="icon" type="image/svg+xml" href="https://martin.gonzalezcabello.com/assets/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SKK42FETN2');
+    </script>
+
     <style>
-        /* DESIGN SYSTEM: Unified Academic Paper */
+        /* --- DESIGN SYSTEM: Unified Academic Paper --- */
         :root { 
             --bg-body: #FAFAF9;    /* The Desk: Warm off-white */
             --bg-paper: #ffffff;   /* The Page: Pure white */
-            
             --text-main: #1e293b;  
             --text-light: #64748b; 
-            
             --accent: #2774AE;     /* UCLA Blue */
             --accent-hover: #1e5f8e; 
-            
             --border: #e2e8f0;     
         }
 
         /* 1. GLOBAL STYLES */
         body { 
             font-family: 'Atkinson Hyperlegible', sans-serif;
-            
-            /* NEW: Increase size from default (16px) to 18px */
             font-size: 1.125rem; 
-            
             color: var(--text-main); 
-            line-height: 1.7; /* This is perfect for this size, keep it */
+            line-height: 1.7;
             margin: 0; padding: 0; 
-            
-            /* The Desk Background */
             background-color: var(--bg-body); 
             background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
             background-size: 32px 32px; 
-            
             min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
         }
 
-        h1, h2, h3, .name {
-            font-family: 'Merriweather', serif;
-        }
+        h1, h2, h3, .name { font-family: 'Merriweather', serif; }
 
-        /* 2. THE UNIFIED CONTAINER (The Single Sheet of Paper) */
+        /* 2. THE CONTAINER */
         .container { 
             max-width: 1080px; 
             margin: 3rem auto; 
-            
-            /* This is the ONLY background now */
             background-color: var(--bg-paper); 
-            border: 1px solid #d1d5db; /* Subtle edge definition */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04); /* Soft lift off the desk */
-            border-radius: 4px; /* Slightly sharper corners for a paper feel */
-            
-            padding: 4rem; /* Generous internal breathing room */
-            
+            border: 1px solid #d1d5db;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border-radius: 4px;
+            padding: 4rem;
             display: grid; 
             grid-template-columns: 260px 1fr; 
             gap: 4.5rem; 
@@ -82,34 +74,23 @@
             align-items: start; 
         }
 
-        /* 3. SIDEBAR (Clean, no box) */
+        /* 3. SIDEBAR */
         .sidebar { 
             text-align: center; 
             position: sticky; 
             top: 2rem; 
-            
-            /* REMOVED: Background, Border, Shadow */
             background: transparent;
             border: none;
             box-shadow: none;
             padding: 0; 
-            
-            /* NEW: Keep sidebar compact (16px) while body is big (18px) */
             font-size: 1rem; 
         }
         
-        /* 4. CONTENT (Clean, no box) */
-        .content {
-            /* REMOVED: Background, Border, Shadow */
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            padding: 0;
-        }
-
+        /* 4. CONTENT */
+        .content { background: transparent; border: none; box-shadow: none; padding: 0; }
         .content section { margin-bottom: 4rem; }
         
-        /* ... (Keep your profile image, button, and typography styles below) ... */
+        /* PROFILE IMAGE & TYPOGRAPHY */
         .profile-img { 
             width: 180px; height: 180px; 
             border-radius: 50%; 
@@ -117,21 +98,14 @@
             margin-bottom: 1.5rem; 
             border: 4px solid #f8fafc; 
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            /* ADD THIS LINE TO NUDGE THE FACE */
-            /* 50% is center. 
-               Lower number (e.g., 40%) moves view to the Left. 
-               Higher number (e.g., 60%) moves view to the Right. */
-            /*object-position: 60% 50%;
-            
-            /* GHOST MODE ENABLED */
-            /*pointer-events: none;       /* Ignores all clicks */
-            user-select: none;          /* Cannot be highlighted */
-            -webkit-user-drag: none;    /* Cannot be dragged */
+            user-select: none;          
+            -webkit-user-drag: none;    
         }
         
         .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #1e293b; letter-spacing: -0.5px; }
         .affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: 'Inter', sans-serif; }
         
+        /* NAVIGATION BUTTONS */
         .sidebar-btn { 
             display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; margin-bottom: 0.75rem; border-radius: 6px; 
             text-decoration: none; font-size: 0.9rem; font-weight: 500; box-sizing: border-box; transition: all 0.2s; 
@@ -145,10 +119,12 @@
         .btn-active { background-color: #F0F9FF; color: var(--accent); border: 1px solid #BAE6FD; font-weight: 600; }
         .btn-active:hover { background-color: #E0F2FE; }
         
+        /* SOCIAL ICONS */
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-icon { fill: var(--text-light); transition: fill 0.2s; }
         .social-link:hover .social-icon { fill: var(--accent); transform: scale(1.1); }
 
+        /* HEADINGS & TEXT */
         h2 { 
             font-size: 1.5rem; 
             border-bottom: 1px solid var(--border); 
@@ -168,79 +144,24 @@
             font-family: 'Merriweather', serif;
         }
 
-        /* 3. UPDATED: 4x1 WIDE LIST VIEW */
-        .research-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Force 1 column */
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
+        /* 5. PAPER CARDS & LISTS */
+        .research-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
         .paper-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2.5rem; /* More padding for a premium feel */
-            transition: all 0.2s ease-out;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            background: white; border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; 
+            transition: all 0.2s ease-out; display: flex; flex-direction: column; position: relative;
         }
+        .paper-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05); border-color: #cbd5e1; }
 
-        .paper-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
-            border-color: #cbd5e1;
-        }
-
-        /* TYPOGRAPHY OPTIMIZATION FOR WIDE CARDS */
-        .card-abstract {
-            font-size: 0.95rem;
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            max-width: 780px; /* IMPORTANT: Keeps lines readable */
-        }
-
-        .paper-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            display: inline-block;
-            font-family: inherit;
-        }
-
+        .card-abstract { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; line-height: 1.6; max-width: 780px; }
+        .paper-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; margin-bottom: 0.75rem; display: inline-block; }
         .paper-tag.job-market { color: #D97706; }
+        .card-title { font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700; margin: 0 0 0.75rem 0; color: #1e293b; line-height: 1.3; }
 
-        .card-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.4rem; /* Larger title */
-            font-weight: 700;
-            margin: 0 0 0.75rem 0;
-            color: #1e293b;
-            line-height: 1.3;
-        }
-
-        .card-link {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-main);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            margin-top: auto;
-            width: fit-content;
-        }
-        
+        .card-link { font-size: 0.9rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; margin-top: auto; width: fit-content; }
         .card-link:hover { color: var(--accent); }
         .card-link::after { content: "→"; margin-left: 4px; transition: margin 0.2s; }
         .card-link:hover::after { margin-left: 8px; }
 
-
-        /* 4. LIST STYLES */
         .news-list { list-style: none; padding: 0; }
         .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; align-items: baseline; }
         .news-date { font-family: inherit; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
@@ -251,40 +172,14 @@
         .cv-title { font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 0.25rem; color: #1e293b; }
         .cv-date { color: #64748b; font-style: italic; font-size: 0.9rem; }
 
-        /* COOL BADGES */
         .tech-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-family: inherit;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #0284c7;           
-            background-color: #e0f2fe; 
-            padding: 4px 10px;         
-            border-radius: 9999px; 
-            margin-right: 6px;
-            margin-bottom: 4px;
-            transition: all 0.2s ease;
+            display: inline-block; font-size: 0.7rem; font-family: inherit; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+            color: #0284c7; background-color: #e0f2fe; padding: 4px 10px; border-radius: 9999px; margin-right: 6px; margin-bottom: 4px; transition: all 0.2s ease;
         }
-        
-        .tech-badge:hover {
-            background-color: #bae6fd;
-            color: #0369a1;
-        }
-        /* FOOTER */
-        .site-footer { 
-            text-align: center; 
-            padding: 3rem 0; 
-            margin-top: auto; 
-            
-            /* 1. Remove the tiny line */
-            border-top: none; 
-            
-            /* 2. Make transparent so the dots show through */
-            background: transparent; 
-        }
-        
+        .tech-badge:hover { background-color: #bae6fd; color: #0369a1; }
+
+        /* FOOTER & EXTRAS */
+        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: none; background: transparent; }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
         .amdg:hover { color: var(--accent); transition: color 0.5s ease; cursor: help; }
@@ -294,101 +189,52 @@
             .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
             .research-grid { grid-template-columns: 1fr; }
         }
-        /* GEMINI ICON ANIMATION */
-        .gemini-icon {
-            /* DEFAULT: Grey and subtle */
-            filter: grayscale(100%) brightness(0.9);
-            opacity: 0.7;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+
+        /* --- EASTER EGGS & INTERACTION STYLES --- */
         
-        /* HOVER: When hovering the specific link wrapping the icon */
-        /* We target the 'a' tag inside .credits so the effect triggers easily */
-        .credits a:hover .gemini-icon {
-            filter: grayscale(0%) brightness(1); /* Full Color */
-            opacity: 1;
-            transform: scale(1.15) rotate(5deg); /* Pop effect */
-        }
-        /* The 360-degree spin animation */
-        .spin-effect {
-            transition: transform 0.8s ease-in-out;
-            transform: rotate(360deg);
-        }
-        /* 1. The Trigger Text Style */
-        .secret-link {
-            cursor: pointer;
+        /* 1. Spinning Profile */
+        .spin-effect { transition: transform 0.8s ease-in-out; transform: rotateY(720deg); }
+        
+        /* 2. Family Modal Triggers */
+        .family-link {
+            cursor: zoom-in; /* The magnifying glass cursor */
             position: relative;
-            /* Optional: A very faint underline so you know it's there */
-            border-bottom: 1px dashed #cbd5e1; 
+            border-bottom: 1px dashed #cbd5e1;
             transition: all 0.2s ease;
         }
+        .family-link:hover { color: #2774AE; border-bottom-color: #2774AE; }
         
-        .secret-link:hover {
-            color: #2774AE; /* Turns UCLA Blue on hover */
-            border-bottom-color: #2774AE;
-        }
-        
-        /* 2. The Modal Overlay (Hidden by default) */
+        /* 3. The Modal Overlay */
         .modal-overlay {
-            display: none; /* Hidden */
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(255, 255, 255, 0.95); /* Clean white fade */
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px); /* Modern blur effect */
-            animation: fadeIn 0.3s ease-out;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.95); z-index: 9999;
+            justify-content: center; align-items: center;
+            backdrop-filter: blur(5px); animation: fadeIn 0.3s ease-out;
         }
+        .modal-content { text-align: center; max-width: 90%; padding: 20px; }
+        .family-photo { max-height: 80vh; max-width: 100%; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .modal-caption { margin-top: 1rem; color: #64748b; font-family: serif; font-style: italic; font-size: 1.1rem; }
         
-        /* 3. The Photo Styling */
-        .modal-content {
-            text-align: center;
-            max-width: 90%;
-            padding: 20px;
+        /* 4. Bible Reference (In-N-Out Style) */
+        .bible-ref {
+            font-size: 0.65rem; color: #e2e8f0; vertical-align: super; margin-left: 1px;
+            cursor: crosshair; text-decoration: none; user-select: none; transition: all 0.2s ease;
         }
-        
-        .family-photo {
-            max-height: 80vh; /* Keeps it from getting too tall */
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .modal-caption {
-            margin-top: 1rem;
-            color: #64748b;
-            font-family: serif; /* Elegant contrast font */
-            font-style: italic;
-            font-size: 1.1rem;
-        }
-        
-        /* Simple Fade In Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .bible-ref:hover { color: #94a3b8; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Martin Gonzalez Cabello",
       "jobTitle": "PhD Candidate",
-      "affiliation": {
-        "@type": "Organization",
-        "name": "UCLA Anderson School of Management"
-      },
+      "affiliation": { "@type": "Organization", "name": "UCLA Anderson School of Management" },
       "alumniOf": [
-        {
-          "@type": "CollegeOrUniversity",
-          "name": "MIT Sloan School of Management"
-        },
-        {
-          "@type": "CollegeOrUniversity",
-          "name": "Universidad Politécnica de Madrid"
-        }
+        { "@type": "CollegeOrUniversity", "name": "MIT Sloan School of Management" },
+        { "@type": "CollegeOrUniversity", "name": "Universidad Politécnica de Madrid" }
       ],
       "url": "https://martin.gonzalezcabello.com",
       "sameAs": [
@@ -396,15 +242,6 @@
         "https://scholar.google.com/citations?user=5OSLJwQAAAAJ"
       ]
     }
-    </script>
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-SKK42FETN2');
     </script>
 </head>
 <body>
@@ -415,30 +252,20 @@
             <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
 
             <a href="index.html" class="sidebar-btn {% if page.active_page == 'home' %}btn-active{% else %}btn-outline{% endif %}">Home</a>
-            
             <a href="teaching.html" class="sidebar-btn {% if page.active_page == 'teaching' %}btn-active{% else %}btn-outline{% endif %}">Teaching</a>
-            
             <a href="cv.html" class="sidebar-btn {% if page.active_page == 'cv' %}btn-active{% else %}btn-outline{% endif %}">Curriculum Vitae</a>
-            
             <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
             
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                
                 <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
                 </a>
-
-                
                 <a href="https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello" class="social-link" title="Goodreads" target="_blank">
-                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
+                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                 </a>
-                            
                 <a href="https://www.last.fm/user/tinjr" class="social-link" title="Last.fm" target="_blank">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
                 </a>
@@ -451,72 +278,42 @@
     </div>
 
     {% include footer.html %}
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. Find the image: Looks for any <img> with "profile" in the source URL
-            const profilePic = document.querySelector('img[src*="profile"]');
             
-            // 2. If the image exists, add the click listener
+            /* --- 1. SPINNING PROFILE PICTURE --- */
+            const profilePic = document.querySelector('img[src*="profile"]');
             if (profilePic) {
-                // Change the cursor to a pointer so people know it's clickable
                 profilePic.style.cursor = "pointer";
-                
-                // Add the click event
                 profilePic.addEventListener('click', function() {
-                    // Add the CSS class to start the spin
                     profilePic.classList.add('spin-effect');
-                    
-                    // Remove the class after 0.8s (800ms) so it can be clicked again
                     setTimeout(() => {
                         profilePic.classList.remove('spin-effect');
                     }, 800);
                 });
             }
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+
+            /* --- 2. FAMILY DYNAMIC MODAL --- */
             const modal = document.getElementById('family-modal');
             const modalImg = document.getElementById('modal-img');
             const modalCaption = document.getElementById('modal-caption');
             const triggers = document.querySelectorAll('.family-link');
-    
-            // THE COMPLETE FAMILY DATABASE
-            // 1. "family" key is for the group photo
-            // 2. Individual keys are for specific people
+
             const familyData = {
-                "family": {
-                    img: "/assets/family.jpg",
-                    text: "The real reason for everything."
-                },
-                "andrea": {
-                    img: "/assets/andrea.jpg",
-                    text: "My partner in crime and biggest support."
-                },
-                "carlota": {
-                    img: "/assets/carlota.jpg",
-                    text: "July 16, 2018" /* Example date */
-                },
-                "martin": {
-                    img: "/assets/martin.jpg",
-                    text: "February 26, 2020"
-                },
-                "joaquin": {
-                    img: "/assets/joaquin.jpg",
-                    text: "January 22, 2024"
-                },
-                "juanpablo": {
-                    img: "/assets/juanpablo.jpg",
-                    text: "July 18, 2025"
-                }
+                "family": { img: "/assets/family.jpg", text: "The real reason for everything." },
+                "andrea": { img: "/assets/andrea.jpg", text: "My partner in crime and biggest support." },
+                "carlota": { img: "/assets/carlota.jpg", text: "July 16, 2018" },
+                "martin": { img: "/assets/martin.jpg", text: "February 26, 2020" },
+                "joaquin": { img: "/assets/joaquin.jpg", text: "January 22, 2024" },
+                "juanpablo": { img: "/assets/juanpablo.jpg", text: "July 18, 2025" }
             };
-    
+
             if (modal && triggers.length > 0) {
                 triggers.forEach(trigger => {
                     trigger.addEventListener('click', function() {
                         const personKey = this.getAttribute('data-person');
                         const personData = familyData[personKey];
-    
                         if (personData) {
                             modalImg.src = personData.img;
                             modalCaption.innerText = personData.text;
@@ -524,28 +321,18 @@
                         }
                     });
                 });
-    
-                // Close Logic
+
                 modal.addEventListener('click', () => modal.style.display = 'none');
                 document.addEventListener('keydown', (e) => {
                     if (e.key === "Escape") modal.style.display = 'none';
                 });
             }
         });
-    </script>
-    
-    <script>
-        console.log(
-            "%c👋 Hi, I'm Martin.", 
-            "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;"
-        );
-        console.log(
-            "%cIf you are looking at this, we should probably talk about data. \nShoot me an email at martin@gonzalezcabello.com", 
-            "color: #64748b; font-size: 14px;"
-        );
-    </script>
 
+        /* --- 3. CONSOLE SIGNATURE --- */
+        console.log("%c👋 Hi, I'm Martin.", "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;");
+        console.log("%cIf you are looking at this, we should probably talk about data. \nShoot me an email at martin@gonzalezcabello.com", "color: #64748b; font-size: 14px;");
+    </script>
 </body>
 </html>
-
 
