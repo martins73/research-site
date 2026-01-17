@@ -178,8 +178,15 @@
         }
         .tech-badge:hover { background-color: #bae6fd; color: #0369a1; }
 
-        /* FOOTER & EXTRAS */
-        .site-footer { text-align: center; padding: 3rem 0; margin-top: auto; border-top: none; background: transparent; }
+        /* --- FOOTER STYLES --- */
+        /* Footer Layout */
+        .site-footer {
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: nonw;
+            border-top: none;
+            background: transparent;
+        }
         .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
         .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
         .amdg:hover { color: #2774AE; transition: color 0.5s ease; cursor: crosshair; }
@@ -189,11 +196,59 @@
             .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
             .research-grid { grid-template-columns: 1fr; }
         }
+        /* Gemini Icon Animation */
+        .gemini-icon {
+            filter: grayscale(100%) brightness(0.9);
+            opacity: 0.7;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gemini-link:hover .gemini-icon {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.15) rotate(5deg);
+        }
+    
+        /* Copyright Text Style */
+        .copyright-text {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 1rem 0 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px; /* Space between cross and text */
+        }
+        /* Add this to your style block */
+        #copyright-content {
+            display: inline-block;
+            min-width: 260px; /* Reserves space so layout doesn't jump */
+            text-align: center; /* Keeps the short copyright text centered in that space */
+        }
+    
+        /* The "Cross" Trigger Style */
+        #saint-trigger {
+            cursor: crosshair;       /* Changes cursor to a + icon */
+            opacity: 0.3;       /* Subtle by default */
+            font-size: 1rem;    /* Slightly larger */
+            transition: all 0.2s ease;
+            color: #64748b;
+        }
+        
+        /* When hovering ONLY the cross */
+        #saint-trigger:hover {
+            opacity: 1;
+            color: #2774AE;     /* Lights up Blue */
+            transform: scale(1.2);
+        }
 
         /* --- EASTER EGGS & INTERACTION STYLES --- */
         
         /* 1. Spinning Profile */
-        .spin-effect { transition: transform 3.2s ease-in-out; transform: rotateY(720deg); }
+        .spin-effect {
+            transition: transform 3.2s ease-in-out;
+            /* Adding perspective(1000px) gives it 3D depth */
+            transform: perspective(1000px) rotateY(720deg);
+        }
         
         /* 2. Family Modal Triggers */
         .family-link {
@@ -288,9 +343,12 @@
                 profilePic.style.cursor = "pointer";
                 profilePic.addEventListener('click', function() {
                     profilePic.classList.add('spin-effect');
+                    
+                    // UPDATE THIS NUMBER:
+                    // 3200 milliseconds = 3.2 seconds (Matches your CSS)
                     setTimeout(() => {
                         profilePic.classList.remove('spin-effect');
-                    }, 800);
+                    }, 3200); 
                 });
             }
 
