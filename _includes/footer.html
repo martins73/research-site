@@ -1,59 +1,3 @@
-<style>
-    /* Gemini Icon Animation */
-    .gemini-icon {
-        filter: grayscale(100%) brightness(0.9);
-        opacity: 0.7;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .gemini-link:hover .gemini-icon {
-        filter: grayscale(0%) brightness(1);
-        opacity: 1;
-        transform: scale(1.15) rotate(5deg);
-    }
-
-    /* Footer Layout */
-    .site-footer {
-        padding: 2rem 0;
-        text-align: center;
-        margin-top: 2rem;
-        border-top: none;
-    }
-    
-    /* Copyright Text Style */
-    .copyright-text {
-        font-size: 0.9rem;
-        color: #64748b;
-        margin: 1rem 0 0.5rem 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px; /* Space between cross and text */
-    }
-    /* Add this to your style block */
-    #copyright-content {
-        display: inline-block;
-        min-width: 260px; /* Reserves space so layout doesn't jump */
-        text-align: center; /* Keeps the short copyright text centered in that space */
-    }
-
-    /* The "Cross" Trigger Style */
-    #saint-trigger {
-        cursor: crosshair;       /* Changes cursor to a + icon */
-        opacity: 0.3;       /* Subtle by default */
-        font-size: 1rem;    /* Slightly larger */
-        transition: all 0.2s ease;
-        color: #64748b;
-    }
-    
-    /* When hovering ONLY the cross */
-    #saint-trigger:hover {
-        opacity: 1;
-        color: #2774AE;     /* Lights up Blue */
-        transform: scale(1.2);
-    }
-
-</style>
-
 <footer class="site-footer">
     <div class="credits" style="display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.85rem; color: #64748b;">
         <span>Created with the invaluable help of Gemini</span>
@@ -68,7 +12,7 @@
         <span id="copyright-content">&copy; 2026 Martin Gonzalez</span>
     </p>
     
-    <span class="amdg" title="Ad Majorem Dei Gloriam" style="display: block; font-size: 0.75rem; color: #cbd5e1; letter-spacing: 1px;">A.M.D.G.</span>
+    <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
 </footer>
 
 <script>
