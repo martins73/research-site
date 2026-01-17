@@ -309,6 +309,11 @@
             opacity: 1;
             transform: scale(1.15) rotate(5deg); /* Pop effect */
         }
+        /* The 360-degree spin animation */
+        .spin-effect {
+            transition: transform 0.8s ease-in-out;
+            transform: rotate(360deg);
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -391,5 +396,39 @@
     </div>
 
     {% include footer.html %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Find the image: Looks for any <img> with "profile" in the source URL
+            const profilePic = document.querySelector('img[src*="profile"]');
+            
+            // 2. If the image exists, add the click listener
+            if (profilePic) {
+                // Change the cursor to a pointer so people know it's clickable
+                profilePic.style.cursor = "pointer";
+                
+                // Add the click event
+                profilePic.addEventListener('click', function() {
+                    // Add the CSS class to start the spin
+                    profilePic.classList.add('spin-effect');
+                    
+                    // Remove the class after 0.8s (800ms) so it can be clicked again
+                    setTimeout(() => {
+                        profilePic.classList.remove('spin-effect');
+                    }, 800);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
+<script>
+    console.log(
+        "%c👋 Hi, I'm Martin.", 
+        "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;"
+    );
+    console.log(
+        "%cIf you are looking at this, we should probably talk about data. \nShoot me an email at martin@gonzalezcabello.com", 
+        "color: #64748b; font-size: 14px;"
+    );
+</script>
