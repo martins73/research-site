@@ -10,13 +10,22 @@ active_page: home
     <p>AI relies on invisible human labor. My research examines <strong>crowdwork platforms</strong>—the digital assembly lines where workers label data and train algorithms. I use econometric methods to understand fairness, task estimation, and worker retention in these marketplaces.</p>
     <p>Before joining UCLA, I was the Head of Advanced Analytics at ACHS in Chile and a management consultant at Oliver Wyman. I hold an MBA from MIT Sloan.</p>
     
-    <p>Beyond the research and the data, my life is defined by <span id="family-trigger" class="secret-link">my family</span>. I am incredibly fortunate to walk this path with my wife, Andrea, and our four children: Carlota, Martín, Joaquín, and Juan Pablo. They are my greatest joy, my daily chaos, and my most important responsibility.</p>
+    <p>Beyond the research and the data, my life is defined by 
+    <span class="family-link" data-person="family">my family</span>. 
+    I am incredibly fortunate to walk this path with my wife, 
+    <span class="family-link" data-person="andrea">Andrea</span>, 
+    and our four children: 
+    <span class="family-link" data-person="carlota">Carlota</span>, 
+    <span class="family-link" data-person="martin">Martín</span>, 
+    <span class="family-link" data-person="joaquin">Joaquín</span>, and 
+    <span class="family-link" data-person="juanpablo">Juan Pablo</span>. 
+    They are my greatest joy, my daily chaos, and my most important responsibility.</p>
 </section>
 
-<div id="family-modal" class="modal-overlay">
+<div id="family-modal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
-        <img src="/assets/family.jpg" alt="My Family" class="family-photo">
-        <p class="modal-caption">The real reason for everything.</p>
+        <img id="modal-img" src="" alt="Family" class="family-photo">
+        <p id="modal-caption" class="modal-caption"></p>
     </div>
 </div>
 
