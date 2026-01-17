@@ -314,6 +314,61 @@
             transition: transform 0.8s ease-in-out;
             transform: rotate(360deg);
         }
+        /* 1. The Trigger Text Style */
+        .secret-link {
+            cursor: pointer;
+            position: relative;
+            /* Optional: A very faint underline so you know it's there */
+            border-bottom: 1px dashed #cbd5e1; 
+            transition: all 0.2s ease;
+        }
+        
+        .secret-link:hover {
+            color: #2774AE; /* Turns UCLA Blue on hover */
+            border-bottom-color: #2774AE;
+        }
+        
+        /* 2. The Modal Overlay (Hidden by default) */
+        .modal-overlay {
+            display: none; /* Hidden */
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Clean white fade */
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px); /* Modern blur effect */
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        /* 3. The Photo Styling */
+        .modal-content {
+            text-align: center;
+            max-width: 90%;
+            padding: 20px;
+        }
+        
+        .family-photo {
+            max-height: 80vh; /* Keeps it from getting too tall */
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .modal-caption {
+            margin-top: 1rem;
+            color: #64748b;
+            font-family: serif; /* Elegant contrast font */
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        /* Simple Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -419,16 +474,42 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const trigger = document.getElementById('family-trigger');
+            const modal = document.getElementById('family-modal');
+            
+            if (trigger && modal) {
+                // Open
+                trigger.addEventListener('click', function() {
+                    modal.style.display = 'flex';
+                });
+                // Close (Click Overlay)
+                modal.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+                // Close (ESC Key)
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === "Escape" && modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <script>
+        console.log(
+            "%c👋 Hi, I'm Martin.", 
+            "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;"
+        );
+        console.log(
+            "%cIf you are looking at this, we should probably talk about data. \nShoot me an email at martin@gonzalezcabello.com", 
+            "color: #64748b; font-size: 14px;"
+        );
+    </script>
+
 </body>
 </html>
 
-<script>
-    console.log(
-        "%c👋 Hi, I'm Martin.", 
-        "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;"
-    );
-    console.log(
-        "%cIf you are looking at this, we should probably talk about data. \nShoot me an email at martin@gonzalezcabello.com", 
-        "color: #64748b; font-size: 14px;"
-    );
-</script>
+
