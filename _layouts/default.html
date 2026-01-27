@@ -325,6 +325,48 @@
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
                 </a>
             </div>
+
+            {% if site.data.status %}
+            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px dashed #e2e8f0; text-align: left;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 0.75rem;">
+                    Now ({{ site.data.status.updated }})
+                </span>
+                
+                <div style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                    <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
+                        <span style="margin-right: 8px;">{{ site.data.status.location.emoji }}</span> 
+                        <span>{{ site.data.status.location.text }}</span>
+                    </div>
+            
+                    <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
+                        <span style="margin-right: 8px; margin-top: 2px;">📖</span> 
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="margin-bottom: 2px;">Reading:</span>
+                            {% for book in site.data.status.reading %}
+                            <a href="{{ book.link }}" target="_blank" style="color: #475569; text-decoration: none; border-bottom: 1px dotted #94a3b8; margin-bottom: 2px; font-size: 0.85rem; line-height: 1.4;">
+                                <em>{{ book.title }}</em>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+            
+                    {% if site.data.status.playing != "" %}
+                    <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
+                        <span style="margin-right: 8px;">🎮</span> 
+                        <span>Playing: <em>{{ site.data.status.playing }}</em></span>
+                    </div>
+                    {% endif %}
+            
+                    {% if site.data.status.watching != "" %}
+                    <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
+                        <span style="margin-right: 8px;">📺</span> 
+                        <span>Watching: <em>{{ site.data.status.watching }}</em></span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            
         </aside>
 
         <main class="content">
