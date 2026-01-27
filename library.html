@@ -38,17 +38,18 @@ active_page: library
 
     .book-item {
         display: grid;
-        grid-template-columns: 100px 1fr; /* Space for date/rating */
+        grid-template-columns: 100px 1fr; /* Space for date badge */
         gap: 1.5rem;
         align-items: baseline;
     }
 
     .book-meta {
         text-align: right;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: #94a3b8;
-        font-feature-settings: "tnum";
-        font-weight: 500;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
     .book-content {
@@ -77,11 +78,7 @@ active_page: library
         line-height: 1.6;
     }
 
-    /* RATING STARS (Pure CSS) */
-    .stars { color: #e2e8f0; letter-spacing: -2px; }
-    .stars.gold { color: #D97706; }
-
-    /* THE INVISIBLE INK STYLE (Easter Egg) */
+    /* INVISIBLE INK STYLE */
     .ghost-text {
         color: var(--bg-paper); /* Matches background (Invisible) */
         font-size: 0.9rem;
@@ -93,38 +90,19 @@ active_page: library
         color: #cbd5e1;
         font-size: 0.7rem;
     }
-    /* When highlighted, the browser default selection color makes it readable */
 </style>
 
 <section>
     <div class="library-intro">
-        <h2>The Library</h2>
-        <p class="lead">Garbage in, garbage out.</p>
-        <p>In Operations Research, we model systems based on their inputs. My academic output is a function of these inputs. This is a log of the mental models, theological frameworks, and escapist fiction currently in the queue.</p>
+        <h2>The Input Log</h2>
+        <p class="lead">The raw materials of research.</p>
+        <p>In Operations, we know that the variability of the output is determined by the quality of the input. My research is a function of the mental models, theological frameworks, and economic histories I consume. Here is the current queue.</p>
     </div>
 
-    <h3 class="bookshelf-title">The Foundation</h3>
+    <h3 class="bookshelf-title">The Human Supply Chain</h3>
     <div class="book-grid">
         <div class="book-item">
-            <div class="book-meta">CONSTANT</div>
-            <div class="book-content">
-                <span class="book-title">On Writing Well</span>
-                <span class="book-author">William Zinsser</span>
-                <p class="book-comment">The antidote to academic jargon. Zinsser taught me that clarity is the only virtue that matters. If the reader is lost, it is the writer's fault.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">CONSTANT</div>
-            <div class="book-content">
-                <span class="book-title">Factory Physics</span>
-                <span class="book-author">Wallace Hopp & Mark Spearman</span>
-                <p class="book-comment">The definitive text on the mechanics of manufacturing. It replaces intuition with equations. Essential for understanding why "utilization" is a trap.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">SECRET</div>
+            <div class="book-meta">JAN 2026</div>
             <div class="book-content">
                 <span class="book-title">Ghost Work</span>
                 <span class="book-author">Mary L. Gray & Siddharth Suri</span>
@@ -136,74 +114,61 @@ active_page: library
                 </p>
             </div>
         </div>
-    </div>
 
-    <h3 class="bookshelf-title">Labor, Ethics & AI</h3>
-    <div class="book-grid">
-        
         <div class="book-item">
             <div class="book-meta">JAN 2026</div>
             <div class="book-content">
                 <span class="book-title">Rerum Novarum</span>
                 <span class="book-author">Pope Leo XIII</span>
-                <p class="book-comment">Written in 1891, but startlingly relevant to AI Crowdwork. It addresses the "misery and wretchedness pressing so unjustly on the majority of the working class." The original manifesto on the rights of capital and labor.</p>
+                <p class="book-comment">The original manifesto on the rights of capital and labor (1891). It addresses the "misery and wretchedness pressing so unjustly on the majority of the working class." A necessary framework for analyzing AI crowdwork today.</p>
             </div>
         </div>
 
         <div class="book-item">
-            <div class="book-meta">2024</div>
-            <div class="book-content">
-                <span class="book-title">Artificial Unintelligence</span>
-                <span class="book-author">Meredith Broussard</span>
-                <p class="book-comment">A critical look at "technochauvinism"—the belief that technology is always the solution. Essential reading for understanding the limits of the algorithms we build[cite: 26].</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">2023</div>
+            <div class="book-meta">JUL 2023</div>
             <div class="book-content">
                 <span class="book-title">The Chile Project</span>
                 <span class="book-author">Sebastian Edwards</span>
-                <p class="book-comment">A history of the Chicago Boys and the downfall of neoliberalism. Given my time at ACHS and my background, this is a necessary autopsy of an economic experiment.</p>
+                <p class="book-comment">A rigorous history of the Chicago Boys and the downfall of neoliberalism. As a Chilean researcher, understanding this economic experiment is non-negotiable.</p>
             </div>
         </div>
         
         <div class="book-item">
-            <div class="book-meta">2024</div>
+            <div class="book-meta">CONSTANT</div>
             <div class="book-content">
-                <span class="book-title">Going Infinite</span>
-                <span class="book-author">Michael Lewis</span>
-                <p class="book-comment">The rise and fall of SBF. A case study in what happens when "Effective Altruism" meets zero internal controls.</p>
+                <span class="book-title">Factory Physics</span>
+                <span class="book-author">Wallace Hopp & Mark Spearman</span>
+                <p class="book-comment">The definitive text on the mechanics of manufacturing. It replaces intuition with equations. Essential for understanding why "utilization" is a trap.</p>
             </div>
         </div>
     </div>
 
-    <h3 class="bookshelf-title">Theology & Formation</h3>
+    <h3 class="bookshelf-title">Formation</h3>
     <div class="book-grid">
         <div class="book-item">
             <div class="book-meta">JAN 2026</div>
             <div class="book-content">
                 <span class="book-title">Gay and Catholic</span>
                 <span class="book-author">Eve Tushnet</span>
-                <p class="book-comment">Accepting my sexuality and my faith.</p>
+                <p class="book-comment">Reading to better welcome friends into the Church with truth, love, and charity.</p>
             </div>
         </div>
 
         <div class="book-item">
-            <div class="book-meta">2025</div>
+            <div class="book-meta">SEP 2025</div>
             <div class="book-content">
                 <span class="book-title">Hannah's Children</span>
                 <span class="book-author">Catherine Pakaluk</span>
-                <p class="book-comment">"The women quietly defying the birth dearth." A data-driven look at large families in an era of decline. Resonates with our own chaotic household of four.</p>
+                <p class="book-comment">"The women quietly defying the birth dearth." A data-driven look at large families in an era of decline. Resonates deeply with our own chaotic household of four.</p>
             </div>
         </div>
-
+        
         <div class="book-item">
-            <div class="book-meta">2023</div>
+            <div class="book-meta">CLASSIC</div>
             <div class="book-content">
-                <span class="book-title">The Whole-Brain Child</span>
-                <span class="book-author">Daniel J. Siegel</span>
-                <p class="book-comment">Trying to apply systems thinking to the most unpredictable system of all: a toddler's brain[cite: 14].</p>
+                <span class="book-title">Man's Search for Meaning</span>
+                <span class="book-author">Viktor Frankl</span>
+                <p class="book-comment">The ultimate argument that humans are not just "resources" to be optimized, but souls searching for purpose. A check against pure efficiency.</p>
             </div>
         </div>
     </div>
@@ -211,31 +176,21 @@ active_page: library
     <h3 class="bookshelf-title">Escapism</h3>
     <div class="book-grid">
         <div class="book-item">
-            <div class="book-meta">★★★★★</div>
-            <div class="book-content">
-                <span class="book-title">The Thursday Murder Club (Series)</span>
-                <span class="book-author">Richard Osman</span>
-                <p class="book-comment">My go-to palate cleanser. I've read <em>The Bullet That Missed</em> and <em>The Man Who Died Twice</em>. Perfect pacing, British humor, and a reminder that old age is not a decline.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">CLASSIC</div>
+            <div class="book-meta">JAN 2026</div>
             <div class="book-content">
                 <span class="book-title">A Confederacy of Dunces</span>
                 <span class="book-author">John Kennedy Toole</span>
-                <p class="book-comment">Ignatius J. Reilly is the ultimate anti-hero. A tragicomedy I finally tackled in Jan 2026.</p>
+                <p class="book-comment">Ignatius J. Reilly is the ultimate anti-hero. A tragicomedy I finally tackled to start the year.</p>
             </div>
         </div>
-        
+
         <div class="book-item">
-            <div class="book-meta">SPANISH</div>
+            <div class="book-meta">SERIES</div>
             <div class="book-content">
-                <span class="book-title">La sombra del viento</span>
-                <span class="book-author">Carlos Ruiz Zafón</span>
-                <p class="book-comment">"The Shadow of the Wind." A Gothic thriller about the Cemetery of Forgotten Books. A masterpiece of atmosphere[cite: 19].</p>
+                <span class="book-title">The Thursday Murder Club</span>
+                <span class="book-author">Richard Osman</span>
+                <p class="book-comment">My go-to palate cleanser. I've read the first three. Perfect pacing, British humor, and a reminder that old age is not a decline.</p>
             </div>
         </div>
     </div>
-
 </section>
