@@ -127,3 +127,49 @@ active_page: home
 
     </div>
 </section>
+
+{% if site.data.status %}
+<section id="now" style="margin-top: 6rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem;">
+        <h2 style="margin: 0; border: none;">Now</h2>
+        <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">
+            Updated: {{ site.data.status.updated }}
+        </span>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
+        <div>
+            <h4 style="font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px;">Location</h4>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 1rem;">
+                <span>{{ site.data.status.location.emoji }}</span>
+                <span>{{ site.data.status.location.text }}</span>
+            </div>
+        </div>
+
+        <div>
+            <h4 style="font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px;">Reading</h4>
+            {% for book in site.data.status.reading %}
+                <div style="margin-bottom: 0.5rem;">
+                    <a href="{{ book.link }}" target="_blank" style="color: #1e293b; text-decoration: none; border-bottom: 1px dotted #94a3b8; transition: all 0.2s;">
+                        {{ book.title }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div>
+             <h4 style="font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px;">Off Duty</h4>
+             {% if site.data.status.playing != "" %}
+             <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                <span>🎮</span> <span>{{ site.data.status.playing }}</span>
+             </div>
+             {% endif %}
+             {% if site.data.status.watching != "" %}
+             <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                <span>📺</span> <span>{{ site.data.status.watching }}</span>
+             </div>
+             {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
