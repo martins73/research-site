@@ -247,3 +247,166 @@ h2 {
 .bible-ref:hover { color: #94a3b8; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- LIBRARY STYLES --- */
+.library-intro {
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+}
+
+.bookshelf-title {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bookshelf-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.book-item {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* Space for date badge */
+    gap: 1.5rem;
+    align-items: baseline;
+}
+
+.book-meta {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #94a3b8; /* Keep specific gray for meta */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.book-content { max-width: 650px; }
+
+.book-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.book-comment {
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Invisible Ink */
+.ghost-text {
+    color: var(--bg-paper); /* Matches background (Invisible) */
+    font-size: 0.9rem;
+    user-select: text;
+    transition: color 0.2s;
+}
+.ghost-text::before {
+    content: " [Highlight to reveal] ";
+    color: #cbd5e1;
+    font-size: 0.7rem;
+}
+
+/* --- MANIFESTO STYLES --- */
+.manifesto-header {
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.manifesto-title {
+    font-size: 2.5rem; 
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.manifesto-subtitle {
+    font-family: 'Merriweather', serif;
+    font-size: 1.25rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.manifesto-body {
+    font-size: 1.2rem; 
+    max-width: 700px;
+    margin-top: 3rem;
+}
+
+.manifesto-body p { margin-bottom: 1.5rem; }
+
+.pull-quote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 3rem 0;
+    font-family: 'Merriweather', serif;
+}
+
+/* --- CV SPECIFIC STYLES --- */
+.cv-header-group { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.cv-logo { 
+    width: 28px; 
+    height: 28px; 
+    object-fit: contain; 
+    opacity: 0.9; 
+    transition: transform 0.2s;
+}
+
+/* Animate logo when hovering the link */
+a .cv-logo:hover { 
+    transform: scale(1.1); 
+    opacity: 1; 
+}
+
+.cv-institution-link { 
+    color: inherit; 
+    text-decoration: none; 
+    font-weight: 600; 
+}
+
+.cv-institution-link:hover { 
+    color: var(--accent); /* Uses your site blue (#2774AE) */
+    text-decoration: underline; 
+}
+
+/* Reusing your badge style for the research/industry tags if needed */
+.cv-desc ul {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+    color: var(--text-light);
+}
