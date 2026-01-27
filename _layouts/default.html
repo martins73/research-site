@@ -21,6 +21,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="/assets/css/style.css">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -28,257 +30,6 @@
       gtag('js', new Date());
       gtag('config', 'G-SKK42FETN2');
     </script>
-
-    <style>
-        /* --- DESIGN SYSTEM: Unified Academic Paper --- */
-        :root { 
-            --bg-body: #FAFAF9;    /* The Desk: Warm off-white */
-            --bg-paper: #ffffff;   /* The Page: Pure white */
-            --text-main: #1e293b;  
-            --text-light: #64748b; 
-            --accent: #2774AE;     /* UCLA Blue */
-            --accent-hover: #1e5f8e; 
-            --border: #e2e8f0;     
-        }
-
-        /* 1. GLOBAL STYLES */
-        body { 
-            font-family: 'Atkinson Hyperlegible', sans-serif;
-            font-size: 1.125rem; 
-            color: var(--text-main); 
-            line-height: 1.7;
-            margin: 0; padding: 0; 
-            background-color: var(--bg-body); 
-            background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
-            background-size: 32px 32px; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-        }
-
-        h1, h2, h3, .name { font-family: 'Merriweather', serif; }
-
-        /* 2. THE CONTAINER */
-        .container { 
-            max-width: 1080px; 
-            margin: 3rem auto; 
-            background-color: var(--bg-paper); 
-            border: 1px solid #d1d5db;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            border-radius: 4px;
-            padding: 4rem;
-            display: grid; 
-            grid-template-columns: 260px 1fr; 
-            gap: 4.5rem; 
-            flex: 1; 
-            align-items: start; 
-        }
-
-        /* 3. SIDEBAR */
-        .sidebar { 
-            text-align: center; 
-            position: sticky; 
-            top: 2rem; 
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            padding: 0; 
-            font-size: 1rem; 
-        }
-        
-        /* 4. CONTENT */
-        .content { background: transparent; border: none; box-shadow: none; padding: 0; }
-        .content section { margin-bottom: 4rem; }
-        
-        /* PROFILE IMAGE & TYPOGRAPHY */
-        .profile-img { 
-            width: 180px; height: 180px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            margin-bottom: 1.5rem; 
-            border: 4px solid #f8fafc; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            user-select: none;          
-            -webkit-user-drag: none;    
-        }
-        
-        .name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #1e293b; letter-spacing: -0.5px; }
-        .affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: 'Inter', sans-serif; }
-        
-        /* NAVIGATION BUTTONS */
-        .sidebar-btn { 
-            display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; margin-bottom: 0.75rem; border-radius: 6px; 
-            text-decoration: none; font-size: 0.9rem; font-weight: 500; box-sizing: border-box; transition: all 0.2s; 
-            font-family: inherit; 
-        }
-        
-        .btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); box-shadow: 0 2px 4px rgba(39, 116, 174, 0.2); }
-        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
-        .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background-color: #f8fafc; }
-        .btn-active { background-color: #F0F9FF; color: var(--accent); border: 1px solid #BAE6FD; font-weight: 600; }
-        .btn-active:hover { background-color: #E0F2FE; }
-        
-        /* SOCIAL ICONS */
-        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
-        .social-icon { fill: var(--text-light); transition: fill 0.2s; }
-        .social-link:hover .social-icon { fill: var(--accent); transform: scale(1.1); }
-
-        /* HEADINGS & TEXT */
-        h2 { 
-            font-size: 1.5rem; 
-            border-bottom: 1px solid var(--border); 
-            padding-bottom: 0.75rem; 
-            margin-bottom: 2rem; 
-            margin-top: 0; 
-            color: #1e293b; 
-            font-weight: 700;
-        }
-        
-        .lead {
-            font-size: 1.25rem;
-            color: #334155;
-            font-weight: 300; 
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            font-family: 'Merriweather', serif;
-        }
-
-        /* 5. PAPER CARDS & LISTS */
-        .research-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
-        .paper-card {
-            background: white; border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; 
-            transition: all 0.2s ease-out; display: flex; flex-direction: column; position: relative;
-        }
-        .paper-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05); border-color: #cbd5e1; }
-
-        .card-abstract { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; line-height: 1.6; max-width: 780px; }
-        .paper-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; margin-bottom: 0.75rem; display: inline-block; }
-        .paper-tag.job-market { color: #D97706; }
-        .card-title { font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700; margin: 0 0 0.75rem 0; color: #1e293b; line-height: 1.3; }
-
-        .card-link { font-size: 0.9rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; margin-top: auto; width: fit-content; }
-        .card-link:hover { color: var(--accent); }
-        .card-link::after { content: "→"; margin-left: 4px; transition: margin 0.2s; }
-        .card-link:hover::after { margin-left: 8px; }
-
-        .news-list { list-style: none; padding: 0; }
-        .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; align-items: baseline; }
-        .news-date { font-family: inherit; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
-        .news-text { font-size: 1rem; color: var(--text-main); }
-        
-        .cv-entry { margin-bottom: 2rem; padding-left: 1rem; border-left: 2px solid transparent; transition: border 0.2s; }
-        .cv-entry:hover { border-left-color: var(--accent); }
-        .cv-title { font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 0.25rem; color: #1e293b; }
-        .cv-date { color: #64748b; font-style: italic; font-size: 0.9rem; }
-
-        .tech-badge {
-            display: inline-block; font-size: 0.7rem; font-family: inherit; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-            color: #0284c7; background-color: #e0f2fe; padding: 4px 10px; border-radius: 9999px; margin-right: 6px; margin-bottom: 4px; transition: all 0.2s ease;
-        }
-        .tech-badge:hover { background-color: #bae6fd; color: #0369a1; }
-
-        /* --- FOOTER STYLES --- */
-        /* Footer Layout */
-        .site-footer {
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: nonw;
-            border-top: none;
-            background: transparent;
-        }
-        .credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
-        .amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
-        .amdg:hover { color: #2774AE; transition: color 0.5s ease; cursor: none; }
-
-        @media (max-width: 768px) { 
-            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; margin: 0; border-radius: 0; box-shadow: none; } 
-            .sidebar { position: static; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; } 
-            .research-grid { grid-template-columns: 1fr; }
-        }
-        /* Gemini Icon Animation */
-        .gemini-icon {
-            filter: grayscale(100%) brightness(0.9);
-            opacity: 0.7;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .gemini-link:hover .gemini-icon {
-            filter: grayscale(0%) brightness(1);
-            opacity: 1;
-            transform: scale(1.15) rotate(5deg);
-        }
-    
-        /* Copyright Text Style */
-        .copyright-text {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin: 1rem 0 0.5rem 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px; /* Space between cross and text */
-        }
-        /* Add this to your style block */
-        #copyright-content {
-            display: inline-block;
-            min-width: 260px; /* Reserves space so layout doesn't jump */
-            text-align: center; /* Keeps the short copyright text centered in that space */
-        }
-    
-        /* The "Cross" Trigger Style */
-        #saint-trigger {
-            cursor: crosshair;       /* Changes cursor to a + icon */
-            opacity: 0.3;       /* Subtle by default */
-            font-size: 1rem;    /* Slightly larger */
-            transition: all 0.2s ease;
-            color: #64748b;
-        }
-        
-        /* When hovering ONLY the cross */
-        #saint-trigger:hover {
-            opacity: 1;
-            color: #2774AE;     /* Lights up Blue */
-            transform: scale(1.2);
-        }
-
-        /* --- EASTER EGGS & INTERACTION STYLES --- */
-        
-        /* 1. Spinning Profile */
-        .spin-effect {
-            transition: transform 3.2s ease-in-out;
-            /* Adding perspective(1000px) gives it 3D depth */
-            transform: perspective(1000px) rotateY(720deg);
-        }
-        
-        /* 2. Family Modal Triggers */
-        .family-link {
-            cursor: zoom-in; /* The magnifying glass cursor */
-            position: relative;
-            border-bottom: none;/*1px dashed #cbd5e1;*/
-            transition: all 0.2s ease;
-        }
-        .family-link:hover { color: #2774AE; border-bottom-color: #2774AE; }
-        
-        /* 3. The Modal Overlay */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(255, 255, 255, 0.95); z-index: 9999;
-            justify-content: center; align-items: center;
-            backdrop-filter: blur(5px); animation: fadeIn 0.3s ease-out;
-        }
-        .modal-content { text-align: center; max-width: 90%; padding: 20px; }
-        .family-photo { max-height: 80vh; max-width: 100%; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .modal-caption { margin-top: 1rem; color: #64748b; font-family: serif; font-style: italic; font-size: 1.1rem; }
-        
-        /* 4. Bible Reference (In-N-Out Style) */
-        .bible-ref {
-            font-size: 0.65rem; color: #e2e8f0; vertical-align: super; margin-left: 1px;
-            cursor: crosshair; text-decoration: none; user-select: none; transition: all 0.2s ease;
-        }
-        .bible-ref:hover { color: #94a3b8; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    </style>
 
     <script type="application/ld+json">
     {
@@ -327,36 +78,36 @@
             </div>
 
             {% if site.data.status %}
-            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px dashed #e2e8f0; text-align: left;">
-                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 0.75rem;">
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #e2e8f0; text-align: left;">
+                <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 0.75rem;">
                     Now ({{ site.data.status.updated }})
                 </span>
                 
-                <div style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                <div style="font-size: 0.85rem; color: #475569; line-height: 1.5;">
                     <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
                         <span style="margin-right: 8px;">{{ site.data.status.location.emoji }}</span> 
                         <span>{{ site.data.status.location.text }}</span>
                     </div>
-            
+
                     <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
                         <span style="margin-right: 8px; margin-top: 2px;">📖</span> 
-                        <div style="display: flex; flex-direction: column;">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
                             <span style="margin-bottom: 2px;">Reading:</span>
                             {% for book in site.data.status.reading %}
-                            <a href="{{ book.link }}" target="_blank" style="color: #475569; text-decoration: none; border-bottom: 1px dotted #94a3b8; margin-bottom: 2px; font-size: 0.85rem; line-height: 1.4;">
+                            <a href="{{ book.link }}" target="_blank" style="color: #475569; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; margin-bottom: 4px;">
                                 <em>{{ book.title }}</em>
                             </a>
                             {% endfor %}
                         </div>
                     </div>
-            
+
                     {% if site.data.status.playing != "" %}
                     <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
                         <span style="margin-right: 8px;">🎮</span> 
                         <span>Playing: <em>{{ site.data.status.playing }}</em></span>
                     </div>
                     {% endif %}
-            
+
                     {% if site.data.status.watching != "" %}
                     <div style="margin-bottom: 0.5rem; display: flex; align-items: start;">
                         <span style="margin-right: 8px;">📺</span> 
@@ -366,7 +117,6 @@
                 </div>
             </div>
             {% endif %}
-            
         </aside>
 
         <main class="content">
@@ -385,9 +135,6 @@
                 profilePic.style.cursor = "pointer";
                 profilePic.addEventListener('click', function() {
                     profilePic.classList.add('spin-effect');
-                    
-                    // UPDATE THIS NUMBER:
-                    // 3200 milliseconds = 3.2 seconds (Matches your CSS)
                     setTimeout(() => {
                         profilePic.classList.remove('spin-effect');
                     }, 3200); 
@@ -429,10 +176,7 @@
             }
         });
 
-        /* --- 3. CONSOLE SIGNATURE --- */
         console.log("%c👋 Hi, I'm Martin.", "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;");
-        console.log("%cIf you are looking at this, we should probably talk about data. \nShoot me an email at martin@gonzalezcabello.com", "color: #64748b; font-size: 14px;");
     </script>
 </body>
 </html>
-
