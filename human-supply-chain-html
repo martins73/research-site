@@ -1,0 +1,80 @@
+---
+layout: default
+title: The Human Supply Chain of AI
+description: "The invisible labor infrastructure behind artificial intelligence. A manifesto on crowdwork, fairness, and the supply chain of AI."
+permalink: /human-supply-chain/
+active_page: research
+---
+
+<style>
+    /* MANIFESTO STYLES */
+    .manifesto-header {
+        border-bottom: 2px solid var(--accent);
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+    
+    .manifesto-title {
+        font-size: 2.5rem; /* Massive H1 for Google */
+        font-weight: 800;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
+    }
+
+    .manifesto-subtitle {
+        font-family: 'Merriweather', serif;
+        font-size: 1.25rem;
+        color: #64748b;
+        font-style: italic;
+    }
+
+    .manifesto-body {
+        font-size: 1.2rem; /* Larger text for reading */
+        max-width: 700px;
+        margin-top: 3rem;
+    }
+    
+    .manifesto-body p { margin-bottom: 1.5rem; }
+    
+    /* Pull quote for social sharing */
+    .pull-quote {
+        border-left: 4px solid var(--accent);
+        padding-left: 1.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin: 3rem 0;
+        font-family: 'Merriweather', serif;
+    }
+</style>
+
+<article>
+    <header class="manifesto-header">
+        <h1 class="manifesto-title">The Human Supply Chain of AI</h1>
+        <div class="manifesto-subtitle">Algorithms do not learn. They are taught.</div>
+    </header>
+
+    <div class="manifesto-body">
+        <p><strong>Artificial Intelligence is not magic. It is manufacturing.</strong></p>
+
+        <p>We talk about AI as if it were a naturally occurring resource—mined from data lakes and refined by compute power. But this metaphor erases the most critical component of the assembly line: the human.</p>
+
+        <div class="pull-quote">
+            "Behind every 'autonomous' system is a human worker labeling the reality that the machine will eventually mimic."
+        </div>
+
+        <p>My research at UCLA Anderson focuses on this invisible infrastructure. I treat the training of AI models not as a computer science problem, but as a <strong>Supply Chain</strong> problem. We have raw materials (unlabeled data), bottlenecks (human attention), inventory costs (latency), and quality control issues (bias).</p>
+
+        <p>Just as the industrial revolution required us to study the factory floor, the AI revolution requires us to study the <strong>Crowdwork Platform</strong>. This is where the work happens. It is where the ethics of fair pay collide with the mathematics of estimation.</p>
+
+        <p>We cannot optimize what we refuse to see.</p>
+        
+        <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #e2e8f0;">
+        
+        <p style="font-size: 0.9rem; color: #64748b;">
+            <strong>Cite this manifesto:</strong><br>
+            Gonzalez Cabello, M. (2026). <em>The Human Supply Chain of AI</em>. [Web].
+        </p>
+    </div>
+</article>
