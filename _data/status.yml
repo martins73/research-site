@@ -10,8 +10,8 @@ location:
 reading:
   - title: "Inside the Invisible Cage: How Algorithms Control Workers"
     link: "https://www.amazon.com/Inside-Invisible-Cage-Algorithms-Control/dp/0520395549"
-  - title: "Made for Love"
-    link: "https://www.amazon.com/Made-Love-Same-Sex-Attraction-Catholic/dp/1621642194/"
+  #- title: "Made for Love"
+  #  link: "https://www.amazon.com/Made-Love-Same-Sex-Attraction-Catholic/dp/1621642194/"
 
 # Optional: Set to "" (empty quotes) to hide these sections
 playing: "Dave The Diver"
