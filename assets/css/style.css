@@ -4,19 +4,36 @@
 
 :root { 
     /* Colors - Background */
-    --bg-body: #FAFAF9;    /* The Desk: Warm off-white */
-    --bg-paper: #ffffff;   /* The Page: Pure white */
+    --bg-body: #FAFAF9;         /* The Desk: Warm off-white */
+    --bg-paper: #ffffff;        /* The Page: Pure white */
+    --bg-accent: #f0f9ff;       /* Light blue background */
+    --bg-accent-hover: #e0f2fe; /* Hover state for accent bg */
     
-    /* Colors - Text */
-    --text-main: #1e293b;  
-    --text-light: #64748b; 
+    /* Colors - Text Hierarchy */
+    --text-primary: #1e293b;    /* Main headings and important text */
+    --text-secondary: #334155;  /* Secondary text */
+    --text-tertiary: #475569;   /* Tertiary text */
+    --text-light: #64748b;      /* Standard light text - YOUR ORIGINAL */
+    --text-muted: #94a3b8;      /* More muted/lighter text */
+    --text-lighter: #cbd5e1;    /* Very light text */
+    
+    /* Legacy aliases (for backwards compatibility) */
+    --text-main: var(--text-primary);
     
     /* Colors - Accent */
-    --accent: #2774AE;     /* UCLA Blue */
-    --accent-hover: #1e5f8e; 
+    --accent: #2774AE;          /* UCLA Blue */
+    --accent-hover: #1e5f8e;    /* Darker blue for hover */
+    --accent-orange: #D97706;   /* Amber accent (job market tag) */
     
     /* Colors - Border */
-    --border: #e2e8f0;
+    --border: #e2e8f0;          /* Default border */
+    --border-medium: #cbd5e1;   /* Medium border */
+    --border-dark: #94a3b8;     /* Dark border */
+    
+    /* Colors - Status/Info */
+    --info-text: #0284c7;       /* Info badges text */
+    --info-bg: #e0f2fe;         /* Info badges background */
+    --info-bg-hover: #bae6fd;   /* Info badges hover */
     
     /* Spacing System - Based on 4px grid */
     --space-1: 0.25rem;   /* 4px */
@@ -41,7 +58,7 @@
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 1.125rem; 
-    color: var(--text-main); 
+    color: var(--text-primary); 
     line-height: 1.7;
     margin: 0; 
     padding: 0; 
@@ -127,7 +144,7 @@ h1, h2, h3, .name {
     font-size: 1.5rem; 
     font-weight: 700; 
     margin: 0 0 var(--space-2) 0; 
-    color: #1e293b; 
+    color: var(--text-primary); 
     letter-spacing: -0.5px; 
 }
 
@@ -922,7 +939,40 @@ a .cv-logo:hover {
 .modal-content { 
     text-align: center; 
     max-width: 90%; 
-    padding: 20px; 
+    padding: 20px;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: rotate(90deg);
+}
+
+.modal-close:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 .family-photo { 
