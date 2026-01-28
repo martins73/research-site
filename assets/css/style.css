@@ -16,7 +16,21 @@
     --accent-hover: #1e5f8e; 
     
     /* Colors - Border */
-    --border: #e2e8f0;     
+    --border: #e2e8f0;
+    
+    /* Spacing System - Based on 4px grid */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+    --space-24: 6rem;     /* 96px */
 }
 
 
@@ -50,12 +64,12 @@ h1, h2, h3, .name {
 
 .container { 
     max-width: 1080px; 
-    margin: 3rem auto; 
+    margin: var(--space-12) auto; 
     background-color: var(--bg-paper); 
     border: 1px solid #d1d5db;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     border-radius: 4px;
-    padding: 4rem;
+    padding: var(--space-16);
     display: grid; 
     grid-template-columns: 260px 1fr; 
     gap: 4.5rem; 
@@ -71,11 +85,11 @@ h1, h2, h3, .name {
 }
 
 .content section { 
-    margin-bottom: 4rem; 
+    margin-bottom: var(--space-16); 
 }
 
 .section-spacing {
-    margin-top: 4rem;
+    margin-top: var(--space-16);
 }
 
 
@@ -86,7 +100,7 @@ h1, h2, h3, .name {
 .sidebar { 
     text-align: center; 
     position: sticky; 
-    top: 2rem;
+    top: var(--space-8);
     height: auto;
     background: transparent;
     border: none;
@@ -101,7 +115,7 @@ h1, h2, h3, .name {
     height: 180px; 
     border-radius: 50%; 
     object-fit: cover; 
-    margin-bottom: 1.5rem; 
+    margin-bottom: var(--space-6); 
     border: 4px solid #f8fafc; 
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     user-select: none;           
@@ -112,7 +126,7 @@ h1, h2, h3, .name {
 .name { 
     font-size: 1.5rem; 
     font-weight: 700; 
-    margin: 0 0 0.5rem 0; 
+    margin: 0 0 var(--space-2) 0; 
     color: #1e293b; 
     letter-spacing: -0.5px; 
 }
@@ -120,7 +134,7 @@ h1, h2, h3, .name {
 .affiliation { 
     font-size: 0.9rem; 
     color: var(--text-light); 
-    margin-bottom: 2rem; 
+    margin-bottom: var(--space-8); 
     font-family: 'Inter', sans-serif; 
 }
 
@@ -130,8 +144,8 @@ h1, h2, h3, .name {
     align-items: center; 
     justify-content: center; 
     width: 100%; 
-    padding: 0.75rem 0; 
-    margin-bottom: 0.75rem; 
+    padding: var(--space-3) 0; 
+    margin-bottom: var(--space-3); 
     border-radius: 6px; 
     text-decoration: none; 
     font-size: 0.9rem; 
@@ -184,10 +198,10 @@ h1, h2, h3, .name {
 
 /* Social Links */
 .social-links { 
-    margin-top: 1.5rem; 
+    margin-top: var(--space-6); 
     display: flex; 
     justify-content: center; 
-    gap: 1rem; 
+    gap: var(--space-4); 
 }
 
 .social-icon { 
@@ -208,8 +222,8 @@ h1, h2, h3, .name {
 h2 { 
     font-size: 1.5rem; 
     border-bottom: 1px solid var(--border); 
-    padding-bottom: 0.75rem; 
-    margin-bottom: 2rem; 
+    padding-bottom: var(--space-3); 
+    margin-bottom: var(--space-8); 
     margin-top: 0; 
     color: #1e293b; 
     font-weight: 700;
@@ -220,17 +234,17 @@ h2 {
     color: #334155;
     font-weight: 300; 
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
     font-family: 'Merriweather', serif;
 }
 
 .pull-quote {
     border-left: 4px solid var(--accent);
-    padding-left: 1.5rem;
+    padding-left: var(--space-6);
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-main);
-    margin: 3rem 0;
+    margin: var(--space-12) 0;
     font-family: 'Merriweather', serif;
 }
 
@@ -242,15 +256,15 @@ h2 {
 .research-grid { 
     display: grid; 
     grid-template-columns: 1fr; 
-    gap: 1.5rem; 
-    margin-top: 1rem; 
+    gap: var(--space-6); 
+    margin-top: var(--space-4); 
 }
 
 .paper-card {
     background: white; 
     border: 1px solid var(--border); 
     border-radius: 8px; 
-    padding: 2.5rem; 
+    padding: var(--space-10); 
     transition: all 0.2s ease-out; 
     display: flex; 
     flex-direction: column; 
@@ -269,7 +283,7 @@ h2 {
     letter-spacing: 0.05em; 
     color: var(--accent); 
     font-weight: 700; 
-    margin-bottom: 0.75rem; 
+    margin-bottom: var(--space-3); 
     display: inline-block; 
 }
 
@@ -281,7 +295,7 @@ h2 {
     font-family: 'Merriweather', serif; 
     font-size: 1.4rem; 
     font-weight: 700; 
-    margin: 0 0 0.75rem 0; 
+    margin: 0 0 var(--space-3) 0; 
     color: #1e293b; 
     line-height: 1.3; 
 }
@@ -289,7 +303,7 @@ h2 {
 .author-list {
     font-size: 0.85rem;
     color: var(--text-light);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
 }
 
 .author-link {
@@ -302,7 +316,7 @@ h2 {
 }
 
 .badge-container {
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-3);
 }
 
 .tech-badge {
@@ -329,7 +343,7 @@ h2 {
 .card-abstract { 
     font-size: 0.95rem; 
     color: #64748b; 
-    margin-bottom: 1.5rem; 
+    margin-bottom: var(--space-6); 
     line-height: 1.6; 
     max-width: 780px; 
 }
@@ -372,8 +386,8 @@ h2 {
 .news-item { 
     display: grid; 
     grid-template-columns: 90px 1fr; 
-    gap: 1.5rem; 
-    margin-bottom: 1.25rem; 
+    gap: var(--space-6); 
+    margin-bottom: var(--space-5); 
     align-items: baseline; 
 }
 
@@ -406,8 +420,8 @@ h2 {
    ============================================================================ */
 
 .now-section {
-    margin-top: 6rem;
-    padding-top: 2rem;
+    margin-top: var(--space-24);
+    padding-top: var(--space-8);
     border-top: 1px dashed var(--border);
 }
 
@@ -415,7 +429,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
 }
 
 .now-title {
@@ -434,14 +448,14 @@ h2 {
 .now-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
+    gap: var(--space-12);
 }
 
 .now-label {
     font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--text-light);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
     letter-spacing: 0.5px;
 }
 
@@ -459,12 +473,12 @@ h2 {
 .now-value {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
     font-size: 1rem;
 }
 
 .now-book {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
 }
 
 .now-book-link {
@@ -480,10 +494,10 @@ h2 {
 }
 
 .now-activity {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
 }
 
 
@@ -493,10 +507,10 @@ h2 {
 
 .callout-box {
     background-color: #f0f9ff;
-    padding: 1.5rem;
+    padding: var(--space-6);
     border-radius: 8px;
     border-left: 4px solid var(--accent);
-    margin-top: 2rem;
+    margin-top: var(--space-8);
 }
 
 .course-header {
@@ -513,7 +527,7 @@ h2 {
 .course-details {
     color: var(--text-light);
     font-size: 0.9rem;
-    margin-top: 0.2rem;
+    margin-top: var(--space-1);
 }
 
 
@@ -526,11 +540,11 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-12);
     border-bottom: 1px solid var(--border);
-    padding-bottom: 1.5rem;
+    padding-bottom: var(--space-6);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--space-4);
 }
 
 .cv-page-title {
@@ -541,7 +555,7 @@ h2 {
 
 .cv-actions {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-4);
 }
 
 /* CV Section Headers */
@@ -550,13 +564,13 @@ h2 {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6);
 }
 
 /* CV Entries */
 .cv-entry { 
-    margin-bottom: 2rem; 
-    padding-left: 1rem; 
+    margin-bottom: var(--space-8); 
+    padding-left: var(--space-4); 
     border-left: 2px solid transparent; 
     transition: border 0.2s; 
 }
@@ -572,11 +586,11 @@ h2 {
 }
 
 .cv-company-header {
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-3);
 }
 
 .cv-subentry {
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-5);
 }
 
 /* CV Header Group (Logo + Institution) */
@@ -615,7 +629,7 @@ a .cv-logo:hover {
     font-weight: 600; 
     font-size: 1.05rem; 
     display: block; 
-    margin-bottom: 0.25rem; 
+    margin-bottom: var(--space-1); 
     color: #1e293b; 
 }
 
@@ -628,7 +642,7 @@ a .cv-logo:hover {
 .cv-role {
     color: var(--accent); 
     font-weight: 500; 
-    margin: 0.5rem 0 0.5rem 40px;
+    margin: var(--space-2) 0 var(--space-2) 40px;
 }
 
 .cv-desc {
@@ -640,13 +654,13 @@ a .cv-logo:hover {
 }
 
 .cv-desc ul {
-    margin-top: 0.5rem;
+    margin-top: var(--space-2);
     color: var(--text-light);
     padding-left: 1.2rem;
 }
 
 .cv-list {
-    margin-top: 0.5rem;
+    margin-top: var(--space-2);
     color: #475569;
 }
 
@@ -656,17 +670,17 @@ a .cv-logo:hover {
    ============================================================================ */
 
 .library-intro {
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-16);
     border-bottom: 1px solid var(--border);
-    padding-bottom: 2rem;
+    padding-bottom: var(--space-8);
 }
 
 .bookshelf-title {
     font-family: 'Merriweather', serif;
     font-size: 1.5rem;
     color: var(--text-main);
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-6);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -682,13 +696,13 @@ a .cv-logo:hover {
 .book-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: var(--space-10);
 }
 
 .book-item {
     display: grid;
     grid-template-columns: 100px 1fr;
-    gap: 1.5rem;
+    gap: var(--space-6);
     align-items: baseline;
 }
 
@@ -710,14 +724,14 @@ a .cv-logo:hover {
     font-size: 1.1rem;
     color: var(--text-main);
     display: block;
-    margin-bottom: 0.25rem;
+    margin-bottom: var(--space-1);
 }
 
 .book-author {
     font-size: 0.9rem;
     color: var(--text-light);
     font-style: italic;
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-3);
     display: block;
 }
 
@@ -747,15 +761,15 @@ a .cv-logo:hover {
 
 .manifesto-header {
     border-bottom: 2px solid var(--accent);
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
 }
 
 .manifesto-title {
     font-size: 2.5rem; 
     font-weight: 800;
     color: var(--text-main);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
     line-height: 1.1;
 }
 
@@ -769,11 +783,11 @@ a .cv-logo:hover {
 .manifesto-body {
     font-size: 1.2rem; 
     max-width: 700px;
-    margin-top: 3rem;
+    margin-top: var(--space-12);
 }
 
 .manifesto-body p { 
-    margin-bottom: 1.5rem; 
+    margin-bottom: var(--space-6); 
 }
 
 
@@ -782,7 +796,7 @@ a .cv-logo:hover {
    ============================================================================ */
 
 .site-footer {
-    padding: 2rem 0;
+    padding: var(--space-8) 0;
     text-align: center;
     margin-top: none;
     border-top: none;
@@ -792,17 +806,17 @@ a .cv-logo:hover {
 .credits { 
     font-size: 0.85rem; 
     color: var(--text-light); 
-    margin-bottom: 1rem; 
+    margin-bottom: var(--space-4); 
 }
 
 .copyright-text {
     font-size: 0.9rem;
     color: #64748b;
-    margin: 1rem 0 0.5rem 0;
+    margin: var(--space-4) 0 var(--space-2) 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px; 
+    gap: var(--space-2); 
 }
 
 #copyright-content {
@@ -919,7 +933,7 @@ a .cv-logo:hover {
 }
 
 .modal-caption { 
-    margin-top: 1rem; 
+    margin-top: var(--space-4); 
     color: #64748b; 
     font-family: serif; 
     font-style: italic; 
@@ -939,8 +953,8 @@ a .cv-logo:hover {
 @media (max-width: 768px) { 
     .container { 
         grid-template-columns: 1fr; 
-        padding: 2rem 1.5rem; 
-        gap: 3rem; 
+        padding: var(--space-8) var(--space-6); 
+        gap: var(--space-12); 
         margin: 0; 
         border-radius: 0; 
         box-shadow: none; 
@@ -949,8 +963,8 @@ a .cv-logo:hover {
     .sidebar { 
         position: static;
         border-bottom: 1px solid var(--border); 
-        padding-bottom: 2rem; 
-        margin-bottom: 2rem; 
+        padding-bottom: var(--space-8); 
+        margin-bottom: var(--space-8); 
         height: auto;
         overflow-y: visible;
     } 
