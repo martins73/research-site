@@ -74,6 +74,22 @@ h1, h2, h3, .name {
     font-family: 'Merriweather', serif; 
 }
 
+/* Global Focus Styles - Softer, more subtle */
+*:focus {
+    outline: 2px solid rgba(39, 116, 174, 0.4); /* UCLA Blue at 40% opacity */
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid rgba(39, 116, 174, 0.5); /* UCLA Blue at 50% opacity */
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1); /* Soft glow */
+}
+
 
 /* ============================================================================
    2. LAYOUT - CONTAINER & GRID
@@ -170,6 +186,12 @@ h1, h2, h3, .name {
     box-sizing: border-box; 
     transition: all 0.2s; 
     font-family: inherit; 
+}
+
+.sidebar-btn:focus-visible {
+    outline: 2px solid rgba(39, 116, 174, 0.5);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
 }
 
 .btn-primary { 
@@ -914,11 +936,18 @@ a .cv-logo:hover {
     position: relative;
     border-bottom: none;
     transition: all 0.2s ease;
+    border-radius: 2px;
 }
 
 .family-link:hover { 
     color: #2774AE; 
     border-bottom-color: #2774AE; 
+}
+
+.family-link:focus-visible {
+    outline: 2px solid rgba(39, 116, 174, 0.4);
+    outline-offset: 1px;
+    background-color: rgba(39, 116, 174, 0.05);
 }
 
 .modal-overlay {
@@ -971,8 +1000,14 @@ a .cv-logo:hover {
 }
 
 .modal-close:focus {
-    outline: 2px solid var(--accent);
+    outline: 2px solid rgba(39, 116, 174, 0.5);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.15);
+}
+
+.modal-close:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
 }
 
 .family-photo { 
