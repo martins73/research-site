@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Meta Description - Page specific or default -->
+    <meta name="description" content="{{ page.description | default: 'PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.' }}">
+    
     <meta property="og:title" content="Martin Gonzalez Cabello">
     <meta property="og:description" content="PhD Candidate in Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI and crowdwork platforms.">
     <meta property="og:url" content="https://martin.gonzalezcabello.com{{ page.url }}">
@@ -13,9 +16,6 @@
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Meta Description - page specific or default -->
-    <meta name="description" content="{{ page.description | default: 'PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.' }}">
     
     <title>{{ page.title }} | Martin Gonzalez Cabello</title>
     <link rel="icon" type="image/svg+xml" href="https://martin.gonzalezcabello.com/assets/favicon.svg">
@@ -66,16 +66,16 @@
             <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
             
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank">
+                <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank">
+                <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
                 </a>
-                <a href="https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello" class="social-link" title="Goodreads" target="_blank">
+                <a href="https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello" class="social-link" title="Goodreads" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke=none stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                 </a>
-                <a href="https://www.last.fm/user/tinjr" class="social-link" title="Last.fm" target="_blank">
+                <a href="https://www.last.fm/user/tinjr" class="social-link" title="Last.fm" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
                 </a>
             </div>
@@ -111,17 +111,10 @@
             const closeButton = document.getElementById('modal-close');
             const triggers = document.querySelectorAll('.family-link');
 
-            // Family data - could be moved to Jekyll data file
-            const familyData = {
-                "family": { img: "/assets/family.jpg", text: "The real reason for everything." },
-                "andrea": { img: "/assets/andrea.jpg", text: "My partner in crime and biggest support." },
-                "carlota": { img: "/assets/carlota.jpg", text: "July 16, 2018" },
-                "martin": { img: "/assets/martin.jpg", text: "February 26, 2020" },
-                "joaquin": { img: "/assets/joaquin.jpg", text: "January 22, 2024" },
-                "juanpablo": { img: "/assets/juanpablo.jpg", text: "July 18, 2025" }
-            };
+            // Family data from Jekyll data file
+            const familyData = {{ site.data.family | jsonify }};
 
-            if (modal && triggers.length > 0) {
+            if (modal && triggers.length > 0 && familyData) {
                 let lastFocusedElement = null;
 
                 // Function to open modal
@@ -142,7 +135,9 @@
                     modal.setAttribute('aria-hidden', 'false');
 
                     // Focus the close button
-                    closeButton.focus();
+                    if (closeButton) {
+                        closeButton.focus();
+                    }
 
                     // Prevent body scroll
                     document.body.style.overflow = 'hidden';
@@ -210,6 +205,9 @@
                         const focusableElements = modal.querySelectorAll(
                             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
                         );
+                        
+                        if (focusableElements.length === 0) return;
+                        
                         const firstElement = focusableElements[0];
                         const lastElement = focusableElements[focusableElements.length - 1];
 
