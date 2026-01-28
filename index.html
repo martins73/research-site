@@ -147,7 +147,11 @@ active_page: home
         </div>
 
         <div>
-            <h4 style="font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px;">Reading</h4>
+            <h4 style="font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px;">
+                <a href="library.html" style="color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 4px;" title="View Full Library">
+                    Reading
+                </a>
+            </h4>
             {% for book in site.data.status.reading %}
                 <div style="margin-bottom: 0.5rem;">
                     <a href="{{ book.link }}" target="_blank" style="color: #1e293b; text-decoration: none; border-bottom: 1px dotted #94a3b8; transition: all 0.2s;">
