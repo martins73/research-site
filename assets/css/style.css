@@ -13,7 +13,7 @@
     --text-primary: #1e293b;    /* Main headings and important text */
     --text-secondary: #334155;  /* Secondary text */
     --text-tertiary: #475569;   /* Tertiary text */
-    --text-light: #64748b;      /* Standard light text - YOUR ORIGINAL */
+    --text-light: #64748b;      /* Standard light text */
     --text-muted: #94a3b8;      /* More muted/lighter text */
     --text-lighter: #cbd5e1;    /* Very light text */
     
@@ -27,6 +27,7 @@
     
     /* Colors - Border */
     --border: #e2e8f0;          /* Default border */
+    --border-dashed: #e2e8f0;   /* Dashed borders */
     --border-medium: #cbd5e1;   /* Medium border */
     --border-dark: #94a3b8;     /* Dark border */
     
@@ -48,6 +49,26 @@
     --space-16: 4rem;     /* 64px */
     --space-20: 5rem;     /* 80px */
     --space-24: 6rem;     /* 96px */
+    
+    /* Typography Scale */
+    --text-xs: 0.65rem;   /* 10.4px */
+    --text-sm: 0.75rem;   /* 12px */
+    --text-base: 0.85rem; /* 13.6px */
+    --text-md: 0.9rem;    /* 14.4px */
+    --text-normal: 0.95rem; /* 15.2px */
+    --text-lg: 1rem;      /* 16px */
+    --text-xl: 1.05rem;   /* 16.8px */
+    --text-2xl: 1.125rem; /* 18px */
+    --text-3xl: 1.25rem;  /* 20px */
+    --text-4xl: 1.4rem;   /* 22.4px */
+    --text-5xl: 1.5rem;   /* 24px */
+    --text-6xl: 2.5rem;   /* 40px */
+    
+    /* Line Heights */
+    --leading-tight: 1.1;
+    --leading-snug: 1.3;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.7;
 }
 
 
@@ -57,9 +78,9 @@
 
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: 1.125rem; 
+    font-size: var(--text-2xl); 
     color: var(--text-primary); 
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
     margin: 0; 
     padding: 0; 
     background-color: var(--bg-body); 
@@ -76,7 +97,7 @@ h1, h2, h3, .name {
 
 /* Global Focus Styles - Softer, more subtle */
 *:focus {
-    outline: 2px solid rgba(39, 116, 174, 0.4); /* UCLA Blue at 40% opacity */
+    outline: 2px solid rgba(39, 116, 174, 0.4);
     outline-offset: 2px;
 }
 
@@ -85,9 +106,9 @@ h1, h2, h3, .name {
 }
 
 *:focus-visible {
-    outline: 2px solid rgba(39, 116, 174, 0.5); /* UCLA Blue at 50% opacity */
+    outline: 2px solid rgba(39, 116, 174, 0.5);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1); /* Soft glow */
+    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
 }
 
 
@@ -139,7 +160,7 @@ h1, h2, h3, .name {
     border: none;
     box-shadow: none;
     padding: 0; 
-    font-size: 1rem; 
+    font-size: var(--text-lg); 
 }
 
 /* Profile Image */
@@ -157,7 +178,7 @@ h1, h2, h3, .name {
 
 /* Profile Text */
 .name { 
-    font-size: 1.5rem; 
+    font-size: var(--text-5xl); 
     font-weight: 700; 
     margin: 0 0 var(--space-2) 0; 
     color: var(--text-primary); 
@@ -165,7 +186,7 @@ h1, h2, h3, .name {
 }
 
 .affiliation { 
-    font-size: 0.9rem; 
+    font-size: var(--text-md); 
     color: var(--text-light); 
     margin-bottom: var(--space-8); 
     font-family: 'Inter', sans-serif; 
@@ -181,7 +202,7 @@ h1, h2, h3, .name {
     margin-bottom: var(--space-3); 
     border-radius: 6px; 
     text-decoration: none; 
-    font-size: 0.9rem; 
+    font-size: var(--text-md); 
     font-weight: 500; 
     box-sizing: border-box; 
     transition: all 0.2s; 
@@ -209,7 +230,7 @@ h1, h2, h3, .name {
 .btn-outline { 
     background-color: transparent; 
     border: 1px solid var(--border); 
-    color: var(--text-main); 
+    color: var(--text-primary); 
 }
 
 .btn-outline:hover { 
@@ -219,14 +240,14 @@ h1, h2, h3, .name {
 }
 
 .btn-active { 
-    background-color: #F0F9FF; 
+    background-color: var(--bg-accent); 
     color: var(--accent); 
     border: 1px solid #BAE6FD; 
     font-weight: 600; 
 }
 
 .btn-active:hover { 
-    background-color: #E0F2FE; 
+    background-color: var(--bg-accent-hover); 
 }
 
 .btn-inline {
@@ -259,20 +280,20 @@ h1, h2, h3, .name {
    ============================================================================ */
 
 h2 { 
-    font-size: 1.5rem; 
+    font-size: var(--text-5xl); 
     border-bottom: 1px solid var(--border); 
     padding-bottom: var(--space-3); 
     margin-bottom: var(--space-8); 
     margin-top: 0; 
-    color: #1e293b; 
+    color: var(--text-primary); 
     font-weight: 700;
 }
 
 .lead {
-    font-size: 1.25rem;
-    color: #334155;
+    font-size: var(--text-3xl);
+    color: var(--text-secondary);
     font-weight: 300; 
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     margin-bottom: var(--space-8);
     font-family: 'Merriweather', serif;
 }
@@ -280,9 +301,9 @@ h2 {
 .pull-quote {
     border-left: 4px solid var(--accent);
     padding-left: var(--space-6);
-    font-size: 1.4rem;
+    font-size: var(--text-4xl);
     font-weight: 600;
-    color: var(--text-main);
+    color: var(--text-primary);
     margin: var(--space-12) 0;
     font-family: 'Merriweather', serif;
 }
@@ -313,11 +334,11 @@ h2 {
 .paper-card:hover { 
     transform: translateY(-2px); 
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05); 
-    border-color: #cbd5e1; 
+    border-color: var(--border-medium); 
 }
 
 .paper-tag { 
-    font-size: 0.7rem; 
+    font-size: var(--text-sm); 
     text-transform: uppercase; 
     letter-spacing: 0.05em; 
     color: var(--accent); 
@@ -327,20 +348,20 @@ h2 {
 }
 
 .paper-tag.job-market { 
-    color: #D97706; 
+    color: var(--accent-orange); 
 }
 
 .card-title { 
     font-family: 'Merriweather', serif; 
-    font-size: 1.4rem; 
+    font-size: var(--text-4xl); 
     font-weight: 700; 
     margin: 0 0 var(--space-3) 0; 
-    color: #1e293b; 
-    line-height: 1.3; 
+    color: var(--text-primary); 
+    line-height: var(--leading-snug); 
 }
 
 .author-list {
-    font-size: 0.85rem;
+    font-size: var(--text-base);
     color: var(--text-light);
     margin-bottom: var(--space-2);
 }
@@ -360,13 +381,13 @@ h2 {
 
 .tech-badge {
     display: inline-block; 
-    font-size: 0.7rem; 
+    font-size: var(--text-sm); 
     font-family: inherit; 
     font-weight: 600; 
     text-transform: uppercase; 
     letter-spacing: 0.5px;
-    color: #0284c7; 
-    background-color: #e0f2fe; 
+    color: var(--info-text); 
+    background-color: var(--info-bg); 
     padding: 4px 10px; 
     border-radius: 9999px; 
     margin-right: 6px; 
@@ -375,22 +396,22 @@ h2 {
 }
 
 .tech-badge:hover { 
-    background-color: #bae6fd; 
+    background-color: var(--info-bg-hover); 
     color: #0369a1; 
 }
 
 .card-abstract { 
-    font-size: 0.95rem; 
-    color: #64748b; 
+    font-size: var(--text-normal); 
+    color: var(--text-light); 
     margin-bottom: var(--space-6); 
-    line-height: 1.6; 
+    line-height: var(--leading-normal); 
     max-width: 780px; 
 }
 
 .card-link { 
-    font-size: 0.9rem; 
+    font-size: var(--text-md); 
     font-weight: 600; 
-    color: var(--text-main); 
+    color: var(--text-primary); 
     text-decoration: none; 
     display: inline-flex; 
     align-items: center; 
@@ -433,14 +454,14 @@ h2 {
 .news-date { 
     font-family: inherit; 
     font-weight: 500; 
-    color: #94a3b8; 
-    font-size: 0.85rem; 
+    color: var(--text-muted); 
+    font-size: var(--text-base); 
     text-align: right; 
 }
 
 .news-text { 
-    font-size: 1rem; 
-    color: var(--text-main); 
+    font-size: var(--text-lg); 
+    color: var(--text-primary); 
 }
 
 .news-link {
@@ -461,7 +482,7 @@ h2 {
 .now-section {
     margin-top: var(--space-24);
     padding-top: var(--space-8);
-    border-top: 1px dashed var(--border);
+    border-top: 1px dashed var(--border-dashed);
 }
 
 .now-header {
@@ -477,8 +498,8 @@ h2 {
 }
 
 .now-updated {
-    font-size: 0.85rem;
-    color: #94a3b8;
+    font-size: var(--text-base);
+    color: var(--text-muted);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -513,7 +534,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 1rem;
+    font-size: var(--text-lg);
 }
 
 .now-book {
@@ -521,9 +542,9 @@ h2 {
 }
 
 .now-book-link {
-    color: var(--text-main);
+    color: var(--text-primary);
     text-decoration: none;
-    border-bottom: 1px dotted #94a3b8;
+    border-bottom: 1px dotted var(--text-muted);
     transition: all 0.2s;
 }
 
@@ -545,7 +566,7 @@ h2 {
    ============================================================================ */
 
 .callout-box {
-    background-color: #f0f9ff;
+    background-color: var(--bg-accent);
     padding: var(--space-6);
     border-radius: 8px;
     border-left: 4px solid var(--accent);
@@ -560,12 +581,12 @@ h2 {
 
 .course-role {
     color: var(--text-light);
-    font-size: 0.95rem;
+    font-size: var(--text-normal);
 }
 
 .course-details {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: var(--text-md);
     margin-top: var(--space-1);
 }
 
@@ -600,7 +621,7 @@ h2 {
 /* CV Section Headers */
 .cv-section-header {
     color: var(--text-light);
-    font-size: 0.85rem;
+    font-size: var(--text-base);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: var(--space-6);
@@ -666,16 +687,16 @@ a .cv-logo:hover {
 /* CV Content */
 .cv-title { 
     font-weight: 600; 
-    font-size: 1.05rem; 
+    font-size: var(--text-xl); 
     display: block; 
     margin-bottom: var(--space-1); 
-    color: #1e293b; 
+    color: var(--text-primary); 
 }
 
 .cv-date { 
-    color: #64748b; 
+    color: var(--text-light); 
     font-style: italic; 
-    font-size: 0.9rem; 
+    font-size: var(--text-md); 
 }
 
 .cv-role {
@@ -700,7 +721,7 @@ a .cv-logo:hover {
 
 .cv-list {
     margin-top: var(--space-2);
-    color: #475569;
+    color: var(--text-tertiary);
 }
 
 
@@ -716,8 +737,8 @@ a .cv-logo:hover {
 
 .bookshelf-title {
     font-family: 'Merriweather', serif;
-    font-size: 1.5rem;
-    color: var(--text-main);
+    font-size: var(--text-5xl);
+    color: var(--text-primary);
     margin-top: var(--space-12);
     margin-bottom: var(--space-6);
     display: flex;
@@ -747,8 +768,8 @@ a .cv-logo:hover {
 
 .book-meta {
     text-align: right;
-    font-size: 0.75rem;
-    color: #94a3b8;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -761,13 +782,13 @@ a .cv-logo:hover {
 .book-title {
     font-weight: 700;
     font-size: 1.1rem;
-    color: var(--text-main);
+    color: var(--text-primary);
     display: block;
     margin-bottom: var(--space-1);
 }
 
 .book-author {
-    font-size: 0.9rem;
+    font-size: var(--text-md);
     color: var(--text-light);
     font-style: italic;
     margin-bottom: var(--space-3);
@@ -775,22 +796,22 @@ a .cv-logo:hover {
 }
 
 .book-comment {
-    font-size: 1rem;
-    color: #475569;
-    line-height: 1.6;
+    font-size: var(--text-lg);
+    color: var(--text-tertiary);
+    line-height: var(--leading-normal);
 }
 
 .ghost-text {
     color: var(--bg-paper);
-    font-size: 0.9rem;
+    font-size: var(--text-md);
     user-select: text;
     transition: color 0.2s;
 }
 
 .ghost-text::before {
     content: " [Highlight to reveal] ";
-    color: #cbd5e1;
-    font-size: 0.7rem;
+    color: var(--text-lighter);
+    font-size: var(--text-sm);
 }
 
 
@@ -805,16 +826,16 @@ a .cv-logo:hover {
 }
 
 .manifesto-title {
-    font-size: 2.5rem; 
+    font-size: var(--text-6xl); 
     font-weight: 800;
-    color: var(--text-main);
+    color: var(--text-primary);
     margin-bottom: var(--space-2);
-    line-height: 1.1;
+    line-height: var(--leading-tight);
 }
 
 .manifesto-subtitle {
     font-family: 'Merriweather', serif;
-    font-size: 1.25rem;
+    font-size: var(--text-3xl);
     color: var(--text-light);
     font-style: italic;
 }
@@ -843,14 +864,24 @@ a .cv-logo:hover {
 }
 
 .credits { 
-    font-size: 0.85rem; 
-    color: var(--text-light); 
-    margin-bottom: var(--space-4); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: var(--text-base);
+    color: var(--text-light);
+    margin-bottom: var(--space-4);
+}
+
+.gemini-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .copyright-text {
-    font-size: 0.9rem;
-    color: #64748b;
+    font-size: var(--text-md);
+    color: var(--text-light);
     margin: var(--space-4) 0 var(--space-2) 0;
     display: flex;
     justify-content: center;
@@ -877,15 +908,15 @@ a .cv-logo:hover {
 }
 
 .amdg { 
-    font-size: 0.75rem; 
-    color: #cbd5e1; 
+    font-size: var(--text-sm); 
+    color: var(--text-lighter); 
     letter-spacing: 2px; 
     font-weight: 600; 
     user-select: none; 
 }
 
 .amdg:hover { 
-    color: #2774AE; 
+    color: var(--accent); 
     transition: color 0.5s ease; 
     cursor: none; 
 }
@@ -893,19 +924,19 @@ a .cv-logo:hover {
 #saint-trigger {
     cursor: crosshair;  
     opacity: 0.3;   
-    font-size: 1rem;    
+    font-size: var(--text-lg);    
     transition: all 0.2s ease;
-    color: #64748b;
+    color: var(--text-light);
 }
 
 #saint-trigger:hover {
     opacity: 1;
-    color: #2774AE; 
+    color: var(--accent); 
     transform: scale(1.2);
 }
 
 .bible-ref {
-    font-size: 0.65rem; 
+    font-size: var(--text-xs); 
     color: #e2e8f0; 
     vertical-align: super; 
     margin-left: 1px;
@@ -916,7 +947,7 @@ a .cv-logo:hover {
 }
 
 .bible-ref:hover { 
-    color: #94a3b8; 
+    color: var(--text-muted); 
 }
 
 
@@ -940,8 +971,8 @@ a .cv-logo:hover {
 }
 
 .family-link:hover { 
-    color: #2774AE; 
-    border-bottom-color: #2774AE; 
+    color: var(--accent); 
+    border-bottom-color: var(--accent); 
 }
 
 .family-link:focus-visible {
@@ -1019,7 +1050,7 @@ a .cv-logo:hover {
 
 .modal-caption { 
     margin-top: var(--space-4); 
-    color: #64748b; 
+    color: var(--text-light); 
     font-family: serif; 
     font-style: italic; 
     font-size: 1.1rem; 
@@ -1032,7 +1063,73 @@ a .cv-logo:hover {
 
 
 /* ============================================================================
-   14. RESPONSIVE DESIGN
+   14. PRINT STYLES (for CV)
+   ============================================================================ */
+
+@media print {
+    body {
+        background: white;
+        background-image: none;
+        font-size: 11pt;
+        line-height: 1.4;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        display: block;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .content {
+        max-width: 100%;
+    }
+    
+    .site-footer {
+        display: none;
+    }
+    
+    .cv-entry {
+        page-break-inside: avoid;
+    }
+    
+    .cv-page-header {
+        border-bottom: 2px solid #000;
+        margin-bottom: 20px;
+    }
+    
+    .cv-actions {
+        display: none;
+    }
+    
+    .cv-entry:hover {
+        border-left-color: transparent;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+    
+    .cv-logo {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    h2 {
+        page-break-after: avoid;
+    }
+}
+
+
+/* ============================================================================
+   15. RESPONSIVE DESIGN
    ============================================================================ */
 
 @media (max-width: 768px) { 
@@ -1056,5 +1153,10 @@ a .cv-logo:hover {
     
     .research-grid { 
         grid-template-columns: 1fr; 
+    }
+    
+    .now-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
     }
 }
