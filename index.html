@@ -2,6 +2,7 @@
 layout: default
 title: Research & Bio
 active_page: home
+description: PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, fairness, and worker retention.
 ---
 
 <section id="about">
@@ -22,9 +23,21 @@ active_page: home
     They are my greatest joy, my daily chaos, and my most important responsibility.</p>
 </section>
 
-<div id="family-modal" class="modal-overlay" style="display: none;">
+<!-- Accessible Family Modal -->
+<div id="family-modal" 
+     class="modal-overlay" 
+     role="dialog" 
+     aria-modal="true" 
+     aria-labelledby="modal-caption"
+     aria-hidden="true"
+     style="display: none;">
     <div class="modal-content">
-        <img id="modal-img" src="" alt="Family" class="family-photo">
+        <button id="modal-close" 
+                class="modal-close" 
+                aria-label="Close family photo">
+            ×
+        </button>
+        <img id="modal-img" src="" alt="" class="family-photo">
         <p id="modal-caption" class="modal-caption"></p>
     </div>
 </div>
@@ -97,7 +110,7 @@ active_page: home
             </div>
             
             <p class="card-abstract">
-                <em>Submitted to American Economic Journal: Applied Economics.</em> We analyze an alert system in workers’ compensation. Physicians evaded alerts by recoding diagnoses, suggesting the system acted through persuasion rather than information.
+                <em>Submitted to American Economic Journal: Applied Economics.</em> We analyze an alert system in workers' compensation. Physicians evaded alerts by recoding diagnoses, suggesting the system acted through persuasion rather than information.
             </p>
             
             <a href="mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems" class="card-link">Request Draft</a>
