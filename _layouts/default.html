@@ -14,6 +14,9 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     
+    <!-- Meta Description - page specific or default -->
+    <meta name="description" content="{{ page.description | default: 'PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.' }}">
+    
     <title>{{ page.title }} | Martin Gonzalez Cabello</title>
     <link rel="icon" type="image/svg+xml" href="https://martin.gonzalezcabello.com/assets/favicon.svg">
 
@@ -21,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css?v={{ site.time | date: '%s' }}">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
     <script>
@@ -53,7 +56,7 @@
 <body>
     <div class="container">
         <aside class="sidebar">
-            <img src="/assets/profile_picture.webp?v=2" alt="Martin Gonzalez Cabello" class="profile-img">
+            <img src="/assets/profile_picture.webp?v=2" alt="Martin Gonzalez Cabello" class="profile-img js-spin-trigger">
             <h1 class="name">Martin Gonzalez Cabello</h1>
             <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
 
@@ -89,23 +92,26 @@
         document.addEventListener("DOMContentLoaded", function() {
             
             /* --- 1. SPINNING PROFILE PICTURE --- */
-            const profilePic = document.querySelector('img[src*="profile"]');
+            const profilePic = document.querySelector('.js-spin-trigger');
             if (profilePic) {
+                const SPIN_DURATION = 3200;
                 profilePic.style.cursor = "pointer";
                 profilePic.addEventListener('click', function() {
                     profilePic.classList.add('spin-effect');
                     setTimeout(() => {
                         profilePic.classList.remove('spin-effect');
-                    }, 3200); 
+                    }, SPIN_DURATION); 
                 });
             }
 
-            /* --- 2. FAMILY DYNAMIC MODAL --- */
+            /* --- 2. FAMILY DYNAMIC MODAL WITH ACCESSIBILITY --- */
             const modal = document.getElementById('family-modal');
             const modalImg = document.getElementById('modal-img');
             const modalCaption = document.getElementById('modal-caption');
+            const closeButton = document.getElementById('modal-close');
             const triggers = document.querySelectorAll('.family-link');
 
+            // Family data - could be moved to Jekyll data file
             const familyData = {
                 "family": { img: "/assets/family.jpg", text: "The real reason for everything." },
                 "andrea": { img: "/assets/andrea.jpg", text: "My partner in crime and biggest support." },
@@ -116,26 +122,121 @@
             };
 
             if (modal && triggers.length > 0) {
+                let lastFocusedElement = null;
+
+                // Function to open modal
+                const openModal = (personKey) => {
+                    const personData = familyData[personKey];
+                    if (!personData) return;
+
+                    // Store the element that opened the modal
+                    lastFocusedElement = document.activeElement;
+
+                    // Set modal content
+                    modalImg.src = personData.img;
+                    modalImg.alt = personData.text;
+                    modalCaption.innerText = personData.text;
+
+                    // Show modal
+                    modal.style.display = 'flex';
+                    modal.setAttribute('aria-hidden', 'false');
+
+                    // Focus the close button
+                    closeButton.focus();
+
+                    // Prevent body scroll
+                    document.body.style.overflow = 'hidden';
+                };
+
+                // Function to close modal
+                const closeModal = () => {
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+
+                    // Restore body scroll
+                    document.body.style.overflow = '';
+
+                    // Return focus to the element that opened the modal
+                    if (lastFocusedElement) {
+                        lastFocusedElement.focus();
+                    }
+                };
+
+                // Add click and keyboard support to triggers
                 triggers.forEach(trigger => {
-                    trigger.addEventListener('click', function() {
+                    trigger.setAttribute('role', 'button');
+                    trigger.setAttribute('tabindex', '0');
+                    trigger.setAttribute('aria-haspopup', 'dialog');
+
+                    // Click event
+                    trigger.addEventListener('click', function(e) {
+                        e.preventDefault();
                         const personKey = this.getAttribute('data-person');
-                        const personData = familyData[personKey];
-                        if (personData) {
-                            modalImg.src = personData.img;
-                            modalCaption.innerText = personData.text;
-                            modal.style.display = 'flex';
+                        openModal(personKey);
+                    });
+
+                    // Keyboard event (Enter or Space)
+                    trigger.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            const personKey = this.getAttribute('data-person');
+                            openModal(personKey);
                         }
                     });
                 });
 
-                modal.addEventListener('click', () => modal.style.display = 'none');
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === "Escape") modal.style.display = 'none';
+                // Close button click
+                if (closeButton) {
+                    closeButton.addEventListener('click', closeModal);
+                }
+
+                // Click outside modal content to close
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+
+                // Escape key to close
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.style.display === 'flex') {
+                        closeModal();
+                    }
+                });
+
+                // Focus trap inside modal
+                modal.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        const focusableElements = modal.querySelectorAll(
+                            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                        );
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+
+                        if (e.shiftKey) {
+                            // Shift + Tab
+                            if (document.activeElement === firstElement) {
+                                e.preventDefault();
+                                lastElement.focus();
+                            }
+                        } else {
+                            // Tab
+                            if (document.activeElement === lastElement) {
+                                e.preventDefault();
+                                firstElement.focus();
+                            }
+                        }
+                    }
                 });
             }
         });
 
-        console.log("%c👋 Hi, I'm Martin.", "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;");
+        // Console Easter Egg
+        console.log(
+            "%c👋 Hi, I'm Martin.\n%cInterested in my code? Check out the repo: https://github.com/martins73/research-site",
+            "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
+            "color: #64748b; font-size: 12px; font-family: sans-serif;"
+        );
     </script>
 </body>
 </html>
