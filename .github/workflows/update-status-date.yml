@@ -1,0 +1,30 @@
+name: Update Status Date
+
+on:
+  push:
+    paths:
+      - '_data/status.yml'
+    branches:
+      - main
+
+jobs:
+  update-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update date in status.yml
+        run: |
+          DATE=$(date '+%B %d, %Y')
+          sed -i "s/^updated:.*/updated: $DATE/" _data/status.yml
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add _data/status.yml
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update status date"
+          git push
