@@ -1,21 +1,36 @@
-/* --- DESIGN SYSTEM: Unified Academic Paper --- */
+/* ============================================================================
+   DESIGN SYSTEM VARIABLES
+   ============================================================================ */
+
 :root { 
+    /* Colors - Background */
     --bg-body: #FAFAF9;    /* The Desk: Warm off-white */
     --bg-paper: #ffffff;   /* The Page: Pure white */
+    
+    /* Colors - Text */
     --text-main: #1e293b;  
     --text-light: #64748b; 
+    
+    /* Colors - Accent */
     --accent: #2774AE;     /* UCLA Blue */
     --accent-hover: #1e5f8e; 
+    
+    /* Colors - Border */
     --border: #e2e8f0;     
 }
 
-/* 1. GLOBAL STYLES */
+
+/* ============================================================================
+   1. GLOBAL STYLES & RESET
+   ============================================================================ */
+
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 1.125rem; 
     color: var(--text-main); 
     line-height: 1.7;
-    margin: 0; padding: 0; 
+    margin: 0; 
+    padding: 0; 
     background-color: var(--bg-body); 
     background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
     background-size: 32px 32px; 
@@ -24,9 +39,15 @@ body {
     flex-direction: column; 
 }
 
-h1, h2, h3, .name { font-family: 'Merriweather', serif; }
+h1, h2, h3, .name { 
+    font-family: 'Merriweather', serif; 
+}
 
-/* 2. THE CONTAINER */
+
+/* ============================================================================
+   2. LAYOUT - CONTAINER & GRID
+   ============================================================================ */
+
 .container { 
     max-width: 1080px; 
     margin: 3rem auto; 
@@ -42,13 +63,30 @@ h1, h2, h3, .name { font-family: 'Merriweather', serif; }
     align-items: start; 
 }
 
-/* 3. SIDEBAR (Reverted to Static/Sticky) */
+.content { 
+    background: transparent; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0; 
+}
+
+.content section { 
+    margin-bottom: 4rem; 
+}
+
+.section-spacing {
+    margin-top: 4rem;
+}
+
+
+/* ============================================================================
+   3. SIDEBAR - NAVIGATION & PROFILE
+   ============================================================================ */
+
 .sidebar { 
     text-align: center; 
     position: sticky; 
-    top: 2rem; /* Sticks 2rem from the top of the window */
-    
-    /* Removed specific height/scroll settings */
+    top: 2rem;
     height: auto;
     background: transparent;
     border: none;
@@ -57,13 +95,10 @@ h1, h2, h3, .name { font-family: 'Merriweather', serif; }
     font-size: 1rem; 
 }
 
-/* 4. CONTENT */
-.content { background: transparent; border: none; box-shadow: none; padding: 0; }
-.content section { margin-bottom: 4rem; }
-
-/* PROFILE IMAGE & TYPOGRAPHY */
+/* Profile Image */
 .profile-img { 
-    width: 180px; height: 180px; 
+    width: 180px; 
+    height: 180px; 
     border-radius: 50%; 
     object-fit: cover; 
     margin-bottom: 1.5rem; 
@@ -73,29 +108,103 @@ h1, h2, h3, .name { font-family: 'Merriweather', serif; }
     -webkit-user-drag: none;    
 }
 
-.name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #1e293b; letter-spacing: -0.5px; }
-.affiliation { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; font-family: 'Inter', sans-serif; }
+/* Profile Text */
+.name { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    margin: 0 0 0.5rem 0; 
+    color: #1e293b; 
+    letter-spacing: -0.5px; 
+}
 
-/* NAVIGATION BUTTONS */
+.affiliation { 
+    font-size: 0.9rem; 
+    color: var(--text-light); 
+    margin-bottom: 2rem; 
+    font-family: 'Inter', sans-serif; 
+}
+
+/* Navigation Buttons */
 .sidebar-btn { 
-    display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; margin-bottom: 0.75rem; border-radius: 6px; 
-    text-decoration: none; font-size: 0.9rem; font-weight: 500; box-sizing: border-box; transition: all 0.2s; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100%; 
+    padding: 0.75rem 0; 
+    margin-bottom: 0.75rem; 
+    border-radius: 6px; 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    box-sizing: border-box; 
+    transition: all 0.2s; 
     font-family: inherit; 
 }
 
-.btn-primary { background-color: var(--accent); color: white; border: 1px solid var(--accent); box-shadow: 0 2px 4px rgba(39, 116, 174, 0.2); }
-.btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
-.btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-main); }
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); background-color: #f8fafc; }
-.btn-active { background-color: #F0F9FF; color: var(--accent); border: 1px solid #BAE6FD; font-weight: 600; }
-.btn-active:hover { background-color: #E0F2FE; }
+.btn-primary { 
+    background-color: var(--accent); 
+    color: white; 
+    border: 1px solid var(--accent); 
+    box-shadow: 0 2px 4px rgba(39, 116, 174, 0.2); 
+}
 
-/* SOCIAL ICONS */
-.social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
-.social-icon { fill: var(--text-light); transition: fill 0.2s; }
-.social-link:hover .social-icon { fill: var(--accent); transform: scale(1.1); }
+.btn-primary:hover { 
+    background-color: var(--accent-hover); 
+    transform: translateY(-1px); 
+}
 
-/* HEADINGS & TEXT */
+.btn-outline { 
+    background-color: transparent; 
+    border: 1px solid var(--border); 
+    color: var(--text-main); 
+}
+
+.btn-outline:hover { 
+    border-color: var(--accent); 
+    color: var(--accent); 
+    background-color: #f8fafc; 
+}
+
+.btn-active { 
+    background-color: #F0F9FF; 
+    color: var(--accent); 
+    border: 1px solid #BAE6FD; 
+    font-weight: 600; 
+}
+
+.btn-active:hover { 
+    background-color: #E0F2FE; 
+}
+
+.btn-inline {
+    width: auto;
+    padding: 0.6rem 1.2rem;
+    display: inline-flex;
+}
+
+/* Social Links */
+.social-links { 
+    margin-top: 1.5rem; 
+    display: flex; 
+    justify-content: center; 
+    gap: 1rem; 
+}
+
+.social-icon { 
+    fill: var(--text-light); 
+    transition: fill 0.2s; 
+}
+
+.social-link:hover .social-icon { 
+    fill: var(--accent); 
+    transform: scale(1.1); 
+}
+
+
+/* ============================================================================
+   4. TYPOGRAPHY - HEADINGS & TEXT
+   ============================================================================ */
+
 h2 { 
     font-size: 1.5rem; 
     border-bottom: 1px solid var(--border); 
@@ -115,140 +224,437 @@ h2 {
     font-family: 'Merriweather', serif;
 }
 
-/* 5. PAPER CARDS & LISTS */
-.research-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
-.paper-card {
-    background: white; border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; 
-    transition: all 0.2s ease-out; display: flex; flex-direction: column; position: relative;
+.pull-quote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 3rem 0;
+    font-family: 'Merriweather', serif;
 }
-.paper-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05); border-color: #cbd5e1; }
 
-.card-abstract { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; line-height: 1.6; max-width: 780px; }
-.paper-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; margin-bottom: 0.75rem; display: inline-block; }
-.paper-tag.job-market { color: #D97706; }
-.card-title { font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700; margin: 0 0 0.75rem 0; color: #1e293b; line-height: 1.3; }
 
-.card-link { font-size: 0.9rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; margin-top: auto; width: fit-content; }
-.card-link:hover { color: var(--accent); }
-.card-link::after { content: "→"; margin-left: 4px; transition: margin 0.2s; }
-.card-link:hover::after { margin-left: 8px; }
+/* ============================================================================
+   5. RESEARCH PAGE - PAPERS & CARDS
+   ============================================================================ */
 
-.news-list { list-style: none; padding: 0; }
-.news-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; margin-bottom: 1.25rem; align-items: baseline; }
-.news-date { font-family: inherit; font-weight: 500; color: #94a3b8; font-size: 0.85rem; text-align: right; }
-.news-text { font-size: 1rem; color: var(--text-main); }
+.research-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 1.5rem; 
+    margin-top: 1rem; 
+}
 
-.cv-entry { margin-bottom: 2rem; padding-left: 1rem; border-left: 2px solid transparent; transition: border 0.2s; }
-.cv-entry:hover { border-left-color: var(--accent); }
-.cv-title { font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 0.25rem; color: #1e293b; }
-.cv-date { color: #64748b; font-style: italic; font-size: 0.9rem; }
+.paper-card {
+    background: white; 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    padding: 2.5rem; 
+    transition: all 0.2s ease-out; 
+    display: flex; 
+    flex-direction: column; 
+    position: relative;
+}
+
+.paper-card:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05); 
+    border-color: #cbd5e1; 
+}
+
+.paper-tag { 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    color: var(--accent); 
+    font-weight: 700; 
+    margin-bottom: 0.75rem; 
+    display: inline-block; 
+}
+
+.paper-tag.job-market { 
+    color: #D97706; 
+}
+
+.card-title { 
+    font-family: 'Merriweather', serif; 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    margin: 0 0 0.75rem 0; 
+    color: #1e293b; 
+    line-height: 1.3; 
+}
+
+.author-list {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.author-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.author-link:hover {
+    color: var(--accent);
+}
+
+.badge-container {
+    margin-bottom: 0.75rem;
+}
 
 .tech-badge {
-    display: inline-block; font-size: 0.7rem; font-family: inherit; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-    color: #0284c7; background-color: #e0f2fe; padding: 4px 10px; border-radius: 9999px; margin-right: 6px; margin-bottom: 4px; transition: all 0.2s ease;
-}
-.tech-badge:hover { background-color: #bae6fd; color: #0369a1; }
-
-/* --- FOOTER STYLES --- */
-.site-footer {
-    padding: 2rem 0;
-    text-align: center;
-    margin-top: none;
-    border-top: none;
-    background: transparent;
-}
-.credits { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
-.amdg { font-size: 0.75rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 600; user-select: none; }
-.amdg:hover { color: #2774AE; transition: color 0.5s ease; cursor: none; }
-
-@media (max-width: 768px) { 
-    .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; margin: 0; border-radius: 0; box-shadow: none; } 
-    .sidebar { 
-        position: static; /* No sticky on mobile */
-        border-bottom: 1px solid var(--border); 
-        padding-bottom: 2rem; 
-        margin-bottom: 2rem; 
-        height: auto; /* Auto height on mobile */
-        overflow-y: visible;
-    } 
-    .research-grid { grid-template-columns: 1fr; }
+    display: inline-block; 
+    font-size: 0.7rem; 
+    font-family: inherit; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+    color: #0284c7; 
+    background-color: #e0f2fe; 
+    padding: 4px 10px; 
+    border-radius: 9999px; 
+    margin-right: 6px; 
+    margin-bottom: 4px; 
+    transition: all 0.2s ease;
 }
 
-/* Gemini Icon Animation */
-.gemini-icon {
-    filter: grayscale(100%) brightness(0.9);
-    opacity: 0.7;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.gemini-link:hover .gemini-icon {
-    filter: grayscale(0%) brightness(1);
-    opacity: 1;
-    transform: scale(1.15) rotate(5deg);
+.tech-badge:hover { 
+    background-color: #bae6fd; 
+    color: #0369a1; 
 }
 
-/* Copyright Text Style */
-.copyright-text {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin: 1rem 0 0.5rem 0;
+.card-abstract { 
+    font-size: 0.95rem; 
+    color: #64748b; 
+    margin-bottom: 1.5rem; 
+    line-height: 1.6; 
+    max-width: 780px; 
+}
+
+.card-link { 
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    color: var(--text-main); 
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: center; 
+    margin-top: auto; 
+    width: fit-content; 
+}
+
+.card-link:hover { 
+    color: var(--accent); 
+}
+
+.card-link::after { 
+    content: "→"; 
+    margin-left: 4px; 
+    transition: margin 0.2s; 
+}
+
+.card-link:hover::after { 
+    margin-left: 8px; 
+}
+
+
+/* ============================================================================
+   6. NEWS SECTION
+   ============================================================================ */
+
+.news-list { 
+    list-style: none; 
+    padding: 0; 
+}
+
+.news-item { 
+    display: grid; 
+    grid-template-columns: 90px 1fr; 
+    gap: 1.5rem; 
+    margin-bottom: 1.25rem; 
+    align-items: baseline; 
+}
+
+.news-date { 
+    font-family: inherit; 
+    font-weight: 500; 
+    color: #94a3b8; 
+    font-size: 0.85rem; 
+    text-align: right; 
+}
+
+.news-text { 
+    font-size: 1rem; 
+    color: var(--text-main); 
+}
+
+.news-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================================
+   7. NOW SECTION
+   ============================================================================ */
+
+.now-section {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border);
+}
+
+.now-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+}
+
+.now-title {
+    margin: 0;
+    border: none;
+}
+
+.now-updated {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.now-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+}
+
+.now-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.now-label-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+}
+
+.now-label-link:hover {
+    color: var(--accent);
+}
+
+.now-value {
+    display: flex;
     align-items: center;
-    gap: 8px; 
-}
-#copyright-content {
-    display: inline-block;
-    min-width: 260px; 
-    text-align: center; 
+    gap: 8px;
+    font-size: 1rem;
 }
 
-/* The "Cross" Trigger Style */
-#saint-trigger {
-    cursor: crosshair;  
-    opacity: 0.3;   
-    font-size: 1rem;    
-    transition: all 0.2s ease;
-    color: #64748b;
-}
-#saint-trigger:hover {
-    opacity: 1;
-    color: #2774AE; 
-    transform: scale(1.2);
+.now-book {
+    margin-bottom: 0.5rem;
 }
 
-/* --- EASTER EGGS & INTERACTION STYLES --- */
-.spin-effect {
-    transition: transform 3.2s ease-in-out;
-    transform: perspective(1000px) rotateY(720deg);
+.now-book-link {
+    color: var(--text-main);
+    text-decoration: none;
+    border-bottom: 1px dotted #94a3b8;
+    transition: all 0.2s;
 }
 
-.family-link {
-    cursor: zoom-in;
-    position: relative;
-    border-bottom: none;
-    transition: all 0.2s ease;
+.now-book-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
-.family-link:hover { color: #2774AE; border-bottom-color: #2774AE; }
 
-.modal-overlay {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(255, 255, 255, 0.95); z-index: 9999;
-    justify-content: center; align-items: center;
-    backdrop-filter: blur(5px); animation: fadeIn 0.3s ease-out;
+.now-activity {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-.modal-content { text-align: center; max-width: 90%; padding: 20px; }
-.family-photo { max-height: 80vh; max-width: 100%; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-.modal-caption { margin-top: 1rem; color: #64748b; font-family: serif; font-style: italic; font-size: 1.1rem; }
 
-.bible-ref {
-    font-size: 0.65rem; color: #e2e8f0; vertical-align: super; margin-left: 1px;
-    cursor: crosshair; text-decoration: none; user-select: none; transition: all 0.2s ease;
+
+/* ============================================================================
+   8. TEACHING PAGE
+   ============================================================================ */
+
+.callout-box {
+    background-color: #f0f9ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    margin-top: 2rem;
 }
-.bible-ref:hover { color: #94a3b8; }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
 
-/* --- LIBRARY STYLES --- */
+.course-role {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.course-details {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+
+/* ============================================================================
+   9. CV PAGE
+   ============================================================================ */
+
+/* CV Page Header */
+.cv-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cv-page-title {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.cv-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* CV Section Headers */
+.cv-section-header {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+/* CV Entries */
+.cv-entry { 
+    margin-bottom: 2rem; 
+    padding-left: 1rem; 
+    border-left: 2px solid transparent; 
+    transition: border 0.2s; 
+}
+
+.cv-entry:hover { 
+    border-left-color: var(--accent); 
+}
+
+.cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cv-company-header {
+    margin-bottom: 0.75rem;
+}
+
+.cv-subentry {
+    margin-bottom: 1.25rem;
+}
+
+/* CV Header Group (Logo + Institution) */
+.cv-header-group { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.cv-logo { 
+    width: 28px; 
+    height: 28px; 
+    object-fit: contain; 
+    opacity: 0.9; 
+    transition: transform 0.2s;
+}
+
+a .cv-logo:hover { 
+    transform: scale(1.1); 
+    opacity: 1; 
+}
+
+.cv-institution-link { 
+    color: inherit; 
+    text-decoration: none; 
+    font-weight: 600; 
+}
+
+.cv-institution-link:hover { 
+    color: var(--accent); 
+    text-decoration: underline; 
+}
+
+/* CV Content */
+.cv-title { 
+    font-weight: 600; 
+    font-size: 1.05rem; 
+    display: block; 
+    margin-bottom: 0.25rem; 
+    color: #1e293b; 
+}
+
+.cv-date { 
+    color: #64748b; 
+    font-style: italic; 
+    font-size: 0.9rem; 
+}
+
+.cv-role {
+    color: var(--accent); 
+    font-weight: 500; 
+    margin: 0.5rem 0 0.5rem 40px;
+}
+
+.cv-desc {
+    margin-left: 40px;
+}
+
+.cv-desc-no-indent {
+    margin-left: 0;
+}
+
+.cv-desc ul {
+    margin-top: 0.5rem;
+    color: var(--text-light);
+    padding-left: 1.2rem;
+}
+
+.cv-list {
+    margin-top: 0.5rem;
+    color: #475569;
+}
+
+
+/* ============================================================================
+   10. LIBRARY PAGE
+   ============================================================================ */
+
 .library-intro {
     margin-bottom: 4rem;
     border-bottom: 1px solid var(--border);
@@ -281,7 +687,7 @@ h2 {
 
 .book-item {
     display: grid;
-    grid-template-columns: 100px 1fr; /* Space for date badge */
+    grid-template-columns: 100px 1fr;
     gap: 1.5rem;
     align-items: baseline;
 }
@@ -289,13 +695,15 @@ h2 {
 .book-meta {
     text-align: right;
     font-size: 0.75rem;
-    color: #94a3b8; /* Keep specific gray for meta */
+    color: #94a3b8;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.book-content { max-width: 650px; }
+.book-content { 
+    max-width: 650px; 
+}
 
 .book-title {
     font-weight: 700;
@@ -319,20 +727,24 @@ h2 {
     line-height: 1.6;
 }
 
-/* Invisible Ink */
 .ghost-text {
-    color: var(--bg-paper); /* Matches background (Invisible) */
+    color: var(--bg-paper);
     font-size: 0.9rem;
     user-select: text;
     transition: color 0.2s;
 }
+
 .ghost-text::before {
     content: " [Highlight to reveal] ";
     color: #cbd5e1;
     font-size: 0.7rem;
 }
 
-/* --- MANIFESTO STYLES --- */
+
+/* ============================================================================
+   11. MANIFESTO PAGE
+   ============================================================================ */
+
 .manifesto-header {
     border-bottom: 2px solid var(--accent);
     margin-bottom: 2rem;
@@ -360,65 +772,190 @@ h2 {
     margin-top: 3rem;
 }
 
-.manifesto-body p { margin-bottom: 1.5rem; }
-
-.pull-quote {
-    border-left: 4px solid var(--accent);
-    padding-left: 1.5rem;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-main);
-    margin: 3rem 0;
-    font-family: 'Merriweather', serif;
+.manifesto-body p { 
+    margin-bottom: 1.5rem; 
 }
 
-/* --- CV SPECIFIC LAYOUT (Restored) --- */
 
-/* 1. The Header Group (Logo + Name) */
-.cv-header-group { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
+/* ============================================================================
+   12. FOOTER
+   ============================================================================ */
+
+.site-footer {
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: none;
+    border-top: none;
+    background: transparent;
 }
 
-/* 2. The Logo (Fixed Size - Prevents huge images) */
-.cv-logo { 
-    width: 28px; 
-    height: 28px; 
-    object-fit: contain; 
-    opacity: 0.9; 
-    transition: transform 0.2s;
-}
-/* Scale logo on hover */
-a .cv-logo:hover { 
-    transform: scale(1.1); 
-    opacity: 1; 
+.credits { 
+    font-size: 0.85rem; 
+    color: var(--text-light); 
+    margin-bottom: 1rem; 
 }
 
-/* 3. The Institution Name Link */
-.cv-institution-link { 
-    color: inherit; 
-    text-decoration: none; 
+.copyright-text {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 1rem 0 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; 
+}
+
+#copyright-content {
+    display: inline-block;
+    min-width: 260px; 
+    text-align: center; 
+}
+
+.gemini-icon {
+    filter: grayscale(100%) brightness(0.9);
+    opacity: 0.7;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gemini-link:hover .gemini-icon {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.15) rotate(5deg);
+}
+
+.amdg { 
+    font-size: 0.75rem; 
+    color: #cbd5e1; 
+    letter-spacing: 2px; 
     font-weight: 600; 
-}
-.cv-institution-link:hover { 
-    color: var(--accent); 
-    text-decoration: underline; 
+    user-select: none; 
 }
 
-/* 4. The Role Title (Blue Text with Indentation) */
-.cv-role {
-    color: var(--accent); 
-    font-weight: 500; 
-    margin: 0.5rem 0 0.5rem 40px; /* 40px aligns it under the text, past the logo */
+.amdg:hover { 
+    color: #2774AE; 
+    transition: color 0.5s ease; 
+    cursor: none; 
 }
 
-/* 5. The Description (Gray Text with Indentation) */
-.cv-desc {
-    margin-left: 40px; /* 40px aligns it under the text */
+#saint-trigger {
+    cursor: crosshair;  
+    opacity: 0.3;   
+    font-size: 1rem;    
+    transition: all 0.2s ease;
+    color: #64748b;
 }
-.cv-desc ul {
-    margin-top: 0.5rem;
-    color: var(--text-light);
-    padding-left: 1.2rem;
+
+#saint-trigger:hover {
+    opacity: 1;
+    color: #2774AE; 
+    transform: scale(1.2);
+}
+
+.bible-ref {
+    font-size: 0.65rem; 
+    color: #e2e8f0; 
+    vertical-align: super; 
+    margin-left: 1px;
+    cursor: crosshair; 
+    text-decoration: none; 
+    user-select: none; 
+    transition: all 0.2s ease;
+}
+
+.bible-ref:hover { 
+    color: #94a3b8; 
+}
+
+
+/* ============================================================================
+   13. INTERACTIVE ELEMENTS & EASTER EGGS
+   ============================================================================ */
+
+/* Spinning Profile Picture */
+.spin-effect {
+    transition: transform 3.2s ease-in-out;
+    transform: perspective(1000px) rotateY(720deg);
+}
+
+/* Family Modal */
+.family-link {
+    cursor: zoom-in;
+    position: relative;
+    border-bottom: none;
+    transition: all 0.2s ease;
+}
+
+.family-link:hover { 
+    color: #2774AE; 
+    border-bottom-color: #2774AE; 
+}
+
+.modal-overlay {
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95); 
+    z-index: 9999;
+    justify-content: center; 
+    align-items: center;
+    backdrop-filter: blur(5px); 
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content { 
+    text-align: center; 
+    max-width: 90%; 
+    padding: 20px; 
+}
+
+.family-photo { 
+    max-height: 80vh; 
+    max-width: 100%; 
+    border-radius: 8px; 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+}
+
+.modal-caption { 
+    margin-top: 1rem; 
+    color: #64748b; 
+    font-family: serif; 
+    font-style: italic; 
+    font-size: 1.1rem; 
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; } 
+    to { opacity: 1; } 
+}
+
+
+/* ============================================================================
+   14. RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) { 
+    .container { 
+        grid-template-columns: 1fr; 
+        padding: 2rem 1.5rem; 
+        gap: 3rem; 
+        margin: 0; 
+        border-radius: 0; 
+        box-shadow: none; 
+    } 
+    
+    .sidebar { 
+        position: static;
+        border-bottom: 1px solid var(--border); 
+        padding-bottom: 2rem; 
+        margin-bottom: 2rem; 
+        height: auto;
+        overflow-y: visible;
+    } 
+    
+    .research-grid { 
+        grid-template-columns: 1fr; 
+    }
 }
