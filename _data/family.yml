@@ -1,0 +1,27 @@
+# Family Data
+# This file contains information about family members for the family modal
+# Images are organized in /assets/family/ folder
+
+family:
+  img: /assets/family/family.jpg
+  text: The real reason for everything.
+
+andrea:
+  img: /assets/family/andrea.jpg
+  text: My partner in crime and biggest support.
+
+carlota:
+  img: /assets/family/carlota.jpg
+  text: July 16, 2018
+
+martin:
+  img: /assets/family/martin.jpg
+  text: February 26, 2020
+
+joaquin:
+  img: /assets/family/joaquin.jpg
+  text: January 22, 2024
+
+juanpablo:
+  img: /assets/family/juanpablo.jpg
+  text: July 18, 2025
