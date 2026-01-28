@@ -151,6 +151,11 @@
                     // Restore body scroll
                     document.body.style.overflow = '';
 
+                    // Clear the image to prevent flash on next open
+                    modalImg.src = '';
+                    modalImg.alt = '';
+                    modalCaption.innerText = '';
+
                     // Return focus to the element that opened the modal
                     if (lastFocusedElement) {
                         lastFocusedElement.focus();
