@@ -71,6 +71,112 @@
     --leading-relaxed: 1.7;
 }
 
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    /* Colors - Background */
+    --bg-body: #0f172a;         /* Dark slate background */
+    --bg-paper: #1e293b;        /* Dark paper */
+    --bg-accent: #1e3a5f;       /* Dark blue background */
+    --bg-accent-hover: #2d4a6f; /* Hover state for accent bg */
+    
+    /* Colors - Text Hierarchy */
+    --text-primary: #f1f5f9;    /* Light text for dark bg */
+    --text-secondary: #e2e8f0;  /* Secondary light text */
+    --text-tertiary: #cbd5e1;   /* Tertiary light text */
+    --text-light: #94a3b8;      /* Lighter gray text */
+    --text-muted: #64748b;      /* Muted text */
+    --text-lighter: #475569;    /* Even lighter/darker gray */
+    
+    /* Colors - Accent (slightly brighter for dark mode) */
+    --accent: #3b82f6;          /* Brighter blue for dark mode */
+    --accent-hover: #60a5fa;    /* Lighter blue for hover */
+    --accent-orange: #f59e0b;   /* Brighter amber */
+    
+    /* Colors - Border */
+    --border: #334155;          /* Dark border */
+    --border-dashed: #334155;   /* Dashed borders */
+    --border-medium: #475569;   /* Medium border */
+    --border-dark: #64748b;     /* Lighter border in dark mode */
+    
+    /* Colors - Status/Info */
+    --info-text: #38bdf8;       /* Brighter info text */
+    --info-bg: #1e3a5f;         /* Dark info background */
+    --info-bg-hover: #2d4a6f;   /* Info hover */
+    
+    /* Dark mode specific adjustments */
+    --container-border: #334155;
+    --dots-color: #1e293b;
+    --profile-border: #334155;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode background pattern adjustment */
+[data-theme="dark"] body {
+    background-image: radial-gradient(var(--dots-color) 1px, transparent 1px);
+}
+
+/* Dark mode container adjustments */
+[data-theme="dark"] .container {
+    border-color: var(--container-border);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+/* Dark mode profile image border */
+[data-theme="dark"] .profile-img {
+    border-color: var(--profile-border);
+}
+
+/* Dark mode modal overlay */
+[data-theme="dark"] .modal-overlay {
+    background-color: rgba(15, 23, 42, 0.95);
+}
+
+/* Dark mode modal close button */
+[data-theme="dark"] .modal-close {
+    background: var(--bg-paper);
+    border-color: var(--border);
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .modal-close:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* Dark mode paper cards */
+[data-theme="dark"] .paper-card {
+    background: var(--bg-paper);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .paper-card:hover {
+    border-color: var(--border-medium);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode button adjustments */
+[data-theme="dark"] .btn-outline {
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: var(--bg-accent);
+}
+
+[data-theme="dark"] .btn-active {
+    background-color: var(--bg-accent);
+    border-color: var(--accent);
+}
+
+/* Dark mode callout box */
+[data-theme="dark"] .callout-box {
+    background-color: var(--bg-accent);
+    border-left-color: var(--accent);
+}
 
 /* ============================================================================
    1. GLOBAL STYLES & RESET
@@ -272,6 +378,74 @@ h1, h2, h3, .name {
 .social-link:hover .social-icon { 
     fill: var(--accent); 
     transform: scale(1.1); 
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    margin-top: var(--space-8);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--bg-paper);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+    background: var(--bg-accent);
+    transform: rotate(20deg);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95) rotate(20deg);
+}
+
+/* Theme Icons */
+.theme-icon {
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-icon-moon {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+/* Dark mode icon states */
+[data-theme="dark"] .theme-icon-sun {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+[data-theme="dark"] .theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Hover effects */
+.theme-toggle:hover .theme-icon {
+    color: var(--accent);
+}
+
+/* Focus styles */
+.theme-toggle:focus-visible {
+    outline: 2px solid rgba(39, 116, 174, 0.5);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
 }
 
 
