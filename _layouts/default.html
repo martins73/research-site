@@ -275,6 +275,7 @@
                     }
                 });
             }
+    
             /* --- 3. DARK MODE TOGGLE --- */
             const themeToggle = document.getElementById('theme-toggle');
             if (themeToggle) {
@@ -286,7 +287,7 @@
                 // Set theme
                 const setTheme = (theme) => {
                     document.documentElement.setAttribute('data-theme', theme);
-                    localStorage.setItem('theme', theme); // Save their choice
+                    localStorage.setItem('theme', theme);
                     
                     // Update button aria-label
                     if (theme === 'dark') {
@@ -312,6 +313,8 @@
                     themeToggle.setAttribute('title', 'Switch to light mode');
                 }
             }
+    
+        });  // <-- THIS CLOSING BRACE WAS MISSING!
     
         // Console Easter Egg
         console.log(
