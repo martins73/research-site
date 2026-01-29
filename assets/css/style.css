@@ -372,12 +372,14 @@ h1, h2, h3, .name {
 
 .social-icon { 
     fill: var(--text-light); 
+    stroke: var(--text-light);  /* Add this line */
     transition: fill 0.2s; 
 }
 
 .social-link:hover .social-icon { 
     fill: var(--accent); 
-    transform: scale(1.1); 
+    transform: scale(1.1);
+    stroke: var(--accent);  /* Add this line */
 }
 
 /* Theme Toggle Button */
