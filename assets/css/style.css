@@ -929,11 +929,6 @@ a .cv-logo:hover {
     padding-bottom: var(--space-8);
 }
 
-.library-intro h1 {
-    font-size: 2.2rem;
-    margin-bottom: var(--space-2);
-}
-
 .bookshelf-title {
     font-family: 'Merriweather', serif;
     font-size: var(--text-5xl);
