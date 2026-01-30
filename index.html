@@ -42,15 +42,27 @@ description: PhD Candidate at UCLA Anderson researching the human supply chain o
     </div>
 </div>
 
+{% if site.data.activity.show_section and site.data.activity.items.size >= site.data.activity.min_items %}
 <section id="news">
     <h2>Recent Activity</h2>
     <ul class="news-list">
+        {% for item in site.data.activity.items %}
         <li class="news-item">
-            <span class="news-date">May 2026</span>
-            <span class="news-text">Scheduled to present "First Impressions Matter" at the <a href="https://pomsmeetings.org/conf-2026/" target="_blank" rel="noopener" class="news-link">POMS Annual Conference</a> in Reno, NV.</span>
+            <span class="news-date">{{ item.date }}</span>
+            <span class="news-text">
+                {{ item.text }}
+                {% if item.link_url and item.link_url != "" %}
+                <a href="{{ item.link_url }}" target="_blank" rel="noopener" class="news-link">{{ item.link_text }}</a>
+                {% endif %}
+                {% if item.link_suffix and item.link_suffix != "" %}
+                {{ item.link_suffix }}
+                {% endif %}
+            </span>
         </li>
+        {% endfor %}
     </ul>
 </section>
+{% endif %}
 
 <section id="research">
     <h2>Research</h2>

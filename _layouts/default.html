@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Meta Description - Page specific or default -->
-    <meta name="description" content="{{ page.description | default: 'PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.' }}">
-    
-    <meta property="og:title" content="Martin Gonzalez Cabello">
-    <meta property="og:description" content="PhD Candidate in Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI and crowdwork platforms.">
+    <meta name="description" content="{{ page.description | default: 'Martin Gonzalez Cabello - PhD Candidate at UCLA Anderson researching the AI Supply Chain, crowdwork platforms, and algorithmic fairness. Expert in the human infrastructure of artificial intelligence.' }}">
+
+    <meta property="og:title" content="Martin Gonzalez Cabello - AI Supply Chain Researcher">
+    <meta property="og:description" content="Martin Gonzalez Cabello - PhD Candidate in Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.">
     <meta property="og:url" content="https://martin.gonzalezcabello.com{{ page.url }}">
     <meta property="og:image" content="https://martin.gonzalezcabello.com/assets/social_preview.jpg">
     <meta property="og:image:type" content="image/jpeg">
@@ -16,7 +16,10 @@
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://martin.gonzalezcabello.com{{ page.url }}">
+
     <title>{{ page.title }} | Martin Gonzalez Cabello</title>
     <link rel="icon" type="image/svg+xml" href="https://martin.gonzalezcabello.com/assets/favicon.svg">
 
@@ -39,16 +42,27 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Martin Gonzalez Cabello",
-      "jobTitle": "PhD Candidate",
-      "affiliation": { "@type": "Organization", "name": "UCLA Anderson School of Management" },
+      "alternateName": "Martin Gonzalez",
+      "givenName": "Martin",
+      "familyName": "Gonzalez Cabello",
+      "jobTitle": "PhD Candidate in Operations & Technology Management",
+      "description": "PhD Candidate researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness",
+      "knowsAbout": ["AI Supply Chain", "Crowdwork", "Algorithmic Fairness", "Platform Economics", "Digital Labor", "Operations Management", "Data Analytics"],
+      "affiliation": {
+        "@type": "Organization",
+        "name": "UCLA Anderson School of Management",
+        "url": "https://www.anderson.ucla.edu"
+      },
       "alumniOf": [
         { "@type": "CollegeOrUniversity", "name": "MIT Sloan School of Management" },
         { "@type": "CollegeOrUniversity", "name": "Universidad Politécnica de Madrid" }
       ],
+      "email": "martin@gonzalezcabello.com",
       "url": "https://martin.gonzalezcabello.com",
       "sameAs": [
         "https://www.linkedin.com/in/martingc/",
-        "https://scholar.google.com/citations?user=5OSLJwQAAAAJ"
+        "https://scholar.google.com/citations?user=5OSLJwQAAAAJ",
+        "https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello"
       ]
     }
     </script>
