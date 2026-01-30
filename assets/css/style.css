@@ -384,7 +384,7 @@ h1, h2, h3, .name {
 .social-icon-outline {
     fill: none;
     stroke: var(--text-light);
-    transition: fill 0.2s; 
+    transition: stroke 0.2s;
 }
 
 .social-link:hover .social-icon-outline {
