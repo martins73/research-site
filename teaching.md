@@ -2,7 +2,7 @@
 layout: default
 title: Teaching
 active_page: teaching
-description: {{ site.author.name }} - Teaching philosophy and experience in data analytics, operations management, and AI at {{ site.author.affiliation }}.
+description: Martin Gonzalez Cabello - Teaching philosophy and experience in data analytics, operations management, and AI at UCLA Anderson School of Management.
 ---
 
 <section id="statement" markdown="1">
