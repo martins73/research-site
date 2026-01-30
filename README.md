@@ -117,4 +117,6 @@ This website follows a **digital minimalism** approach:
 - Fast, accessible, and sustainable by design
 
 ## License
-© 2026 Martin Gonzalez Cabello. All rights reserved.
+
+The code in this repository is licensed under the MIT License.
+All site content, including text, images, PDFs, and data files, is © 2026 Martín González Cabello. All rights reserved unless otherwise stated.
