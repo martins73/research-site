@@ -229,7 +229,7 @@ h1, h2, h3, .name {
     border: 1px solid #d1d5db;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     border-radius: 4px;
-    padding: var(--space-16);
+    padding: var(--space-10);
     display: grid; 
     grid-template-columns: 260px 1fr; 
     gap: 4.5rem; 
