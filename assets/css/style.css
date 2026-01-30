@@ -1073,6 +1073,36 @@ a .cv-logo:hover {
     text-decoration: none;
 }
 
+.gemini-icon {
+    filter: grayscale(100%) brightness(0.9);
+    opacity: 0.7;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gemini-link:hover .gemini-icon {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.15) rotate(5deg);
+}
+
+.claude-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.claude-icon {
+    filter: grayscale(100%) brightness(0.9);
+    opacity: 0.7;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.claude-link:hover .claude-icon {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.15) rotate(5deg);
+}
+
 .copyright-text {
     font-size: var(--text-md);
     color: var(--text-light);
@@ -1089,17 +1119,7 @@ a .cv-logo:hover {
     text-align: center; 
 }
 
-.gemini-icon {
-    filter: grayscale(100%) brightness(0.9);
-    opacity: 0.7;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.gemini-link:hover .gemini-icon {
-    filter: grayscale(0%) brightness(1);
-    opacity: 1;
-    transform: scale(1.15) rotate(5deg);
-}
 
 .amdg { 
     font-size: var(--text-sm); 
