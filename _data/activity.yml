@@ -1,0 +1,36 @@
+# RECENT ACTIVITY CONTROL
+# Edit this file to update your Recent Activity section
+
+# Set to true to show the section, false to hide it
+show_section: true
+
+# Minimum number of items required to show the section (set to 0 to always show if enabled)
+min_items: 2
+
+# Activity items (most recent first)
+items:
+  - date: "May 2026"
+    text: 'Scheduled to present "First Impressions Matter" at the'
+    link_text: "POMS Annual Conference"
+    link_url: "https://pomsmeetings.org/conf-2026/"
+    link_suffix: "in Reno, NV."
+
+  # Uncomment and fill in as you add more items:
+
+  # - date: "Jan 2025"
+  #   text: 'Published'
+  #   link_text: '"Fairness in Crowdwork"'
+  #   link_url: "https://www.sciencedirect.com/science/article/pii/S0007681324001265"
+  #   link_suffix: "in <em>Business Horizons</em>."
+
+  # - date: "Nov 2024"
+  #   text: 'Submitted "Searching for Serendipity" to <em>Strategic Management Journal</em>.'
+  #   link_text: "Preprint available"
+  #   link_url: "https://osf.io/preprints/socarxiv/ve8mx"
+  #   link_suffix: ""
+
+  # - date: "Oct 2024"
+  #   text: 'Submitted "The Impact of Information Systems on Experts\' Decisions" to <em>American Economic Journal: Applied Economics</em>.'
+  #   link_text: ""
+  #   link_url: ""
+  #   link_suffix: ""
