@@ -1,0 +1,64 @@
+# Site Settings
+title: Martin Gonzalez Cabello
+description: PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.
+url: https://martin.gonzalezcabello.com
+baseurl: ""
+
+# Author Information
+author:
+  name: Martin Gonzalez Cabello
+  full_name: Martin Gonzalez Cabello
+  alternate_name: Martin Gonzalez
+  given_name: Martin
+  family_name: Gonzalez Cabello
+  email: martin@gonzalezcabello.com
+  job_title: PhD Candidate in Operations & Technology Management
+  affiliation: UCLA Anderson School of Management
+  affiliation_url: https://www.anderson.ucla.edu
+
+# Social Media Links
+social:
+  linkedin: https://www.linkedin.com/in/martingc/
+  google_scholar: https://scholar.google.com/citations?user=5OSLJwQAAAAJ
+  goodreads: https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello
+  lastfm: https://www.last.fm/user/tinjr
+  github: https://github.com/martins73/research-site
+
+# SEO & Meta
+og_image: /assets/social_preview.jpg
+og_image_type: image/jpeg
+og_image_width: 1200
+og_image_height: 630
+twitter_card: summary_large_image
+
+# Google Analytics
+google_analytics: G-SKK42FETN2
+
+# Build Settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections (if you add blog posts later)
+# collections:
+#   posts:
+#     output: true
+#     permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      author: Martin Gonzalez Cabello
