@@ -466,7 +466,7 @@ h1, h2, h3, .name {
    ============================================================================ */
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-bottom: var(--space-4);
     margin-top: 0;
     color: var(--text-primary);
