@@ -384,7 +384,7 @@ h1, h2, h3, .name {
 .social-icon-outline {
     fill: none;
     stroke: var(--text-light);
-    transition: stroke 0.2s;
+    transition: stroke 0.2s, transform 0.2s;
 }
 
 .social-link:hover .social-icon-outline {
@@ -394,7 +394,7 @@ h1, h2, h3, .name {
 
 /* Theme Toggle Button */
 .theme-toggle {
-    margin-top: var(--space-6);
+    margin-top: var(--space-5);
     width: 44px;
     height: 44px;
     border-radius: 50%;
