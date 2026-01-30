@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Meta Description - Page specific or default -->
-    <meta name="description" content="{{ page.description | default: 'Martin Gonzalez Cabello - PhD Candidate at UCLA Anderson researching the AI Supply Chain, crowdwork platforms, and algorithmic fairness.' }}">
+    <meta name="description" content="{{ page.description | default: site.description }}">
 
-    <meta property="og:title" content="Martin Gonzalez Cabello">
-    <meta property="og:description" content="PhD Candidate in Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.">
-    <meta property="og:url" content="https://martin.gonzalezcabello.com{{ page.url }}">
-    <meta property="og:image" content="https://martin.gonzalezcabello.com/assets/social_preview.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="{{ site.og_title }}">
+    <meta property="og:description" content="{{ site.og_description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:image" content="{{ site.url }}{{ site.og_image }}">
+    <meta property="og:image:type" content="{{ site.og_image_type }}">
+    <meta property="og:image:width" content="{{ site.og_image_width }}">
+    <meta property="og:image:height" content="{{ site.og_image_height }}">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="{{ site.twitter_card }}">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://martin.gonzalezcabello.com{{ page.url }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
-    <title>{{ page.title }} | Martin Gonzalez Cabello</title>
-    <link rel="icon" type="image/svg+xml" href="https://martin.gonzalezcabello.com/assets/logos/favicon.svg">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ site.url }}/assets/logos/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,50 +29,47 @@
     
     <link rel="stylesheet" href="/assets/css/style.css?v={{ site.time | date: '%s' }}">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
+    {% if site.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-SKK42FETN2');
+      gtag('config', '{{ site.google_analytics }}');
     </script>
+    {% endif %}
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Martin Gonzalez Cabello",
-      "alternateName": "Martin Gonzalez",
-      "givenName": "Martin",
-      "familyName": "Gonzalez Cabello",
-      "jobTitle": "PhD Candidate in Decisions, Operations & Technology Management",
-      "description": "PhD Candidate researching the human supply chain of AI and crowdwork platforms",
+      "name": "{{ site.author.name }}",
+      "alternateName": "{{ site.author.alternate_name }}",
+      "givenName": "{{ site.author.given_name }}",
+      "familyName": "{{ site.author.family_name }}",
+      "jobTitle": "{{ site.author.job_title }}",
+      "description": "{{ site.description }}",
       "knowsAbout": [
-        { "@type": "Thing", "name": "AI Supply Chain" },
-        { "@type": "Thing", "name": "Crowdwork" },
-        { "@type": "Thing", "name": "Algorithmic Fairness" },
-        { "@type": "Thing", "name": "Platform Economics" },
-        { "@type": "Thing", "name": "Digital Labor" },
-        { "@type": "Thing", "name": "Operations Management" },
-        { "@type": "Thing", "name": "Data Analytics" }
+        {% for topic in site.schema.knowsAbout %}
+        { "@type": "Thing", "name": "{{ topic }}" }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
       ],
       "affiliation": {
         "@type": "Organization",
-        "name": "UCLA Anderson School of Management",
-        "url": "https://www.anderson.ucla.edu"
+        "name": "{{ site.author.affiliation }}",
+        "url": "{{ site.author.affiliation_url }}"
       },
       "alumniOf": [
-        { "@type": "CollegeOrUniversity", "name": "MIT Sloan School of Management" },
-        { "@type": "CollegeOrUniversity", "name": "Massachusetts Institute of Technology" },
-        { "@type": "CollegeOrUniversity", "name": "Illinois Institute of Technology" },
-        { "@type": "CollegeOrUniversity", "name": "Universidad Politécnica de Madrid" }
+        {% for school in site.schema.alumni_of %}
+        { "@type": "CollegeOrUniversity", "name": "{{ school.name }}" }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
       ],
-      "email": "martin@gonzalezcabello.com",
-      "url": "https://martin.gonzalezcabello.com",
+      "email": "{{ site.author.email }}",
+      "url": "{{ site.url }}",
       "sameAs": [
-        "https://www.linkedin.com/in/martingc/",
-        "https://scholar.google.com/citations?user=5OSLJwQAAAAJ",
-        "https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello"
+        "{{ site.social.linkedin }}",
+        "{{ site.social.google_scholar }}",
+        "{{ site.social.goodreads }}"
       ]
     }
     </script>
@@ -95,37 +92,37 @@
 <body>
     <div class="container">
         <aside class="sidebar">
-            <img src="/assets/profile_picture.webp" alt="Martin Gonzalez Cabello" class="profile-img js-spin-trigger">
-            <div class="name">Martin Gonzalez Cabello</div>
-            <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
+            <img src="/assets/profile_picture.webp" alt="{{ site.author.name }}" class="profile-img js-spin-trigger">
+            <div class="name">{{ site.author.name }}</div>
+            <div class="affiliation">PhD Candidate<br>{{ site.author.affiliation_short }}</div>
 
             <a href="index.html" class="sidebar-btn {% if page.active_page == 'home' %}btn-active{% else %}btn-outline{% endif %}">Home</a>
             <a href="teaching.html" class="sidebar-btn {% if page.active_page == 'teaching' %}btn-active{% else %}btn-outline{% endif %}">Teaching</a>
             <a href="cv.html" class="sidebar-btn {% if page.active_page == 'cv' %}btn-active{% else %}btn-outline{% endif %}">Curriculum Vitae</a>
-            <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
+            <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">Email Me</a>
             <div class="social-links">
                 <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
+                <a href="{{ site.social.linkedin }}" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
                 </a>
                 
                 <!-- Google Scholar -->
-                <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank" rel="noopener">
+                <a href="{{ site.social.google_scholar }}" class="social-link" title="Google Scholar" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
                     </svg>
                 </a>
                 <!-- Book with special outline class -->
-                <a href="https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello" class="social-link" title="Goodreads" target="_blank" rel="noopener">
+                <a href="{{ site.social.goodreads }}" class="social-link" title="Goodreads" target="_blank" rel="noopener">
                     <svg class="social-icon-outline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                     </svg>
                 </a>
                 <!-- Last.fm - Headphones -->
-                <a href="https://www.last.fm/user/tinjr" class="social-link" title="Last.fm" target="_blank" rel="noopener">
+                <a href="{{ site.social.lastfm }}" class="social-link" title="Last.fm" target="_blank" rel="noopener">
                     <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>
                     </svg>
@@ -338,11 +335,11 @@
                 }
             }
     
-        });  // <-- THIS CLOSING BRACE WAS MISSING!
+        });
     
         // Console Easter Egg
         console.log(
-            "%c👋 Hi, I'm Martin.\n%cInterested in my code? Check out the repo: https://github.com/martins73/research-site",
+            "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
             "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
             "color: #64748b; font-size: 12px; font-family: sans-serif;"
         );
