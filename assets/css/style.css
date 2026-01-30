@@ -224,7 +224,7 @@ h1, h2, h3, .name {
 
 .container { 
     max-width: 1080px; 
-    margin: var(--space-12) auto; 
+    margin: var(--space-8) auto; 
     background-color: var(--bg-paper); 
     border: 1px solid #d1d5db;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
