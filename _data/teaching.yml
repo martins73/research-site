@@ -1,0 +1,28 @@
+courses:
+  - title: "Prescriptive Models & Data Analytics"
+    year: "2024"
+    role: "Teaching Assistant"
+    institution: "UCLA Anderson (MSBA)"
+    level: "Graduate Level"
+    students: 30
+
+  - title: "Data and Decisions (MBA Core)"
+    year: "2022 – 2025"
+    role: "Teaching Assistant"
+    institution: "UCLA Anderson (MBA)"
+    level: "Graduate Level"
+    students: 140
+
+  - title: "Operations and Technology Management"
+    year: "2024"
+    role: "Teaching Assistant"
+    institution: "UCLA Anderson (Global Executive MBA)"
+    level: "Graduate Level"
+    students: 40
+
+  - title: "Introduction to Organizations"
+    year: "2009"
+    role: "Teaching Assistant"
+    institution: "U. Politécnica de Madrid"
+    level: "Graduate Level"
+    students: 30
