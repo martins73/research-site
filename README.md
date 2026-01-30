@@ -40,6 +40,7 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 
 ```
 research-site/
+├── _config.yml         # Jekyll configuration and site settings
 ├── _data/              # YAML data files for dynamic content
 │   ├── activity.yml    # Recent activity feed
 │   ├── family.yml      # Family member information
@@ -56,7 +57,7 @@ research-site/
 ├── cv.html             # Curriculum Vitae
 ├── teaching.html       # Teaching philosophy & experience
 ├── library.html        # Reading list & book recommendations
-└── sitemap.xml         # SEO sitemap
+└── robots.txt          # Bot access control and privacy
 ```
 
 ## Local Development
