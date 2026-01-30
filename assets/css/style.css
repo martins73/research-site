@@ -295,7 +295,7 @@ h1, h2, h3, .name {
     font-size: var(--text-md); 
     color: var(--text-light); 
     margin-bottom: var(--space-8); 
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Atkinson Hyperlegible', sans-serif; 
 }
 
 /* Navigation Buttons */
