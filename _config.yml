@@ -12,9 +12,19 @@ author:
   given_name: Martin
   family_name: Gonzalez Cabello
   email: martin@gonzalezcabello.com
-  job_title: PhD Candidate in Operations & Technology Management
+  job_title: PhD Candidate in Decisions, Operations & Technology Management
   affiliation: UCLA Anderson School of Management
+  affiliation_short: UCLA Anderson
   affiliation_url: https://www.anderson.ucla.edu
+  
+# Open Graph & SEO
+og_title: Martin Gonzalez Cabello
+og_description: PhD Candidate in Decisions, Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.
+og_image: /assets/social_preview.jpg
+og_image_type: image/jpeg
+og_image_width: 1200
+og_image_height: 630
+twitter_card: summary_large_image
 
 # Social Media Links
 social:
@@ -24,12 +34,21 @@ social:
   lastfm: https://www.last.fm/user/tinjr
   github: https://github.com/martins73/research-site
 
-# SEO & Meta
-og_image: /assets/social_preview.jpg
-og_image_type: image/jpeg
-og_image_width: 1200
-og_image_height: 630
-twitter_card: summary_large_image
+# Schema.org Structured Data
+schema:
+  knowsAbout:
+    - AI Supply Chain
+    - Crowdwork
+    - Algorithmic Fairness
+    - Platform Economics
+    - Digital Labor
+    - Operations Management
+    - Data Analytics
+  alumni_of:
+    - name: MIT Sloan School of Management
+    - name: Massachusetts Institute of Technology
+    - name: Illinois Institute of Technology
+    - name: Universidad Politécnica de Madrid
 
 # Google Analytics
 google_analytics: G-SKK42FETN2
@@ -48,12 +67,6 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
-
-# Collections (if you add blog posts later)
-# collections:
-#   posts:
-#     output: true
-#     permalink: /blog/:year/:month/:day/:title/
 
 # Defaults
 defaults:
