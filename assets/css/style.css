@@ -224,12 +224,12 @@ h1, h2, h3, .name {
 
 .container { 
     max-width: 1080px; 
-    margin: var(--space-12) auto; 
+    margin: var(--space-8) auto; 
     background-color: var(--bg-paper); 
     border: 1px solid #d1d5db;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     border-radius: 4px;
-    padding: var(--space-16);
+    padding: var(--space-10);
     display: grid; 
     grid-template-columns: 260px 1fr; 
     gap: 4.5rem; 
@@ -295,7 +295,7 @@ h1, h2, h3, .name {
     font-size: var(--text-md); 
     color: var(--text-light); 
     margin-bottom: var(--space-8); 
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Atkinson Hyperlegible', sans-serif; 
 }
 
 /* Navigation Buttons */
@@ -364,7 +364,7 @@ h1, h2, h3, .name {
 
 /* Social Links */
 .social-links { 
-    margin-top: var(--space-6); 
+    margin-top: var(--space-4); 
     display: flex; 
     justify-content: center; 
     gap: var(--space-4); 
@@ -394,7 +394,7 @@ h1, h2, h3, .name {
 
 /* Theme Toggle Button */
 .theme-toggle {
-    margin-top: var(--space-8);
+    margin-top: var(--space-6);
     width: 44px;
     height: 44px;
     border-radius: 50%;
