@@ -1,33 +1,33 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
 
-/* 0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT (NO FLASH) */
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-if (isMobile) {
-  document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
-    link.addEventListener("click", () => {
-      sessionStorage.setItem("autoScrollToContent", "1");
-    });
-  });
-
-  const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
-
-  if (shouldAutoScroll) {
-    sessionStorage.removeItem("autoScrollToContent");
-
-    const main = document.getElementById("main-content");
-    if (main) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const y = main.getBoundingClientRect().top + window.scrollY - 20;
-          window.scrollTo({ top: y, behavior: "smooth" });
+    /* 0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT (NO FLASH) */
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    
+    if (isMobile) {
+      document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
+        link.addEventListener("click", () => {
+          sessionStorage.setItem("autoScrollToContent", "1");
         });
       });
+    
+      const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
+    
+      if (shouldAutoScroll) {
+        sessionStorage.removeItem("autoScrollToContent");
+    
+        const main = document.getElementById("main-content");
+        if (main) {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              const y = main.getBoundingClientRect().top + window.scrollY - 20;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            });
+          });
+        }
+      }
     }
-  }
-}
-
+    
     /* 1. SPINNING PROFILE PICTURE */
     const profilePic = document.querySelector(".js-spin-trigger");
     if (profilePic) {
