@@ -922,50 +922,46 @@ a .cv-logo:hover {
     color: var(--text-tertiary);
 }
 
-/* CV header actions */
+/* CV header actions, compact and balanced */
 .cv-actions {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
+    gap: var(--space-3);
 }
 
 .cv-action-btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.4rem;
 
-    padding: 0.85rem 1.25rem;
-    border-radius: 10px;
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
 
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
     font-weight: 600;
     line-height: 1;
 
     text-decoration: none;
-    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
+    white-space: nowrap;
 
-.cv-action-btn:hover {
-    transform: translateY(-1px);
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .cv-action-btn span {
-    font-size: 0.95em;
-    opacity: 0.9;
+    font-size: 0.9em;
+    opacity: 0.85;
 }
 
-/* Mobile: stack cleanly */
 @media (max-width: 768px) {
     .cv-actions {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
+        width: auto;
+        flex-direction: row;
+        align-items: center;
     }
 
     .cv-action-btn {
+        width: auto;
         justify-content: center;
-        width: 100%;
     }
 }
 
