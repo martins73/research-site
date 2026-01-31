@@ -74,7 +74,8 @@
 }
 </script>
 
-<!-- Dark Mode Flash Prevention -->
+<!-- Dark Mode Flash Prevention: Apply saved theme before page renders -->
+<!-- This prevents a white flash when user has selected dark mode -->
 <script>
   (function() {
     const savedTheme = localStorage.getItem('theme');
@@ -86,7 +87,9 @@
   })();
 </script>
 
-<!-- Mobile pre-paint scroll guard: prevents "jump up then down" on navigation -->
+<!-- Mobile Scroll Guard: Disable browser scroll restoration for mobile navigation -->
+<!-- When user clicks a sidebar link on mobile, we want to scroll to main content.
+     This disables the browser's automatic scroll restoration so we control it via JavaScript -->
 <script>
   (function () {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -95,6 +98,7 @@
     const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
     if (!shouldAutoScroll) return;
 
+    // Disable automatic scroll restoration so our JavaScript scroll code takes over
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }

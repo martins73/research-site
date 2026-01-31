@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Head: Meta tags, SEO, styles, and early scripts -->
   {% include head.html %}
 </head>
 
 <body>
+  <!-- Main layout container -->
   <div class="container">
+    <!-- Left sidebar: Navigation and profile -->
     {% include sidebar.html %}
 
+    <!-- Main content area -->
     <main id="main-content" class="content">
       {{ content }}
     </main>
   </div>
 
+  <!-- Modals and interactive elements -->
   {% include family-modal.html %}
   {% include footer.html %}
+
+  <!-- Application JavaScript -->
   {% include scripts.html %}
 </body>
 </html>

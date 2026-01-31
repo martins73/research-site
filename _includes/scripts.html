@@ -1,7 +1,23 @@
 <script>
+  /**
+   * Main application JavaScript
+   *
+   * Handles mobile navigation scroll behavior, profile interactions, modals,
+   * dark mode, and liturgical calendar display.
+   */
   document.addEventListener("DOMContentLoaded", function () {
 
-    /* 0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT (NO FLASH) */
+    /* ============================================================================
+       0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT
+       ============================================================================
+
+       On mobile devices (≤768px), when user clicks a sidebar link:
+       - If sidebar is visible at top of screen: smooth scroll to main content (shows animation)
+       - If sidebar is scrolled past screen: instant scroll to main content (no animation)
+
+       This provides visual feedback about where the content is while avoiding
+       animation when the user is already reading further down the page.
+    */
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     if (isMobile) {
@@ -39,8 +55,13 @@
       }
     }
 
-    
-    /* 1. SPINNING PROFILE PICTURE */
+    /* ============================================================================
+       1. SPINNING PROFILE PICTURE
+       ============================================================================
+
+       Clicking the profile picture triggers a 3.2 second spinning animation.
+       Uses CSS animation defined in style.css with the "spin-effect" class.
+    */
     const profilePic = document.querySelector(".js-spin-trigger");
     if (profilePic) {
       const SPIN_DURATION = 3200;
@@ -53,7 +74,19 @@
       });
     }
 
-    /* 2. FAMILY DYNAMIC MODAL WITH ACCESSIBILITY */
+    /* ============================================================================
+       2. FAMILY DYNAMIC MODAL WITH ACCESSIBILITY
+       ============================================================================
+
+       Interactive modal for displaying family member photos and information.
+
+       Features:
+       - Click/Enter/Space to open modal with family member photo
+       - Click outside modal or Escape key to close
+       - Tab navigation loops within modal (focus trap)
+       - Full ARIA labels and keyboard support for accessibility
+       - Focus returns to triggering element after closing
+    */
     const modal = document.getElementById("family-modal");
     const modalImg = document.getElementById("modal-img");
     const modalCaption = document.getElementById("modal-caption");
@@ -154,40 +187,56 @@
       });
     }
 
-    /* 3. DARK MODE TOGGLE */
+    /* ============================================================================
+       3. DARK MODE TOGGLE
+       ============================================================================
+
+       Toggle button to switch between light and dark themes.
+
+       - Theme preference persisted in localStorage
+       - Initial theme applied in head.html before page renders (prevents flash)
+       - Accessible via keyboard and screen readers
+    */
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
       const getCurrentTheme = () => {
         return document.documentElement.getAttribute("data-theme") || "light";
       };
 
+      const updateThemeLabels = (theme) => {
+        const isDark = theme === "dark";
+        themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        themeToggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+      };
+
       const setTheme = (theme) => {
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
-
-        if (theme === "dark") {
-          themeToggle.setAttribute("aria-label", "Switch to light mode");
-          themeToggle.setAttribute("title", "Switch to light mode");
-        } else {
-          themeToggle.setAttribute("aria-label", "Switch to dark mode");
-          themeToggle.setAttribute("title", "Switch to dark mode");
-        }
+        updateThemeLabels(theme);
       };
 
+      // Set initial theme labels (theme itself is set in head.html)
+      updateThemeLabels(getCurrentTheme());
+
+      // Toggle theme on button click
       themeToggle.addEventListener("click", () => {
         const currentTheme = getCurrentTheme();
         const newTheme = currentTheme === "dark" ? "light" : "dark";
         setTheme(newTheme);
       });
-
-      const initialTheme = getCurrentTheme();
-      if (initialTheme === "dark") {
-        themeToggle.setAttribute("aria-label", "Switch to light mode");
-        themeToggle.setAttribute("title", "Switch to light mode");
-      }
     }
 
-    /* 4. SAINT OF THE DAY (FOOTER HOVER) */
+    /* ============================================================================
+       4. SAINT OF THE DAY (FOOTER HOVER)
+       ============================================================================
+
+       Displays the liturgical calendar's saint of the day in the footer.
+
+       Behavior:
+       - Hover over the cross (✝) symbol to display saint information
+       - Intelligently formats saint names (singular/plural, strips prefix)
+       - Falls back to copyright text if no saint is available
+    */
     const trigger = document.getElementById("saint-trigger");
     const target = document.getElementById("copyright-content");
     if (trigger && target) {
