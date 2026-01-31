@@ -19,7 +19,8 @@
           if (sidebar) {
             const sidebarTop = sidebar.getBoundingClientRect().top;
             console.log("Link clicked! Sidebar top position:", sidebarTop);
-            if (sidebarTop < 100) {
+            // Only scroll if sidebar is visible near the top (between 0 and 100px from top)
+            if (sidebarTop >= 0 && sidebarTop < 100) {
               console.log("Setting autoScrollToContent flag");
               sessionStorage.setItem("autoScrollToContent", "1");
             } else {
