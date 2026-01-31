@@ -97,5 +97,26 @@
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
+
+    // Immediately scroll down to hide the top of the page
+    // This prevents the flash of the profile picture before smooth scroll
+    if (document.readyState === 'loading') {
+      // If DOM is still loading, scroll as soon as it's ready
+      document.addEventListener('DOMContentLoaded', function scrollOnLoad() {
+        const main = document.getElementById("main-content");
+        if (main) {
+          const y = main.getBoundingClientRect().top + window.scrollY - 20;
+          window.scrollTo({ top: y });
+        }
+        document.removeEventListener('DOMContentLoaded', scrollOnLoad);
+      }, { once: true });
+    } else {
+      // If DOM is already loaded (shouldn't happen in head), scroll immediately
+      const main = document.getElementById("main-content");
+      if (main) {
+        const y = main.getBoundingClientRect().top + window.scrollY - 20;
+        window.scrollTo({ top: y });
+      }
+    }
   })();
 </script>
