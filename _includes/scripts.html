@@ -1,0 +1,187 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    /* 0. MOBILE: SCROLL DOWN FROM SIDEBAR AFTER NAV TAP */
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) {
+      document.querySelectorAll(".sidebar .sidebar-nav").forEach((a) => {
+        a.addEventListener("click", () => {
+          sessionStorage.setItem("autoScrollToContent", "1");
+        });
+      });
+
+      const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
+      if (shouldAutoScroll) {
+        sessionStorage.removeItem("autoScrollToContent");
+
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "manual";
+        }
+
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+        const main = document.getElementById("main-content");
+        if (main) {
+          setTimeout(() => {
+            const y = main.getBoundingClientRect().top + window.scrollY - 20;
+            window.scrollTo({ top: y, left: 0, behavior: "smooth" });
+          }, 450);
+        }
+      }
+    }
+
+    /* 1. SPINNING PROFILE PICTURE */
+    const profilePic = document.querySelector('.js-spin-trigger');
+    if (profilePic) {
+      const SPIN_DURATION = 3200;
+      profilePic.style.cursor = "pointer";
+      profilePic.addEventListener('click', function() {
+        profilePic.classList.add('spin-effect');
+        setTimeout(() => {
+          profilePic.classList.remove('spin-effect');
+        }, SPIN_DURATION);
+      });
+    }
+
+    /* 2. FAMILY DYNAMIC MODAL WITH ACCESSIBILITY */
+    const modal = document.getElementById('family-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    const closeButton = document.getElementById('modal-close');
+    const triggers = document.querySelectorAll('.family-link');
+
+    const familyData = {{ site.data.family | jsonify }};
+
+    if (modal && triggers.length > 0 && familyData) {
+      let lastFocusedElement = null;
+
+      const openModal = (personKey) => {
+        const personData = familyData[personKey];
+        if (!personData) return;
+
+        lastFocusedElement = document.activeElement;
+
+        modalImg.src = personData.img;
+        modalImg.alt = personData.text;
+        modalCaption.innerText = personData.text;
+
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+
+        if (closeButton) closeButton.focus();
+
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeModal = () => {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+
+        document.body.style.overflow = '';
+
+        modalImg.src = '';
+        modalImg.alt = '';
+        modalCaption.innerText = '';
+
+        if (lastFocusedElement) lastFocusedElement.focus();
+      };
+
+      triggers.forEach(trigger => {
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('tabindex', '0');
+        trigger.setAttribute('aria-haspopup', 'dialog');
+
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          const personKey = this.getAttribute('data-person');
+          openModal(personKey);
+        });
+
+        trigger.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const personKey = this.getAttribute('data-person');
+            openModal(personKey);
+          }
+        });
+      });
+
+      if (closeButton) closeButton.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+
+      modal.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+          const focusableElements = modal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+
+          if (focusableElements.length === 0) return;
+
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      });
+    }
+
+    /* 3. DARK MODE TOGGLE */
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      const getCurrentTheme = () => {
+        return document.documentElement.getAttribute('data-theme') || 'light';
+      };
+
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+
+        if (theme === 'dark') {
+          themeToggle.setAttribute('aria-label', 'Switch to light mode');
+          themeToggle.setAttribute('title', 'Switch to light mode');
+        } else {
+          themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+          themeToggle.setAttribute('title', 'Switch to dark mode');
+        }
+      };
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = getCurrentTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
+
+      const initialTheme = getCurrentTheme();
+      if (initialTheme === 'dark') {
+        themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        themeToggle.setAttribute('title', 'Switch to light mode');
+      }
+    }
+  });
+
+  console.log(
+    "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
+    "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
+    "color: #64748b; font-size: 12px; font-family: sans-serif;"
+  );
+</script>
