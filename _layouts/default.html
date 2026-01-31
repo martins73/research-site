@@ -102,21 +102,20 @@
             <div class="name">{{ site.author.name }}</div>
             <div class="affiliation">PhD Candidate<br>{{ site.author.affiliation_short }}</div>
 {% assign current = page.url %}
-
-<a href="{{ '/' | relative_url }}"
-   class="sidebar-btn {% if current == '/' %}btn-active{% else %}btn-outline{% endif %}">
-  Home
-</a>
-
-<a href="{{ '/cv/' | relative_url }}"
-   class="sidebar-btn {% if current == '/cv/' %}btn-active{% else %}btn-outline{% endif %}">
-  Curriculum Vitae
-</a>
-
-<a href="{{ '/teaching/' | relative_url }}"
-   class="sidebar-btn {% if current == '/teaching/' %}btn-active{% else %}btn-outline{% endif %}">
-  Teaching
-</a>
+            <a href="{{ '/' | relative_url }}#main-content"
+               class="sidebar-btn {% if current == '/' %}btn-active{% else %}btn-outline{% endif %}">
+              Home
+            </a>
+            
+            <a href="{{ '/cv/' | relative_url }}#main-content"
+               class="sidebar-btn {% if current == '/cv/' %}btn-active{% else %}btn-outline{% endif %}">
+              Curriculum Vitae
+            </a>
+            
+            <a href="{{ '/teaching/' | relative_url }}#main-content"
+               class="sidebar-btn {% if current == '/teaching/' %}btn-active{% else %}btn-outline{% endif %}">
+              Teaching
+            </a>
             <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">Email Me</a>
             <div class="social-links">
                 <!-- LinkedIn -->
@@ -164,7 +163,7 @@
             </button>
         </aside>
 
-        <main class="content">
+        <main id="main-content" class="content" tabindex="-1">
             {{ content }}
         </main>
     </div>
