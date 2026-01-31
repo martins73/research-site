@@ -217,6 +217,10 @@ h1, h2, h3, .name {
     box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
 }
 
+/* Prevent Safari showing a focus outline box after anchor jumps */
+#main-content:focus {
+  outline: none;
+}
 
 /* ============================================================================
    2. LAYOUT - CONTAINER & GRID
