@@ -5,8 +5,9 @@
     console.log("DOMContentLoaded fired");
 
     /* 0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT (NO FLASH) */
+    console.log("Window width:", window.innerWidth);
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    console.log("Is mobile:", isMobile);
+    console.log("Is mobile (768px check):", isMobile);
 
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
