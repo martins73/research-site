@@ -947,24 +947,6 @@ a .cv-logo:hover {
     transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.cv-action-btn span {
-    font-size: 0.9em;
-    opacity: 0.85;
-}
-
-@media (max-width: 768px) {
-    .cv-actions {
-        width: auto;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .cv-action-btn {
-        width: auto;
-        justify-content: center;
-    }
-}
-
 /* ============================================================================
    10. LIBRARY PAGE
    ============================================================================ */
