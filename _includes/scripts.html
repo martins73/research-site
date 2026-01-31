@@ -1,57 +1,38 @@
 <script>
-  console.log("Scripts.html loaded");
-
   document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOMContentLoaded fired");
 
     /* 0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT (NO FLASH) */
-    console.log("Window width:", window.innerWidth);
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    console.log("Is mobile (768px check):", isMobile);
 
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
-      console.log("Sidebar found:", sidebar ? "yes" : "no");
 
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
           // Always set the flag - we'll decide on the new page whether to animate
-          console.log("Sidebar link clicked, setting autoScrollToContent flag");
           sessionStorage.setItem("autoScrollToContent", "1");
         });
       });
 
       const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
-      console.log("Should auto scroll:", shouldAutoScroll);
 
       if (shouldAutoScroll) {
-        console.log("Performing auto-scroll to main content");
         sessionStorage.removeItem("autoScrollToContent");
 
         const main = document.getElementById("main-content");
-        console.log("Main content element found:", main ? "yes" : "no");
         if (main) {
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
           const sidebarTop = sidebar.getBoundingClientRect().top;
-          console.log("Main content position:", main.getBoundingClientRect().top);
-          console.log("Current scroll Y:", window.scrollY);
-          console.log("Sidebar top on new page:", sidebarTop);
-          console.log("Scrolling to position:", y);
 
           // If sidebar is visible at top, use smooth scroll to show animation
           // If sidebar is not at top, use instant scroll to go directly to content
           const useSmoothScroll = sidebarTop >= 0 && sidebarTop < 100;
-          console.log("Using smooth scroll:", useSmoothScroll);
 
           window.scrollTo({
             top: y,
             behavior: useSmoothScroll ? "smooth" : "auto"
           });
-        } else {
-          console.log("Main content element not found");
         }
-      } else {
-        console.log("Auto-scroll flag not set, loading page normally");
       }
     }
 
