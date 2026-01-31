@@ -73,6 +73,7 @@
 }
 </script>
 
+<!-- Dark Mode Flash Prevention -->
 <script>
   (function() {
     const savedTheme = localStorage.getItem('theme');
@@ -81,5 +82,22 @@
     } else {
       document.documentElement.setAttribute('data-theme', 'light');
     }
+  })();
+</script>
+
+<!-- Mobile pre-paint scroll guard: prevents "jump up then down" on navigation -->
+<script>
+  (function () {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!isMobile) return;
+
+    const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
+    if (!shouldAutoScroll) return;
+
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
   })();
 </script>
