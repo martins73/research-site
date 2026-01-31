@@ -10,24 +10,37 @@
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
           // Only scroll if the sidebar is visible at the top of the screen
-          if (sidebar && sidebar.getBoundingClientRect().top < 100) {
-            sessionStorage.setItem("autoScrollToContent", "1");
+          if (sidebar) {
+            const sidebarTop = sidebar.getBoundingClientRect().top;
+            console.log("Sidebar top position:", sidebarTop);
+            if (sidebarTop < 100) {
+              console.log("Setting autoScrollToContent flag");
+              sessionStorage.setItem("autoScrollToContent", "1");
+            } else {
+              console.log("Sidebar not at top, skipping scroll animation");
+            }
           }
-          // If sidebar is not at top, don't set the flag - page will load normally
         });
       });
     
       const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
     
       if (shouldAutoScroll) {
+        console.log("Performing auto-scroll to main content");
         sessionStorage.removeItem("autoScrollToContent");
 
         const main = document.getElementById("main-content");
         if (main) {
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
-          // Use smooth scroll to show user where the content is
+          console.log("Main content position:", main.getBoundingClientRect().top);
+          console.log("Current scroll Y:", window.scrollY);
+          console.log("Scrolling to position:", y);
           window.scrollTo({ top: y, behavior: "smooth" });
+        } else {
+          console.log("Main content element not found");
         }
+      } else {
+        console.log("Auto-scroll flag not set, loading page normally");
       }
     }
     
