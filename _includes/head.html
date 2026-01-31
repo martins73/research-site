@@ -112,7 +112,7 @@
       const main = document.getElementById("main-content");
       if (main) {
         const y = main.getBoundingClientRect().top + window.scrollY - 20;
-        window.scrollTo(y, 0);
+        window.scrollTo(0, y);
       }
       // Allow scroll again
       document.documentElement.style.overflow = '';
