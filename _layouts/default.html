@@ -101,11 +101,11 @@
             <img src="/assets/profile_picture.webp" alt="{{ site.author.name }}" class="profile-img js-spin-trigger">
             <div class="name">{{ site.author.name }}</div>
             <div class="affiliation">PhD Candidate<br>{{ site.author.affiliation_short }}</div>
-
+{% assign current = page.url %}
 {% for item in site.data.navigation %}
   <a href="{{ item.url | relative_url }}"
-     class="sidebar-btn {% if page.active_page == item.key %}btn-active{% else %}btn-outline{% endif %}">
-     {{ item.title }}
+     class="sidebar-btn {% if current == item.url %}btn-active{% else %}btn-outline{% endif %}">
+    {{ item.title }}
   </a>
 {% endfor %}
             <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">Email Me</a>
