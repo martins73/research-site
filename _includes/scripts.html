@@ -15,15 +15,14 @@
     
       if (shouldAutoScroll) {
         sessionStorage.removeItem("autoScrollToContent");
-    
+
         const main = document.getElementById("main-content");
         if (main) {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              const y = main.getBoundingClientRect().top + window.scrollY - 20;
-              window.scrollTo({ top: y, behavior: "smooth" });
-            });
-          });
+          // Add a small delay to let any immediate scroll settle, then add smooth animation
+          setTimeout(() => {
+            const y = main.getBoundingClientRect().top + window.scrollY - 20;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }, 50);
         }
       }
     }
