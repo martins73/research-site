@@ -793,15 +793,16 @@ h2 {
    9. CV PAGE
    ============================================================================ */
 
-/* CV Page Header (title on top, action below) */
+/* CV Page Header (desktop: title left, actions right) */
 .cv-page-header {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: var(--space-12);
     border-bottom: 1px solid var(--border);
     padding-bottom: var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-4);
 }
 
 .cv-page-title {
@@ -815,6 +816,24 @@ h2 {
     display: flex;
     align-items: center;
     gap: var(--space-3);
+}
+
+/* Optional: if you use a dedicated class for the CV button */
+.cv-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+    font-size: var(--text-md);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease,
+                color 0.15s ease,
+                border-color 0.15s ease;
+}
 
 /* CV Section Headers */
 .cv-section-header {
@@ -826,15 +845,15 @@ h2 {
 }
 
 /* CV Entries */
-.cv-entry { 
-    margin-bottom: var(--space-8); 
-    padding-left: var(--space-4); 
-    border-left: 2px solid transparent; 
-    transition: border 0.2s; 
+.cv-entry {
+    margin-bottom: var(--space-8);
+    padding-left: var(--space-4);
+    border-left: 2px solid transparent;
+    transition: border 0.2s;
 }
 
-.cv-entry:hover { 
-    border-left-color: var(--accent); 
+.cv-entry:hover {
+    border-left-color: var(--accent);
 }
 
 .cv-entry-header {
@@ -852,54 +871,54 @@ h2 {
 }
 
 /* CV Header Group (Logo + Institution) */
-.cv-header-group { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
+.cv-header-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.cv-logo { 
-    width: 28px; 
-    height: 28px; 
-    object-fit: contain; 
-    opacity: 0.9; 
+.cv-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    opacity: 0.9;
     transition: transform 0.2s;
 }
 
-a .cv-logo:hover { 
-    transform: scale(1.1); 
-    opacity: 1; 
+a .cv-logo:hover {
+    transform: scale(1.1);
+    opacity: 1;
 }
 
-.cv-institution-link { 
-    color: inherit; 
-    text-decoration: none; 
-    font-weight: 600; 
+.cv-institution-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-.cv-institution-link:hover { 
-    color: var(--accent); 
-    text-decoration: underline; 
+.cv-institution-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
 }
 
 /* CV Content */
-.cv-title { 
-    font-weight: 600; 
-    font-size: var(--text-xl); 
-    display: block; 
-    margin-bottom: var(--space-1); 
-    color: var(--text-primary); 
+.cv-title {
+    font-weight: 600;
+    font-size: var(--text-xl);
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--text-primary);
 }
 
-.cv-date { 
-    color: var(--text-light); 
-    font-style: italic; 
-    font-size: var(--text-md); 
+.cv-date {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: var(--text-md);
 }
 
 .cv-role {
-    color: var(--accent); 
-    font-weight: 500; 
+    color: var(--accent);
+    font-weight: 500;
     margin: var(--space-2) 0 var(--space-2) 40px;
 }
 
@@ -920,26 +939,6 @@ a .cv-logo:hover {
 .cv-list {
     margin-top: var(--space-2);
     color: var(--text-tertiary);
-}
-
-/* CV action button */
-.cv-action-btn {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 0.55rem 0.9rem;
-    border-radius: 8px;
-
-    font-size: var(--text-md);
-    font-weight: 600;
-    line-height: 1;
-
-    text-decoration: none;
-    white-space: nowrap;
-
-    transition: background-color 0.15s ease,
-                color 0.15s ease,
-                border-color 0.15s ease;
 }
 
 /* ============================================================================
@@ -1365,7 +1364,7 @@ a .cv-logo:hover {
 }
 
 
-/* ============================================================================
+/* /* ============================================================================
    15. RESPONSIVE DESIGN
    ============================================================================ */
 
@@ -1396,9 +1395,23 @@ a .cv-logo:hover {
         grid-template-columns: 1fr;
         gap: var(--space-8);
     }
-}
 
-/* Mobile: give the content a scroll target and allow offset scrolling */
+    /* CV mobile tweak */
+    .cv-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cv-actions {
+        width: 100%;
+    }
+
+    .cv-actions .cv-action-btn {
+        width: 100%;
+    }
+
+    /* anchor jump offset */
     #main-content {
         scroll-margin-top: 140px;
     }
+}
