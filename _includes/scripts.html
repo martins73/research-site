@@ -1,18 +1,23 @@
 <script>
+  console.log("Scripts.html loaded");
+
   document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOMContentLoaded fired");
 
     /* 0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT (NO FLASH) */
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    
+    console.log("Is mobile:", isMobile);
+
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
+      console.log("Sidebar found:", sidebar ? "yes" : "no");
 
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
           // Only scroll if the sidebar is visible at the top of the screen
           if (sidebar) {
             const sidebarTop = sidebar.getBoundingClientRect().top;
-            console.log("Sidebar top position:", sidebarTop);
+            console.log("Link clicked! Sidebar top position:", sidebarTop);
             if (sidebarTop < 100) {
               console.log("Setting autoScrollToContent flag");
               sessionStorage.setItem("autoScrollToContent", "1");
@@ -22,14 +27,16 @@
           }
         });
       });
-    
+
       const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
-    
+      console.log("Should auto scroll:", shouldAutoScroll);
+
       if (shouldAutoScroll) {
         console.log("Performing auto-scroll to main content");
         sessionStorage.removeItem("autoScrollToContent");
 
         const main = document.getElementById("main-content");
+        console.log("Main content element found:", main ? "yes" : "no");
         if (main) {
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
           console.log("Main content position:", main.getBoundingClientRect().top);
@@ -43,6 +50,7 @@
         console.log("Auto-scroll flag not set, loading page normally");
       }
     }
+
     
     /* 1. SPINNING PROFILE PICTURE */
     const profilePic = document.querySelector(".js-spin-trigger");
