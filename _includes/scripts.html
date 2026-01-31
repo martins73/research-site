@@ -15,18 +15,9 @@
 
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
-          // Only scroll if the sidebar is visible at the top of the screen
-          if (sidebar) {
-            const sidebarTop = sidebar.getBoundingClientRect().top;
-            console.log("Link clicked! Sidebar top position:", sidebarTop);
-            // Only scroll if sidebar is visible near the top (between 0 and 100px from top)
-            if (sidebarTop >= 0 && sidebarTop < 100) {
-              console.log("Setting autoScrollToContent flag");
-              sessionStorage.setItem("autoScrollToContent", "1");
-            } else {
-              console.log("Sidebar not at top, skipping scroll animation");
-            }
-          }
+          // Always set the flag - we'll decide on the new page whether to animate
+          console.log("Sidebar link clicked, setting autoScrollToContent flag");
+          sessionStorage.setItem("autoScrollToContent", "1");
         });
       });
 
@@ -41,10 +32,21 @@
         console.log("Main content element found:", main ? "yes" : "no");
         if (main) {
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
+          const sidebarTop = sidebar.getBoundingClientRect().top;
           console.log("Main content position:", main.getBoundingClientRect().top);
           console.log("Current scroll Y:", window.scrollY);
+          console.log("Sidebar top on new page:", sidebarTop);
           console.log("Scrolling to position:", y);
-          window.scrollTo({ top: y, behavior: "smooth" });
+
+          // If sidebar is visible at top, use smooth scroll to show animation
+          // If sidebar is not at top, use instant scroll to go directly to content
+          const useSmoothScroll = sidebarTop >= 0 && sidebarTop < 100;
+          console.log("Using smooth scroll:", useSmoothScroll);
+
+          window.scrollTo({
+            top: y,
+            behavior: useSmoothScroll ? "smooth" : "auto"
+          });
         } else {
           console.log("Main content element not found");
         }
