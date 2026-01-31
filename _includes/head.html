@@ -98,25 +98,24 @@
       history.scrollRestoration = "manual";
     }
 
-    // Immediately scroll down to hide the top of the page
-    // This prevents the flash of the profile picture before smooth scroll
+    // Hide scrollbar to prevent showing the top of page
+    document.documentElement.style.overflow = 'hidden';
+
+    // Perform the scroll as soon as DOM is ready
     if (document.readyState === 'loading') {
-      // If DOM is still loading, scroll as soon as it's ready
-      document.addEventListener('DOMContentLoaded', function scrollOnLoad() {
-        const main = document.getElementById("main-content");
-        if (main) {
-          const y = main.getBoundingClientRect().top + window.scrollY - 20;
-          window.scrollTo({ top: y });
-        }
-        document.removeEventListener('DOMContentLoaded', scrollOnLoad);
-      }, { once: true });
+      document.addEventListener('DOMContentLoaded', performScroll, { once: true });
     } else {
-      // If DOM is already loaded (shouldn't happen in head), scroll immediately
+      performScroll();
+    }
+
+    function performScroll() {
       const main = document.getElementById("main-content");
       if (main) {
         const y = main.getBoundingClientRect().top + window.scrollY - 20;
-        window.scrollTo({ top: y });
+        window.scrollTo(y, 0);
       }
+      // Allow scroll again
+      document.documentElement.style.overflow = '';
     }
   })();
 </script>
