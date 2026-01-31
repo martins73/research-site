@@ -92,7 +92,25 @@
             }
         })();
     </script>
+
+    <!-- Mobile scroll restoration prevention (runs before paint) -->
+    <script>
+        (function () {
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            if (!isMobile) return;
+
+            const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
+            if (!shouldAutoScroll) return;
+
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+
+            window.scrollTo(0, 0);
+        })();
+    </script>
 </head>
+
 <body>
     <div class="container">
         <aside class="sidebar">
@@ -192,18 +210,14 @@
                 if (shouldAutoScroll) {
                     sessionStorage.removeItem("autoScrollToContent");
 
-                    if ("scrollRestoration" in history) {
-                        history.scrollRestoration = "manual";
-                    }
-
-                    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-
                     const main = document.getElementById("main-content");
                     if (main) {
-                        setTimeout(() => {
-                            const y = main.getBoundingClientRect().top + window.scrollY - 20;
-                            window.scrollTo({ top: y, left: 0, behavior: "smooth" });
-                        }, 450);
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                const y = main.getBoundingClientRect().top + window.scrollY - 20;
+                                window.scrollTo({ top: y, behavior: "smooth" });
+                            });
+                        });
                     }
                 }
             }
