@@ -102,12 +102,21 @@
             <div class="name">{{ site.author.name }}</div>
             <div class="affiliation">PhD Candidate<br>{{ site.author.affiliation_short }}</div>
 {% assign current = page.url %}
-{% for item in site.data.navigation %}
-  <a href="{{ item.url | relative_url }}"
-     class="sidebar-btn {% if current == item.url %}btn-active{% else %}btn-outline{% endif %}">
-    {{ item.title }}
-  </a>
-{% endfor %}
+
+<a href="{{ '/' | relative_url }}"
+   class="sidebar-btn {% if current == '/' %}btn-active{% else %}btn-outline{% endif %}">
+  Home
+</a>
+
+<a href="{{ '/cv/' | relative_url }}"
+   class="sidebar-btn {% if current == '/cv/' %}btn-active{% else %}btn-outline{% endif %}">
+  Curriculum Vitae
+</a>
+
+<a href="{{ '/teaching/' | relative_url }}"
+   class="sidebar-btn {% if current == '/teaching/' %}btn-active{% else %}btn-outline{% endif %}">
+  Teaching
+</a>
             <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">Email Me</a>
             <div class="social-links">
                 <!-- LinkedIn -->
