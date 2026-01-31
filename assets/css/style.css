@@ -1,6 +1,10 @@
 /* ============================================================================
-   DESIGN SYSTEM VARIABLES
-   ============================================================================ */
+   0. DESIGN SYSTEM VARIABLES & TOKENS
+   ============================================================================
+
+   Color palette, spacing scale, typography system, and CSS custom properties
+   that define the visual design. Includes both light and dark mode variants.
+*/
 
 :root { 
     /* Colors - Background */
@@ -17,14 +21,11 @@
     --text-muted: #94a3b8;      /* More muted/lighter text */
     --text-lighter: #cbd5e1;    /* Very light text */
     
-    /* Legacy aliases (for backwards compatibility) */
-    --text-main: var(--text-primary);
-    
     /* Colors - Accent */
     --accent: #2774AE;          /* UCLA Blue */
     --accent-hover: #1e5f8e;    /* Darker blue for hover */
     --accent-orange: #D97706;   /* Amber accent (job market tag) */
-    
+
     /* Colors - Border */
     --border: #e2e8f0;          /* Default border */
     --border-dashed: #e2e8f0;   /* Dashed borders */
@@ -47,7 +48,6 @@
     --space-10: 2.5rem;   /* 40px */
     --space-12: 3rem;     /* 48px */
     --space-16: 4rem;     /* 64px */
-    --space-20: 5rem;     /* 80px */
     --space-24: 6rem;     /* 96px */
     
     /* Typography Scale */
@@ -1364,7 +1364,7 @@ a .cv-logo:hover {
 }
 
 
-/* /* ============================================================================
+/* ============================================================================
    15. RESPONSIVE DESIGN
    ============================================================================ */
 
