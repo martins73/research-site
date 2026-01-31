@@ -15,21 +15,20 @@ items:
     link_url: "https://pomsmeetings.org/conf-2026/"
     link_suffix: "in Reno, NV."
 
-  # Uncomment and fill in as you add more items:
-  - date: "Nov 2025"
-     text: 'Submitted "Searching for Serendipity" to <em>Strategic Management Journal</em>.'
-     link_text: "Preprint available"
-     link_url: "https://osf.io/preprints/socarxiv/ve8mx"
-     link_suffix: ""
+  - date: "Jan 2025"
+    text: 'Published'
+    link_text: '"Fairness in Crowdwork"'
+    link_url: "https://www.sciencedirect.com/science/article/pii/S0007681324001265"
+    link_suffix: "in <em>Business Horizons</em>."
 
   - date: "Nov 2025"
-     text: 'Submitted "The Impact of Information Systems on Experts\' Decisions" to <em>American Economic Journal: Applied Economics</em>.'
-     link_text: ""
-     link_url: ""
-     link_suffix: ""
-     
-  - date: "Jan 2025"
-     text: 'Published'
-     link_text: '"Fairness in Crowdwork"'
-     link_url: "https://www.sciencedirect.com/science/article/pii/S0007681324001265"
-     link_suffix: "in <em>Business Horizons</em>."
+    text: 'Submitted "Searching for Serendipity" to <em>Strategic Management Journal</em>.'
+    link_text: "Preprint available"
+    link_url: "https://osf.io/preprints/socarxiv/ve8mx"
+    link_suffix: ""
+
+  - date: "Nov 2025"
+    text: 'Submitted "The Impact of Information Systems on Experts\' Decisions" to <em>American Economic Journal: Applied Economics</em>.'
+    link_text: ""
+    link_url: ""
+    link_suffix: ""
