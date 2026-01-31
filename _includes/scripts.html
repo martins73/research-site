@@ -18,10 +18,8 @@
 
         const main = document.getElementById("main-content");
         if (main) {
-          // Page is already scrolled to content by head.html script.
-          // Just ensure we're at the right position with smooth animation.
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
-          window.scrollTo({ top: y, behavior: "smooth" });
+          window.scrollTo(0, y);
         }
       }
     }

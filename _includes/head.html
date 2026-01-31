@@ -1,17 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Hide page on mobile navigation to prevent flash -->
-<script>
-  (function () {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
-    if (isMobile && shouldAutoScroll) {
-      // Use document.write to inject CSS that hides page before rendering
-      document.write('<style>body { visibility: hidden !important; }</style>');
-    }
-  })();
-</script>
 
 {% assign meta_desc = page.description | default: site.description %}
 
@@ -97,7 +86,7 @@
   })();
 </script>
 
-<!-- Mobile scroll to content: scroll immediately then make visible -->
+<!-- Mobile pre-paint scroll guard: prevents "jump up then down" on navigation -->
 <script>
   (function () {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -110,21 +99,6 @@
       history.scrollRestoration = "manual";
     }
 
-    // Perform the scroll as soon as DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', performScroll, { once: true });
-    } else {
-      performScroll();
-    }
-
-    function performScroll() {
-      const main = document.getElementById("main-content");
-      if (main) {
-        const y = main.getBoundingClientRect().top + window.scrollY - 20;
-        window.scrollTo(0, y);
-      }
-      // Make content visible (was hidden by document.write in early script)
-      document.body.style.visibility = 'visible';
-    }
+    window.scrollTo(0, 0);
   })();
 </script>
