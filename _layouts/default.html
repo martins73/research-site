@@ -19,8 +19,7 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-
-    <title>{{ page.title }} | {{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ site.url }}/assets/logos/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
