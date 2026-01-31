@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Human Supply Chain of AI
-description: {{ site.author.name }}'s research on the Human Supply Chain of AI - exploring crowdwork platforms, algorithmic fairness, and the invisible labor behind artificial intelligence. {{ site.author.job_title }} at {{ site.author.affiliation }}.
+description: Martin Gonzalez Cabello's research on the Human Supply Chain of AI - exploring crowdwork platforms, algorithmic fairness, and the invisible labor behind artificial intelligence.
 permalink: /human-supply-chain/
 active_page: research
 ---
