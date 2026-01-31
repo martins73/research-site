@@ -95,9 +95,12 @@
             <div class="name">{{ site.author.name }}</div>
             <div class="affiliation">PhD Candidate<br>{{ site.author.affiliation_short }}</div>
 
-            <a href="/" class="sidebar-btn {% if page.active_page == 'home' %}btn-active{% else %}btn-outline{% endif %}">Home</a>
-            <a href="/teaching" class="sidebar-btn {% if page.active_page == 'teaching' %}btn-active{% else %}btn-outline{% endif %}">Teaching</a>
-            <a href="/cv" class="sidebar-btn {% if page.active_page == 'cv' %}btn-active{% else %}btn-outline{% endif %}">Curriculum Vitae</a>
+{% for item in site.data.navigation %}
+  <a href="{{ item.url | relative_url }}"
+     class="sidebar-btn {% if page.active_page == item.key %}btn-active{% else %}btn-outline{% endif %}">
+     {{ item.title }}
+  </a>
+{% endfor %}
             <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">Email Me</a>
             <div class="social-links">
                 <!-- LinkedIn -->
