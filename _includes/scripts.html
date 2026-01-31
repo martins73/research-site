@@ -5,9 +5,15 @@
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     
     if (isMobile) {
+      const sidebar = document.querySelector(".sidebar");
+
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
-          sessionStorage.setItem("autoScrollToContent", "1");
+          // Only scroll if the sidebar is visible at the top of the screen
+          if (sidebar && sidebar.getBoundingClientRect().top < 100) {
+            sessionStorage.setItem("autoScrollToContent", "1");
+          }
+          // If sidebar is not at top, don't set the flag - page will load normally
         });
       });
     
@@ -19,7 +25,8 @@
         const main = document.getElementById("main-content");
         if (main) {
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
-          window.scrollTo(0, y);
+          // Use smooth scroll to show user where the content is
+          window.scrollTo({ top: y, behavior: "smooth" });
         }
       }
     }
