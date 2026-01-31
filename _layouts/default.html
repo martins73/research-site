@@ -18,8 +18,15 @@
     <meta name="twitter:card" content="{{ site.twitter_card }}">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <!-- Page title -->
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+
+    <!-- Meta description -->
+{% assign meta_desc = page.description | default: site.description %}
+    <meta name="description"
+      content="{{ site.author.job_title }} at {{ site.author.affiliation_short }}. {{ meta_desc }}">
     <link rel="icon" type="image/svg+xml" href="{{ site.url }}/assets/logos/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
