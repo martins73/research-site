@@ -26,7 +26,6 @@ In fields like Operations and Data Analytics, technical skills are only half the
 ## Teaching Experience
 
 <section id="history" class="section-spacing">
-
 {% for course in site.data.teaching.courses %}
 <div class="cv-entry">
     <div class="course-header">
