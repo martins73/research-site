@@ -274,16 +274,17 @@ h1, h2, h3, .name {
 }
 
 /* Profile Image */
-.profile-img { 
-    width: 180px; 
-    height: 180px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    margin-bottom: var(--space-6); 
-    border: 4px solid #f8fafc; 
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--space-6);
+    border: 4px solid #f8fafc;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    user-select: none;           
-    -webkit-user-drag: none;    
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: pointer;  /* Clickable - triggers spin animation */
 }
 
 /* Profile Text */
