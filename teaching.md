@@ -1,3 +1,4 @@
+---
 layout: default
 title: Teaching
 active_page: teaching
