@@ -5,9 +5,22 @@
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     
     if (isMobile) {
+      const sidebar = document.querySelector(".sidebar");
+
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
-          sessionStorage.setItem("autoScrollToContent", "1");
+          // Only set scroll flag if sidebar is visible at top of screen
+          // If user has scrolled down and sidebar is off-screen, skip animation
+          if (sidebar) {
+            const sidebarRect = sidebar.getBoundingClientRect();
+            // If sidebar top is near the top of viewport (within 200px), do the animation
+            if (sidebarRect.top < 200) {
+              sessionStorage.setItem("autoScrollToContent", "1");
+            }
+          } else {
+            // Fallback: if we can't find sidebar, assume we should scroll
+            sessionStorage.setItem("autoScrollToContent", "1");
+          }
         });
       });
     
