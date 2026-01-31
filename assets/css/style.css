@@ -793,16 +793,15 @@ h2 {
    9. CV PAGE
    ============================================================================ */
 
-/* CV Page Header */
+/* CV Page Header (title on top, action below) */
 .cv-page-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
     margin-bottom: var(--space-12);
     border-bottom: 1px solid var(--border);
     padding-bottom: var(--space-6);
-    flex-wrap: wrap;
-    gap: var(--space-4);
 }
 
 .cv-page-title {
@@ -811,10 +810,11 @@ h2 {
     padding: 0;
 }
 
+/* CV header actions */
 .cv-actions {
     display: flex;
-    gap: var(--space-4);
-}
+    align-items: center;
+    gap: var(--space-3);
 
 /* CV Section Headers */
 .cv-section-header {
@@ -922,17 +922,10 @@ a .cv-logo:hover {
     color: var(--text-tertiary);
 }
 
-/* CV header actions, compact and balanced */
-.cv-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-}
-
+/* CV action button */
 .cv-action-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
 
     padding: 0.55rem 0.9rem;
     border-radius: 8px;
@@ -944,7 +937,9 @@ a .cv-logo:hover {
     text-decoration: none;
     white-space: nowrap;
 
-    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    transition: background-color 0.15s ease,
+                color 0.15s ease,
+                border-color 0.15s ease;
 }
 
 /* ============================================================================
