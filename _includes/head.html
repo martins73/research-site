@@ -87,12 +87,83 @@
   })();
 </script>
 
+<!-- Global Configuration: Mobile breakpoint must be consistent across all scripts -->
+<!-- This value (768px) matches the @media query in style.css -->
+<script>
+  window.MOBILE_BREAKPOINT_PX = 768;
+</script>
+
+<!-- Web Vitals Performance Monitoring -->
+<!-- Tracks Core Web Vitals (LCP, FID/INP, CLS) to detect performance issues -->
+<!-- Data is sent to Google Analytics and logged to console for debugging -->
+<script>
+  // Track Web Vitals metrics
+  function captureWebVitals() {
+    // Use PerformanceObserver to track metrics
+    try {
+      // Largest Contentful Paint (LCP) - measures loading performance
+      const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        if (window.gtag) {
+          window.gtag('event', 'page_view', {
+            'web_vitals_lcp': lastEntry.renderTime || lastEntry.loadTime
+          });
+        }
+        console.log('LCP:', lastEntry.renderTime || lastEntry.loadTime, 'ms');
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'], buffered: true });
+
+      // First Input Delay (FID) / Interaction to Next Paint (INP)
+      const fidObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach((entry) => {
+          const delay = entry.processingStart - entry.startTime;
+          if (window.gtag) {
+            window.gtag('event', 'page_view', {
+              'web_vitals_fid': delay
+            });
+          }
+          console.log('FID:', delay.toFixed(2), 'ms');
+        });
+      });
+      fidObserver.observe({ entryTypes: ['first-input'], buffered: true });
+
+      // Cumulative Layout Shift (CLS) - measures visual stability
+      let clsValue = 0;
+      const clsObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+            if (window.gtag) {
+              window.gtag('event', 'page_view', {
+                'web_vitals_cls': clsValue
+              });
+            }
+          }
+        }
+        console.log('CLS:', clsValue.toFixed(3));
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'], buffered: true });
+    } catch (e) {
+      console.log('Web Vitals monitoring not supported in this browser');
+    }
+  }
+
+  // Start monitoring when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', captureWebVitals);
+  } else {
+    captureWebVitals();
+  }
+</script>
+
 <!-- Mobile Scroll Guard: Disable browser scroll restoration for mobile navigation -->
 <!-- When user clicks a sidebar link on mobile, we want to scroll to main content.
      This disables the browser's automatic scroll restoration so we control it via JavaScript -->
 <script>
   (function () {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
     if (!isMobile) return;
 
     const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";

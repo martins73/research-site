@@ -17,8 +17,10 @@
 
        This provides visual feedback about where the content is while avoiding
        animation when the user is already reading further down the page.
+
+       Note: MOBILE_BREAKPOINT_PX is defined in head.html for consistency
     */
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
 
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
@@ -65,7 +67,6 @@
     const profilePic = document.querySelector(".js-spin-trigger");
     if (profilePic) {
       const SPIN_DURATION = 3200;
-      profilePic.style.cursor = "pointer";
       profilePic.addEventListener("click", function () {
         profilePic.classList.add("spin-effect");
         setTimeout(() => {
