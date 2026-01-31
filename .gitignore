@@ -1,0 +1,15 @@
+# Private drafts and work-in-progress
+_drafts/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build artifacts
+_site/
+.jekyll-cache/
+.bundle/
