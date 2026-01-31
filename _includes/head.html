@@ -98,8 +98,8 @@
       history.scrollRestoration = "manual";
     }
 
-    // Hide scrollbar to prevent showing the top of page
-    document.documentElement.style.overflow = 'hidden';
+    // Hide the entire body to prevent showing top of page
+    document.body.style.visibility = 'hidden';
 
     // Perform the scroll as soon as DOM is ready
     if (document.readyState === 'loading') {
@@ -114,8 +114,8 @@
         const y = main.getBoundingClientRect().top + window.scrollY - 20;
         window.scrollTo(0, y);
       }
-      // Allow scroll again
-      document.documentElement.style.overflow = '';
+      // Make content visible again
+      document.body.style.visibility = 'visible';
     }
   })();
 </script>
