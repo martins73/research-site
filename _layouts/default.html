@@ -163,15 +163,25 @@
             </button>
         </aside>
 
-        <main id="main-content" class="content" tabindex="-1">
-            {{ content }}
+        <main id="main-content" class="content">
+    {{ content }}
         </main>
     </div>
 
     {% include footer.html %}
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            
+            /* --- 0. MOBILE: AUTO-SCROLL TO CONTENT (UX CUE) --- */
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            if (isMobile) {
+                const main = document.getElementById("main-content");
+                if (main) {
+                    setTimeout(() => {
+                        const y = main.getBoundingClientRect().top + window.scrollY - 40;
+                        window.scrollTo({ top: y, behavior: "smooth" });
+                    }, 150);
+                }
+            }
             /* --- 1. SPINNING PROFILE PICTURE --- */
             const profilePic = document.querySelector('.js-spin-trigger');
             if (profilePic) {
