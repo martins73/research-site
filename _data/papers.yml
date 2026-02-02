@@ -1,0 +1,63 @@
+papers:
+  - title: "First Impressions Matter: Task Frictions and Retention"
+    status: "Job Market Paper"
+    status_class: "job-market"
+    coauthors:
+      - name: "A. Siddiq"
+        url: "https://www.auyonsiddiq.com/"
+      - name: "C. Corbett"
+        url: "https://www.anderson.ucla.edu/faculty-and-research/decisions-operations-and-technology-management/faculty/corbett"
+    badges:
+      - "Empirical Analysis"
+      - "Instrumental Variables"
+    abstract: "Crowdwork platforms are central to the data supply chains that power AI systems, particularly through large-scale data labeling, and they also sustain countless academic, marketing, and political surveys. Despite this importance, the dynamics of worker engagement remain poorly understood. Platforms face strong demand for workers who can deliver fast and high-quality results, making retention critical—even if the potential labor pool seems large, platforms actively compete to attract and keep the most reliable workers. We study fairness and worker engagement on a large online crowdwork platform using a comprehensive dataset that records ~64 million tasks completed between January 2024 and May 2025. Focusing on new workers, we analyze how early experiences shape subsequent activity. We examine several dimensions of procedural fairness and link submission records, study metadata, and dashboard data to reconstruct what each worker saw before choosing a task. Using this information, we assess how early exposure to mismatched or returned tasks influences ongoing engagement. Our results show that negative early experiences substantially reduce the probability of returning to the platform (e.g., underestimation and returns lower re-engagement rates by 5–10 percentage points). Yet conditional on returning, those same experiences increase the intensity of participation, with affected workers completing more tasks than their peers. These findings suggest that fairness perceptions are pivotal in the retention margin, but they also shape the behavior of those who persist. The implications are direct: improving early task experiences can promote retention, build trust, and help platforms secure the reliable workforce they need in an increasingly competitive environment."
+    link_text: "Request Draft"
+    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting JMP Draft: First Impressions Matter"
+
+  - title: "Fairness in Crowdwork: Making the Human AI Supply Chain More Humane"
+    status: "Publication"
+    status_class: ""
+    journal: "Business Horizons (2025)"
+    coauthors:
+      - name: "A. Siddiq"
+        url: "https://www.auyonsiddiq.com/"
+      - name: "C. Corbett"
+        url: "https://www.anderson.ucla.edu/faculty-and-research/decisions-operations-and-technology-management/faculty/corbett"
+      - name: "C. Hu"
+        url: "https://www.linkedin.com/in/catherinehhu/"
+    badges: []
+    abstract: "The vast quantities of data required to build artificial intelligence (AI) technologies are often annotated and processed manually, making human labor a critical component of the AI supply chain. The workers who input this data are sourced through digital labor (\"crowdwork\") platforms that often are unregulated and offer low wages, raising concerns about labor standards in AI development. Using the results of a survey, this article aims to shed light on the experiences and perceptions of fair treatment among workers in the AI supply chain. The study reveals significant variability in workers' experiences, identifies potential drivers of fairness, and highlights how design choices by labor platforms can significantly affect worker welfare. Drawing on lessons from physical supply chains, this article offers practical guidance to managers on how to enhance worker welfare within the AI supply chain and how to ensure that AI technologies are responsibly sourced."
+    link_text: "Journal Version"
+    link_url: "https://www.sciencedirect.com/science/article/pii/S0007681324001265"
+
+  - title: "The Impact of Information Systems on Experts' Decisions"
+    status: "Working Paper"
+    status_class: ""
+    journal: "Submitted to American Economic Journal: Applied Economics"
+    coauthors:
+      - name: "J.P. Atal"
+        url: "https://sites.google.com/site/juanpabloatal/"
+      - name: "J. Ale-Chilet"
+        url: "https://sites.google.com/site/jorgealechilet/"
+      - name: "A. Benitez"
+        url: "https://alejandrabenitezu.com/"
+    badges: []
+    abstract: "How do professionals respond to computerized, data-driven guidance in practice? We analyze a workers' compensation insurance program where physicians make coverage and diagnosis decisions. We study the introduction of an automated system that flagged diagnoses with historically low coverage. We develop a model that yields testable predictions to distinguish between informational and persuasive effects. Consistent with persuasion, physicians granted coverage less often when confronted with alerts, but they also avoided alerts by recoding diagnoses. Data from secondary reviews show that the system aligned physicians' decisions with management's preferences. These findings provide lessons for the design of information systems for decision-makers."
+    link_text: "Request Draft"
+    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems"
+
+  - title: "Searching for Serendipity"
+    status: "Working Paper"
+    status_class: ""
+    journal: "Submitted to Strategic Management Journal"
+    coauthors:
+      - name: "I. Tucker"
+        url: "https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/strategy/meet-the-students/isaac-tucker"
+      - name: "O. Sorenson"
+        url: "https://www.olavsorenson.net/?page_id=2"
+    badges:
+      - "NK Modeling"
+      - "Simulation"
+    abstract: "Serendipity would seem to preclude purposeful search. To understand the relationship between search behavior and the probability of a serendipitous discovery, we propose a formal modeling framework based on the NK model. Our simulations suggest that searchers with a clear hypothesis convert good fortune into fitness or value far more effectively. Searchers that pursue their theories through incremental steps instead of long-distance jumps have the highest rates of serendipitous success. Our model also provides insight into the role of bias, inaccurate or incorrect beliefs, and the ruggedness of the terrain in determining the rate of serendipitous discovery. Our results demonstrate the distinct roles of intent and information in finding novel, valuable discoveries."
+    link_text: "View Preprint"
+    link_url: "https://osf.io/preprints/socarxiv/ve8mx"
