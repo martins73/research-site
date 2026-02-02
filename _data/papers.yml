@@ -74,3 +74,21 @@ papers:
     abstract: "Serendipity would seem to preclude purposeful search. To understand the relationship between search behavior and the probability of a serendipitous discovery, we propose a formal modeling framework based on the NK model. Our simulations suggest that searchers with a clear hypothesis convert good fortune into fitness or value far more effectively. Searchers that pursue their theories through incremental steps instead of long-distance jumps have the highest rates of serendipitous success. Our model also provides insight into the role of bias, inaccurate or incorrect beliefs, and the ruggedness of the terrain in determining the rate of serendipitous discovery. Our results demonstrate the distinct roles of intent and information in finding novel, valuable discoveries."
     link_text: "View Preprint"
     link_url: "https://osf.io/preprints/socarxiv/ve8mx"
+
+  - title: "The Impact of Information Systems on Experts' Decisions"
+    status: "Working Paper"
+    status_class: ""
+    coauthors:
+      - name: "J.P. Atal"
+        url: "https://sites.google.com/site/juanpabloatal/"
+      - name: "J. Ale-Chilet"
+        url: "https://sites.google.com/site/jorgealechilet/"
+      - name: "A. Benitez"
+        url: "https://alejandrabenitezu.com/"
+    badges: []
+    submission: "Submitted to American Economic Journal: Applied Economics"
+    publication: ""
+    highlights: ""
+    abstract: "How do professionals respond to computerized, data-driven guidance in practice? We analyze a workers' compensation insurance program where physicians make coverage and diagnosis decisions. We study the introduction of an automated system that flagged diagnoses with historically low coverage. We develop a model that yields testable predictions to distinguish between informational and persuasive effects. Consistent with persuasion, physicians granted coverage less often when confronted with alerts, but they also avoided alerts by recoding diagnoses. Data from secondary reviews show that the system aligned physicians' decisions with management's preferences. These findings provide lessons for the design of information systems for decision-makers."
+    link_text: "Request Draft"
+    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems"
