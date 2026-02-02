@@ -33,6 +33,7 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 
 ### 📊 Data-Driven Content
 All dynamic content is managed through YAML files in `_data/`, making updates simple and centralized:
+* **Research Papers:** Complete paper metadata with abstracts, coauthors, and links
 * **Activity Feed:** Recent publications, presentations, and research updates
 * **Teaching Experience:** Course history with student counts and institutions
 * **Status/Now:** Current location, reading list, and activities
@@ -47,6 +48,7 @@ research-site/
 ├── _config.yml              # Jekyll configuration and site settings
 │
 ├── _data/                   # YAML data files (single source of truth)
+│   ├── papers.yml           # Research papers with abstracts and metadata
 │   ├── activity.yml         # Recent activity feed (papers, talks, etc.)
 │   ├── teaching.yml         # Teaching experience with course details
 │   ├── status.yml           # Current status (location, reading, activities)
@@ -131,19 +133,33 @@ Each entry includes date, text, and optional links.
 Edit `_data/teaching.yml` to add or update courses:
 - Course title and year
 - Role (e.g., Teaching Assistant)
-- Institution and level
+- Institution and program
 - Number of students
 
 The CV and Teaching pages automatically pull from this file.
 
+#### Managing Research Papers
+Edit `_data/papers.yml` to add or update papers:
+- Title, status (Job Market Paper, Publication, Working Paper)
+- Coauthors with URLs
+- Badges (methodology tags like "Empirical Analysis", "NK Modeling")
+- **Publication:** Full journal citation (for published papers)
+- **Submission:** Submission status (for working papers)
+- **Highlights:** Optional awards or achievements
+- Full abstract text
+- Link text and URL (Request Draft, Journal Version, View Preprint)
+
+The homepage automatically generates paper cards with collapsible abstracts from this file.
+
 ### Direct Page Editing
 
-#### Adding Research Papers
-Update the research cards in `index.html` with your latest publications and working papers. Each paper includes:
-- Title, authors, and status (Job Market, Publication, Working Paper)
-- Abstract summary
-- Technology badges
-- Links to preprints and journal versions
+#### Managing the Reading List
+Edit `library.html` to add or remove books from your curated shelves:
+- The Human Supply Chain
+- Formation
+- Fun
+
+Each book includes metadata, title, author, and a personal comment.
 
 #### Managing the Reading List
 Edit `library.html` to add or remove books from your curated shelves:
