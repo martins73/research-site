@@ -10,6 +10,8 @@ description: Teaching philosophy and experience in data analytics, operations ma
 
 # Teaching Philosophy
 
+<p class="lead">Bridging theory and practice through active learning.</p>
+
 My journey into academia was not traditional. After five years as a Management Consultant and four years as the Head of Advanced Analytics, I returned to the university environment inspired by the mentors who shaped my own career.
 
 These professors did more than transfer knowledge; they facilitated my personal growth and helped me navigate the complexities of the real world. As an educator, I am driven by that same purpose: to find joy in the interactions with my students and to help them see the impact of their decisions on their companies, their peers, and society.
