@@ -83,7 +83,7 @@ description: Academic CV and professional background in analytics, operations, a
             with
             {% for coauthor in paper.coauthors %}
                 {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}.
+            {% endfor %}
             {% if paper.publication != "" %}<br><em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
@@ -100,7 +100,7 @@ description: Academic CV and professional background in analytics, operations, a
             with
             {% for coauthor in paper.coauthors %}
                 {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}.
+            {% endfor %}
             {% if paper.submission != "" %}<br>{{ paper.submission }}{% endif %}
         </div>
     </div>
@@ -117,7 +117,7 @@ description: Academic CV and professional background in analytics, operations, a
             with
             {% for coauthor in paper.coauthors %}
                 {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}.
+            {% endfor %}
         </div>
     </div>
     {% endfor %}
