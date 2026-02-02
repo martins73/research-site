@@ -71,22 +71,57 @@ description: Academic CV and professional background in analytics, operations, a
 </section>
 
 <section id="research" class="section-spacing">
-    <h3 class="cv-section-header">Selected Research</h3>
+    <h3 class="cv-section-header">Research</h3>
 
+    {% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
+    {% if publications.size > 0 %}
+    <h4 class="cv-subsection-header">Publications</h4>
+    {% for paper in publications %}
     <div class="cv-entry">
-        <span class="cv-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</span>
-        <div class="cv-desc cv-desc-no-indent">with Auyon Siddiq, Charles Corbett, and Catherine Hu.<br><em>Business Horizons</em>, Vol. 68, No. 5 (2025): 645-657.</div>
+        <span class="cv-title">{{ paper.title }}</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            {% for coauthor in paper.coauthors %}
+                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
+            {% endfor %}.
+            {% if paper.publication != "" %}<br><em>{{ paper.publication }}</em>{% endif %}
+        </div>
     </div>
+    {% endfor %}
+    {% endif %}
 
+    {% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
+    {% if working_papers.size > 0 %}
+    <h4 class="cv-subsection-header">Working Papers</h4>
+    {% for paper in working_papers %}
     <div class="cv-entry">
-        <span class="cv-title">The Impact of Information Systems on Experts' Decisions: Evidence from Physicians </span>
-        <div class="cv-desc cv-desc-no-indent">with Juan Pablo Atal, Jorge Ale-Chilet, and Alejandra Benitez.<br>Submitted to <em>American Economic Journal: Applied Economics</em>.</div>
+        <span class="cv-title">{{ paper.title }}</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            {% for coauthor in paper.coauthors %}
+                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
+            {% endfor %}.
+            {% if paper.submission != "" %}<br>{{ paper.submission }}{% endif %}
+        </div>
     </div>
+    {% endfor %}
+    {% endif %}
 
+    {% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
+    {% if wip.size > 0 %}
+    <h4 class="cv-subsection-header">Work in Progress</h4>
+    {% for paper in wip %}
     <div class="cv-entry">
-        <span class="cv-title">Searching for Serendipity</span>
-        <div class="cv-desc cv-desc-no-indent">with Isaac Tucker and Olav Sorenson.<br>Submitted to <em>Strategic Management Journal</em>.</div>
+        <span class="cv-title">{{ paper.title }}</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            {% for coauthor in paper.coauthors %}
+                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
+            {% endfor %}.
+        </div>
     </div>
+    {% endfor %}
+    {% endif %}
 </section>
 
 <section id="teaching" class="section-spacing">

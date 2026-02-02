@@ -907,6 +907,15 @@ h2 {
     margin-bottom: var(--space-6);
 }
 
+.cv-subsection-header {
+    font-family: 'Merriweather', serif;
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+}
+
 /* CV Entries */
 .cv-entry {
     margin-bottom: var(--space-8);
