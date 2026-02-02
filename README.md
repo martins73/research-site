@@ -84,8 +84,7 @@ research-site/
 │   │   └── favicon.svg
 │   ├── family/              # Family member photos (6 images)
 │   │   ├── family.jpg, andrea.jpg, carlota.jpg
-│   │   ├── martin.jpg, joaquin.jpg, juanpablo.jpg
-│   │   └── placeholder.txt
+│   │   └── martin.jpg, joaquin.jpg, juanpablo.jpg
 │   ├── profile_picture.webp      # Profile image (WebP)
 │   ├── social_preview.jpg        # Open Graph preview (JPEG for compatibility)
 │   └── martin-gonzalez-cabello-cv.pdf
