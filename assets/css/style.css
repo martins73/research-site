@@ -599,9 +599,16 @@ h2 {
     color: #0369a1; 
 }
 
-.paper-journal {
+.paper-meta {
     font-size: var(--text-base);
     color: var(--text-light);
+    margin-bottom: var(--space-3);
+}
+
+.paper-highlights {
+    font-size: var(--text-base);
+    color: var(--accent-orange);
+    font-weight: 600;
     margin-bottom: var(--space-3);
 }
 

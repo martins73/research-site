@@ -94,8 +94,16 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
             </div>
             {% endif %}
 
-            {% if paper.journal %}
-            <p class="paper-journal"><em>{{ paper.journal }}</em></p>
+            {% if paper.publication != "" %}
+            <p class="paper-meta"><em>{{ paper.publication }}</em></p>
+            {% endif %}
+
+            {% if paper.submission != "" %}
+            <p class="paper-meta"><em>{{ paper.submission }}</em></p>
+            {% endif %}
+
+            {% if paper.highlights != "" %}
+            <p class="paper-highlights">{{ paper.highlights }}</p>
             {% endif %}
 
             <div class="paper-abstract-container">
