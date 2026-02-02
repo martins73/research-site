@@ -2,6 +2,7 @@ papers:
   - title: "First Impressions Matter: Task Frictions and Retention"
     status: "Job Market Paper"
     status_class: "job-market"
+    cv_category: "Working Paper"
     coauthors:
       - name: "A. Siddiq"
         url: "https://www.auyonsiddiq.com/"
@@ -20,6 +21,7 @@ papers:
   - title: "Fairness in Crowdwork: Making the Human AI Supply Chain More Humane"
     status: "Publication"
     status_class: ""
+    cv_category: "Publication"
     coauthors:
       - name: "A. Siddiq"
         url: "https://www.auyonsiddiq.com/"
@@ -38,6 +40,7 @@ papers:
   - title: "The Impact of Information Systems on Experts' Decisions"
     status: "Working Paper"
     status_class: ""
+    cv_category: "Working Paper"
     coauthors:
       - name: "J.P. Atal"
         url: "https://sites.google.com/site/juanpabloatal/"
@@ -56,6 +59,7 @@ papers:
   - title: "Searching for Serendipity"
     status: "Working Paper"
     status_class: ""
+    cv_category: "Working Paper"
     coauthors:
       - name: "I. Tucker"
         url: "https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/strategy/meet-the-students/isaac-tucker"
