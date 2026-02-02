@@ -1,13 +1,13 @@
 courses:
 
   - title: "Data and Decisions"
-    year: "2022 – 2025"
+    year: "2022-2025"
     role: "Teaching Assistant"
     institution: "UCLA Anderson"
     level: "MBA Core"
     students: 140
 
-    - title: "Optimization"
+  - title: "Optimization"
     year: "2025"
     role: "Teaching Assistant"
     institution: "UCLA Anderson"
