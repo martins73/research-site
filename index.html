@@ -67,90 +67,59 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 
 <section id="research">
     <h2>Research</h2>
-    
+
     <div class="research-grid">
-
+        {% for paper in site.data.papers.papers %}
         <div class="paper-card">
-            <span class="paper-tag job-market">Job Market Paper</span>
-            
-            <h3 class="card-title">First Impressions Matter: Task Frictions and Retention</h3>
-            
+            {% if paper.status_class != "" %}
+            <span class="paper-tag {{ paper.status_class }}">{{ paper.status }}</span>
+            {% else %}
+            <span class="paper-tag">{{ paper.status }}</span>
+            {% endif %}
+
+            <h3 class="card-title">{{ paper.title }}</h3>
+
             <div class="author-list">
-                with 
-                <a href="https://www.auyonsiddiq.com/" target="_blank" rel="noopener" class="author-link">A. Siddiq</a>, 
-                <a href="https://www.anderson.ucla.edu/faculty-and-research/decisions-operations-and-technology-management/faculty/corbett" target="_blank" rel="noopener" class="author-link">C. Corbett</a>
+                with
+                {% for coauthor in paper.coauthors %}
+                <a href="{{ coauthor.url }}" target="_blank" rel="noopener" class="author-link">{{ coauthor.name }}</a>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
             </div>
-            
+
+            {% if paper.badges.size > 0 %}
             <div class="badge-container">
-                <span class="tech-badge">Empirical Analysis</span>
-                <span class="tech-badge">Instrumental Variables</span>
+                {% for badge in paper.badges %}
+                <span class="tech-badge">{{ badge }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if paper.publication != "" %}
+            <p class="paper-meta"><em>{{ paper.publication }}</em></p>
+            {% endif %}
+
+            {% if paper.submission != "" %}
+            <p class="paper-meta"><em>{{ paper.submission }}</em></p>
+            {% endif %}
+
+            {% if paper.highlights != "" %}
+            <p class="paper-highlights">{{ paper.highlights }}</p>
+            {% endif %}
+
+            <div class="paper-abstract-container">
+                <div class="paper-abstract collapsed" id="abstract-{{ forloop.index }}">
+                    {{ paper.abstract }}
+                </div>
             </div>
 
-            <p class="card-abstract">
-                Using a dataset of 64 million tasks, we analyze how procedural fairness and task underestimation shape worker retention. Results suggest initial frictions lower re-engagement but increase participation intensity for those who remain.
-            </p>
-            
-            <a href="mailto:martin@gonzalezcabello.com?subject=Requesting JMP Draft: First Impressions Matter" class="card-link">Request Draft</a>
+            <div class="paper-actions">
+                <button class="btn-abstract" onclick="toggleAbstract({{ forloop.index }})" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
+                    Show Abstract
+                </button>
+                <a href="{{ paper.link_url }}" class="card-link" {% if paper.link_url contains 'http' %}target="_blank" rel="noopener"{% endif %}>{{ paper.link_text }}</a>
+            </div>
         </div>
-
-        <div class="paper-card">
-            <span class="paper-tag">Publication</span>
-            <h3 class="card-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</h3>
-            
-            <div class="author-list">
-                with 
-                <a href="https://www.auyonsiddiq.com/" target="_blank" rel="noopener" class="author-link">A. Siddiq</a>, 
-                <a href="https://www.anderson.ucla.edu/faculty-and-research/decisions-operations-and-technology-management/faculty/corbett" target="_blank" rel="noopener" class="author-link">C. Corbett</a>, 
-                <a href="https://www.linkedin.com/in/catherinehhu/" target="_blank" rel="noopener" class="author-link">C. Hu</a>
-            </div>
-            
-            <p class="card-abstract">
-                <em>Business Horizons (2025).</em> Surveying workers in the AI supply chain, we find significant variability in perceived fairness and identify how platform design affects welfare.
-            </p>
-            
-            <a href="https://www.sciencedirect.com/science/article/pii/S0007681324001265" class="card-link" target="_blank" rel="noopener">Journal Version</a>
-        </div>
-
-        <div class="paper-card">
-            <span class="paper-tag">Working Paper</span>
-            <h3 class="card-title">The Impact of Information Systems on Experts' Decisions</h3>
-            
-            <div class="author-list">
-                with 
-                <a href="https://sites.google.com/site/juanpabloatal/" target="_blank" rel="noopener" class="author-link">J.P. Atal</a>, 
-                <a href="https://sites.google.com/site/jorgealechilet/" target="_blank" rel="noopener" class="author-link">J. Ale-Chilet</a>, 
-                <a href="https://alejandrabenitezu.com/" target="_blank" rel="noopener" class="author-link">A. Benitez</a>
-            </div>
-            
-            <p class="card-abstract">
-                <em>Submitted to American Economic Journal: Applied Economics.</em> We analyze an alert system in workers' compensation. Physicians evaded alerts by recoding diagnoses, suggesting the system acted through persuasion rather than information.
-            </p>
-            
-            <a href="mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems" class="card-link">Request Draft</a>
-        </div>
-
-        <div class="paper-card">
-            <span class="paper-tag">Working Paper</span>
-            <h3 class="card-title">Searching for Serendipity</h3>
-            
-            <div class="author-list">
-                with 
-                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/strategy/meet-the-students/isaac-tucker" target="_blank" rel="noopener" class="author-link">I. Tucker</a>, 
-                <a href="https://www.olavsorenson.net/?page_id=2" target="_blank" rel="noopener" class="author-link">O. Sorenson</a>
-            </div>
-            
-            <div class="badge-container">
-                <span class="tech-badge">NK Modeling</span>
-                <span class="tech-badge">Simulation</span>
-            </div>
-
-            <p class="card-abstract">
-                <em>Submitted to Strategic Management Journal.</em> Does purposeful search kill serendipity? Using an NK modeling framework, we find that searchers with clear hypotheses are best at converting luck into value.
-            </p>
-            
-            <a href="https://osf.io/preprints/socarxiv/ve8mx" class="card-link" target="_blank" rel="noopener">View Preprint</a>
-        </div>
-
+        {% endfor %}
     </div>
 </section>
 

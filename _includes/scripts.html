@@ -308,6 +308,32 @@
     }
   });
 
+  /* ============================================================================
+     RESEARCH PAPERS: TOGGLE ABSTRACT
+     ============================================================================
+
+     Expands/collapses research paper abstracts when user clicks the toggle button.
+     Updates button text and ARIA attributes for accessibility.
+  */
+  function toggleAbstract(index) {
+    const abstractElement = document.getElementById(`abstract-${index}`);
+    const button = event.target;
+
+    if (abstractElement.classList.contains('collapsed')) {
+      // Expand abstract
+      abstractElement.classList.remove('collapsed');
+      abstractElement.classList.add('expanded');
+      button.textContent = 'Hide Abstract';
+      button.setAttribute('aria-expanded', 'true');
+    } else {
+      // Collapse abstract
+      abstractElement.classList.remove('expanded');
+      abstractElement.classList.add('collapsed');
+      button.textContent = 'Show Abstract';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  }
+
   console.log(
     "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
     "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",

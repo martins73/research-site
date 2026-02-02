@@ -599,37 +599,99 @@ h2 {
     color: #0369a1; 
 }
 
-.card-abstract { 
-    font-size: var(--text-normal); 
-    color: var(--text-light); 
-    margin-bottom: var(--space-6); 
-    line-height: var(--leading-normal); 
-    max-width: 780px; 
+.paper-meta {
+    font-size: var(--text-base);
+    color: var(--text-light);
+    margin-bottom: var(--space-3);
 }
 
-.card-link { 
-    font-size: var(--text-md); 
-    font-weight: 600; 
-    color: var(--text-primary); 
-    text-decoration: none; 
-    display: inline-flex; 
-    align-items: center; 
-    margin-top: auto; 
-    width: fit-content; 
+.paper-highlights {
+    font-size: var(--text-base);
+    color: var(--accent-orange);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
 }
 
-.card-link:hover { 
-    color: var(--accent); 
+.paper-abstract-container {
+    margin-bottom: var(--space-4);
+    overflow: hidden;
 }
 
-.card-link::after { 
-    content: "→"; 
-    margin-left: 4px; 
-    transition: margin 0.2s; 
+.paper-abstract {
+    font-size: var(--text-sm);
+    color: var(--text-light);
+    line-height: var(--leading-normal);
+    max-width: 780px;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
 }
 
-.card-link:hover::after { 
-    margin-left: 8px; 
+.paper-abstract.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+}
+
+.paper-abstract.expanded {
+    max-height: 2000px;
+    opacity: 1;
+    margin-bottom: var(--space-4);
+}
+
+.paper-actions {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.btn-abstract {
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: var(--space-2) var(--space-4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-abstract:hover {
+    background: var(--bg-accent);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-abstract:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.card-link {
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.card-link:hover {
+    color: var(--accent);
+}
+
+.card-link::after {
+    content: "→";
+    margin-left: 4px;
+    transition: margin 0.2s;
+}
+
+.card-link:hover::after {
+    margin-left: 8px;
 }
 
 
