@@ -666,8 +666,8 @@ h2 {
 .btn-abstract {
     font-size: var(--text-md);
     font-weight: 600;
-    color: white;
-    background: var(--accent);
+    color: var(--accent);
+    background: var(--bg-accent);
     border: 2px solid var(--accent);
     border-radius: 6px;
     padding: var(--space-2) var(--space-4);
@@ -677,8 +677,9 @@ h2 {
 }
 
 .btn-abstract:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(39, 116, 174, 0.2);
 }
