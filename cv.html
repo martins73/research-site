@@ -105,7 +105,7 @@ description: Academic CV and professional background in analytics, operations, a
             <ul>
                 {% for course in site.data.teaching.courses %}
                 {% if course.institution contains "UCLA Anderson" %}
-                <li><strong>{{ course.title }}</strong> ({{ course.level }})</li>
+                <li><strong>{{ course.title }}</strong> ({{ course.program }})</li>
                 {% endif %}
                 {% endfor %}
             </ul>

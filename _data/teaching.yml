@@ -4,33 +4,33 @@ courses:
     year: "2022-2025"
     role: "Teaching Assistant"
     institution: "UCLA Anderson"
-    level: "MBA Core"
+    program: "MBA Core"
     students: 140
 
   - title: "Optimization"
     year: "2025"
     role: "Teaching Assistant"
     institution: "UCLA Anderson"
-    level: "MSBA"
+    program: "MSBA"
     students: 30
 
   - title: "Prescriptive Models & Data Analytics"
     year: "2024"
     role: "Teaching Assistant"
     institution: "UCLA Anderson"
-    level: "MSBA"
+    program: "MSBA"
     students: 30
 
   - title: "Operations and Technology Management"
     year: "2024"
     role: "Teaching Assistant"
     institution: "UCLA Anderson"
-    level: "Global Executive MBA"
+    program: "Global Executive MBA"
     students: 40
 
   - title: "Introduction to Organizations"
     year: "2009"
     role: "Teaching Assistant"
     institution: "U. Politécnica de Madrid"
-    level: "IMIM"
+    program: "IMIM"
     students: 30
