@@ -10,7 +10,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h1 class="cv-page-title">Curriculum Vitae</h1>
 
     <div class="cv-actions">
-        <a href="/assets/Martin_Gonzalez_Cabello_CV.pdf"
+        <a href="/assets/martin-gonzalez-cabello-cv.pdf"
            class="cv-action-btn btn-primary"
            target="_blank" rel="noopener">
             Download PDF
@@ -103,10 +103,11 @@ description: Academic CV and professional background in analytics, operations, a
         <div class="cv-desc">
             Teaching Assistant for:
             <ul>
-                <li><strong>Data and Decisions</strong> (MBA Core)</li>
-                <li><strong>Optimization</strong> (MSBA)</li>
-                <li><strong>Prescriptive Models & Data Analytics</strong> (MSBA)</li>
-                <li><strong>Operations & Technology Management</strong> (Global Executive MBA)</li>
+                {% for course in site.data.teaching.courses %}
+                {% if course.institution contains "UCLA Anderson" %}
+                <li><strong>{{ course.title }}</strong> ({{ course.level }})</li>
+                {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
