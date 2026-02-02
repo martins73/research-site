@@ -178,6 +178,21 @@
     border-left-color: var(--accent);
 }
 
+/* Dark mode paper buttons */
+[data-theme="dark"] .btn-abstract:hover {
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .card-link {
+    background: var(--bg-paper);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .card-link:hover {
+    background: var(--bg-accent);
+    border-color: var(--accent);
+}
+
 /* ============================================================================
    1. GLOBAL STYLES & RESET
    ============================================================================ */
@@ -622,20 +637,22 @@ h2 {
     color: var(--text-light);
     line-height: var(--leading-normal);
     max-width: 780px;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
 
 .paper-abstract.collapsed {
     max-height: 0;
     opacity: 0;
-    margin: 0;
+    padding: 0;
 }
 
 .paper-abstract.expanded {
-    max-height: 2000px;
+    max-height: 1500px;
     opacity: 1;
-    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
 }
 
 .paper-actions {
@@ -649,9 +666,9 @@ h2 {
 .btn-abstract {
     font-size: var(--text-md);
     font-weight: 600;
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1px solid var(--border);
+    color: white;
+    background: var(--accent);
+    border: 2px solid var(--accent);
     border-radius: 6px;
     padding: var(--space-2) var(--space-4);
     cursor: pointer;
@@ -660,9 +677,14 @@ h2 {
 }
 
 .btn-abstract:hover {
-    background: var(--bg-accent);
-    border-color: var(--accent);
-    color: var(--accent);
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(39, 116, 174, 0.2);
+}
+
+.btn-abstract:active {
+    transform: translateY(0);
 }
 
 .btn-abstract:focus {
@@ -674,14 +696,26 @@ h2 {
     font-size: var(--text-md);
     font-weight: 600;
     color: var(--text-primary);
+    background: var(--bg-paper);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: var(--space-2) var(--space-4);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     width: fit-content;
+    transition: all 0.2s ease;
 }
 
 .card-link:hover {
     color: var(--accent);
+    border-color: var(--accent);
+    background: var(--bg-accent);
+    transform: translateY(-1px);
+}
+
+.card-link:active {
+    transform: translateY(0);
 }
 
 .card-link::after {
