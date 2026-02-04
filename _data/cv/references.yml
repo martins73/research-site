@@ -1,10 +1,10 @@
 # currently empty to hide section
-[]
+#[]
 
-# - name: "Charles Corbett"
-#   title: "Professor of Operations Management and Sustainability; IBM Chair in Management"
-#   institution: "UCLA Anderson School of Management"
-#   email: "charles.corbett@anderson.ucla.edu"
+ - name: "Charles Corbett"
+   title: "Professor of Operations Management and Sustainability; IBM Chair in Management"
+   institution: "UCLA Anderson School of Management"
+   email: "charles.corbett@anderson.ucla.edu"
 
 # - name: "Auyon Siddiq"
 #   title: "Associate Professor of Decisions, Operations and Technology Management"
