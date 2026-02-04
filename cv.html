@@ -122,7 +122,7 @@ description: Academic CV and professional background in analytics, operations, a
         {% if position.roles.size > 1 %}
         <div class="cv-entry-header cv-company-header">
             <div class="cv-header-group">
-                {% if position.company_url != "" %}
+                {% if position.company_url %}
                 <a href="{{ position.company_url }}" target="_blank"><img src="{{ position.logo }}" alt="{{ position.logo_alt }}" class="cv-logo"></a>
                 <a href="{{ position.company_url }}" target="_blank" class="cv-institution-link cv-title">{{ position.company }}</a>
                 {% else %}
@@ -154,7 +154,7 @@ description: Academic CV and professional background in analytics, operations, a
         {% else %}
         <div class="cv-entry-header">
             <div class="cv-header-group">
-                {% if position.company_url != "" %}
+                {% if position.company_url %}
                 <a href="{{ position.company_url }}" target="_blank"><img src="{{ position.logo }}" alt="{{ position.logo_alt }}" class="cv-logo"></a>
                 <a href="{{ position.company_url }}" target="_blank" class="cv-institution-link cv-title">{{ position.company }}</a>
                 {% else %}
