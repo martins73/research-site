@@ -6,6 +6,8 @@ permalink: /cv/
 description: Academic CV and professional background in analytics, operations, and AI research.
 ---
 
+<!-- ### PAGE HEADER ### -->
+
 <div class="cv-page-header">
     <h1 class="cv-page-title">Curriculum Vitae</h1>
 
@@ -17,6 +19,8 @@ description: Academic CV and professional background in analytics, operations, a
         </a>
     </div>
 </div>
+
+<!-- ### EDUCATION ### -->
 
 <section id="education" class="section-spacing">
     <h3 class="cv-section-header">Education</h3>
@@ -33,7 +37,14 @@ description: Academic CV and professional background in analytics, operations, a
                         <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
                     {% endif %}
 
-                    <div>{% if item.institution_url %}<a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title cv-inline">{{ item.institution }}</a>{% else %}<span class="cv-title cv-inline">{{ item.institution }}</span>{% endif %}<span class="cv-location">, {{ item.location }}</span></div>
+                    <div>
+                        {% if item.institution_url %}
+                            <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title cv-inline">{{ item.institution }}</a>
+                        {% else %}
+                            <span class="cv-title cv-inline">{{ item.institution }}</span>
+                        {% endif %}
+                        <span class="cv-location">, {{ item.location }}</span>
+                    </div>
                 </div>
 
                 <span class="cv-date">{{ item.dates }}</span>
@@ -44,6 +55,8 @@ description: Academic CV and professional background in analytics, operations, a
         </div>
     {% endfor %}
 </section>
+
+<!-- ### RESEARCH ### -->
 
 <section id="research" class="section-spacing">
     <h3 class="cv-section-header">Research</h3>
@@ -82,7 +95,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
     {% endif %}
 
-    {% assign wip = site.data.cv.papers.papers | where: "cv_category", "Work in Progress" %}
+    {% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
     {% if wip.size > 0 %}
     <h4 class="cv-subsection-header">Work in Progress</h4>
     {% for paper in wip %}
@@ -98,6 +111,8 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
     {% endif %}
 </section>
+
+<!-- ### TEACHING ### -->
 
 <section id="teaching" class="section-spacing">
     <h3 class="cv-section-header">Teaching Experience</h3>
@@ -134,17 +149,19 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
 </section>
 
+<!-- ### AWARDS ### -->
+
 {% if site.data.cv.awards.size > 0 %}
 <section id="awards" class="section-spacing">
     <h3 class="cv-section-header">Honors & Awards</h3>
-    <ul class="cv-list" style="list-style-type: square; padding-left: 1.2rem; color: var(--text-secondary);">
+    <ul class="cv-awards-list">
         {% for item in site.data.cv.awards %}
-        <li style="margin-bottom: 0.4rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
-                <span style="margin-right: 1rem;">
-                    <strong style="color: var(--text-main);">{{ item.title }}</strong>, {{ item.organization }}
+        <li class="cv-award-item">
+            <div class="cv-award-row">
+                <span class="cv-award-title">
+                    <strong>{{ item.title }}</strong>, {{ item.organization }}
                 </span>
-                <span style="font-feature-settings: 'tnum'; font-variant-numeric: tabular-nums; flex-shrink: 0;">
+                <span class="cv-award-year">
                     {{ item.year }}
                 </span>
             </div>
@@ -153,6 +170,8 @@ description: Academic CV and professional background in analytics, operations, a
     </ul>
 </section>
 {% endif %}
+
+<!-- ### SERVICE ### -->
 
 {% if site.data.cv.service.size > 0 %}
 <section id="service" class="section-spacing">
@@ -167,16 +186,18 @@ description: Academic CV and professional background in analytics, operations, a
 </section>
 {% endif %}
 
+<!-- ### PRESENTATIONS ### -->
+
 {% if site.data.cv.presentations.size > 0 %}
 <section id="presentations" class="section-spacing">
     <h3 class="cv-section-header">Selected Presentations</h3>
     {% for paper in site.data.cv.presentations %}
-    <div class="cv-entry" style="margin-bottom: 1.5rem;">
-        <div class="cv-title" style="margin-bottom: 0.4rem; color: var(--text-main); font-weight: 600;">
+    <div class="cv-entry cv-paper-block">
+        <div class="cv-paper-title">
             {{ paper.title }}
         </div>
         
-        <ul style="margin: 0; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.6;">
+        <ul class="cv-talks-list">
             {% for talk in paper.talks %}
                 <li>
                     {{ talk.event }} ({{ talk.year }})
@@ -187,6 +208,8 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
 </section>
 {% endif %}
+
+<!-- ### INDUSTRY ### -->
 
 <section id="industry" class="section-spacing">
     <h3 class="cv-section-header">Industry Experience</h3>
@@ -228,14 +251,16 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
 </section>
 
+<!-- ### SKILLS ### -->
+
 <section id="skills" class="section-spacing">
     <h3 class="cv-section-header">Skills & Qualifications</h3>
     <div class="cv-entry">
-        <div class="cv-desc cv-desc-no-indent" style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="cv-desc cv-desc-no-indent cv-skills-container">
             {% for group in site.data.cv.skills %}
-            <div style="display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: baseline;">
-                <strong style="color: var(--text-main);">{{ group.category }}:</strong>
-                <span style="color: var(--text-secondary); line-height: 1.5;">
+            <div class="cv-skill-row">
+                <strong class="cv-skill-category">{{ group.category }}:</strong>
+                <span class="cv-skill-list">
                     {{ group.items | join: ", " }}
                 </span>
             </div>
@@ -244,21 +269,23 @@ description: Academic CV and professional background in analytics, operations, a
     </div>
 </section>
 
+<!-- ### REFERENCES ### -->
+
 {% if site.data.cv.references.size > 0 %}
 <section id="references" class="section-spacing">
     <h3 class="cv-section-header">References</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+    <div class="cv-references-grid">
         {% for ref in site.data.cv.references %}
         <div class="cv-entry" style="margin-bottom: 0;">
-            <div style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">
+            <div class="cv-ref-name">
                 {{ ref.name }}
             </div>
             
-            <div class="cv-desc cv-desc-no-indent" style="line-height: 1.5; font-size: 0.95rem;">
-                <span style="display: block; margin-bottom: 0.1rem;">{{ ref.title }}</span>
-                <span style="display: block; color: var(--text-secondary); margin-bottom: 0.25rem;">{{ ref.institution }}</span>
+            <div class="cv-desc cv-desc-no-indent cv-ref-details">
+                <span class="cv-ref-role">{{ ref.title }}</span>
+                <span class="cv-ref-institution">{{ ref.institution }}</span>
                 
-                <a href="mailto:{{ ref.email }}" class="cv-institution-link" style="font-weight: 400; color: var(--link-color);">
+                <a href="mailto:{{ ref.email }}" class="cv-ref-email">
                     {{ ref.email }}
                 </a>
             </div>
