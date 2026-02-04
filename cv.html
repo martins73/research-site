@@ -18,28 +18,40 @@ description: Academic CV and professional background in analytics, operations, a
     </div>
 </div>
 
-<section id="education">
+<section id="education" class="section-spacing">
     <h3 class="cv-section-header">Education</h3>
-    
+
     {% for item in site.data.cv.education %}
         <div class="cv-entry">
-            <div class="cv-entry-header">
+            <div class="cv-entry-header" style="display: flex; justify-content: space-between; align-items: center;">
+                
                 <div class="cv-header-group">
                     {% if item.institution_url %}
                         <a href="{{ item.institution_url }}" target="_blank">
                             <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
                         </a>
-                        <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title">
-                            {{ item.institution }}
-                        </a>
                     {% else %}
                         <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
-                        <span class="cv-title">{{ item.institution }}</span>
                     {% endif %}
+
+                    <div style="display: inline-block;">
+                        {% if item.institution_url %}
+                            <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title">
+                                {{ item.institution }}
+                            </a>
+                        {% else %}
+                            <span class="cv-title">{{ item.institution }}</span>
+                        {% endif %}
+
+                        <span style="font-weight: normal; color: var(--text-secondary);">, {{ item.location }}</span>
+                    </div>
                 </div>
-                <span class="cv-date">{{ item.dates }}</span>
+
+                <span class="cv-date" style="white-space: nowrap;">{{ item.dates }}</span>
             </div>
+
             <div class="cv-role">{{ item.degree }}</div>
+
             <div class="cv-desc">{{ item.description }}</div>
         </div>
     {% endfor %}
