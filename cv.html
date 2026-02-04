@@ -277,17 +277,24 @@ description: Academic CV and professional background in analytics, operations, a
     <div class="cv-references-grid">
         {% for ref in site.data.cv.references %}
         <div class="cv-entry" style="margin-bottom: 0;">
-            <div class="cv-title">
-                &bull;&nbsp; {{ ref.name }}
-            </div>
-            
-            <div class="cv-desc cv-desc-no-indent">
-                <span style="display: block;">{{ ref.title }}</span>
-                <span style="display: block; color: var(--text-secondary); margin-bottom: 0.25rem;">{{ ref.institution }}</span>
+            <div style="display: flex; gap: 0.6rem; align-items: baseline;">
                 
-                <a href="mailto:{{ ref.email }}" style="color: var(--link-color); text-decoration: none;">
-                    {{ ref.email }}
-                </a>
+                <span style="color: var(--text-secondary); font-size: 1rem; line-height: 1; flex-shrink: 0;">&bull;</span>
+                
+                <div style="flex-grow: 1;">
+                    <div class="cv-title" style="margin-bottom: 0.25rem;">
+                        {{ ref.name }}
+                    </div>
+                    
+                    <div class="cv-desc cv-desc-no-indent">
+                        <span style="display: block;">{{ ref.title }}</span>
+                        <span style="display: block; color: var(--text-secondary); margin-bottom: 0.25rem;">{{ ref.institution }}</span>
+                        
+                        <a href="mailto:{{ ref.email }}" style="color: var(--link-color); text-decoration: none;">
+                            {{ ref.email }}
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
