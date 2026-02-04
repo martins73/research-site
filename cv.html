@@ -37,12 +37,8 @@ description: Academic CV and professional background in analytics, operations, a
                         {% if item.institution_url %}
                             <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title cv-inline">
                                 {{ item.institution }}
-                            </a>
-                        {% else %}
-                            <span class="cv-title cv-inline">{{ item.institution }}</span>
-                        {% endif %}
-                        
-                        <span class="cv-location">, {{ item.location }}</span>
+                            </a>{% else %}
+                            <span class="cv-title cv-inline">{{ item.institution }}</span>{% endif %}<span class="cv-location">, {{ item.location }}</span>
                     </div>
                 </div>
 
@@ -119,12 +115,12 @@ description: Academic CV and professional background in analytics, operations, a
                     <a href="{{ item.url }}" target="_blank">
                         <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
                     </a>
-
                     <div>
-                        <a href="{{ item.url }}" target="_blank" class="cv-institution-link cv-title cv-inline">
-                            {{ item.institution }}
-                        </a>
-                        <span class="cv-location">, {{ item.location }}</span>
+                        {% if item.institution_url %}
+                            <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title cv-inline">
+                                {{ item.institution }}
+                            </a>{% else %}
+                            <span class="cv-title cv-inline">{{ item.institution }}</span>{% endif %}<span class="cv-location">, {{ item.location }}</span>
                     </div>
                 </div>
                 
