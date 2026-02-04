@@ -1,0 +1,52 @@
+- company: ACHS (Safety Association of Chile)
+  company_url: https://www.achs.cl/
+  logo: /assets/logos/achs.png
+  positions:
+    - role: Head of Advanced Analytics
+      dates: "2019 - 2021"
+      description:
+        - Created and led the analytics department to integrate machine learning into healthcare and job safety decision-making.
+        - Launched the Research and Innovation area, leading ~10 research collaborations with universities.
+        - Served as project sponsor for MIT Analytics Lab (2020), providing real-world data and mentorship to graduate student teams.
+    - role: Head of Customer Experience, Analytics and Remote Channels
+      dates: "2018 - 2019"
+      description:
+        - Managed CX strategies for a network covering 50% of Chilean workers.
+        - Oversaw the call center (~200 agents) and digital channels.
+
+- company: Asociación DEC Chile
+  company_url: https://asociaciondec-cl.org/
+  logo: /assets/logos/dec.png
+  positions:
+    - role: Founder and President
+      dates: "2018 - 2021"
+      description:
+        - Founded the Chilean chapter of the Association for the Development of Customer Experience.
+
+- company: Oliver Wyman
+  company_url: https://www.oliverwyman.com/
+  logo: /assets/logos/oliver.png
+  positions:
+    - role: Management Consultant
+      dates: "2011 - 2017"
+      description:
+        - Advised clients in Europe, Latin America, the Middle East, and the US on digital strategy and products.
+        - Designed retention strategies that reduced churn by 17% for a major European operator.
+        - Restructured debt ($2.3 BN) for a Saudi mobile operator during a Rights Issue process.
+
+- company: Thinkids Project
+  logo: /assets/logos/thinkids.png
+  positions:
+    - role: Co-Founder
+      dates: "2012 - Present"
+      description:
+        - Co-founded a company to teach entrepreneurship to children (ages 8-14) in Spain, Nepal, Pakistan, Peru, and the Philippines.
+
+- company: Telefonica
+  company_url: https://www.telefonica.com/
+  logo: /assets/logos/telefonica.png
+  positions:
+    - role: MBA Intern
+      dates: "Summer 2014"
+      description:
+        - Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.
