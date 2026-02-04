@@ -1017,6 +1017,20 @@ a .cv-logo:hover {
     color: var(--text-primary);
 }
 
+/* Helper to force the University name to stay on the same line */
+.cv-inline {
+    display: inline !important;
+    margin-bottom: 0 !important;
+}
+
+/* The new Location class: Same size as title, but normal weight & gray */
+.cv-location {
+    font-size: var(--text-xl);    /* Matches cv-title size */
+    font-weight: 400;             /* Normal weight (not bold) */
+    color: var(--text-secondary); /* Slightly lighter color */
+    display: inline;              /* Ensures it sits next to the title */
+}
+
 .cv-date {
     color: var(--text-light);
     font-style: italic;
