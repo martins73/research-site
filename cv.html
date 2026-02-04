@@ -25,34 +25,39 @@ description: Academic CV and professional background in analytics, operations, a
         <div class="cv-entry">
             <div class="cv-entry-header" style="display: flex; justify-content: space-between; align-items: center;">
                 
-                <div class="cv-header-group">
+                <div class="cv-header-group" style="display: flex; align-items: center;">
+                    
                     {% if item.institution_url %}
-                        <a href="{{ item.institution_url }}" target="_blank">
+                        <a href="{{ item.institution_url }}" target="_blank" style="margin-right: 10px; display: flex; align-items: center;">
                             <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
                         </a>
                     {% else %}
-                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                        <div style="margin-right: 10px; display: flex; align-items: center;">
+                            <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                        </div>
                     {% endif %}
 
-                    <div style="display: inline-block;">
+                    <div>
                         {% if item.institution_url %}
-                            <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title">
+                            <a href="{{ item.institution_url }}" target="_blank" class="cv-title" style="display: inline !important; font-weight: bold; color: var(--text-primary);">
                                 {{ item.institution }}
                             </a>
                         {% else %}
-                            <span class="cv-title">{{ item.institution }}</span>
+                            <span class="cv-title" style="display: inline !important; font-weight: bold; color: var(--text-primary);">
+                                {{ item.institution }}
+                            </span>
                         {% endif %}
-
-                        <span style="font-weight: normal; color: var(--text-secondary);">, {{ item.location }}</span>
+                        
+                        <span style="color: var(--text-secondary); display: inline !important;">, {{ item.location }}</span>
                     </div>
                 </div>
 
                 <span class="cv-date" style="white-space: nowrap;">{{ item.dates }}</span>
             </div>
 
-            <div class="cv-role">{{ item.degree }}</div>
+            <div class="cv-role" style="margin-top: 2px;">{{ item.degree }}</div>
 
-            <div class="cv-desc">{{ item.description }}</div>
+            <div class="cv-desc" style="margin-top: 2px;">{{ item.description }}</div>
         </div>
     {% endfor %}
 </section>
