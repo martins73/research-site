@@ -133,6 +133,53 @@ description: Academic CV and professional background in analytics, operations, a
         </div>
     {% endfor %}
 </section>
+
+{% if site.data.cv.awards.size > 0 %}
+<section id="awards" class="section-spacing">
+    <h3 class="cv-section-header">Honors & Awards</h3>
+    {% for item in site.data.cv.awards %}
+    <div class="cv-entry">
+        <div class="cv-desc cv-desc-no-indent">
+            <strong>{{ item.title }}</strong>, {{ item.organization }} ({{ item.year }})
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+{% if site.data.cv.service.size > 0 %}
+<section id="service" class="section-spacing">
+    <h3 class="cv-section-header">Academic Service</h3>
+    {% for item in site.data.cv.service %}
+    <div class="cv-entry">
+        <div class="cv-desc cv-desc-no-indent">
+            <strong>{{ item.role }}</strong>, {{ item.organization }} ({{ item.year }})
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+{% if site.data.cv.presentations.size > 0 %}
+<section id="presentations" class="section-spacing">
+    <h3 class="cv-section-header">Selected Presentations</h3>
+    {% for paper in site.data.cv.presentations %}
+    <div class="cv-entry">
+        <div class="cv-desc cv-desc-no-indent">
+            <div style="font-style: italic; color: var(--text-main); margin-bottom: 0.2rem;">
+                "{{ paper.title }}"
+            </div>
+            <div style="color: var(--text-secondary);">
+                {% for talk in paper.talks %}
+                    {{ talk.event }} ({{ talk.year }}){% unless forloop.last %}; {% endunless %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
 <section id="industry" class="section-spacing">
     <h3 class="cv-section-header">Industry Experience</h3>
     
@@ -173,19 +220,34 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
 </section>
 
-<section id="additional" class="section-spacing">
-    <h3 class="cv-section-header">Additional Information</h3>
+<section id="skills" class="section-spacing">
+    <h3 class="cv-section-header">Skills & Qualifications</h3>
+    <div class="cv-entry">
+        <div class="cv-desc cv-desc-no-indent">
+            {% for group in site.data.cv.skills %}
+            <div style="margin-bottom: 0.5rem;">
+                <strong style="display: inline-block; min-width: 120px; color: var(--text-main);">{{ group.category }}:</strong>
+                {{ group.items | join: ", " }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-    {% for section in site.data.cv.additional_information %}
-        <div class="cv-entry">
-            <span class="cv-title">{{ section.title }}</span>
+{% if site.data.cv.references.size > 0 %}
+<section id="references" class="section-spacing">
+    <h3 class="cv-section-header">References</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        {% for ref in site.data.cv.references %}
+        <div class="cv-entry" style="margin-bottom: 0;">
+            <span class="cv-title">{{ ref.name }}</span>
             <div class="cv-desc cv-desc-no-indent">
-                <ul class="cv-list">
-                    {% for item in section.items %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
+                {{ ref.title }}<br>
+                {{ ref.institution }}<br>
+                <a href="mailto:{{ ref.email }}" class="cv-institution-link">{{ ref.email }}</a>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </section>
+{% endif %}
