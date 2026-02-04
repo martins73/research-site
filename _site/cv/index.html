@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Head: Meta tags, SEO, styles, and early scripts -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/cv/">
+
+<title>Curriculum Vitae | Martin Gonzalez Cabello</title>
+
+<meta name="description" content="PhD Candidate in Decisions, Operations & Technology Management at UCLA Anderson. Academic CV and professional background in analytics, operations, and AI research.">
+
+<meta property="og:title" content="Curriculum Vitae">
+<meta property="og:description" content="Academic CV and professional background in analytics, operations, and AI research.">
+<meta property="og:url" content="http://0.0.0.0:4000/cv/">
+<meta property="og:image" content="http://0.0.0.0:4000/assets/social_preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/assets/logos/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/style.css?v=1770180449">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SKK42FETN2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SKK42FETN2');
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Martin Gonzalez Cabello",
+  "alternateName": "Martin Gonzalez",
+  "givenName": "Martin",
+  "familyName": "Gonzalez Cabello",
+  "jobTitle": "PhD Candidate in Decisions, Operations & Technology Management",
+  "description": "PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.",
+  "knowsAbout": [
+    
+    { "@type": "Thing", "name": "AI Supply Chain" },
+    
+    { "@type": "Thing", "name": "Crowdwork" },
+    
+    { "@type": "Thing", "name": "Algorithmic Fairness" },
+    
+    { "@type": "Thing", "name": "Platform Economics" },
+    
+    { "@type": "Thing", "name": "Digital Labor" },
+    
+    { "@type": "Thing", "name": "Operations Management" },
+    
+    { "@type": "Thing", "name": "Data Analytics" }
+    
+  ],
+  "affiliation": {
+    "@type": "Organization",
+    "name": "UCLA Anderson School of Management",
+    "url": "https://www.anderson.ucla.edu"
+  },
+  "alumniOf": [
+    
+    { "@type": "CollegeOrUniversity", "name": "MIT Sloan School of Management" },
+    
+    { "@type": "CollegeOrUniversity", "name": "Massachusetts Institute of Technology" },
+    
+    { "@type": "CollegeOrUniversity", "name": "Illinois Institute of Technology" },
+    
+    { "@type": "CollegeOrUniversity", "name": "Universidad Politécnica de Madrid" }
+    
+  ],
+  "email": "martin@gonzalezcabello.com",
+  "url": "http://0.0.0.0:4000",
+  "sameAs": [
+    "https://www.linkedin.com/in/martingc/",
+    "https://scholar.google.com/citations?user=5OSLJwQAAAAJ",
+    "https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello"
+  ]
+}
+</script>
+
+<!-- Dark Mode Flash Prevention: Apply saved theme before page renders -->
+<!-- This prevents a white flash when user has selected dark mode -->
+<script>
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+
+<!-- Global Configuration: Mobile breakpoint must be consistent across all scripts -->
+<!-- This value (768px) matches the @media query in style.css -->
+<script>
+  window.MOBILE_BREAKPOINT_PX = 768;
+</script>
+
+<!-- Web Vitals Performance Monitoring -->
+<!-- Tracks Core Web Vitals (LCP, FID/INP, CLS) to detect performance issues -->
+<!-- Data is sent to Google Analytics and logged to console for debugging -->
+<script>
+  // Track Web Vitals metrics
+  function captureWebVitals() {
+    // Use PerformanceObserver to track metrics
+    try {
+      // Largest Contentful Paint (LCP) - measures loading performance
+      const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        if (window.gtag) {
+          window.gtag('event', 'page_view', {
+            'web_vitals_lcp': lastEntry.renderTime || lastEntry.loadTime
+          });
+        }
+        console.log('LCP:', lastEntry.renderTime || lastEntry.loadTime, 'ms');
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'], buffered: true });
+
+      // First Input Delay (FID) / Interaction to Next Paint (INP)
+      const fidObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach((entry) => {
+          const delay = entry.processingStart - entry.startTime;
+          if (window.gtag) {
+            window.gtag('event', 'page_view', {
+              'web_vitals_fid': delay
+            });
+          }
+          console.log('FID:', delay.toFixed(2), 'ms');
+        });
+      });
+      fidObserver.observe({ entryTypes: ['first-input'], buffered: true });
+
+      // Cumulative Layout Shift (CLS) - measures visual stability
+      let clsValue = 0;
+      const clsObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+            if (window.gtag) {
+              window.gtag('event', 'page_view', {
+                'web_vitals_cls': clsValue
+              });
+            }
+          }
+        }
+        console.log('CLS:', clsValue.toFixed(3));
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'], buffered: true });
+    } catch (e) {
+      console.log('Web Vitals monitoring not supported in this browser');
+    }
+  }
+
+  // Start monitoring when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', captureWebVitals);
+  } else {
+    captureWebVitals();
+  }
+</script>
+
+<!-- Mobile Scroll Guard: Disable browser scroll restoration for mobile navigation -->
+<!-- When user clicks a sidebar link on mobile, we want to scroll to main content.
+     This disables the browser's automatic scroll restoration so we control it via JavaScript -->
+<script>
+  (function () {
+    const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
+    if (!isMobile) return;
+
+    const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
+    if (!shouldAutoScroll) return;
+
+    // Disable automatic scroll restoration so our JavaScript scroll code takes over
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+  })();
+</script>
+</head>
+
+<body>
+  <!-- Main layout container -->
+  <div class="container">
+    <!-- Left sidebar: Navigation and profile -->
+    <!-- Sidebar: Main navigation, profile info, and theme toggle -->
+<!-- Contains: Profile picture, name, navigation links, social links, dark mode toggle -->
+<aside class="sidebar">
+  <img
+    src="/assets/profile_picture.webp"
+    alt="Martin Gonzalez Cabello"
+    class="profile-img js-spin-trigger"
+    width="180"
+    height="180">
+  <div class="name">Martin Gonzalez Cabello</div>
+  <div class="affiliation">PhD Candidate<br>UCLA Anderson</div>
+
+  
+
+  <a href="/"
+     class="sidebar-btn sidebar-nav btn-outline">
+    Home
+  </a>
+
+  <a href="/cv/"
+     class="sidebar-btn sidebar-nav btn-active">
+    Curriculum Vitae
+  </a>
+
+  <a href="/teaching/"
+     class="sidebar-btn sidebar-nav btn-outline">
+    Teaching
+  </a>
+
+  <a href="mailto:martin@gonzalezcabello.com" class="sidebar-btn btn-primary">Email Me</a>
+
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/martingc/" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
+      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+    </a>
+
+    <a href="https://scholar.google.com/citations?user=5OSLJwQAAAAJ" class="social-link" title="Google Scholar" target="_blank" rel="noopener">
+      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+      </svg>
+    </a>
+
+    <a href="https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello" class="social-link" title="Goodreads" target="_blank" rel="noopener">
+      <svg class="social-icon-outline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+    </a>
+
+    <a href="https://www.last.fm/user/tinjr" class="social-link" title="Last.fm" target="_blank" rel="noopener">
+      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>
+      </svg>
+    </a>
+  </div>
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+
+    <svg class="theme-icon theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+</aside>
+
+    <!-- Main content area -->
+    <main id="main-content" class="content">
+      <div class="cv-page-header">
+    <h1 class="cv-page-title">Curriculum Vitae</h1>
+
+    <div class="cv-actions">
+        <a href="/assets/martin-gonzalez-cabello-cv.pdf"
+           class="cv-action-btn btn-primary"
+           target="_blank" rel="noopener">
+            Download PDF
+        </a>
+    </div>
+</div>
+
+<section id="education">
+    <h3 class="cv-section-header">Education</h3>
+    
+    
+    <div class="cv-entry">
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
+                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank" class="cv-institution-link cv-title">UCLA Anderson School of Management</a>
+            </div>
+            <span class="cv-date">2021 – 2027</span>
+        </div>
+        <div class="cv-role">PhD Candidate in Decisions, Operations, and Technology Management</div>
+        <div class="cv-desc">Los Angeles, CA. Expected graduation June 2027.</div>
+    </div>
+    
+    <div class="cv-entry">
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank"><img src="/assets/logos/mit.png" alt="MIT" class="cv-logo"></a>
+                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank" class="cv-institution-link cv-title">MIT Sloan School of Management</a>
+            </div>
+            <span class="cv-date">2013 – 2015</span>
+        </div>
+        <div class="cv-role">Master of Business Administration (MBA)</div>
+        <div class="cv-desc">Cambridge, MA. Entrepreneurship & Innovation Track.</div>
+    </div>
+    
+    <div class="cv-entry">
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank"><img src="/assets/logos/iit.png" alt="IIT" class="cv-logo"></a>
+                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank" class="cv-institution-link cv-title">Illinois Institute of Technology</a>
+            </div>
+            <span class="cv-date">2010</span>
+        </div>
+        <div class="cv-role">Master in Industrial Technology & Operations</div>
+        <div class="cv-desc">Chicago, IL. GPA: 3.9/4.0</div>
+    </div>
+    
+    <div class="cv-entry">
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                <a href="https://www.industriales.upm.es/" target="_blank"><img src="/assets/logos/upm.png" alt="UPM" class="cv-logo"></a>
+                <a href="https://www.industriales.upm.es/" target="_blank" class="cv-institution-link cv-title">Universidad Politécnica de Madrid</a>
+            </div>
+            <span class="cv-date">2005 – 2010</span>
+        </div>
+        <div class="cv-role">B.S. & M.Sc. in Industrial Engineering</div>
+        <div class="cv-desc">Madrid, Spain. Top 5% of class.</div>
+    </div>
+    
+</section>
+
+<section id="research" class="section-spacing">
+    <h3 class="cv-section-header">Research</h3>
+
+    
+    
+    <h4 class="cv-subsection-header">Publications</h4>
+    
+    <div class="cv-entry">
+        <span class="cv-title">Fairness in Crowdwork: Making the Human AI Supply Chain More Humane</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            
+                A. Siddiq, 
+            
+                C. Corbett, 
+            
+                and C. Hu
+            
+            <br><em>Business Horizons 68(5), pp. 645-657</em>
+        </div>
+    </div>
+    
+    
+
+    
+    
+    <h4 class="cv-subsection-header">Working Papers</h4>
+    
+    <div class="cv-entry">
+        <span class="cv-title">First Impressions Matter: Task Frictions and Retention</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            
+                A. Siddiq 
+            
+                and C. Corbett
+            
+            
+        </div>
+    </div>
+    
+    <div class="cv-entry">
+        <span class="cv-title">Searching for Serendipity</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            
+                I. Tucker 
+            
+                and O. Sorenson
+            
+            <br>Submitted to Strategic Management Journal
+        </div>
+    </div>
+    
+    <div class="cv-entry">
+        <span class="cv-title">The Impact of Information Systems on Experts' Decisions</span>
+        <div class="cv-desc cv-desc-no-indent">
+            with
+            
+                J.P. Atal, 
+            
+                J. Ale-Chilet, 
+            
+                and A. Benitez
+            
+            <br>Submitted to American Economic Journal: Applied Economics
+        </div>
+    </div>
+    
+    
+
+    
+    
+</section>
+
+<section id="teaching" class="section-spacing">
+    <h3 class="cv-section-header">Teaching Experience</h3>
+
+    <div class="cv-entry">
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                <a href="https://www.anderson.ucla.edu" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
+                <span class="cv-title">UCLA Anderson School of Management</span>
+            </div>
+            <span class="cv-date">2022 – Present</span>
+        </div>
+        <div class="cv-desc">
+            Teaching Assistant for:
+            <ul>
+                
+                
+                <li><strong>Data and Decisions</strong> (MBA Core)</li>
+                
+                
+                
+                <li><strong>Optimization</strong> (MSBA)</li>
+                
+                
+                
+                <li><strong>Prescriptive Models & Data Analytics</strong> (MSBA)</li>
+                
+                
+                
+                <li><strong>Operations and Technology Management</strong> (Global Executive MBA)</li>
+                
+                
+                
+                
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="industry" class="section-spacing">
+    <h3 class="cv-section-header">Industry Experience</h3>
+    
+    
+    <div class="cv-entry">
+        
+        <div class="cv-entry-header cv-company-header">
+            <div class="cv-header-group">
+                
+                <a href="https://www.achs.cl/" target="_blank"><img src="/assets/logos/achs.png" alt="ACHS" class="cv-logo"></a>
+                <a href="https://www.achs.cl/" target="_blank" class="cv-institution-link cv-title">ACHS (Safety Association of Chile)</a>
+                
+            </div>
+        </div>
+
+        
+        <div class="cv-subentry">
+            <div class="cv-entry-header">
+                <div class="cv-role">Head of Advanced Analytics</div>
+                <span class="cv-date">2019 – 2021</span>
+            </div>
+            <div class="cv-desc">
+                
+                <ul>
+                    
+                    <li>Created and led the analytics department to integrate machine learning into healthcare and job safety decision-making.</li>
+                    
+                    <li>Launched the Research and Innovation area, leading ~10 research collaborations with universities.</li>
+                    
+                    <li>Served as project sponsor for MIT Analytics Lab (2020), providing real-world data and mentorship to graduate student teams.</li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+        
+        <div>
+            <div class="cv-entry-header">
+                <div class="cv-role">Head of Customer Experience, Analytics and Remote Channels</div>
+                <span class="cv-date">2018 – 2019</span>
+            </div>
+            <div class="cv-desc">
+                
+                <ul>
+                    
+                    <li>Managed CX strategies for a network covering 50% of Chilean workers.</li>
+                    
+                    <li>Oversaw the call center (~200 agents) and digital channels.</li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    <div class="cv-entry">
+        
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                
+                <a href="https://asociaciondec-cl.org/" target="_blank"><img src="/assets/logos/dec.png" alt="DEC" class="cv-logo"></a>
+                <a href="https://asociaciondec-cl.org/" target="_blank" class="cv-institution-link cv-title">Asociación DEC Chile</a>
+                
+            </div>
+            <span class="cv-date">2018 – 2021</span>
+        </div>
+        <div class="cv-role">Founder and President</div>
+        <div class="cv-desc">
+            
+            Founded the Chilean chapter of the Association for the Development of Customer Experience.
+            
+        </div>
+        
+    </div>
+    
+    <div class="cv-entry">
+        
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                
+                <a href="https://www.oliverwyman.com/" target="_blank"><img src="/assets/logos/oliver.png" alt="Oliver Wyman" class="cv-logo"></a>
+                <a href="https://www.oliverwyman.com/" target="_blank" class="cv-institution-link cv-title">Oliver Wyman</a>
+                
+            </div>
+            <span class="cv-date">2011 – 2017</span>
+        </div>
+        <div class="cv-role">Management Consultant</div>
+        <div class="cv-desc">
+            
+            <ul>
+                
+                <li>Advised clients in Europe, Latin America, the Middle East, and the US on digital strategy and products.</li>
+                
+                <li>Designed retention strategies that reduced churn by 17% for a major European operator.</li>
+                
+                <li>Restructured debt ($2.3 BN) for a Saudi mobile operator during a Rights Issue process.</li>
+                
+            </ul>
+            
+        </div>
+        
+    </div>
+    
+    <div class="cv-entry">
+        
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                
+                <img src="/assets/logos/thinkids.png" alt="Thinkids" class="cv-logo">
+                <span class="cv-title">Thinkids Project</span>
+                
+            </div>
+            <span class="cv-date">2012 – Present</span>
+        </div>
+        <div class="cv-role">Co-Founder</div>
+        <div class="cv-desc">
+            
+            Co-founded a company to teach entrepreneurship to children (ages 8-14) in Spain, Nepal, Pakistan, Peru, and the Philippines.
+            
+        </div>
+        
+    </div>
+    
+    <div class="cv-entry">
+        
+        <div class="cv-entry-header">
+            <div class="cv-header-group">
+                
+                <a href="https://www.telefonica.com/" target="_blank"><img src="/assets/logos/telefonica.png" alt="Telefonica" class="cv-logo"></a>
+                <a href="https://www.telefonica.com/" target="_blank" class="cv-institution-link cv-title">Telefonica</a>
+                
+            </div>
+            <span class="cv-date">Summer 2014</span>
+        </div>
+        <div class="cv-role">MBA Intern</div>
+        <div class="cv-desc">
+            
+            Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section id="additional" class="section-spacing">
+    <h3 class="cv-section-header">Additional Information</h3>
+    
+    
+    <div class="cv-entry">
+        <span class="cv-title">Education & Certifications</span>
+        <div class="cv-desc cv-desc-no-indent">
+            <ul class="cv-list">
+                
+                <li><strong>MITx MicroMasters in Data Science:</strong> Passed courses in Data Analysis in Social Science and Probability (2020–2021).</li>
+                
+                <li><strong>MIT Sloan Data Analytics Certificate</strong> (2020)</li>
+                
+                <li><strong>Universidad de Chile Data Analytics Diploma</strong> (2019)</li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <div class="cv-entry">
+        <span class="cv-title">Languages</span>
+        <div class="cv-desc cv-desc-no-indent">
+            <ul class="cv-list">
+                
+                <li>Spanish (Native), Fluent in English and Portuguese, Basic French.</li>
+                
+            </ul>
+        </div>
+    </div>
+    
+</section>
+
+    </main>
+  </div>
+
+  <!-- Modals and interactive elements -->
+  <div id="family-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <button id="modal-close" class="modal-close" type="button" aria-label="Close modal">×</button>
+    <img id="modal-img" class="family-photo" alt="">
+    <div id="modal-caption" class="modal-caption"></div>
+  </div>
+</div>
+  <!-- Footer: Attribution, copyright, and liturgical calendar feature -->
+<footer class="site-footer">
+  <div class="credits">
+    <span>Created with support from Gemini</span>
+    <a href="https://gemini.google.com" target="_blank" rel="noopener" title="Gemini" class="gemini-link">
+      <img src="/assets/logos/gemini.png" alt="Gemini" width="20" height="20" class="gemini-icon">
+    </a>
+    <span> and Claude</span>
+    <a href="https://claude.ai" target="_blank" rel="noopener" title="Claude" class="claude-link">
+      <img src="/assets/logos/claude.png" alt="Claude" width="20" height="20" class="claude-icon">
+    </a>
+  </div>
+
+  <p class="copyright-text">
+    <span id="saint-trigger" title="Liturgical Calendar">✝</span>
+    <span id="copyright-content">&copy; 2026 Martin Gonzalez Cabello</span>
+  </p>
+
+  <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
+</footer>
+
+
+  <!-- Application JavaScript -->
+  <script>
+  /**
+   * Main application JavaScript
+   *
+   * Handles mobile navigation scroll behavior, profile interactions, modals,
+   * dark mode, and liturgical calendar display.
+   */
+  document.addEventListener("DOMContentLoaded", function () {
+
+    /* ============================================================================
+       0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT
+       ============================================================================
+
+       On mobile devices (≤768px), when user clicks a sidebar link:
+       - If sidebar is visible at top of screen: smooth scroll to main content (shows animation)
+       - If sidebar is scrolled past screen: instant scroll to main content (no animation)
+
+       This provides visual feedback about where the content is while avoiding
+       animation when the user is already reading further down the page.
+
+       Note: MOBILE_BREAKPOINT_PX is defined in head.html for consistency
+    */
+    const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
+
+    if (isMobile) {
+      const sidebar = document.querySelector(".sidebar");
+
+      document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
+        link.addEventListener("click", () => {
+          // Store whether sidebar was visible at time of click
+          const sidebarTop = sidebar.getBoundingClientRect().top;
+          const wasScrolledDown = sidebarTop < 0 || sidebarTop > 100;
+
+          sessionStorage.setItem("autoScrollToContent", "1");
+          sessionStorage.setItem("wasScrolledDown", wasScrolledDown ? "1" : "0");
+        });
+      });
+
+      const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
+
+      if (shouldAutoScroll) {
+        sessionStorage.removeItem("autoScrollToContent");
+        const wasScrolledDown = sessionStorage.getItem("wasScrolledDown") === "1";
+        sessionStorage.removeItem("wasScrolledDown");
+
+        const main = document.getElementById("main-content");
+        if (main) {
+          const y = main.getBoundingClientRect().top + window.scrollY - 20;
+
+          // If user was at top when they clicked, use smooth scroll to show animation
+          // If user was scrolled down when they clicked, use instant scroll
+          window.scrollTo({
+            top: y,
+            behavior: wasScrolledDown ? "auto" : "smooth"
+          });
+        }
+      }
+    }
+
+    /* ============================================================================
+       1. SPINNING PROFILE PICTURE
+       ============================================================================
+
+       Clicking the profile picture triggers a 3.2 second spinning animation.
+       Uses CSS animation defined in style.css with the "spin-effect" class.
+    */
+    const profilePic = document.querySelector(".js-spin-trigger");
+    if (profilePic) {
+      const SPIN_DURATION = 3200;
+      profilePic.addEventListener("click", function () {
+        profilePic.classList.add("spin-effect");
+        setTimeout(() => {
+          profilePic.classList.remove("spin-effect");
+        }, SPIN_DURATION);
+      });
+    }
+
+    /* ============================================================================
+       2. FAMILY DYNAMIC MODAL WITH ACCESSIBILITY
+       ============================================================================
+
+       Interactive modal for displaying family member photos and information.
+
+       Features:
+       - Click/Enter/Space to open modal with family member photo
+       - Click outside modal or Escape key to close
+       - Tab navigation loops within modal (focus trap)
+       - Full ARIA labels and keyboard support for accessibility
+       - Focus returns to triggering element after closing
+    */
+    const modal = document.getElementById("family-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalCaption = document.getElementById("modal-caption");
+    const closeButton = document.getElementById("modal-close");
+    const triggers = document.querySelectorAll(".family-link");
+
+    const familyData = {"family":{"img":"/assets/family/family.jpg","text":"The real reason for everything."},"andrea":{"img":"/assets/family/andrea.jpg","text":"My partner in crime and biggest support."},"carlota":{"img":"/assets/family/carlota.jpg","text":"Our fearless firstborn."},"martin":{"img":"/assets/family/martin.jpg","text":"The curious explorer."},"joaquin":{"img":"/assets/family/joaquin.jpg","text":"Our little energizer."},"juanpablo":{"img":"/assets/family/juanpablo.jpg","text":"Our newest blessing."}};
+
+    if (modal && triggers.length > 0 && familyData) {
+      let lastFocusedElement = null;
+
+      const openModal = (personKey) => {
+        const personData = familyData[personKey];
+        if (!personData) return;
+
+        lastFocusedElement = document.activeElement;
+
+        modalImg.src = personData.img;
+        modalImg.alt = personData.text;
+        modalCaption.innerText = personData.text;
+
+        modal.style.display = "flex";
+        modal.setAttribute("aria-hidden", "false");
+
+        if (closeButton) closeButton.focus();
+
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeModal = () => {
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+
+        modalImg.src = "";
+        modalImg.alt = "";
+        modalCaption.innerText = "";
+
+        if (lastFocusedElement) lastFocusedElement.focus();
+      };
+
+      triggers.forEach((trigger) => {
+        trigger.setAttribute("role", "button");
+        trigger.setAttribute("tabindex", "0");
+        trigger.setAttribute("aria-haspopup", "dialog");
+
+        trigger.addEventListener("click", function (e) {
+          e.preventDefault();
+          const personKey = this.getAttribute("data-person");
+          openModal(personKey);
+        });
+
+        trigger.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            const personKey = this.getAttribute("data-person");
+            openModal(personKey);
+          }
+        });
+      });
+
+      if (closeButton) closeButton.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.style.display === "flex") {
+          closeModal();
+        }
+      });
+
+      modal.addEventListener("keydown", function (e) {
+        if (e.key === "Tab") {
+          const focusableElements = modal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+
+          if (focusableElements.length === 0) return;
+
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      });
+    }
+
+    /* ============================================================================
+       3. DARK MODE TOGGLE
+       ============================================================================
+
+       Toggle button to switch between light and dark themes.
+
+       - Theme preference persisted in localStorage
+       - Initial theme applied in head.html before page renders (prevents flash)
+       - Accessible via keyboard and screen readers
+    */
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+      const getCurrentTheme = () => {
+        return document.documentElement.getAttribute("data-theme") || "light";
+      };
+
+      const updateThemeLabels = (theme) => {
+        const isDark = theme === "dark";
+        themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        themeToggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+      };
+
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+        updateThemeLabels(theme);
+      };
+
+      // Set initial theme labels (theme itself is set in head.html)
+      updateThemeLabels(getCurrentTheme());
+
+      // Toggle theme on button click
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = getCurrentTheme();
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+      });
+    }
+
+    /* ============================================================================
+       4. SAINT OF THE DAY (FOOTER HOVER)
+       ============================================================================
+
+       Displays the liturgical calendar's saint of the day in the footer.
+
+       Behavior:
+       - Hover over the cross (✝) symbol to display saint information
+       - Intelligently formats saint names (singular/plural, strips prefix)
+       - Falls back to copyright text if no saint is available
+    */
+    const trigger = document.getElementById("saint-trigger");
+    const target = document.getElementById("copyright-content");
+    if (trigger && target) {
+      const today = new Date();
+      const key = (today.getMonth() + 1) + "-" + today.getDate();
+
+      const saintsByDay = {"1-1":["Mary, the Holy Mother of God"],"1-2":["Saint Basil the Great"],"1-3":["The Most Holy Name of Jesus"],"1-4":["Saint Elizabeth Ann Seton"],"1-5":["Saint John Neumann"],"1-6":["The Epiphany of the Lord"],"1-7":["Saint Raymond of Penyafort"],"1-8":["Saint Severin"],"1-9":["Saint Adrian of Canterbury"],"1-10":["Saint William of Bourges"],"1-11":["Saint Hilary of Poitiers"],"1-12":["Saint Marguerite Bourgeoys"],"1-13":["Saint Hilary of Poitiers"],"1-14":["Saint Felix of Nola"],"1-15":["Saint Paul the First Hermit"],"1-16":["Saint Marcellus I"],"1-17":["Saint Anthony, Abbot"],"1-18":["Saint Margaret of Hungary"],"1-19":["Saint Canute"],"1-20":["Saint Sebastian"],"1-21":["Saint Agnes"],"1-22":["Saint Vincent of Saragossa"],"1-23":["Saint Marianne Cope"],"1-24":["Saint Francis de Sales"],"1-25":["The Conversion of Saint Paul"],"1-26":["Saints Timothy and Titus"],"1-27":["Saint Angela Merici"],"1-28":["Saint Thomas Aquinas"],"1-29":["Saint Gildas"],"1-30":["Saint Martina, Martyr"],"1-31":["Saint John Bosco"],"2-1":["Saint Brigid of Kildare"],"2-2":["The Presentation of the Lord"],"2-3":["Saint Blaise"],"2-4":["Saint Joseph of Leonessa"],"2-5":["Saint Agatha"],"2-6":["Saint Paul Miki and Companions"],"2-7":["Saint Colette"],"2-8":["Saint Josephine Bakhita"],"2-9":["Saint Apollonia"],"2-10":["Saint Scholastica"],"2-11":["Our Lady of Lourdes"],"2-12":["Saint Eulalia"],"2-13":["Saint Catherine de Ricci"],"2-14":["Saints Cyril and Methodius"],"2-15":["Saint Claude de la Colombière"],"2-16":["Saint Juliana of Nicomedia"],"2-17":["Seven Holy Founders of the Servite Order"],"2-18":["Saint Simeon"],"2-19":["Saint Conrad of Piacenza"],"2-20":["Saint Eucherius of Orléans"],"2-21":["Saint Peter Damian"],"2-22":["The Chair of Saint Peter"],"2-23":["Saint Polycarp"],"2-24":["Saint Matthias, Apostle"],"2-25":["Saint Walburga"],"2-26":["Saint Porphyry of Gaza"],"2-27":["Saint Gregory of Narek"],"2-28":["Saint Romanus"],"2-29":["Saint Oswald"],"3-1":["Saint David of Wales"],"3-2":["Saint Agnes of Bohemia"],"3-3":["Saint Katharine Drexel"],"3-4":["Saint Casimir"],"3-5":["Saint John Joseph of the Cross"],"3-6":["Saint Colette"],"3-7":["Saints Felicity and Perpetua"],"3-8":["Saint John of God"],"3-9":["Saint Frances of Rome"],"3-10":["Saint John Ogilvie"],"3-11":["Saint Sophronius"],"3-12":["Saint Maximilian"],"3-13":["Saint Leander of Seville"],"3-14":["Saint Matilda"],"3-15":["Saint Louise de Marillac"],"3-16":["Saint Abraham Kidunaia"],"3-17":["Saint Patrick"],"3-18":["Saint Cyril of Jerusalem"],"3-19":["San José"],"3-20":["Saint John Nepomucene"],"3-21":["Saint Nicholas of Flüe"],"3-22":["Saint Lea of Rome"],"3-23":["Santo Toribio de Mogrovejo"],"3-24":["Saint Oscar Romero"],"3-25":["The Annunciation of the Lord"],"3-26":["Saint Margaret Clitherow"],"3-27":["Saint Rupert of Salzburg"],"3-28":["Saint Gontran"],"3-29":["Saint Jonas of Bobbio"],"3-30":["Saint John Climacus"],"3-31":["Saint Benjamin"],"4-1":["Saint Hugh of Grenoble"],"4-2":["Saint Francis of Paola"],"4-3":["Saint Richard of Chichester"],"4-4":["San Isidoro de Sevilla"],"4-5":["Saint Vincent Ferrer"],"4-6":["Saint Celestine I"],"4-7":["Saint John Baptist de la Salle"],"4-8":["Saint Julie Billiart"],"4-9":["Saint Mary of Egypt"],"4-10":["Saint Magdalene of Canossa"],"4-11":["Saint Stanislaus"],"4-12":["Saint Julius I"],"4-13":["Saint Martin I"],"4-14":["Saint Lidwina"],"4-15":["Saint Damien of Molokai"],"4-16":["Saint Bernadette Soubirous"],"4-17":["Saint Robert of Molesme"],"4-18":["Saint Galdino"],"4-19":["Saint Leo IX"],"4-20":["Saint Agnes of Montepulciano"],"4-21":["Saint Anselm"],"4-22":["Saints Sotero and Caius"],"4-23":["San Jorge"],"4-24":["Saint Fidelis of Sigmaringen"],"4-25":["Saint Mark the Evangelist"],"4-26":["Saint Marcellinus"],"4-27":["Saint Zita"],"4-28":["Saint Louis-Marie Grignion de Montfort"],"4-29":["Saint Catherine of Siena"],"4-30":["Saint Pius V"],"5-1":["Saint Joseph the Worker"],"5-2":["Saint Athanasius"],"5-3":["Saints Philip and James"],"5-4":["Saint Florian"],"5-5":["Saint Hilary of Arles"],"5-6":["Saint Dominic Savio"],"5-7":["Saint Rose Venerini"],"5-8":["Saint Peter of Tarentaise"],"5-9":["Saint Pachomius"],"5-10":["Saint John of Avila"],"5-11":["Saint Ignatius of Laconi"],"5-12":["Saint Pancras"],"5-13":["Our Lady of Fatima"],"5-14":["Saint Matthias, Apostle"],"5-15":["San Isidro Labrador"],"5-16":["Saint John Nepomucene"],"5-17":["Saint Paschal Baylon"],"5-18":["Saint John I"],"5-19":["Saint Celestine V"],"5-20":["Saint Bernardine of Siena"],"5-21":["Saint Christopher Magallanes and Companions"],"5-22":["Saint Rita of Cascia"],"5-23":["Saint John Baptist de Rossi"],"5-24":["Saints Donatian and Rogatian"],"5-25":["Saint Mary Magdalene de' Pazzi"],"5-26":["Saint Philip Neri"],"5-27":["Saint Augustine of Canterbury"],"5-28":["Saint Germanus of Paris"],"5-29":["Saint Paul VI"],"5-30":["Saint Joan of Arc"],"5-31":["The Visitation of the Blessed Virgin Mary"],"6-1":["Saint Justin Martyr"],"6-2":["Saint Marcellinus"],"6-3":["Saint Charles Lwanga and Companions"],"6-4":["Saint Quirinus"],"6-5":["Saint Boniface"],"6-6":["Saint Norbert"],"6-7":["Saint Robert of Newminster"],"6-8":["Saint Medard"],"6-9":["Saint Ephrem"],"6-10":["Saint Getulius"],"6-11":["Saint Barnabas, Apostle"],"6-12":["Saint Gaspar Bertoni"],"6-13":["Saint Anthony of Padua"],"6-14":["Saint Elisha"],"6-15":["Saint Vitus"],"6-16":["Saint John Francis Regis"],"6-17":["Saint Albert Chmielowski"],"6-18":["Saint Gregory Barbarigo"],"6-19":["Saint Romuald"],"6-20":["Saint Silverius"],"6-21":["Saint Aloysius Gonzaga"],"6-22":["Saint Thomas More"],"6-23":["Saint Joseph Cafasso"],"6-24":["The Nativity of Saint John the Baptist"],"6-25":["Saint William of Vercelli"],"6-26":["San Josemaría Escrivá"],"6-27":["Saint Cyril of Alexandria"],"6-28":["Saint Irenaeus"],"6-29":["Saints Peter and Paul"],"7-1":["Saint Junipero Serra"],"7-2":["Saint Bernardino Realino"],"7-3":["Saint Thomas, Apostle"],"7-4":["Saint Elizabeth of Portugal"],"7-5":["Saint Anthony Zaccaria"],"7-6":["Saint Maria Goretti"],"7-7":["Saint Willibald"],"7-8":["Saint Kilian"],"7-9":["Saint Augustine Zhao Rong and Companions"],"7-10":["Saints Rufina and Secunda"],"7-11":["Saint Benedict"],"7-12":["Saint John Gualbert"],"7-13":["Saint Henry"],"7-14":["Saint Camillus de Lellis"],"7-15":["Saint Bonaventure"],"7-16":["Our Lady of Mount Carmel"],"7-17":["Saint Alexis"],"7-18":["Saint Frederick"],"7-19":["Saint Arsenius"],"7-20":["Saint Apollinaris"],"7-21":["Saint Lawrence of Brindisi"],"7-22":["Saint Mary Magdalene"],"7-23":["Saint Bridget of Sweden"],"7-24":["Saint Sharbel Makhluf"],"7-25":["Saint James, Apostle"],"7-26":["Saints Joachim and Anne"],"7-27":["Saint Pantaleon"],"7-28":["Saints Nazarius and Celsus"],"7-29":["Santos Marta, María y Lazaro"],"7-30":["Saint Peter Chrysologus"],"7-31":["Saint Ignatius of Loyola"],"8-1":["Saint Alphonsus Liguori"],"8-2":["Saint Eusebius of Vercelli"],"8-3":["Saint Lydia"],"8-4":["Saint John Vianney"],"8-5":["The Dedication of the Basilica of Saint Mary Major"],"8-6":["The Transfiguration of the Lord"],"8-7":["Saint Sixtus II and Companions"],"8-8":["Saint Dominic"],"8-9":["Saint Teresa Benedicta of the Cross"],"8-10":["Saint Lawrence"],"8-11":["Saint Clare"],"8-12":["Saint Jane Frances de Chantal"],"8-13":["Saints Pontian and Hippolytus"],"8-14":["Saint Maximilian Kolbe"],"8-15":["The Assumption of the Blessed Virgin Mary"],"8-16":["Saint Stephen of Hungary"],"8-17":["Saint Hyacinth"],"8-18":["Saint Helena"],"8-19":["Saint John Eudes"],"8-20":["Saint Bernard"],"8-21":["Saint Pius X"],"8-22":["The Queenship of the Blessed Virgin Mary"],"8-23":["Saint Rose of Lima"],"8-24":["Saint Bartholomew, Apostle"],"8-25":["Saints Louis and Joseph Calasanz"],"8-26":["Saint Zephyrinus"],"8-27":["Saint Monica"],"8-28":["Saint Augustine"],"8-29":["The Passion of Saint John the Baptist"],"8-30":["Saint Pammachius"],"8-31":["Saint Raymond Nonnatus"],"9-1":["Saint Giles"],"9-2":["Saint Ingrid"],"9-3":["Saint Gregory the Great"],"9-4":["Saint Rosalia"],"9-5":["Saint Teresa of Calcutta"],"9-6":["Saint Eleutherius"],"9-7":["Saint Regina"],"9-8":["The Nativity of the Blessed Virgin Mary"],"9-9":["Saint Peter Claver"],"9-10":["Saint Nicholas of Tolentino"],"9-11":["Saints Protus and Hyacinth"],"9-12":["The Most Holy Name of Mary"],"9-13":["Saint John Chrysostom"],"9-14":["The Exaltation of the Holy Cross"],"9-15":["Our Lady of Sorrows"],"9-16":["Saints Cornelius and Cyprian"],"9-17":["Saint Robert Bellarmine"],"9-18":["Saint Joseph of Cupertino"],"9-19":["Saint Januarius"],"9-20":["Saints Andrew Kim Taegon, Paul Chong Hasang and Companions"],"9-21":["Saint Matthew, Apostle"],"9-22":["Saint Maurice"],"9-23":["Saint Pius of Pietrelcina"],"9-24":["Saint Thecla"],"9-25":["Saint Cleophas"],"9-26":["Saints Cosmas and Damian"],"9-27":["Saint Vincent de Paul"],"9-28":["Saint Wenceslaus, Saint Lawrence Ruiz and Companions"],"9-29":["Saints Michael, Gabriel and Raphael"],"9-30":["Saint Jerome"],"10-1":["Saint Thérèse of Lisieux"],"10-2":["The Holy Guardian Angels"],"10-3":["Saint Gerard of Brogne"],"10-4":["Saint Francis of Assisi"],"10-5":["Saint Faustina Kowalska"],"10-6":["Saint Bruno"],"10-7":["Our Lady of the Rosary"],"10-8":["Saint Pelagia"],"10-9":["Saint John Henry Newman"],"10-10":["Saint Daniel and Companions"],"10-11":["Saint John XXIII"],"10-12":["Saint Carlo Acutis"],"10-13":["Saint Edward the Confessor"],"10-14":["Saint Callistus I"],"10-15":["Santa Teresa de Avila"],"10-16":["Saint Hedwig"],"10-17":["Saint Ignatius of Antioch"],"10-18":["Saint Luke, Evangelist"],"10-19":["Saints John de Brébeuf and Isaac Jogues and Companions"],"10-20":["Saint Paul of the Cross"],"10-21":["Saint Ursula"],"10-22":["Saint John Paul II"],"10-23":["Saint John of Capistrano"],"10-24":["Saint Anthony Mary Claret"],"10-25":["Saint Crispin"],"10-26":["Saint Evaristus"],"10-27":["Saint Frumentius"],"10-28":["Saints Simon and Jude"],"10-29":["Saint Narcissus"],"10-30":["Saint Alphonsus Rodriguez"],"10-31":["Saint Wolfgang"],"11-1":["All Saints"],"11-2":["The Commemoration of All the Faithful Departed"],"11-3":["San Martin de Porres"],"11-4":["Saint Charles Borromeo"],"11-5":["Saint Elizabeth"],"11-6":["Saint Leonard"],"11-7":["Saint Willibrord"],"11-8":["Saint Godfrey"],"11-9":["The Dedication of the Lateran Basilica"],"11-10":["Saint Leo the Great"],"11-11":["San Martin de Tours"],"11-12":["Saint Josaphat"],"11-13":["Saint Didacus"],"11-14":["Saint Laurence O'Toole"],"11-15":["Saint Albert the Great"],"11-16":["Saint Margaret of Scotland"],"11-17":["Saint Elizabeth of Hungary"],"11-18":["The Dedication of the Basilicas of Saints Peter and Paul"],"11-19":["Saint Faustus"],"11-20":["Saint Edmund"],"11-21":["The Presentation of the Blessed Virgin Mary"],"11-22":["Saint Cecilia"],"11-23":["Blessed Miguel Pro"],"11-24":["Saint Andrew Dung-Lac and Companions"],"11-25":["Saint Catherine of Alexandria"],"11-26":["Saint Leonard of Port Maurice"],"11-27":["Saint Virgil"],"11-28":["Saint Catherine Labouré"],"11-29":["Saint Saturninus"],"11-30":["Saint Andrew, Apostle"],"12-1":["Saint Eligius"],"12-2":["Saint Bibiana"],"12-3":["Saint Francis Xavier"],"12-4":["Saint John Damascene"],"12-5":["Saint Sabbas"],"12-6":["Saint Nicholas"],"12-7":["Saint Ambrose"],"12-8":["The Immaculate Conception of the Blessed Virgin Mary"],"12-9":["Saint Juan Diego"],"12-10":["Saint Eulalia"],"12-11":["Saint Damasus I"],"12-12":["Our Lady of Guadalupe"],"12-13":["Saint Lucy"],"12-14":["Saint John of the Cross"],"12-15":["Saint Virginia Centurione"],"12-16":["Saint Adelaide"],"12-17":["Saint Lazarus"],"12-18":["Saint Rufus"],"12-19":["Saint Anastasius I"],"12-20":["Saint Dominic of Silos"],"12-21":["Saint Peter Canisius"],"12-22":["Saint Frances Xavier Cabrini"],"12-23":["Saint John of Kanty"],"12-24":["Saints Adam and Eve"],"12-25":["The Nativity of the Lord"],"12-26":["Saint Stephen, First Martyr"],"12-27":["Saint John, Apostle and Evangelist"],"12-28":["The Holy Innocents"],"12-29":["Saint Thomas Becket"],"12-30":["The Holy Family"],"12-31":["Saint Sylvester I"]};
+      const saints = saintsByDay ? saintsByDay[key] : null;
+
+      const originalHTML = target.innerHTML;
+      const originalText = target.innerText;
+
+      const formatSaintList = (arr) => {
+        if (!arr || arr.length === 0) return "";
+        if (arr.length === 1) return arr[0];
+
+        const cleaned = arr.map((s) => (s || "").trim()).filter(Boolean);
+
+        const allStartWithSaint = cleaned.every((s) => /^Saint\s+/i.test(s));
+        const allStartWithBlessed = cleaned.every((s) => /^Blessed\s+/i.test(s));
+
+        const stripPrefix = (s, prefixRegex) => s.replace(prefixRegex, "").trim();
+
+        if (allStartWithSaint) {
+          const names = cleaned.map((s) => stripPrefix(s, /^Saint\s+/i));
+          return "Saints " + names.join(" and ");
+        }
+
+        if (allStartWithBlessed) {
+          const names = cleaned.map((s) => stripPrefix(s, /^Blessed\s+/i));
+          return "Blesseds " + names.join(" and ");
+        }
+
+        return cleaned.join(" and ");
+      };
+
+      if (saints && saints.length > 0) {
+        const saintText = formatSaintList(saints);
+
+        trigger.addEventListener("mouseenter", () => {
+          target.style.transition = "opacity 0.2s";
+          target.style.opacity = "0";
+
+          setTimeout(() => {
+            target.innerText = "Feast of " + saintText;
+            target.style.color = "#2774AE";
+            target.style.fontWeight = "500";
+            target.style.opacity = "1";
+          }, 200);
+        });
+
+        trigger.addEventListener("mouseleave", () => {
+          target.style.transition = "opacity 0.2s";
+          target.style.opacity = "0";
+
+          setTimeout(() => {
+            if (originalHTML !== originalText) {
+              target.innerHTML = originalHTML;
+            } else {
+              target.innerText = originalText;
+            }
+            target.style.color = "inherit";
+            target.style.fontWeight = "normal";
+            target.style.opacity = "1";
+          }, 200);
+        });
+      }
+    }
+  });
+
+  /* ============================================================================
+     RESEARCH PAPERS: TOGGLE ABSTRACT
+     ============================================================================
+
+     Expands/collapses research paper abstracts when user clicks the toggle button.
+     Updates button text and ARIA attributes for accessibility.
+  */
+  function toggleAbstract(index) {
+    const abstractElement = document.getElementById(`abstract-${index}`);
+    const button = event.target;
+
+    if (abstractElement.classList.contains('collapsed')) {
+      // Expand abstract
+      abstractElement.classList.remove('collapsed');
+      abstractElement.classList.add('expanded');
+      button.textContent = 'Hide Abstract';
+      button.setAttribute('aria-expanded', 'true');
+    } else {
+      // Collapse abstract
+      abstractElement.classList.remove('expanded');
+      abstractElement.classList.add('collapsed');
+      button.textContent = 'Show Abstract';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  console.log(
+    "%c👋 Hi, I'm Martin.\n%cInterested in my code? Check out the repo: https://github.com/martins73/research-site",
+    "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
+    "color: #64748b; font-size: 12px; font-family: sans-serif;"
+  );
+</script>
+</body>
+</html>

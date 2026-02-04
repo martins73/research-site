@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://0.0.0.0:4000/cv/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/human-supply-chain/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/library/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/teaching/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/assets/martin-gonzalez-cabello-cv.pdf</loc>
+<lastmod>2026-02-04T04:43:58+00:00</lastmod>
+</url>
+</urlset>
