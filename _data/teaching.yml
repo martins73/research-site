@@ -1,5 +1,5 @@
 - institution: "UCLA Anderson School of Management"
-  url: "https://www.anderson.ucla.edu"
+  institution_url: "https://www.anderson.ucla.edu"
   logo: "/assets/logos/ucla.png"
   location: "Los Angeles, CA"
   dates: "2022 - Present"
@@ -23,7 +23,7 @@
       students: 40
 
 - institution: "Universidad Politécnica de Madrid"
-  url: "https://www.upm.es"
+  institution_url: "https://www.upm.es"
   logo: "/assets/logos/upm.png"
   location: "Madrid, Spain"
   dates: "2009"
