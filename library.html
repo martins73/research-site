@@ -10,137 +10,22 @@ description: Curated list of my favorite books.
     <div class="library-intro">
         <h1>Books That Shaped My Thinking</h1>
         <p class="lead">A catalog of mental models.</p>
-        <p>Research is more than data analysis; it is a synthesis of ideas. My work is shaped by what I read: philosophy, economics, theology, behavioral science and even novels. Here are some of my personal favorites.</p>
+        <p>Research is more than data analysis; it is a synthesis of ideas. Everything I read shapes my research. I draw on philosophy, economics, theology, behavioral science, and even novels. Here are some of my personal favorites.</p>
     </div>
 
-    <h3 class="bookshelf-title">The Human Supply Chain</h3>
+    {% for shelf in site.data.library %}
+    <h3 class="bookshelf-title">{{ shelf.shelf }}</h3>
     <div class="book-grid">
+        {% for book in shelf.books %}
         <div class="book-item">
-            <div class="book-meta">SOCIOLOGY</div>
+            <div class="book-meta">{{ book.meta }}</div>
             <div class="book-content">
-                <span class="book-title">Ghost Work</span>
-                <span class="book-author">Mary L. Gray & Siddharth Suri</span>
-                <p class="book-comment">
-                    An eye-opening look at the invisible workforce powering our digital lives. It reveals the human reality behind the "AI magic" we take for granted.
-                </p>
+                <span class="book-title">{{ book.title }}</span>
+                <span class="book-author">{{ book.author }}</span>
+                <p class="book-comment">{{ book.comment }}</p>
             </div>
         </div>
-
-        <div class="book-item">
-            <div class="book-meta">FOUNDATION</div>
-            <div class="book-content">
-                <span class="book-title">Rerum Novarum</span>
-                <span class="book-author">Pope Leo XIII</span>
-                <p class="book-comment">Written in 1891, this letter defends the dignity of workers against unchecked capitalism. It is foundational for understanding the ethical dimensions of labor today.</p>
-            </div>
-        </div>
-        
-        <div class="book-item">
-            <div class="book-meta">BEHAVIOR</div>
-            <div class="book-content">
-                <span class="book-title">Wanting: The Power of Mimetic Desire in Everyday Life</span>
-                <span class="book-author">Luke Burgis</span>
-                <p class="book-comment">We think our desires are internal, but they are often imitated. A compelling application of René Girard’s mimetic theory to our modern world.</p>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
-
-    <h3 class="bookshelf-title">Formation</h3>
-    <div class="book-grid">
-        
-        <div class="book-item">
-            <div class="book-meta">ETHICS</div>
-            <div class="book-content">
-                <span class="book-title">Justice: What's the Right Thing to Do?</span>
-                <span class="book-author">Michael Sandel</span>
-                <p class="book-comment">A tour of moral philosophy that challenges you to define what "fairness" actually means. Essential for thinking clearly about ethics in any field.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">THEOLOGY</div>
-            <div class="book-content">
-                <span class="book-title">The Problem of Pain</span>
-                <span class="book-author">C.S. Lewis</span>
-                <p class="book-comment">Lewis tackles the hardest problem of faith: if God is good, why is there suffering? A profound look at the purpose of pain in the human experience.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">SOCIOLOGY</div>
-            <div class="book-content">
-                <span class="book-title">Hannah's Children</span>
-                <span class="book-author">Catherine Pakaluk</span>
-                <p class="book-comment">In an era of declining birth rates, this book gives voice to women who choose large families. It captures the chaos and joy of a full house; something I know well.</p>
-            </div>
-        </div>
-        
-        <div class="book-item">
-            <div class="book-meta">DESIGN</div>
-            <div class="book-content">
-                <span class="book-title">Tiny Habits</span>
-                <span class="book-author">B.J. Fogg</span>
-                <p class="book-comment">Forget motivation; focus on design. Fogg shows how making habits incredibly small can make lasting behavioral change.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">CLASSIC</div>
-            <div class="book-content">
-                <span class="book-title">Man's Search for Meaning</span>
-                <span class="book-author">Viktor Frankl</span>
-                <p class="book-comment">Frankl's memoir of the Holocaust is a testament to the power of purpose. It argues that our primary drive is not pleasure, but meaning.</p>
-            </div>
-        </div>
-        
-        <div class="book-item">
-            <div class="book-meta">PARENTING</div>
-            <div class="book-content">
-                <span class="book-title">The Whole-Brain Child</span>
-                <span class="book-author">Daniel J. Siegel & Tina Payne Bryson</span>
-                <p class="book-comment">This book changed how I parent. It explains the neuroscience of a child's developing brain and gives practical tools to handle the emotional storms.</p>
-            </div>
-        </div>
-    </div>
-
-    <h3 class="bookshelf-title">Fun</h3>
-    <div class="book-grid">
-        
-        <div class="book-item">
-            <div class="book-meta">FAVORITE</div>
-            <div class="book-content">
-                <span class="book-title">The Man Who Was Thursday</span>
-                <span class="book-author">G.K. Chesterton</span>
-                <p class="book-comment">Chesterton is a genius. This is a metaphysical thriller that turns anarchy into a theological puzzle. It is chaotic, witty, and profoundly sane. One of my absolute favorites.</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">FICTION</div>
-            <div class="book-content">
-                <span class="book-title">Stoner</span>
-                <span class="book-author">John Williams</span>
-                <p class="book-comment">I loved how Tom Hanks described this novel: "It’s simply a novel about a guy who goes to college and becomes a teacher. But it’s one of the most fascinating things that you’ve ever come across."</p>
-            </div>
-        </div>
-
-        <div class="book-item">
-            <div class="book-meta">SATIRE</div>
-            <div class="book-content">
-                <span class="book-title">The Screwtape Letters</span>
-                <span class="book-author">C.S. Lewis</span>
-                <p class="book-comment">A brilliant study of human nature from the perspective of a demon. It exposes the subtle ways we justify our own vices.</p>
-            </div>
-        </div> 
-
-        <div class="book-item">
-            <div class="book-meta">MYSTERY</div>
-            <div class="book-content">
-                <span class="book-title">The Thursday Murder Club</span>
-                <span class="book-author">Richard Osman</span>
-                <p class="book-comment">My go-to palate cleanser. I've read the first three. Perfect pacing, British humor, and a reminder that adventure doesn't end with retirement.</p>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </section>
