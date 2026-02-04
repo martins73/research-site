@@ -891,7 +891,8 @@ h2 {
    9. CV PAGE
    ============================================================================ */
 
-/* CV Page Header (desktop: title left, actions right) */
+/* --- Header & Layout --- */
+
 .cv-page-header {
     display: flex;
     justify-content: space-between;
@@ -909,7 +910,6 @@ h2 {
     padding: 0;
 }
 
-/* CV header actions */
 .cv-actions {
     display: flex;
     align-items: center;
@@ -928,12 +928,11 @@ h2 {
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
-    transition: background-color 0.15s ease,
-                color 0.15s ease,
-                border-color 0.15s ease;
+    transition: all 0.15s ease;
 }
 
-/* CV Section Headers */
+/* --- Section Headers --- */
+
 .cv-section-header {
     color: var(--text-light);
     font-size: var(--text-base);
@@ -951,7 +950,8 @@ h2 {
     margin-bottom: var(--space-4);
 }
 
-/* CV Entries */
+/* --- Standard Entries (Education, Industry, Teaching) --- */
+
 .cv-entry {
     margin-bottom: var(--space-8);
     padding-left: var(--space-4);
@@ -977,18 +977,18 @@ h2 {
     margin-bottom: var(--space-5);
 }
 
-/* CV Header Group (Logo + Institution) */
+/* Logo & Institution Grouping */
+
 .cv-header-group {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* 2. CRITICAL FIX: Removes the hidden 'text' space under the logo link */
 .cv-header-group a {
-    display: flex;       /* Forces the <a> tag to shrink-wrap the image */
-    align-items: center; /* Centers the image inside the link */
-    line-height: 0;      /* Removes any residual line-height spacing */
+    display: flex;
+    align-items: center;
+    line-height: 0;
 }
 
 .cv-logo {
@@ -1015,7 +1015,8 @@ a .cv-logo:hover {
     text-decoration: underline;
 }
 
-/* CV Content */
+/* Typography Helpers */
+
 .cv-title {
     font-weight: 600;
     font-size: var(--text-xl);
@@ -1024,24 +1025,24 @@ a .cv-logo:hover {
     color: var(--text-primary);
 }
 
-/* Helper to force the University name to stay on the same line */
 .cv-inline {
     display: inline !important;
     margin-bottom: 0 !important;
 }
 
-/* The new Location class: Same size as title, but normal weight & gray */
 .cv-location {
-    font-size: var(--text-xl);    /* Matches cv-title size */
-    font-weight: 400;             /* Normal weight (not bold) */
-    color: var(--text-secondary); /* Slightly lighter color */
-    display: inline;              /* Ensures it sits next to the title */
+    font-size: var(--text-xl);
+    font-weight: 400;
+    color: var(--text-secondary);
+    display: inline;
 }
 
 .cv-date {
     color: var(--text-light);
     font-style: italic;
     font-size: var(--text-md);
+    flex-shrink: 0;
+    margin-left: var(--space-4);
 }
 
 .cv-role {
@@ -1064,9 +1065,124 @@ a .cv-logo:hover {
     padding-left: 1.2rem;
 }
 
-.cv-list {
-    margin-top: var(--space-2);
-    color: var(--text-tertiary);
+/* --- SPECIFIC SECTIONS (New Classes) --- */
+
+/* 1. Awards: Justified layout with tabular numbers */
+.cv-awards-list {
+    list-style-type: square;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.cv-award-item {
+    margin-bottom: 0.5rem;
+}
+
+.cv-award-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.cv-award-title {
+    margin-right: var(--space-4);
+    line-height: 1.5;
+}
+
+.cv-award-title strong {
+    color: var(--text-main);
+}
+
+.cv-award-year {
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    color: var(--text-light);
+}
+
+/* 2. Presentations: Paper Title + Clean List */
+.cv-paper-block {
+    margin-bottom: 1.5rem;
+}
+
+.cv-paper-title {
+    margin-bottom: 0.4rem;
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: var(--text-lg); /* Matches subheaders */
+}
+
+.cv-talks-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 3. Skills: Grid Layout */
+.cv-skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.cv-skill-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-4);
+    align-items: baseline;
+}
+
+.cv-skill-category {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.cv-skill-list {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* 4. References: Larger Text Hierarchy */
+.cv-references-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.cv-ref-name {
+    font-size: var(--text-xl); /* Increased to match .cv-title */
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+}
+
+.cv-ref-details {
+    line-height: 1.6;
+    font-size: var(--text-base); /* Increased from small size */
+}
+
+.cv-ref-role {
+    display: block;
+    margin-bottom: 0.1rem;
+    font-weight: 500;
+}
+
+.cv-ref-institution {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.cv-ref-email {
+    font-weight: 400;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.cv-ref-email:hover {
+    text-decoration: underline;
 }
 
 /* ============================================================================
