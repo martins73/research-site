@@ -21,53 +21,28 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="education">
     <h3 class="cv-section-header">Education</h3>
     
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
-                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank" class="cv-institution-link cv-title">UCLA Anderson School of Management</a>
+    {% for item in site.data.education %}
+        <div class="cv-entry">
+            <div class="cv-entry-header">
+                <div class="cv-header-group">
+                    {% if item.institution_url %}
+                        <a href="{{ item.institution_url }}" target="_blank">
+                            <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                        </a>
+                        <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title">
+                            {{ item.institution }}
+                        </a>
+                    {% else %}
+                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                        <span class="cv-title">{{ item.institution }}</span>
+                    {% endif %}
+                </div>
+                <span class="cv-date">{{ item.dates }}</span>
             </div>
-            <span class="cv-date">2021 – 2027</span>
+            <div class="cv-role">{{ item.degree }}</div>
+            <div class="cv-desc">{{ item.description }}</div>
         </div>
-        <div class="cv-role">PhD Candidate in Decisions, Operations, and Technology Management</div>
-        <div class="cv-desc">Los Angeles, CA. Expected graduation June 2027.</div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank"><img src="/assets/logos/mit.png" alt="MIT" class="cv-logo"></a>
-                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank" class="cv-institution-link cv-title">MIT Sloan School of Management</a>
-            </div>
-            <span class="cv-date">2013 – 2015</span>
-        </div>
-        <div class="cv-role">Master of Business Administration (MBA)</div>
-        <div class="cv-desc">Cambridge, MA. Entrepreneurship & Innovation Track.</div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank"><img src="/assets/logos/iit.png" alt="IIT" class="cv-logo"></a>
-                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank" class="cv-institution-link cv-title">Illinois Institute of Technology</a>
-            </div>
-            <span class="cv-date">2010</span>
-        </div>
-        <div class="cv-role">Master in Industrial Technology & Operations</div>
-        <div class="cv-desc">Chicago, IL. GPA: 3.9/4.0</div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://www.industriales.upm.es/" target="_blank"><img src="/assets/logos/upm.png" alt="UPM" class="cv-logo"></a>
-                <a href="https://www.industriales.upm.es/" target="_blank" class="cv-institution-link cv-title">Universidad Politécnica de Madrid</a>
-            </div>
-            <span class="cv-date">2005 – 2010</span>
-        </div>
-        <div class="cv-role">B.S. & M.Sc. in Industrial Engineering</div>
-        <div class="cv-desc">Madrid, Spain. Top 5% of class.</div>
-    </div>
+    {% endfor %}
 </section>
 
 <section id="research" class="section-spacing">
