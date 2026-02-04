@@ -29,15 +29,21 @@ In fields like Operations and Data Analytics, technical skills are only half the
 ## Teaching Experience
 
 <section id="history" class="section-spacing">
-{% for course in site.data.teaching.courses %}
-<div class="cv-entry">
-    <div class="course-header">
-        <span class="cv-title">{{ course.title }}</span>
-        <span class="cv-date">{{ course.year }}</span>
-    </div>
-    <div class="course-role">{{ course.role }} • {{ course.institution }}</div>
-    <div class="course-details">{{ course.program }} • {{ course.students }} Students</div>
-</div>
-{% endfor %}
-
+    {% for inst in site.data.teaching %}
+        {% for course in inst.courses %}
+            <div class="cv-entry">
+                <div class="course-header">
+                    <span class="cv-title">{{ course.title }}</span>
+                    <span class="cv-date">{{ course.year }}</span>
+                </div>
+                
+                <div class="course-role">{{ inst.role }} • {{ inst.institution }}</div>
+                
+                <div class="course-details">
+                    {{ course.program }}
+                    {% if course.students %} • {{ course.students }} Students{% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
 </section>
