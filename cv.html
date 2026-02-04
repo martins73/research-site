@@ -35,7 +35,7 @@ description: Academic CV and professional background in analytics, operations, a
 
                     <div>
                         {% if item.institution_url %}
-                            <a href="{{ item.institution_url }}" target="_blank" class="cv-title cv-inline">
+                            <a href="{{ item.institution_url }}" target="_blank" class="cv-institution-link cv-title cv-inline">
                                 {{ item.institution }}
                             </a>
                         {% else %}
@@ -112,27 +112,38 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="teaching" class="section-spacing">
     <h3 class="cv-section-header">Teaching Experience</h3>
 
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://www.anderson.ucla.edu" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
-                <span class="cv-title">UCLA Anderson School of Management</span>
-            </div>
-            <span class="cv-date">2022 – Present</span>
-        </div>
-        <div class="cv-desc">
-            Teaching Assistant for:
-            <ul>
-                {% for course in site.data.teaching.courses %}
-                {% if course.institution contains "UCLA Anderson" %}
-                <li><strong>{{ course.title }}</strong> ({{ course.program }})</li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</section>
+    {% for item in site.data.teaching %}
+        <div class="cv-entry">
+            <div class="cv-entry-header">
+                <div class="cv-header-group">
+                    <a href="{{ item.url }}" target="_blank">
+                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                    </a>
 
+                    <div>
+                        <a href="{{ item.url }}" target="_blank" class="cv-institution-link cv-title cv-inline">
+                            {{ item.institution }}
+                        </a>
+                        <span class="cv-location">, {{ item.location }}</span>
+                    </div>
+                </div>
+                
+                <span class="cv-date">{{ item.dates }}</span>
+            </div>
+
+            <div class="cv-desc">
+                {{ item.role }} for:
+                <ul>
+                    {% for course in item.courses %}
+                        <li>
+                            <strong>{{ course.title }}</strong> ({{ course.program }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+</section>
 <section id="industry" class="section-spacing">
     <h3 class="cv-section-header">Industry Experience</h3>
     
