@@ -1,36 +1,35 @@
-courses:
+- institution: "UCLA Anderson School of Management"
+  url: "https://www.anderson.ucla.edu"
+  logo: "/assets/logos/ucla.png"
+  location: "Los Angeles, CA"
+  dates: "2022 - Present"
+  role: "Teaching Assistant"
+  courses:
+    - title: "Data and Decisions"
+      program: "MBA Core"
+      year: "2022-2025"
+      students: 140
+    - title: "Optimization"
+      program: "MSBA"
+      year: "2025"
+      students: 30
+    - title: "Prescriptive Models & Data Analytics"
+      program: "MSBA"
+      year: "2024"
+      students: 30
+    - title: "Operations and Technology Management"
+      program: "Global Executive MBA"
+      year: "2024"
+      students: 40
 
-  - title: "Data and Decisions"
-    year: "2022-2025"
-    role: "Teaching Assistant"
-    institution: "UCLA Anderson"
-    program: "MBA Core"
-    students: 140
-
-  - title: "Optimization"
-    year: "2025"
-    role: "Teaching Assistant"
-    institution: "UCLA Anderson"
-    program: "MSBA"
-    students: 30
-
-  - title: "Prescriptive Models & Data Analytics"
-    year: "2024"
-    role: "Teaching Assistant"
-    institution: "UCLA Anderson"
-    program: "MSBA"
-    students: 30
-
-  - title: "Operations and Technology Management"
-    year: "2024"
-    role: "Teaching Assistant"
-    institution: "UCLA Anderson"
-    program: "Global Executive MBA"
-    students: 40
-
-  - title: "Introduction to Organizations"
-    year: "2009"
-    role: "Teaching Assistant"
-    institution: "U. Politécnica de Madrid"
-    program: "IMIM"
-    students: 30
+- institution: "Universidad Politécnica de Madrid"
+  url: "https://www.upm.es"
+  logo: "/assets/logos/upm.png"
+  location: "Madrid, Spain"
+  dates: "2009"
+  role: "Teaching Assistant"
+  courses:
+    - title: "Introduction to Organizations"
+      program: "IMIM"
+      year: "2009"
+      students: 30
