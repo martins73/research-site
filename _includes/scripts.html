@@ -94,7 +94,7 @@
     const closeButton = document.getElementById("modal-close");
     const triggers = document.querySelectorAll(".family-link");
 
-    const familyData = {{ site.data.family | jsonify }};
+    const familyData = {{ site.data.easter_eggs.family | jsonify }};
 
     if (modal && triggers.length > 0 && familyData) {
       let lastFocusedElement = null;
@@ -244,7 +244,7 @@
       const today = new Date();
       const key = (today.getMonth() + 1) + "-" + today.getDate();
 
-      const saintsByDay = {{ site.data.saints | jsonify }};
+      const saintsByDay = {{ site.data.easter_eggs.saints | jsonify }};
       const saints = saintsByDay ? saintsByDay[key] : null;
 
       const originalHTML = target.innerHTML;
