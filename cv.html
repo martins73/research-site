@@ -21,7 +21,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="education">
     <h3 class="cv-section-header">Education</h3>
     
-    {% for item in site.data.education %}
+    {% for item in site.data.cv.education %}
         <div class="cv-entry">
             <div class="cv-entry-header">
                 <div class="cv-header-group">
@@ -65,7 +65,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
     {% endif %}
 
-    {% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
+    {% assign working_papers = site.data.cv.papers.papers | where: "cv_category", "Working Paper" %}
     {% if working_papers.size > 0 %}
     <h4 class="cv-subsection-header">Working Papers</h4>
     {% for paper in working_papers %}
@@ -82,7 +82,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
     {% endif %}
 
-    {% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
+    {% assign wip = site.data.cv.papers.papers | where: "cv_category", "Work in Progress" %}
     {% if wip.size > 0 %}
     <h4 class="cv-subsection-header">Work in Progress</h4>
     {% for paper in wip %}
@@ -126,7 +126,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="industry" class="section-spacing">
     <h3 class="cv-section-header">Industry Experience</h3>
     
-    {% for company in site.data.industry %}
+    {% for company in site.data.cv.industry %}
         <div class="cv-entry">
             <div class="cv-entry-header cv-company-header">
                 <div class="cv-header-group">
