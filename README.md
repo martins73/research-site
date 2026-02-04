@@ -47,63 +47,67 @@ All dynamic content is managed through YAML files in `_data/`, making updates si
 
 ```
 research-site/
-├── _config.yml              # Jekyll configuration and site settings
+├── _config.yml                 # Jekyll configuration and site settings
 │
-├── _data/                   # YAML data files (single source of truth)
-│   ├── papers.yml           # Research papers with abstracts and metadata
-│   ├── activity.yml         # Recent activity feed (papers, talks, etc.)
-│   ├── status.yml           # Current status (location, reading, activities)
-│   ├── navigation.yml       # Main navigation menu structure
+├── _data/                      # YAML data files (single source of truth)
+│   ├── papers.yml              # Research papers with abstracts and metadata
+│   ├── activity.yml            # Recent activity feed (papers, talks, etc.)
+│   ├── teaching.yml            # Teaching experience (feeds CV & Teaching page)
+│   ├── status.yml              # Current status (location, reading, activities)
+│   ├── navigation.yml          # Main navigation menu structure
 │   │
-│   ├── cv/                  # Modularized CV Data
-│   │   ├── teaching.yml     # Teaching experience (feeds CV & Teaching page)
-│   │   ├── education.yml    # Degrees and institutions
-│   │   ├── industry.yml     # Professional experience
-│   │   └── additional_information.yml # Skills, languages, etc.
+│   ├── cv/                     # Modularized CV Data
+│   │   ├── education.yml       # Degrees and institutions
+│   │   ├── awards.yml          # Honors & Awards
+│   │   ├── service.yml         # Academic Service
+│   │   ├── presentations.yml   # Selected Presentations
+│   │   ├── industry.yml        # Professional experience
+│   │   ├── skills.yml          # Skills & Qualifications
+│   │   └── references.yml      # References contact info
 │   │
-│   ├── library.yml          # Bookshelf data (The Human Supply Chain, Formation, Fun)
+│   ├── library.yml             # Bookshelf data (The Human Supply Chain, Formation, Fun)
 │   │
-│   └── easter_eggs/         # Hidden features & Personal touches
-│       ├── family.yml       # Family member information for photo modal
-│       └── saints.yml       # Complete liturgical calendar (365+ days)
+│   └── easter_eggs/            # Hidden features & Personal touches
+│       ├── family.yml          # Family member information for photo modal
+│       └── saints.yml          # Complete liturgical calendar (365+ days)
 │
-├── _includes/               # Reusable HTML components
-│   ├── head.html            # Meta tags, SEO, analytics, theme scripts
-│   ├── sidebar.html         # Navigation, profile pic, social links
-│   ├── footer.html          # Copyright, credits, saint-of-the-day
-│   ├── scripts.html         # ~315 lines vanilla JS (mobile nav, dark mode, etc.)
-│   └── family-modal.html    # Accessible image modal dialog
+├── _includes/                  # Reusable HTML components
+│   ├── head.html               # Meta tags, SEO, analytics, theme scripts
+│   ├── sidebar.html            # Navigation, profile pic, social links
+│   ├── footer.html             # Copyright, credits, saint-of-the-day
+│   ├── scripts.html            # ~315 lines vanilla JS (mobile nav, dark mode, etc.)
+│   └── family-modal.html       # Accessible image modal dialog
 │
-├── _layouts/                # Page templates
-│   └── default.html         # Main layout (sidebar + content container)
+├── _layouts/                   # Page templates
+│   └── default.html            # Main layout (sidebar + content container)
 │
-├── _drafts/                 # Draft content (not published)
-│   └── research-notes/      # Research note-taking system
+├── _drafts/                    # Draft content (not published)
+│   └── research-notes/         # Research note-taking system
 │
-├── .github/workflows/       # GitHub Actions automation
+├── .github/workflows/          # GitHub Actions automation
 │   └── update-status-date.yml  # Auto-updates status.yml timestamp on push
 │
-├── assets/                  # Static files
+├── assets/                      # Static files
 │   ├── css/
-│   │   └── style.css        # Complete design system (~3000+ lines)
-│   ├── logos/               # Institution and company logos (PNG/SVG)
-│   ├── family/              # Family member photos
-│   ├── profile_picture.webp # Profile image (WebP)
+│   │   └── style.css            # Complete design system (~3000+ lines)
+│   ├── logos/                   # Institution and company logos (PNG/SVG)
+│   ├── family/                  # Family member photos
+│   ├── profile_picture.webp     # Profile image (WebP)
 │   └── martin-gonzalez-cabello-cv.pdf
 │
 ├── Content Pages
-│   ├── index.html           # Homepage (about, research, activity, status)
-│   ├── cv.html              # Curriculum Vitae (fully data-driven)
-│   ├── teaching.md          # Teaching philosophy + experience (data-driven)
-│   ├── library.html         # Curated book library (data-driven)
-│   └── human-supply-chain.md # Research manifesto
+│   ├── index.html               # Homepage (about, research, activity, status)
+│   ├── cv.html                  # Curriculum Vitae (fully data-driven)
+│   ├── teaching.md              # Teaching philosophy + experience (data-driven)
+│   ├── library.html             # Curated book library (data-driven)
+│   └── human-supply-chain.md    # Research manifesto
 │
 ├── Configuration Files
-│   ├── robots.txt           # Bot access control
-│   ├── CNAME                # Custom domain configuration
-│   └── README.md            # This file
+│   ├── robots.txt              # Bot access control
+│   ├── CNAME                   # Custom domain configuration
+│   └── README.md               # This file
 │
-└── .git/                    # Version control
+└── .git/                       # Version control
 ```
 ## Content Management
 
