@@ -33,16 +33,23 @@ description: Academic CV and professional background in analytics, operations, a
                         <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
                     {% endif %}
 
-                    <span>
-                        <span class="cv-title">{{ item.institution }}</span><span style="font-weight: normal; color: var(--text-secondary);">, {{ item.location }}</span>
-                    </span>
+                    <div>
+                        {% if item.institution_url %}
+                            <a href="{{ item.institution_url }}" target="_blank" class="cv-title cv-inline">
+                                {{ item.institution }}
+                            </a>
+                        {% else %}
+                            <span class="cv-title cv-inline">{{ item.institution }}</span>
+                        {% endif %}
+                        
+                        <span class="cv-location">, {{ item.location }}</span>
+                    </div>
                 </div>
 
                 <span class="cv-date">{{ item.dates }}</span>
             </div>
 
             <div class="cv-role">{{ item.degree }}</div>
-
             <div class="cv-desc">{{ item.description }}</div>
         </div>
     {% endfor %}
@@ -68,7 +75,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% endfor %}
     {% endif %}
 
-    {% assign working_papers = site.data.cv.papers.papers | where: "cv_category", "Working Paper" %}
+    {% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
     {% if working_papers.size > 0 %}
     <h4 class="cv-subsection-header">Working Papers</h4>
     {% for paper in working_papers %}
