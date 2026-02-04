@@ -33,13 +33,15 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 
 ### 📊 Data-Driven Content
 All dynamic content is managed through YAML files in `_data/`, making updates simple and centralized:
+* **Navigation:** Site navigation structure
 * **Research Papers:** Complete paper metadata with abstracts, coauthors, and links
+* **CV Sections:** Education, Industry, and Additional Info are modularized
 * **Activity Feed:** Recent publications, presentations, and research updates
 * **Teaching Experience:** Course history with student counts and institutions
 * **Status/Now:** Current location, reading list, and activities
-* **Family Information:** Photo gallery data
-* **Navigation:** Site navigation structure
-* **Saints Calendar:** Liturgical calendar for footer feature
+* **Library:** Curated book lists with personalized commentary
+* **Family Information:** Photo gallery data for easter egg
+* **Saints Calendar:** Liturgical calendar for footer easter egg
 
 ## Project Structure
 
@@ -50,11 +52,20 @@ research-site/
 ├── _data/                   # YAML data files (single source of truth)
 │   ├── papers.yml           # Research papers with abstracts and metadata
 │   ├── activity.yml         # Recent activity feed (papers, talks, etc.)
-│   ├── teaching.yml         # Teaching experience with course details
 │   ├── status.yml           # Current status (location, reading, activities)
-│   ├── family.yml           # Family member information for photo modal
 │   ├── navigation.yml       # Main navigation menu structure
-│   └── saints.yml           # Complete liturgical calendar (365+ days)
+│   │
+│   ├── cv/                  # Modularized CV Data
+│   │   ├── teaching.yml     # Teaching experience (feeds CV & Teaching page)
+│   │   ├── education.yml    # Degrees and institutions
+│   │   ├── industry.yml     # Professional experience
+│   │   └── additional_information.yml # Skills, languages, etc.
+│   │
+│   ├── library.yml          # Bookshelf data (The Human Supply Chain, Formation, Fun)
+│   │
+│   └── easter_eggs/         # Hidden features & Personal touches
+│       ├── family.yml       # Family member information for photo modal
+│       └── saints.yml       # Complete liturgical calendar (365+ days)
 │
 ├── _includes/               # Reusable HTML components
 │   ├── head.html            # Meta tags, SEO, analytics, theme scripts
@@ -68,9 +79,6 @@ research-site/
 │
 ├── _drafts/                 # Draft content (not published)
 │   └── research-notes/      # Research note-taking system
-│       ├── README.md        # Documentation for research notes
-│       ├── TEMPLATE.md      # Template for new research notes
-│       └── ideas.md         # Research ideas and brainstorming
 │
 ├── .github/workflows/       # GitHub Actions automation
 │   └── update-status-date.yml  # Auto-updates status.yml timestamp on push
@@ -78,49 +86,48 @@ research-site/
 ├── assets/                  # Static files
 │   ├── css/
 │   │   └── style.css        # Complete design system (~3000+ lines)
-│   ├── logos/               # Institution and company logos (12 PNG + 1 SVG)
-│   │   ├── ucla.png, mit.png, iit.png, upm.png
-│   │   ├── achs.png, dec.png, telefonica.png
-│   │   ├── thinkids.png, oliver.png
-│   │   ├── claude.png, gemini.png
-│   │   └── favicon.svg
-│   ├── family/              # Family member photos (6 images)
-│   │   ├── family.jpg, andrea.jpg, carlota.jpg
-│   │   └── martin.jpg, joaquin.jpg, juanpablo.jpg
-│   ├── profile_picture.webp      # Profile image (WebP)
-│   ├── social_preview.jpg        # Open Graph preview (JPEG for compatibility)
+│   ├── logos/               # Institution and company logos (PNG/SVG)
+│   ├── family/              # Family member photos
+│   ├── profile_picture.webp # Profile image (WebP)
 │   └── martin-gonzalez-cabello-cv.pdf
 │
 ├── Content Pages
 │   ├── index.html           # Homepage (about, research, activity, status)
-│   ├── cv.html              # Curriculum Vitae (data-driven from teaching.yml)
+│   ├── cv.html              # Curriculum Vitae (fully data-driven)
 │   ├── teaching.md          # Teaching philosophy + experience (data-driven)
-│   ├── library.html         # Curated book library (4 shelves)
-│   └── human-supply-chain.md # Research manifesto (intentionally unlisted)
+│   ├── library.html         # Curated book library (data-driven)
+│   └── human-supply-chain.md # Research manifesto
 │
 ├── Configuration Files
-│   ├── robots.txt           # Bot access control (blocks AI scrapers)
+│   ├── robots.txt           # Bot access control
 │   ├── CNAME                # Custom domain configuration
-│   ├── LICENSE              # MIT License
 │   └── README.md            # This file
 │
 └── .git/                    # Version control
 ```
-
 ## Content Management
 
 ### Data-Driven Updates (Recommended)
 
 Most site content is controlled through YAML files in `_data/`. This modular approach makes updates simple and reduces errors:
 
-#### Updating Your Status
-Edit `_data/status.yml` to update:
-- Current location
-- Books you're reading (up to 2)
-- Off-duty activities (gaming, watching, etc.)
-- Last updated date (auto-updated by GitHub Actions)
+#### 1. Managing Research Papers
+Edit `_data/papers.yml` to add or update papers:
+- Title, status (Job Market Paper, Publication, Working Paper)
+- Coauthors with URLs
+- Badges (methodology tags like "Empirical Analysis")
+- **Publication:** Full journal citation (for published papers)
+- **Abstract:** Full abstract text (collapsible on homepage)
+- **Submission:** Submission status (for working papers)
+- **Highlights:** Optional awards or achievements
+- Full abstract text
+- Link text and URL (Request Draft, Journal Version, View Preprint)
 
-#### Adding Research Updates
+The CV and Teaching pages automatically pull from this file.
+
+The homepage automatically generates paper cards with collapsible abstracts from this file.
+
+#### 2. Adding Research Updates
 Edit `_data/activity.yml` to add:
 - Paper submissions
 - Conference presentations
@@ -129,45 +136,30 @@ Edit `_data/activity.yml` to add:
 
 Each entry includes date, text, and optional links.
 
-#### Managing Teaching Experience
-Edit `_data/teaching.yml` to add or update courses:
-- Course title and year
-- Role (e.g., Teaching Assistant)
-- Institution and program
-- Number of students
+#### 3. Updating Your Status
+Edit `_data/status.yml` to update:
+- Current location
+- Books you're reading (up to 2)
+- Off-duty activities (gaming, watching, etc.)
+- Last updated date (auto-updated by GitHub Actions)
 
-The CV and Teaching pages automatically pull from this file.
+#### 4. Managing the CV
+The CV is now fully modularized in `_data/cv/`. Update specific files to change sections:
+- **`education.yml`**: Degrees, universities, logos, and years.
+- **`industry.yml`**: Professional roles, companies, and descriptions.
+- **`teaching.yml`**: Courses taught, roles (Instructor/TA), and ratings.
+- **`additional_information.yml`**: Skills, languages, and certifications.
 
-#### Managing Research Papers
-Edit `_data/papers.yml` to add or update papers:
-- Title, status (Job Market Paper, Publication, Working Paper)
-- Coauthors with URLs
-- Badges (methodology tags like "Empirical Analysis", "NK Modeling")
-- **Publication:** Full journal citation (for published papers)
-- **Submission:** Submission status (for working papers)
-- **Highlights:** Optional awards or achievements
-- Full abstract text
-- Link text and URL (Request Draft, Journal Version, View Preprint)
-
-The homepage automatically generates paper cards with collapsible abstracts from this file.
-
-### Direct Page Editing
-
-#### Managing the Reading List
-Edit `library.html` to add or remove books from your curated shelves:
-- The Human Supply Chain
-- Formation
-- Fun
-
-Each book includes metadata, title, author, and a personal comment.
-
-#### Managing the Reading List
-Edit `library.html` to add or remove books from your curated shelves:
-- The Human Supply Chain
-- Formation
-- Fun
-
-Each book includes metadata, title, author, and a personal comment.
+#### 5. Managing the Library
+Edit `_data/library.yml` to manage your book collections. The file is structured by "shelves" (e.g., "The Human Supply Chain", "Formation"):
+```yaml
+- shelf: "Formation"
+  books:
+    - title: "The Problem of Pain"
+      author: "C.S. Lewis"
+      meta: "THEOLOGY"
+      comment: "Lewis tackles the hardest problem of faith..."
+```
 
 ## Design Philosophy
 
@@ -281,21 +273,30 @@ All site content, including text, images, PDFs, and data files, is © 2026 Mart�
 
 ### Why Data-Driven?
 
-This site emphasizes **data-driven content management** through YAML files:
+This site minimizes hard-coded HTML. Instead, it treats content as data stored in `_data/`.
 
 **Benefits:**
-- **Single Source of Truth:** Update teaching experience in one place (`teaching.yml`), reflected on both CV and Teaching pages
-- **Consistency:** Structured data ensures consistent formatting across pages
-- **Maintainability:** Easier to update content without touching HTML/Liquid templates
-- **Separation of Concerns:** Content editors don't need to know HTML
+- **Single Source of Truth:** Update your CV (Education, Industry, Skills), Library, or Status in one place. Changes propagate automatically to every page that uses that data.
+- **Modular Architecture:** The CV is split into logical components (`cv/education.yml`, `cv/industry.yml`), making it easy to rearrange or hide sections without touching the layout.
+- **Consistency:** Structured data guarantees that dates, locations, and titles follow the same format across the entire site.
+- **Maintenance:** You can edit the site content from a mobile phone (via GitHub mobile) just by editing text files.
 
-**Example:** The teaching section on `cv.html` uses:
+**Example:** The CV page is generated dynamically by stitching together multiple data files:
+
 ```liquid
-{% for course in site.data.teaching.courses %}
-  {% if course.institution contains "UCLA Anderson" %}
-    <li><strong>{{ course.title }}</strong> ({{ course.level }})</li>
-  {% endif %}
+{% for degree in site.data.cv.education %}
+  <div class="cv-item">
+    <h3>{{ degree.school }}</h3>
+    <p>{{ degree.degree }} ({{ degree.year }})</p>
+  </div>
+{% endfor %}
+
+{% for role in site.data.cv.industry %}
+  <div class="cv-item">
+    <h3>{{ role.company }}</h3>
+    <p>{{ role.title }}</p>
+  </div>
 {% endfor %}
 ```
 
-This pulls directly from `_data/teaching.yml`, ensuring the CV always stays up-to-date with the latest course information.
+This ensures that all pages are always in sync with your source data.
