@@ -154,14 +154,14 @@ description: Academic CV and professional background in analytics, operations, a
 {% if site.data.cv.awards.size > 0 %}
 <section id="awards" class="section-spacing">
     <h3 class="cv-section-header">Honors & Awards</h3>
-    <ul class="cv-awards-list">
+    <ul class="cv-talks-list">
         {% for item in site.data.cv.awards %}
-        <li class="cv-award-item">
-            <div class="cv-award-row">
-                <span class="cv-award-title">
-                    <strong>{{ item.title }}</strong>, {{ item.organization }}
+        <li style="margin-bottom: 0.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
+                <span>
+                    {{ item.title }}, {{ item.organization }}
                 </span>
-                <span class="cv-award-year">
+                <span class="cv-date">
                     {{ item.year }}
                 </span>
             </div>
@@ -277,15 +277,15 @@ description: Academic CV and professional background in analytics, operations, a
     <div class="cv-references-grid">
         {% for ref in site.data.cv.references %}
         <div class="cv-entry" style="margin-bottom: 0;">
-            <div class="cv-ref-name">
+            <div class="cv-title">
                 {{ ref.name }}
             </div>
             
-            <div class="cv-desc cv-desc-no-indent cv-ref-details">
-                <span class="cv-ref-role">{{ ref.title }}</span>
-                <span class="cv-ref-institution">{{ ref.institution }}</span>
+            <div class="cv-desc cv-desc-no-indent">
+                <span style="display: block;">{{ ref.title }}</span>
+                <span style="display: block; color: var(--text-secondary); margin-bottom: 0.25rem;">{{ ref.institution }}</span>
                 
-                <a href="mailto:{{ ref.email }}" class="cv-ref-email">
+                <a href="mailto:{{ ref.email }}" style="color: var(--link-color);">
                     {{ ref.email }}
                 </a>
             </div>
