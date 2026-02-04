@@ -1065,43 +1065,9 @@ a .cv-logo:hover {
     padding-left: 1.2rem;
 }
 
-/* --- SPECIFIC SECTIONS (New Classes) --- */
+/* --- SPECIFIC SECTIONS --- */
 
-/* 1. Awards: Justified layout with tabular numbers */
-.cv-awards-list {
-    list-style-type: square;
-    padding-left: 1.2rem;
-    color: var(--text-secondary);
-}
-
-.cv-award-item {
-    margin-bottom: 0.5rem;
-}
-
-.cv-award-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    width: 100%;
-}
-
-.cv-award-title {
-    margin-right: var(--space-4);
-    line-height: 1.5;
-}
-
-.cv-award-title strong {
-    color: var(--text-main);
-}
-
-.cv-award-year {
-    font-feature-settings: 'tnum';
-    font-variant-numeric: tabular-nums;
-    flex-shrink: 0;
-    color: var(--text-light);
-}
-
-/* 2. Presentations: Paper Title + Clean List */
+/* 1. Presentations: Paper Title (Bold) */
 .cv-paper-block {
     margin-bottom: 1.5rem;
 }
@@ -1109,8 +1075,8 @@ a .cv-logo:hover {
 .cv-paper-title {
     margin-bottom: 0.4rem;
     color: var(--text-main);
-    font-weight: 700;
-    font-size: var(--text-lg); /* Matches subheaders */
+    font-weight: 600;        
+    font-size: var(--text-lg); 
 }
 
 .cv-talks-list {
@@ -1120,7 +1086,7 @@ a .cv-logo:hover {
     line-height: 1.6;
 }
 
-/* 3. Skills: Grid Layout */
+/* 2. Skills: Grid Layout */
 .cv-skills-container {
     display: flex;
     flex-direction: column;
@@ -1135,7 +1101,7 @@ a .cv-logo:hover {
 }
 
 .cv-skill-category {
-    color: var(--text-main);
+    color: var(--text-primary);
     font-weight: 700;
 }
 
@@ -1144,45 +1110,11 @@ a .cv-logo:hover {
     line-height: 1.5;
 }
 
-/* 4. References: Larger Text Hierarchy */
+/* 3. References: Grid Layout Only */
 .cv-references-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-}
-
-.cv-ref-name {
-    font-size: var(--text-xl); /* Increased to match .cv-title */
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 0.4rem;
-}
-
-.cv-ref-details {
-    line-height: 1.6;
-    font-size: var(--text-base); /* Increased from small size */
-}
-
-.cv-ref-role {
-    display: block;
-    margin-bottom: 0.1rem;
-    font-weight: 500;
-}
-
-.cv-ref-institution {
-    display: block;
-    color: var(--text-secondary);
-    margin-bottom: 0.4rem;
-}
-
-.cv-ref-email {
-    font-weight: 400;
-    color: var(--link-color);
-    text-decoration: none;
-}
-
-.cv-ref-email:hover {
-    text-decoration: underline;
 }
 
 /* ============================================================================
