@@ -2,26 +2,30 @@
   institution: UCLA Anderson School of Management
   institution_url: https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management
   logo: /assets/logos/ucla.png
+  location: Los Angeles, CA
   dates: "2021 - 2027"
-  description: Los Angeles, CA. Expected graduation June 2027.
+  description: Dissertation Committee: Charles Corbett, Auyon Siddiq, Felipe Caro, Brett Hollenbeck
 
 - degree: Master of Business Administration (MBA)
   institution: MIT Sloan School of Management
   institution_url: https://mitsloan.mit.edu/mba/explore-program
   logo: /assets/logos/mit.png
+  location: Cambridge, MA
   dates: "2013 - 2015"
-  description: Cambridge, MA. Entrepreneurship & Innovation Track.
+  description: Entrepreneurship & Innovation Track.
 
 - degree: Master in Industrial Technology & Operations
   institution: Illinois Institute of Technology
   institution_url: https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/
   logo: /assets/logos/iit.png
+  location: Chicago, IL
   dates: "2010"
-  description: "Chicago, IL. GPA: 3.9/4.0"
+  description: Joint degree program with Universidad Politécnica de Madrid.
 
 - degree: B.Sc. & M.Sc. in Industrial Engineering
   institution: Universidad Politécnica de Madrid
   institution_url: https://www.upm.es
   logo: /assets/logos/upm.png
+  location: Madrid, Spain
   dates: "2005 - 2009"
-  description: Madrid, Spain. Top 5% of class.
+  description: "Research Intern: Applied Mathematics (2007) and Business Administration (2008)."
