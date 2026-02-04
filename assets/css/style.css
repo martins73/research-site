@@ -1110,13 +1110,6 @@ a .cv-logo:hover {
     line-height: 1.5;
 }
 
-/* 3. References: Grid Layout Only */
-.cv-references-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
 /* ============================================================================
    10. LIBRARY PAGE
    ============================================================================ */
