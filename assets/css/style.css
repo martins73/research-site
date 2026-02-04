@@ -984,6 +984,13 @@ h2 {
     gap: 12px;
 }
 
+/* 2. CRITICAL FIX: Removes the hidden 'text' space under the logo link */
+.cv-header-group a {
+    display: flex;       /* Forces the <a> tag to shrink-wrap the image */
+    align-items: center; /* Centers the image inside the link */
+    line-height: 0;      /* Removes any residual line-height spacing */
+}
+
 .cv-logo {
     width: 28px;
     height: 28px;
