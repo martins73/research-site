@@ -1,0 +1,56 @@
+positions:
+  - company: "ACHS (Safety Association of Chile)"
+    company_url: "https://www.achs.cl/"
+    logo: "/assets/logos/achs.png"
+    logo_alt: "ACHS"
+    roles:
+      - title: "Head of Advanced Analytics"
+        date: "2019 – 2021"
+        responsibilities:
+          - "Created and led the analytics department to integrate machine learning into healthcare and job safety decision-making."
+          - "Launched the Research and Innovation area, leading ~10 research collaborations with universities."
+          - "Served as project sponsor for MIT Analytics Lab (2020), providing real-world data and mentorship to graduate student teams."
+      - title: "Head of Customer Experience, Analytics and Remote Channels"
+        date: "2018 – 2019"
+        responsibilities:
+          - "Managed CX strategies for a network covering 50% of Chilean workers."
+          - "Oversaw the call center (~200 agents) and digital channels."
+
+  - company: "Asociación DEC Chile"
+    company_url: "https://asociaciondec-cl.org/"
+    logo: "/assets/logos/dec.png"
+    logo_alt: "DEC"
+    roles:
+      - title: "Founder and President"
+        date: "2018 – 2021"
+        description: "Founded the Chilean chapter of the Association for the Development of Customer Experience."
+
+  - company: "Oliver Wyman"
+    company_url: "https://www.oliverwyman.com/"
+    logo: "/assets/logos/oliver.png"
+    logo_alt: "Oliver Wyman"
+    roles:
+      - title: "Management Consultant"
+        date: "2011 – 2017"
+        responsibilities:
+          - "Advised clients in Europe, Latin America, the Middle East, and the US on digital strategy and products."
+          - "Designed retention strategies that reduced churn by 17% for a major European operator."
+          - "Restructured debt ($2.3 BN) for a Saudi mobile operator during a Rights Issue process."
+
+  - company: "Thinkids Project"
+    company_url: ""
+    logo: "/assets/logos/thinkids.png"
+    logo_alt: "Thinkids"
+    roles:
+      - title: "Co-Founder"
+        date: "2012 – Present"
+        description: "Co-founded a company to teach entrepreneurship to children (ages 8-14) in Spain, Nepal, Pakistan, Peru, and the Philippines."
+
+  - company: "Telefonica"
+    company_url: "https://www.telefonica.com/"
+    logo: "/assets/logos/telefonica.png"
+    logo_alt: "Telefonica"
+    roles:
+      - title: "MBA Intern"
+        date: "Summer 2014"
+        description: "Analyzed the global Education & Tech startup ecosystem to identify investment opportunities."

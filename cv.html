@@ -21,53 +21,19 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="education">
     <h3 class="cv-section-header">Education</h3>
     
+    {% for degree in site.data.education.degrees %}
     <div class="cv-entry">
         <div class="cv-entry-header">
             <div class="cv-header-group">
-                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank"><img src="/assets/logos/ucla.png" alt="UCLA" class="cv-logo"></a>
-                <a href="https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management" target="_blank" class="cv-institution-link cv-title">UCLA Anderson School of Management</a>
+                <a href="{{ degree.institution_url }}" target="_blank"><img src="{{ degree.logo }}" alt="{{ degree.logo_alt }}" class="cv-logo"></a>
+                <a href="{{ degree.institution_url }}" target="_blank" class="cv-institution-link cv-title">{{ degree.institution }}</a>
             </div>
-            <span class="cv-date">2021 – 2027</span>
+            <span class="cv-date">{{ degree.date }}</span>
         </div>
-        <div class="cv-role">PhD Candidate in Decisions, Operations, and Technology Management</div>
-        <div class="cv-desc">Los Angeles, CA. Expected graduation June 2027.</div>
+        <div class="cv-role">{{ degree.degree }}</div>
+        <div class="cv-desc">{{ degree.location }}. {{ degree.description }}</div>
     </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank"><img src="/assets/logos/mit.png" alt="MIT" class="cv-logo"></a>
-                <a href="https://mitsloan.mit.edu/mba/explore-program" target="_blank" class="cv-institution-link cv-title">MIT Sloan School of Management</a>
-            </div>
-            <span class="cv-date">2013 – 2015</span>
-        </div>
-        <div class="cv-role">Master of Business Administration (MBA)</div>
-        <div class="cv-desc">Cambridge, MA. Entrepreneurship & Innovation Track.</div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank"><img src="/assets/logos/iit.png" alt="IIT" class="cv-logo"></a>
-                <a href="https://catalog.iit.edu/graduate/colleges/engineering/industrial-technology-management/master-industrial-technology-operations/" target="_blank" class="cv-institution-link cv-title">Illinois Institute of Technology</a>
-            </div>
-            <span class="cv-date">2010</span>
-        </div>
-        <div class="cv-role">Master in Industrial Technology & Operations</div>
-        <div class="cv-desc">Chicago, IL. GPA: 3.9/4.0</div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://www.industriales.upm.es/" target="_blank"><img src="/assets/logos/upm.png" alt="UPM" class="cv-logo"></a>
-                <a href="https://www.industriales.upm.es/" target="_blank" class="cv-institution-link cv-title">Universidad Politécnica de Madrid</a>
-            </div>
-            <span class="cv-date">2005 – 2010</span>
-        </div>
-        <div class="cv-role">B.S. & M.Sc. in Industrial Engineering</div>
-        <div class="cv-desc">Madrid, Spain. Top 5% of class.</div>
-    </div>
+    {% endfor %}
 </section>
 
 <section id="research" class="section-spacing">
@@ -151,121 +117,83 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="industry" class="section-spacing">
     <h3 class="cv-section-header">Industry Experience</h3>
     
+    {% for position in site.data.industry.positions %}
     <div class="cv-entry">
+        {% if position.roles.size > 1 %}
         <div class="cv-entry-header cv-company-header">
             <div class="cv-header-group">
-                <a href="https://www.achs.cl/" target="_blank"><img src="/assets/logos/achs.png" alt="ACHS" class="cv-logo"></a>
-                <a href="https://www.achs.cl/" target="_blank" class="cv-institution-link cv-title">ACHS (Safety Association of Chile)</a>
+                {% if position.company_url != "" %}
+                <a href="{{ position.company_url }}" target="_blank"><img src="{{ position.logo }}" alt="{{ position.logo_alt }}" class="cv-logo"></a>
+                <a href="{{ position.company_url }}" target="_blank" class="cv-institution-link cv-title">{{ position.company }}</a>
+                {% else %}
+                <img src="{{ position.logo }}" alt="{{ position.logo_alt }}" class="cv-logo">
+                <span class="cv-title">{{ position.company }}</span>
+                {% endif %}
             </div>
         </div>
 
-        <div class="cv-subentry">
+        {% for role in position.roles %}
+        <div{% if forloop.first %} class="cv-subentry"{% endif %}>
             <div class="cv-entry-header">
-                <div class="cv-role">Head of Advanced Analytics</div>
-                <span class="cv-date">2019 – 2021</span>
+                <div class="cv-role">{{ role.title }}</div>
+                <span class="cv-date">{{ role.date }}</span>
             </div>
             <div class="cv-desc">
+                {% if role.responsibilities %}
                 <ul>
-                    <li>Created and led the analytics department to integrate machine learning into healthcare and job safety decision-making.</li>
-                    <li>Launched the Research and Innovation area, leading ~10 research collaborations with universities.</li>
-                    <li>Served as project sponsor for MIT Analytics Lab (2020), providing real-world data and mentorship to graduate student teams.</li>
+                    {% for responsibility in role.responsibilities %}
+                    <li>{{ responsibility }}</li>
+                    {% endfor %}
                 </ul>
+                {% elsif role.description %}
+                {{ role.description }}
+                {% endif %}
             </div>
         </div>
-
-        <div>
-            <div class="cv-entry-header">
-                <div class="cv-role">Head of Customer Experience, Analytics and Remote Channels</div>
-                <span class="cv-date">2018 – 2019</span>
-            </div>
-            <div class="cv-desc">
-                <ul>
-                    <li>Managed CX strategies for a network covering 50% of Chilean workers.</li>
-                    <li>Oversaw the call center (~200 agents) and digital channels.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="cv-entry">
+        {% endfor %}
+        {% else %}
         <div class="cv-entry-header">
             <div class="cv-header-group">
-                <a href="https://asociaciondec-cl.org/" target="_blank"><img src="/assets/logos/dec.png" alt="DEC" class="cv-logo"></a>
-                <a href="https://asociaciondec-cl.org/" target="_blank" class="cv-institution-link cv-title">Asociación DEC Chile</a>
+                {% if position.company_url != "" %}
+                <a href="{{ position.company_url }}" target="_blank"><img src="{{ position.logo }}" alt="{{ position.logo_alt }}" class="cv-logo"></a>
+                <a href="{{ position.company_url }}" target="_blank" class="cv-institution-link cv-title">{{ position.company }}</a>
+                {% else %}
+                <img src="{{ position.logo }}" alt="{{ position.logo_alt }}" class="cv-logo">
+                <span class="cv-title">{{ position.company }}</span>
+                {% endif %}
             </div>
-            <span class="cv-date">2018 – 2021</span>
+            <span class="cv-date">{{ position.roles[0].date }}</span>
         </div>
-        <div class="cv-role">Founder and President</div>
+        <div class="cv-role">{{ position.roles[0].title }}</div>
         <div class="cv-desc">
-            Founded the Chilean chapter of the Association for the Development of Customer Experience.
-        </div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://www.oliverwyman.com/" target="_blank"><img src="/assets/logos/oliver.png" alt="Oliver Wyman" class="cv-logo"></a>
-                <a href="https://www.oliverwyman.com/" target="_blank" class="cv-institution-link cv-title">Oliver Wyman</a>
-            </div>
-            <span class="cv-date">2011 – 2017</span>
-        </div>
-        <div class="cv-role">Management Consultant</div>
-        <div class="cv-desc">
+            {% if position.roles[0].responsibilities %}
             <ul>
-                <li>Advised clients in Europe, Latin America, the Middle East, and the US on digital strategy and products.</li>
-                <li>Designed retention strategies that reduced churn by 17% for a major European operator.</li>
-                <li>Restructured debt ($2.3 BN) for a Saudi mobile operator during a Rights Issue process.</li>
+                {% for responsibility in position.roles[0].responsibilities %}
+                <li>{{ responsibility }}</li>
+                {% endfor %}
             </ul>
+            {% elsif position.roles[0].description %}
+            {{ position.roles[0].description }}
+            {% endif %}
         </div>
+        {% endif %}
     </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <img src="/assets/logos/thinkids.png" alt="Thinkids" class="cv-logo">
-                <span class="cv-title">Thinkids Project</span>
-            </div>
-            <span class="cv-date">2012 – Present</span>
-        </div>
-        <div class="cv-role">Co-Founder</div>
-        <div class="cv-desc">
-            Co-founded a company to teach entrepreneurship to children (ages 8-14) in Spain, Nepal, Pakistan, Peru, and the Philippines.
-        </div>
-    </div>
-
-    <div class="cv-entry">
-        <div class="cv-entry-header">
-            <div class="cv-header-group">
-                <a href="https://www.telefonica.com/" target="_blank"><img src="/assets/logos/telefonica.png" alt="Telefonica" class="cv-logo"></a>
-                <a href="https://www.telefonica.com/" target="_blank" class="cv-institution-link cv-title">Telefonica</a>
-            </div>
-            <span class="cv-date">Summer 2014</span>
-        </div>
-        <div class="cv-role">MBA Intern</div>
-        <div class="cv-desc">Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.</div>
-    </div>
+    {% endfor %}
 </section>
 
 <section id="additional" class="section-spacing">
     <h3 class="cv-section-header">Additional Information</h3>
     
+    {% for section in site.data.additional-info.sections %}
     <div class="cv-entry">
-        <span class="cv-title">Education & Certifications</span>
+        <span class="cv-title">{{ section.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             <ul class="cv-list">
-                <li><strong>MITx MicroMasters in Data Science:</strong> Passed courses in Data Analysis in Social Science and Probability (2020–2021).</li>
-                <li><strong>MIT Sloan Data Analytics Certificate</strong> (2020)</li>
-                <li><strong>Universidad de Chile Data Analytics Diploma</strong> (2019)</li>
+                {% for item in section.items %}
+                <li>{{ item }}</li>
+                {% endfor %}
             </ul>
         </div>
     </div>
-
-    <div class="cv-entry">
-        <span class="cv-title">Languages</span>
-        <div class="cv-desc cv-desc-no-indent">
-            <ul class="cv-list">
-                <li>Spanish (Native), Fluent in English and Portuguese, Basic French.</li>
-            </ul>
-        </div>
-    </div>
+    {% endfor %}
 </section>
