@@ -65,6 +65,10 @@ research-site/
 │   │   ├── skills.yml          # Skills & Qualifications
 │   │   └── references.yml      # References contact info
 │   │
+│   ├── ui/                     # UI Elements
+│   │   ├── navigation.yml      # Main navigation menu structure
+│   │   └── social.yml          # Social links and logos (for sidebar)
+│   │
 │   ├── library.yml             # Bookshelf data (The Human Supply Chain, Formation, Fun)
 │   │
 │   └── easter_eggs/            # Hidden features & Personal touches
