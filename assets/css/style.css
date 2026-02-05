@@ -1577,7 +1577,7 @@ a .cv-logo:hover {
     }
 }
 
-/* ============================================================================
+/* /* ============================================================================
    15. RESPONSIVE DESIGN
    ============================================================================ */
 
@@ -1629,34 +1629,64 @@ a .cv-logo:hover {
         scroll-margin-top: 140px;
     }
 
-    /* --- NEW: Footer Mobile Stacking --- */
-    /* This forces the split footer to stack vertically and center everything */
+    /* --- FOOTER MOBILE STABILIZATION (FIXED) --- */
     
     .footer-main-row {
         flex-direction: column;
         align-items: center;
         gap: var(--space-6);
+        width: 100%; 
     }
 
+    /* Reset columns to be full width but centered content */
     .footer-col-left,
     .footer-col-right {
         width: 100%;
-        align-items: center; /* Centers the flex children */
-        text-align: center;  /* Centers text inside block elements */
+        display: flex; /* Ensure flex is active */
+        flex-direction: column;
+        align-items: center; /* Horizontally center children */
+        text-align: center;
     }
 
-    /* Force specific flex elements to center themselves */
-    .credits, 
-    .copyright-text,
-    .carbon-badge {
+    /* STABILIZE COPYRIGHT TEXT & SAINT ICON */
+    .copyright-text {
         justify-content: center;
         text-align: center;
+        flex-wrap: wrap; /* CRITICAL: Allows text to wrap without jumping */
+        width: 100%;
+        line-height: 1.6; 
     }
     
     #copyright-content {
         text-align: center;
+        white-space: normal; /* Allows the text inside to wrap naturally */
+    }
+
+    /* Give the cross icon stable spacing so it doesn't disappear */
+    #saint-trigger {
+        margin: 0 6px; 
+        display: inline-block;
+    }
+
+    .credits {
+        justify-content: center;
+        margin-bottom: var(--space-2);
+    }
+
+    /* Stabilize the Carbon Badge */
+    .carbon-badge {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Reset text alignment overrides for the badge specifically */
+    .carbon-badge span, 
+    .wcb-text {
+        text-align: center;
     }
 }
+
 
 /* ============================================================================
    16. CARBON FOOTPRINT BADGE
