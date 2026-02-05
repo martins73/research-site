@@ -1,30 +1,39 @@
-<!-- Footer: Attribution, copyright, and liturgical calendar feature -->
 <footer class="site-footer">
-  <div class="credits">
-    <span>Created with support from Gemini</span>
-    <a href="https://gemini.google.com" target="_blank" rel="noopener" title="Gemini" class="gemini-link">
-      <img src="/assets/logos/gemini.png" alt="Gemini" width="20" height="20" class="gemini-icon">
-    </a>
-    <span> and Claude</span>
-    <a href="https://claude.ai" target="_blank" rel="noopener" title="Claude" class="claude-link">
-      <img src="/assets/logos/claude.png" alt="Claude" width="20" height="20" class="claude-icon">
-    </a>
+  
+  <div class="footer-main-row">
+    
+    <div class="footer-col-left">
+      <div class="credits">
+        <span>Created with support from Gemini</span>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener" title="Gemini" class="gemini-link">
+          <img src="/assets/logos/gemini.png" alt="Gemini" width="20" height="20" class="gemini-icon">
+        </a>
+        <span> and Claude</span>
+        <a href="https://claude.ai" target="_blank" rel="noopener" title="Claude" class="claude-link">
+          <img src="/assets/logos/claude.png" alt="Claude" width="20" height="20" class="claude-icon">
+        </a>
+      </div>
+
+      <p class="copyright-text">
+        <span id="saint-trigger" title="Liturgical Calendar">✝</span>
+        <span id="copyright-content">
+          &copy; {{ site.time | date: '%Y' }} 
+          {% if site.template.author and site.template.repo %}
+            <a href="{{ site.template.repo }}" target="_blank" rel="noopener">{{ site.template.author }}</a>
+          {% else %}
+            {{ site.author.name }}
+          {% endif %}
+        </span>
+      </p>
+    </div>
+
+    <div class="footer-col-right">
+      <div id="wcb" class="carbon-badge">
+        <span class="wcb-loading" style="font-size:var(--text-sm); opacity:0.6;">Measuring CO<sub>2</sub>...</span>
+      </div>
+    </div>
+
   </div>
 
-  <p class="copyright-text">
-    <span id="saint-trigger" title="Liturgical Calendar">✝</span>
-    <span id="copyright-content">
-      &copy; {{ site.time | date: '%Y' }} 
-      {% if site.template.author and site.template.repo %}
-        <a href="{{ site.template.repo }}" target="_blank" rel="noopener">{{ site.template.author }}</a>
-      {% else %}
-        {{ site.author.name }}
-      {% endif %}
-    </span>
-  </p>
-  
-  <div id="wcb" class="carbon-badge">
-    <span class="wcb-loading" style="font-size:0.8em; opacity:0.6;">Measuring CO<sub>2</sub>...</span>
-  </div>
   <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
 </footer>
