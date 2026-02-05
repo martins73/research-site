@@ -1590,3 +1590,64 @@ a .cv-logo:hover {
         scroll-margin-top: 140px;
     }
 }
+
+/* ============================================================================
+   16. CARBON FOOTPRINT BADGE
+   ============================================================================ */
+
+.carbon-badge {
+    margin: var(--space-4) 0;
+    font-family: inherit;
+    /* Main text matches copyright size */
+    font-size: var(--text-md); 
+    line-height: var(--leading-snug);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: var(--text-light);
+}
+
+.wcb-loading {
+    opacity: 0.6;
+    /* Loading state matches secondary text size */
+    font-size: var(--text-sm); 
+}
+
+.wcb-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.wcb-stat {
+    display: flex;
+    gap: var(--space-2);
+    align-items: baseline;
+    color: inherit;
+}
+
+.wcb-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.wcb-link {
+    text-decoration: underline;
+    opacity: 0.8;
+    color: inherit !important;
+    transition: all 0.2s ease;
+}
+
+.wcb-link:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: var(--accent) !important;
+}
+
+.wcb-percent {
+    /* Secondary text matches AMDG size */
+    font-size: var(--text-sm); 
+    opacity: 0.8;
+    color: var(--text-muted);
+}
