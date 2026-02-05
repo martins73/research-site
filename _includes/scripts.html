@@ -339,4 +339,63 @@
     "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
     "color: #64748b; font-size: 12px; font-family: sans-serif;"
   );
+
+  /* ============================================================================
+       5. CARBON BADGE (WEBSITE CARBON API)
+       ============================================================================ */
+    (function() {
+      const badgeContainer = document.getElementById('wcb');
+      if (!badgeContainer) return;
+  
+      // 1. Get current URL
+      const pageUrl = window.location.href;
+      
+      // 2. Format the API URL
+      const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(pageUrl);
+  
+      // 3. Render Helper
+      function renderBadge(data) {
+        if (!data || !data.c) {
+          badgeContainer.innerHTML = '<span>No result</span>';
+          return;
+        }
+        
+        const html = `
+          <div class="wcb-wrapper">
+            <div class="wcb-stat">
+              <span class="wcb-value">${data.c}g of CO<sub>2</sub>/view</span>
+              <a class="wcb-link" target="_blank" rel="noopener" href="https://www.websitecarbon.com/website/martin-gonzalezcabello-com/">Website Carbon</a>
+            </div>
+            <span class="wcb-percent">Cleaner than ${data.p}% of pages tested</span>
+          </div>
+        `;
+        badgeContainer.innerHTML = html;
+      }
+  
+      // 4. Cache Logic (24 hours)
+      const cacheKey = 'wcb_' + pageUrl;
+      const cached = localStorage.getItem(cacheKey);
+      const now = new Date().getTime();
+  
+      if (cached) {
+        const r = JSON.parse(cached);
+        // 86400000 ms = 24 hours
+        if (now - r.t < 86400000) { 
+          renderBadge(r.d);
+          return;
+        }
+      }
+  
+      // 5. Fetch Data
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          renderBadge(data);
+          localStorage.setItem(cacheKey, JSON.stringify({ t: now, d: data }));
+        })
+        .catch(err => {
+          console.error(err);
+          badgeContainer.innerHTML = '<span>Calc error</span>';
+        });
+    })();
 </script>
