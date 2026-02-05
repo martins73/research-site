@@ -13,8 +13,15 @@
 
   <p class="copyright-text">
     <span id="saint-trigger" title="Liturgical Calendar">✝</span>
-    <span id="copyright-content">&copy; 2026 Martin Gonzalez Cabello</span>
+    <span id="copyright-content">
+      &copy; {{ site.time | date: '%Y' }} 
+      {% if site.template.author and site.template.repo %}
+        <a href="{{ site.template.repo }}" target="_blank" rel="noopener">{{ site.template.author }}</a>
+      {% else %}
+        {{ site.author.name }}
+      {% endif %}
+    </span>
   </p>
-
+  
   <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
 </footer>
