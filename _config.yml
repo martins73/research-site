@@ -16,6 +16,12 @@ author:
   affiliation: UCLA Anderson School of Management
   affiliation_short: UCLA Anderson
   affiliation_url: https://www.anderson.ucla.edu
+
+# Template Attribution
+template:
+  author: Martin Gonzalez Cabello
+  url: https://martin.gonzalezcabello.com
+  repo: https://github.com/martins73/research-site
   
 # Open Graph & SEO
 og_title: Martin Gonzalez Cabello
