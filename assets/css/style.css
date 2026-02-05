@@ -1237,12 +1237,13 @@ a .cv-logo:hover {
 
 
 /* ============================================================================
-   12. FOOTER (Split Layout)
+   12. FOOTER (Split Layout - Updated)
    ============================================================================ */
 
 .site-footer {
-    padding: var(--space-8) 0;
-    margin-top: none;
+    /* REDUCED TOP PADDING: Changed from space-8 to space-2 */
+    padding: var(--space-2) 0 var(--space-8) 0; 
+    margin-top: 0;
     border-top: none;
     background: transparent;
 }
@@ -1253,9 +1254,9 @@ a .cv-logo:hover {
     display: flex;
     justify-content: space-between; /* Pushes Left/Right cols apart */
     align-items: flex-end;          /* Aligns them at the bottom */
-    max-width: 1080px;              /* Matches your container max-width */
+    max-width: 1080px;
     margin: 0 auto var(--space-6) auto; 
-    padding: 0 var(--space-4);      /* Safety padding */
+    padding: 0 var(--space-4);
 }
 
 .footer-col-left {
@@ -1264,14 +1265,16 @@ a .cv-logo:hover {
     align-items: flex-start; /* Force left alignment */
     gap: var(--space-2);
     text-align: left;
+    flex: 1; /* Allows this column to take space if needed */
 }
 
 .footer-col-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;   /* Force right alignment */
+    align-items: flex-end;   /* STRICT RIGHT ALIGNMENT */
     justify-content: flex-end;
     text-align: right;
+    flex: 1;
     padding-bottom: 2px;     /* Optical alignment with copyright text */
 }
 
@@ -1283,7 +1286,6 @@ a .cv-logo:hover {
     gap: 6px;
     font-size: var(--text-base);
     color: var(--text-light);
-    /* Removed margin-bottom here to let flex-gap handle spacing */
     margin: 0; 
 }
 
@@ -1303,9 +1305,10 @@ a .cv-logo:hover {
     line-height: var(--leading-snug);
     color: var(--text-light);
     display: flex;
-    /* Ensure internal badge text aligns right */
+    /* ENSURE INTERNAL TEXT ALIGNS RIGHT */
     text-align: right;
     justify-content: flex-end;
+    width: 100%; 
 }
 
 /* Link Styling (Shared) */
@@ -1388,9 +1391,8 @@ a .cv-logo:hover {
 
 #copyright-content {
     display: inline-block;
-    /* Removed min-width to prevent gaps in left-aligned layout */
     text-align: left; 
-}}
+}
 
 /* ============================================================================
    13. INTERACTIVE ELEMENTS & EASTER EGGS
