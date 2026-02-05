@@ -341,73 +341,70 @@
   );
 
   /* ============================================================================
-     5. CARBON BADGE (WEBSITE CARBON API)
-     ============================================================================ */
-  (function() {
-    const badgeContainer = document.getElementById('wcb');
-    if (!badgeContainer) return;
-
-    // --- CONFIGURATION ---
-    // We pull the URL directly from _config.yml using Liquid
-    // We add a trailing slash because the API often expects it for homepages
-    const TARGET_URL = '{{ site.url }}/'; 
-    // ---------------------
-
-    // 1. Format the API URL
-    const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(TARGET_URL);
-
-    // 2. Render Helper
-    function renderBadge(data) {
-      if (!data || data.c === undefined) {
-        // Fallback if API has no data yet
-        renderBadge({ c: '0.05', p: '92' });
-        return;
-      }
-      
-      const html = `
-        <div class="wcb-wrapper">
-          <div class="wcb-stat">
-            <span class="wcb-value">${data.c}g of CO<sub>2</sub>/view</span>
-            <a class="wcb-link" target="_blank" rel="noopener" href="https://www.websitecarbon.com/website/martin-gonzalezcabello-com/">Website Carbon</a>
-          </div>
-          <span class="wcb-percent">Cleaner than ${data.p}% of pages tested</span>
-        </div>
-      `;
-      badgeContainer.innerHTML = html;
-    }
-
-    // 3. Cache Logic (24 hours)
-    // We use the specific target URL in the cache key to avoid conflicts
-    const cacheKey = 'wcb_' + TARGET_URL; 
-    const cached = localStorage.getItem(cacheKey);
-    const now = new Date().getTime();
-
-    if (cached) {
-      try {
-        const r = JSON.parse(cached);
-        if (now - r.t < 86400000) { 
-          renderBadge(r.d);
+       5. CARBON BADGE (WEBSITE CARBON API)
+       ============================================================================ */
+    (function() {
+      const badgeContainer = document.getElementById('wcb');
+      if (!badgeContainer) return;
+  
+      // --- CONFIGURATION ---
+      const SITE_URL = '{{ site.url }}'; 
+      const domainSlug = SITE_URL
+        .replace(/^https?:\/\//, '')
+        .replace(/\/$/, '')
+        .replace(/\./g, '-');
+        
+      const reportUrl = `https://www.websitecarbon.com/website/${domainSlug}/`;
+      // ---------------------
+  
+      const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(SITE_URL + '/');
+  
+      function renderBadge(data) {
+        if (!data || data.c === undefined) {
+          renderBadge({ c: '0.05', p: '92' });
           return;
         }
-      } catch (e) {
-        localStorage.removeItem(cacheKey);
+        
+        // New single-line HTML structure
+        // The main text will inherit the base color.
+        // Only "tested" is wrapped in the anchor tag with the .wcb-link class.
+        const html = `
+          <span class="wcb-text">
+            ${data.c}g of CO<sub>2</sub>/view. Cleaner than ${data.p}% of pages 
+            <a class="wcb-link" target="_blank" rel="noopener" href="${reportUrl}">tested</a>.
+          </span>
+        `;
+        badgeContainer.innerHTML = html;
       }
-    }
-
-    // 4. Fetch Data
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) throw new Error('Network status: ' + response.status);
-        return response.json();
-      })
-      .then(data => {
-        renderBadge(data);
-        localStorage.setItem(cacheKey, JSON.stringify({ t: now, d: data }));
-      })
-      .catch(err => {
-        console.error('Carbon Badge Error:', err);
-        // Fallback: Use manual estimate if API fails
-        renderBadge({ c: '0.05', p: '92' }); 
-      });
-  })();
+  
+      const cacheKey = 'wcb_' + domainSlug; 
+      const cached = localStorage.getItem(cacheKey);
+      const now = new Date().getTime();
+  
+      if (cached) {
+        try {
+          const r = JSON.parse(cached);
+          if (now - r.t < 86400000) { 
+            renderBadge(r.d);
+            return;
+          }
+        } catch (e) {
+          localStorage.removeItem(cacheKey);
+        }
+      }
+  
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) throw new Error('Network status: ' + response.status);
+          return response.json();
+        })
+        .then(data => {
+          renderBadge(data);
+          localStorage.setItem(cacheKey, JSON.stringify({ t: now, d: data }));
+        })
+        .catch(err => {
+          console.error('Carbon Badge Error:', err);
+          renderBadge({ c: '0.05', p: '92' }); 
+        });
+    })();
 </script>
