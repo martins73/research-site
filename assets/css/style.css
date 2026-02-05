@@ -1237,11 +1237,10 @@ a .cv-logo:hover {
 
 
 /* ============================================================================
-   12. FOOTER (Split Layout - Updated)
+   12. FOOTER
    ============================================================================ */
 
 .site-footer {
-    /* REDUCED TOP PADDING: Changed from space-8 to space-2 */
     padding: var(--space-2) 0 var(--space-8) 0; 
     margin-top: 0;
     border-top: none;
@@ -1252,8 +1251,8 @@ a .cv-logo:hover {
 
 .footer-main-row {
     display: flex;
-    justify-content: space-between; /* Pushes Left/Right cols apart */
-    align-items: flex-end;          /* Aligns them at the bottom */
+    justify-content: space-between; 
+    align-items: flex-end;          
     max-width: 1080px;
     margin: 0 auto var(--space-6) auto; 
     padding: 0 var(--space-4);
@@ -1262,20 +1261,20 @@ a .cv-logo:hover {
 .footer-col-left {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Force left alignment */
+    align-items: flex-start; 
     gap: var(--space-2);
     text-align: left;
-    flex: 1; /* Allows this column to take space if needed */
+    flex: 1; 
 }
 
 .footer-col-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;   /* STRICT RIGHT ALIGNMENT */
+    align-items: flex-end;   
     justify-content: flex-end;
     text-align: right;
     flex: 1;
-    padding-bottom: 2px;     /* Optical alignment with copyright text */
+    padding-bottom: 2px;     
 }
 
 /* --- Content Styling --- */
@@ -1305,10 +1304,18 @@ a .cv-logo:hover {
     line-height: var(--leading-snug);
     color: var(--text-light);
     display: flex;
-    /* ENSURE INTERNAL TEXT ALIGNS RIGHT */
-    text-align: right;
+    /* Forces the container to the right */
     justify-content: flex-end;
+    /* Forces the text lines INSIDE to align right */
+    text-align: right; 
     width: 100%; 
+}
+
+/* Crucial: Forces the inserted span to respect right alignment */
+.carbon-badge span, 
+.wcb-text {
+    text-align: right;
+    display: inline-block; /* Allows text-align to work on the block */
 }
 
 /* Link Styling (Shared) */
