@@ -1304,13 +1304,20 @@ a .cv-logo:hover {
     gap: var(--space-2); 
 }
 
+.copyright-text a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.copyright-text a:hover {
+    opacity: 0.7;
+}
+
 #copyright-content {
     display: inline-block;
     min-width: 260px; 
     text-align: center; 
 }
-
-
 
 .amdg { 
     font-size: var(--text-sm); 
@@ -1354,7 +1361,6 @@ a .cv-logo:hover {
 .bible-ref:hover { 
     color: var(--text-muted); 
 }
-
 
 /* ============================================================================
    13. INTERACTIVE ELEMENTS & EASTER EGGS
