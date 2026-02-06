@@ -18,6 +18,33 @@ exclude_from_nav: true
     </div>
 </header>
 
+<!-- ===== RESEARCH INTERESTS ===== -->
+{% if site.data.cv.research_interests.size > 0 %}
+<section>
+    <h2>Research Interests</h2>
+    <p class="interests">{{ site.data.cv.research_interests | join: " · " }}</p>
+</section>
+{% endif %}
+
+<!-- ===== ACADEMIC APPOINTMENTS (when populated) ===== -->
+{% if site.data.cv.appointments and site.data.cv.appointments.size > 0 %}
+<section>
+    <h2>Academic Appointments</h2>
+    {% for item in site.data.cv.appointments %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left entry-institution">{{ item.institution }}</span>
+            <span class="entry-right">{{ item.location }}</span>
+        </div>
+        <div class="entry-row">
+            <span class="entry-left entry-role">{{ item.role }}</span>
+            <span class="entry-right">{{ item.dates }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
 <!-- ===== EDUCATION ===== -->
 <section>
     <h2>Education</h2>
@@ -48,14 +75,6 @@ exclude_from_nav: true
     </div>
     {% endfor %}
 </section>
-
-<!-- ===== RESEARCH INTERESTS ===== -->
-{% if site.data.cv.research_interests.size > 0 %}
-<section>
-    <h2>Research Interests</h2>
-    <p class="interests">{{ site.data.cv.research_interests | join: " · " }}</p>
-</section>
-{% endif %}
 
 <!-- ===== PUBLICATIONS ===== -->
 {% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
@@ -101,11 +120,11 @@ exclude_from_nav: true
 </section>
 {% endif %}
 
-<!-- ===== WORK IN PROGRESS ===== -->
+<!-- ===== SELECTED WORK IN PROGRESS ===== -->
 {% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
 {% if wip.size > 0 %}
 <section>
-    <h2>Work in Progress</h2>
+    <h2>Selected Work in Progress</h2>
     {% for paper in wip %}
     <div class="paper-entry">
         <div class="paper-row">
@@ -121,10 +140,46 @@ exclude_from_nav: true
 </section>
 {% endif %}
 
-<!-- ===== CONFERENCE PRESENTATIONS ===== -->
+<!-- ===== OTHER ARTICLES (when populated) ===== -->
+{% assign other_articles = site.data.papers.papers | where: "cv_category", "Other Article" %}
+{% if other_articles.size > 0 %}
+<section>
+    <h2>Other Articles</h2>
+    {% for paper in other_articles %}
+    <div class="paper-entry">
+        <div class="paper-row">
+            <span class="paper-title-text">{{ paper.title }}</span>
+            <span class="paper-year">{{ paper.publication | split: "(" | last | split: ")" | first }}</span>
+        </div>
+        <div class="paper-meta">
+            with
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+            {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== AWARDS & SCHOLARSHIPS (when populated) ===== -->
+{% if site.data.cv.awards.size > 0 %}
+<section>
+    <h2>Awards &amp; Scholarships</h2>
+    {% for item in site.data.cv.awards %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left">{{ item.title }}, {{ item.organization }}</span>
+            <span class="entry-right">{{ item.year }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== CONFERENCE PRESENTATIONS & TALKS ===== -->
 {% if site.data.cv.presentations.size > 0 %}
 <section>
-    <h2>Conference Presentations</h2>
+    <h2>Conference Presentations &amp; Talks</h2>
     {% for paper in site.data.cv.presentations %}
     <div class="paper-entry">
         <span class="paper-title-text">{{ paper.title }}</span>
@@ -138,9 +193,9 @@ exclude_from_nav: true
 </section>
 {% endif %}
 
-<!-- ===== TEACHING EXPERIENCE ===== -->
+<!-- ===== TEACHING ===== -->
 <section>
-    <h2>Teaching Experience</h2>
+    <h2>Teaching</h2>
     {% for item in site.data.teaching %}
     <div class="entry">
         <div class="entry-row">
@@ -161,9 +216,24 @@ exclude_from_nav: true
     {% endfor %}
 </section>
 
-<!-- ===== PROFESSIONAL EXPERIENCE ===== -->
+<!-- ===== SERVICE & PROFESSIONAL ORGANIZATIONS (when populated) ===== -->
+{% if site.data.cv.service.size > 0 %}
 <section>
-    <h2>Professional Experience</h2>
+    <h2>Service &amp; Professional Organizations</h2>
+    {% for item in site.data.cv.service %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left"><strong>{{ item.role }}</strong>, {{ item.organization }}</span>
+            <span class="entry-right">{{ item.year }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== WORK EXPERIENCE ===== -->
+<section>
+    <h2>Work Experience</h2>
     {% for company in site.data.cv.industry %}
     <div class="entry">
         <div class="entry-row">
@@ -189,50 +259,13 @@ exclude_from_nav: true
     {% endfor %}
 </section>
 
-<!-- ===== AWARDS (if populated) ===== -->
-{% if site.data.cv.awards.size > 0 %}
+<!-- ===== OTHER SKILLS ===== -->
 <section>
-    <h2>Honors &amp; Awards</h2>
-    {% for item in site.data.cv.awards %}
-    <div class="entry">
-        <div class="entry-row">
-            <span class="entry-left">{{ item.title }}, {{ item.organization }}</span>
-            <span class="entry-right">{{ item.year }}</span>
-        </div>
-    </div>
-    {% endfor %}
-</section>
-{% endif %}
-
-<!-- ===== SERVICE (if populated) ===== -->
-{% if site.data.cv.service.size > 0 %}
-<section>
-    <h2>Professional Service</h2>
-    {% for item in site.data.cv.service %}
-    <div class="entry">
-        <div class="entry-row">
-            <span class="entry-left"><strong>{{ item.role }}</strong>, {{ item.organization }}</span>
-            <span class="entry-right">{{ item.year }}</span>
-        </div>
-    </div>
-    {% endfor %}
-</section>
-{% endif %}
-
-<!-- ===== ADDITIONAL EDUCATION ===== -->
-{% assign certs = site.data.cv.skills | where: "category", "Certifications" | first %}
-{% if certs %}
-<section>
-    <h2>Additional Education</h2>
-    {% for item in certs.items %}
-    <div class="info-item">• {{ item }}</div>
-    {% endfor %}
-</section>
-{% endif %}
-
-<!-- ===== ADDITIONAL INFORMATION ===== -->
-<section>
-    <h2>Additional Information</h2>
+    <h2>Other Skills</h2>
+    {% assign certs = site.data.cv.skills | where: "category", "Certifications" | first %}
+    {% if certs %}
+    <div class="info-item">• <strong>Additional Education:</strong> {{ certs.items | join: "; " }}</div>
+    {% endif %}
     {% assign tech = site.data.cv.skills | where: "category", "Technical" | first %}
     {% if tech %}
     <div class="info-item">• <strong>Technical:</strong> {{ tech.items | join: ", " }}</div>
@@ -243,7 +276,7 @@ exclude_from_nav: true
     {% endif %}
 </section>
 
-<!-- ===== REFERENCES (if populated) ===== -->
+<!-- ===== REFERENCES (when populated) ===== -->
 {% if site.data.cv.references.size > 0 %}
 <section>
     <h2>References</h2>
