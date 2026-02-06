@@ -273,6 +273,13 @@
     box-sizing: border-box;
 }
 
+.noscript-message {
+    text-align: center;
+    padding: var(--space-4);
+    font-size: var(--text-base);
+    color: var(--text-light);
+}
+
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--text-2xl); 
@@ -1153,6 +1160,58 @@ a .cv-logo:hover {
     padding-left: 1.2rem;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+/* Awards */
+.cv-award-item {
+    margin-bottom: var(--space-2);
+}
+
+.cv-award-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+/* References */
+.cv-ref-entry {
+    margin-bottom: var(--space-6);
+}
+
+.cv-ref-row {
+    display: flex;
+    gap: var(--space-2);
+    align-items: baseline;
+}
+
+.cv-ref-bullet {
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.cv-ref-content {
+    flex-grow: 1;
+}
+
+.cv-ref-name {
+    margin-bottom: var(--space-1);
+}
+
+.cv-ref-line {
+    display: block;
+}
+
+.cv-ref-institution {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-1);
+}
+
+.cv-ref-email {
+    color: var(--accent);
+    text-decoration: none;
 }
 
 /* 2. Skills: Grid Layout */
