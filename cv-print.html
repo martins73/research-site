@@ -85,7 +85,8 @@ exclude_from_nav: true
     <div class="paper-entry">
         <div class="paper-row">
             <span class="paper-title-text">{{ paper.title }}</span>
-            <span class="paper-year">{{ paper.publication | split: "(" | last | split: ")" | first }}</span>
+            {% assign pub_parts = paper.publication | split: "(" %}
+            <span class="paper-year">{{ pub_parts[1] | split: ")" | first }}</span>
         </div>
         <div class="paper-meta">
             with
@@ -149,7 +150,8 @@ exclude_from_nav: true
     <div class="paper-entry">
         <div class="paper-row">
             <span class="paper-title-text">{{ paper.title }}</span>
-            <span class="paper-year">{{ paper.publication | split: "(" | last | split: ")" | first }}</span>
+            {% assign pub_parts = paper.publication | split: "(" %}
+            <span class="paper-year">{{ pub_parts[1] | split: ")" | first }}</span>
         </div>
         <div class="paper-meta">
             with
