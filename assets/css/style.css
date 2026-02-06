@@ -201,10 +201,6 @@
     box-sizing: border-box;
 }
 
-html {
-    overflow-x: hidden;
-}
-
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--text-2xl); 
