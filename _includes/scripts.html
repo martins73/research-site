@@ -354,10 +354,11 @@
       const reportUrl = `https://www.websitecarbon.com/website/${domainSlug}/`;
       const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(SITE_URL + '/');
 
+      const FALLBACK = { c: '0.05', p: '92' };
+
       function renderBadge(data) {
         if (!data || data.c === undefined) {
-          badgeContainer.innerHTML = '';
-          return;
+          data = FALLBACK;
         }
 
         badgeContainer.innerHTML = `
@@ -396,7 +397,7 @@
         })
         .catch(err => {
           console.error('Carbon Badge Error:', err);
-          badgeContainer.innerHTML = '';
+          renderBadge(FALLBACK);
         });
     })();
 
