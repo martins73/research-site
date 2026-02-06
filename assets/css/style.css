@@ -1377,10 +1377,12 @@ a .cv-logo:hover {
     color: var(--text-light);
 }
 
-#saint-trigger:hover {
-    opacity: 1;
-    color: var(--accent); 
-    transform: scale(1.2);
+@media (hover: hover) {
+    #saint-trigger:hover {
+        opacity: 1;
+        color: var(--accent);
+        transform: scale(1.2);
+    }
 }
 
 #copyright-content {
