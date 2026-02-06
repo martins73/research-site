@@ -80,8 +80,8 @@
     /* Colors - Background */
     --bg-body: #FAFAF9;         /* The Desk: Warm off-white */
     --bg-paper: #ffffff;        /* The Page: Pure white */
-    --bg-accent: #f0f9ff;       /* Light blue background */
-    --bg-accent-hover: #e0f2fe; /* Hover state for accent bg */
+    --bg-accent: #f5f5f5;       /* Light blue background */
+    --bg-accent-hover: #ebebeb; /* Hover state for accent bg */
     
     /* Colors - Text Hierarchy */
     --text-primary: #1e293b;    /* Main headings and important text */
@@ -92,9 +92,9 @@
     --text-lighter: #cbd5e1;    /* Very light text */
     
     /* Colors - Accent */
-    --accent: #2774AE;          /* UCLA Blue */
-    --accent-rgb: 39, 116, 174; /* UCLA Blue as RGB triplet for rgba() */
-    --accent-hover: #1e5f8e;    /* Darker blue for hover */
+    --accent: #32373c;          /* UCLA Blue */
+    --accent-rgb: 50, 55, 60; /* UCLA Blue as RGB triplet for rgba() */
+    --accent-hover: #1a1d20;    /* Darker blue for hover */
     --accent-orange: #D97706;   /* Amber accent (job market tag) */
 
     /* Colors - Border */
@@ -104,9 +104,9 @@
     --border-dark: #94a3b8;     /* Dark border */
     
     /* Colors - Status/Info */
-    --info-text: #0284c7;       /* Info badges text */
-    --info-bg: #e0f2fe;         /* Info badges background */
-    --info-bg-hover: #bae6fd;   /* Info badges hover */
+    --info-text: #32373c;       /* Info badges text */
+    --info-bg: #f0f0f0;         /* Info badges background */
+    --info-bg-hover: #e0e0e0;   /* Info badges hover */
     
     /* Spacing System - Based on 4px grid */
     --space-1: 0.25rem;   /* 4px */
@@ -163,9 +163,9 @@
     --text-lighter: #475569;    /* Even lighter/darker gray */
     
     /* Colors - Accent (slightly brighter for dark mode) */
-    --accent: #3b82f6;          /* Brighter blue for dark mode */
-    --accent-rgb: 59, 130, 246; /* Dark mode accent as RGB triplet */
-    --accent-hover: #60a5fa;    /* Lighter blue for hover */
+    --accent: #a0a8b0;          /* Brighter blue for dark mode */
+    --accent-rgb: 160, 168, 176; /* Dark mode accent as RGB triplet */
+    --accent-hover: #c0c8d0;    /* Lighter blue for hover */
     --accent-orange: #f59e0b;   /* Brighter amber */
     
     /* Colors - Border */
@@ -175,9 +175,9 @@
     --border-dark: #64748b;     /* Lighter border in dark mode */
     
     /* Colors - Status/Info */
-    --info-text: #38bdf8;       /* Brighter info text */
-    --info-bg: #1e3a5f;         /* Dark info background */
-    --info-bg-hover: #2d4a6f;   /* Info hover */
+    --info-text: #a0a8b0;       /* Brighter info text */
+    --info-bg: #2a2d30;         /* Dark info background */
+    --info-bg-hover: #3a3d40;   /* Info hover */
     
     /* Dark mode specific adjustments */
     --container-border: #334155;
