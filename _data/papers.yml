@@ -16,7 +16,34 @@ papers:
     submission: ""
     publication: ""
     highlights: ""
-    abstract: "Crowdwork platforms are central to the data supply chains that power AI systems, particularly through large-scale data labeling, and they also sustain countless academic, marketing, and political surveys. Despite this importance, the dynamics of worker engagement remain poorly understood. Platforms face strong demand for workers who can deliver fast and high-quality results, making retention critical—even if the potential labor pool seems large, platforms actively compete to attract and keep the most reliable workers. We study fairness and worker engagement on a large online crowdwork platform using a comprehensive dataset that records ~64 million tasks completed between January 2024 and May 2025. Focusing on new workers, we analyze how early experiences shape subsequent activity. We examine several dimensions of procedural fairness and link submission records, study metadata, and dashboard data to reconstruct what each worker saw before choosing a task. Using this information, we assess how early exposure to mismatched or returned tasks influences ongoing engagement. Our results show that negative early experiences substantially reduce the probability of returning to the platform (e.g., underestimation and returns lower re-engagement rates by 5–10 percentage points). Yet conditional on returning, those same experiences increase the intensity of participation, with affected workers completing more tasks than their peers. These findings suggest that fairness perceptions are pivotal in the retention margin, but they also shape the behavior of those who persist. The implications are direct: improving early task experiences can promote retention, build trust, and help platforms secure the reliable workforce they need in an increasingly competitive environment."
+    abstract: >
+      Crowdwork platforms are central to the data supply chains that power AI systems, 
+      particularly through large-scale data labeling, and they also sustain countless 
+      academic, marketing, and political surveys. Despite this importance, the dynamics 
+      of worker engagement remain poorly understood. Platforms face strong demand for 
+      workers who can deliver fast and high-quality results, making retention critical—even 
+      if the potential labor pool seems large, platforms actively compete to attract and 
+      keep the most reliable workers.
+
+      We study fairness and worker engagement on a large online crowdwork platform using 
+      a comprehensive dataset that records approximately 64 million tasks completed between 
+      January 2024 and May 2025. Focusing on new workers, we analyze how early experiences 
+      shape subsequent activity. We examine two dimensions of procedural fairness: task 
+      returns (process failures) and duration underestimation (information asymmetry). We 
+      link submission records, study metadata, and dashboard data to reconstruct what each 
+      worker saw before choosing a task. Using instrumental variable methods to address 
+      endogeneity, we assess how early exposure to these frictions influences ongoing engagement.
+
+      Our results show that early procedural frictions substantially reduce worker retention. 
+      A 10 percentage point increase in returned tasks during the first 14 days reduces the 
+      probability of remaining active by 3.8 percentage points. The effect of underestimation 
+      is substantially larger: a 10 percentage point increase in underestimated tasks reduces 
+      retention by 21 percentage points. Conditional on remaining active, we find no significant 
+      effects on task volume, indicating that attrition rather than demotivation among survivors 
+      is the primary channel through which frictions affect labor supply. These findings show 
+      that process reliability and accurate information are critical for worker retention. The 
+      implications are direct: improving early task experiences can reduce churn and help 
+      platforms secure the reliable workforce they need in an increasingly competitive environment.
     link_text: "Request Draft"
     link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting JMP Draft: First Impressions Matter"
 
@@ -35,7 +62,19 @@ papers:
     submission: ""
     publication: "Business Horizons (2025), 68(5), pp. 645-657"
     highlights: ""
-    abstract: "The vast quantities of data required to build artificial intelligence (AI) technologies are often annotated and processed manually, making human labor a critical component of the AI supply chain. The workers who input this data are sourced through digital labor (\"crowdwork\") platforms that often are unregulated and offer low wages, raising concerns about labor standards in AI development. Using the results of a survey, this article aims to shed light on the experiences and perceptions of fair treatment among workers in the AI supply chain. The study reveals significant variability in workers' experiences, identifies potential drivers of fairness, and highlights how design choices by labor platforms can significantly affect worker welfare. Drawing on lessons from physical supply chains, this article offers practical guidance to managers on how to enhance worker welfare within the AI supply chain and how to ensure that AI technologies are responsibly sourced."
+    abstract: >
+      The vast quantities of data required to build artificial intelligence (AI) technologies 
+      are often annotated and processed manually, making human labor a critical component of 
+      the AI supply chain. The workers who input this data are sourced through digital labor 
+      (crowdwork) platforms that often are unregulated and offer low wages, raising concerns 
+      about labor standards in AI development.
+      Using the results of a survey, this article aims to shed light on the experiences and 
+      perceptions of fair treatment among workers in the AI supply chain. The study reveals 
+      significant variability in workers' experiences, identifies potential drivers of fairness, 
+      and highlights how design choices by labor platforms can significantly affect worker welfare.
+      Drawing on lessons from physical supply chains, this article offers practical guidance 
+      to managers on how to enhance worker welfare within the AI supply chain and how to ensure 
+      that AI technologies are responsibly sourced.
     link_text: "Paper Link"
     link_url: "https://www.sciencedirect.com/science/article/pii/S0007681324001265"
 
@@ -54,7 +93,17 @@ papers:
     submission: "Submitted to Strategic Management Journal"
     publication: ""
     highlights: ""
-    abstract: "Serendipity would seem to preclude purposeful search. To understand the relationship between search behavior and the probability of a serendipitous discovery, we propose a formal modeling framework based on the NK model. Our simulations suggest that searchers with a clear hypothesis convert good fortune into fitness or value far more effectively. Searchers that pursue their theories through incremental steps instead of long-distance jumps have the highest rates of serendipitous success. Our model also provides insight into the role of bias, inaccurate or incorrect beliefs, and the ruggedness of the terrain in determining the rate of serendipitous discovery. Our results demonstrate the distinct roles of intent and information in finding novel, valuable discoveries."
+    abstract: >
+      Serendipity would seem to preclude purposeful search. To understand the relationship 
+      between search behavior and the probability of a serendipitous discovery, we propose 
+      a formal modeling framework based on the NK model.
+      Our simulations suggest that searchers with a clear hypothesis convert good fortune 
+      into fitness or value far more effectively. Searchers that pursue their theories through 
+      incremental steps instead of long-distance jumps have the highest rates of serendipitous 
+      success. Our model also provides insight into the role of bias, inaccurate or incorrect 
+      beliefs, and the ruggedness of the terrain in determining the rate of serendipitous discovery.
+      Our results demonstrate the distinct roles of intent and information in finding novel, 
+      valuable discoveries.
     link_text: "Paper Link"
     link_url: "https://osf.io/preprints/socarxiv/ve8mx"
 
@@ -73,6 +122,16 @@ papers:
     submission: "Submitted to American Economic Journal: Applied Economics"
     publication: ""
     highlights: ""
-    abstract: "How do professionals respond to computerized, data-driven guidance in practice? We analyze a workers' compensation insurance program where physicians make coverage and diagnosis decisions. We study the introduction of an automated system that flagged diagnoses with historically low coverage. We develop a model that yields testable predictions to distinguish between informational and persuasive effects. Consistent with persuasion, physicians granted coverage less often when confronted with alerts, but they also avoided alerts by recoding diagnoses. Data from secondary reviews show that the system aligned physicians' decisions with management's preferences. These findings provide lessons for the design of information systems for decision-makers."
+    abstract: >
+      How do professionals respond to computerized, data-driven guidance in practice? We 
+      analyze a workers' compensation insurance program where physicians make coverage and 
+      diagnosis decisions. We study the introduction of an automated system that flagged 
+      diagnoses with historically low coverage.
+      We develop a model that yields testable predictions to distinguish between informational 
+      and persuasive effects. Consistent with persuasion, physicians granted coverage less 
+      often when confronted with alerts, but they also avoided alerts by recoding diagnoses. 
+      Data from secondary reviews show that the system aligned physicians' decisions with 
+      management's preferences.
+      These findings provide lessons for the design of information systems for decision-makers.
     link_text: "Request Draft"
     link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems"
