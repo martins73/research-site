@@ -334,7 +334,6 @@ h1, h2, h3, .name {
     text-decoration: none; 
     font-size: var(--text-md); 
     font-weight: 500; 
-    box-sizing: border-box; 
     transition: all 0.2s; 
     font-family: inherit; 
 }
@@ -372,18 +371,12 @@ h1, h2, h3, .name {
 .btn-active { 
     background-color: var(--bg-accent); 
     color: var(--accent); 
-    border: 1px solid #BAE6FD; 
+    border: 1px solid var(--info-bg-hover);
     font-weight: 600; 
 }
 
 .btn-active:hover { 
     background-color: var(--bg-accent-hover); 
-}
-
-.btn-inline {
-    width: auto;
-    padding: 0.6rem 1.2rem;
-    display: inline-flex;
 }
 
 /* Social Links */
@@ -1190,20 +1183,6 @@ a .cv-logo:hover {
     line-height: var(--leading-normal);
 }
 
-.ghost-text {
-    color: var(--bg-paper);
-    font-size: var(--text-md);
-    user-select: text;
-    transition: color 0.2s;
-}
-
-.ghost-text::before {
-    content: " [Highlight to reveal] ";
-    color: var(--text-lighter);
-    font-size: var(--text-sm);
-}
-
-
 /* ============================================================================
    11. MANIFESTO PAGE
    ============================================================================ */
@@ -1316,6 +1295,7 @@ a .cv-logo:hover {
 }
 
 .wcb-loading {
+    font-size: var(--text-sm);
     opacity: 0.6;
 }
 
@@ -1589,10 +1569,6 @@ a .cv-logo:hover {
    ============================================================================ */
 
 @media (max-width: 768px) {
-
-    html, body {
-        position: relative;
-    }
 
     /* --- Layout --- */
     .container { 
