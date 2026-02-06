@@ -6,14 +6,15 @@
     - role: Head of Advanced Analytics
       dates: "2019 - 2021"
       description:
-        - Created and led the analytics department to integrate machine learning into healthcare and job safety decision-making.
-        - Launched the Research and Innovation area, leading ~10 research collaborations with universities.
-        - Served as project sponsor for MIT Analytics Lab (2020), providing real-world data and mentorship to graduate student teams.
+        - Created and led the analytics department, to start using machine learning algorithms to make a better use of our data and improve decision making across the whole organization, both for healthcare and for job safety analysis for our clients
+        - Conceptualized and launched the Research and Innovation area within the company, promoting collaboration with universities and startups. Led ~10 research projects with universities and strengthened the relationship between ACHS and academia
+        - Defined a business problem, organized data and built a team to participate as a project sponsor at 2020 MIT's Analytics Lab, working with the student team, giving them guidance, support, and computing resources during the semester
     - role: Head of Customer Experience, Analytics and Remote Channels
       dates: "2018 - 2019"
       description:
-        - Managed CX strategies for a network covering 50% of Chilean workers.
-        - Oversaw the call center (~200 agents) and digital channels.
+        - Led three areas at the largest insurer for work-related accidents in Chile, covering ~50% of the country employees with ~90 ambulatory centers across the country
+        - In charge of designing strategies and products to improve customer satisfaction for workers (B2C) and companies (B2B)
+        - Managed the call center (~200 agents) and the team in charge of the digital channels (e.g. public and transactional sites)
 
 - company: Asociación DEC Chile
   company_url: https://asociaciondec-cl.org/
@@ -28,14 +29,18 @@
 - company: Oliver Wyman
   company_url: https://www.oliverwyman.com/
   logo: /assets/logos/oliver.png
-  location: "Madrid, Spain & New York, NY"
+  location: "Madrid, Spain; New York, NY"
   positions:
     - role: Management Consultant
       dates: "2011 - 2017"
       description:
-        - Advised clients in Europe, Latin America, the Middle East, and the US on digital strategy and products.
-        - Designed retention strategies that reduced churn by 17% for a major European operator.
-        - Restructured debt ($2.3 BN) for a Saudi mobile operator during a Rights Issue process.
+        - Based in Madrid and New York with global projects in Europe, Latin America, the Middle East and the United States
+        - Designed the mass affluent value proposition, designing new products and positioning for a regional US bank
+        - Worked on the creation of the Digital Practice within Oliver Wyman, being one of the key POC for Digital within the firm
+        - Designed the CRM strategy for a Mexican bank, defining the implementation roadmap and launching pilot campaigns
+        - Achieved a 17% churn rate reduction for a European incumbent operator by identifying customers at risk and designing and implementing a new retention strategy
+        - Developed the 4G/LTE launch strategy for a Brazilian mobile operator, sizing the market and defining the positioning of the company and the network roll-out plan; ensuring the successful launch of the product to meet the regulatory deadlines
+        - Worked in the launch of a Rights Issue process of a Saudi mobile operator, preparing the necessary analysis for the government institutions and creating the road-show presentations for investors; successfully restructuring the $2.3 BN loan
 
 - company: Thinkids Project
   logo: /assets/logos/thinkids.png
@@ -44,17 +49,17 @@
     - role: Co-Founder
       dates: "2012 - Present"
       description:
-        - Co-founded a company to teach entrepreneurship to children (ages 8-14) in Spain, Nepal, Pakistan, Peru, and the Philippines.
+        - Co-founded and developed the methodology and strategy of the company, that has the goal of teaching and promoting entrepreneurship in Spain, Nepal, Pakistan, Peru and the Philippines with children between the ages of 8 to 14
 
 - company: Telefonica
   company_url: https://www.telefonica.com/
   logo: /assets/logos/telefonica.png
   location: "Madrid, Spain"
   positions:
-    - role: MBA Intern
+    - role: Global Affairs and New Ventures - MBA Intern
       dates: "Summer 2014"
       description:
-        - Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.
+        - Analyzed the Education & Tech startup ecosystem worldwide providing a detailed quantitative and qualitative study identifying key indicators, trends and investment opportunities
 
 - company: Accenture
   company_url: https://www.accenture.com/

@@ -83,10 +83,7 @@ exclude_from_nav: true
     <h2>Publications</h2>
     {% for paper in publications %}
     <div class="paper-entry">
-        <div class="paper-row">
-            <span class="paper-title-text">{{ paper.title }}</span>
-            <span class="paper-year">{{ paper.publication | split: "(" | last | split: ")" | first }}</span>
-        </div>
+        <div class="paper-title-text">{{ paper.title }}</div>
         <div class="paper-meta">
             with
             {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
@@ -113,7 +110,7 @@ exclude_from_nav: true
         </div>
         <div class="paper-meta">
             with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}{% if paper.submission != "" %}, <em>{{ paper.submission | downcase }}</em>{% endif %}
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}{% if paper.submission != "" %}, <em>{{ paper.submission }}</em>{% endif %}
         </div>
     </div>
     {% endfor %}
@@ -149,7 +146,8 @@ exclude_from_nav: true
     <div class="paper-entry">
         <div class="paper-row">
             <span class="paper-title-text">{{ paper.title }}</span>
-            <span class="paper-year">{{ paper.publication | split: "(" | last | split: ")" | first }}</span>
+            {% assign pub_parts = paper.publication | split: "(" %}
+            <span class="paper-year">{{ pub_parts[1] | split: ")" | first }}</span>
         </div>
         <div class="paper-meta">
             with
@@ -204,14 +202,14 @@ exclude_from_nav: true
         </div>
         <div class="entry-row">
             <span class="entry-left entry-role">{{ item.role }}</span>
-            <span class="entry-right">{{ item.dates }}</span>
         </div>
-        {% for course in item.courses %}
-        <div class="course-row">
-            <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
-            <span class="entry-right">{{ course.year }}</span>
+        <div class="entry-desc">
+            <ul>
+                {% for course in item.courses %}
+                <li>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}, {{ course.year }}</li>
+                {% endfor %}
+            </ul>
         </div>
-        {% endfor %}
     </div>
     {% endfor %}
 </section>
