@@ -93,6 +93,7 @@
     
     /* Colors - Accent */
     --accent: #2774AE;          /* UCLA Blue */
+    --accent-rgb: 39, 116, 174; /* UCLA Blue as RGB triplet for rgba() */
     --accent-hover: #1e5f8e;    /* Darker blue for hover */
     --accent-orange: #D97706;   /* Amber accent (job market tag) */
 
@@ -159,6 +160,7 @@
     
     /* Colors - Accent (slightly brighter for dark mode) */
     --accent: #3b82f6;          /* Brighter blue for dark mode */
+    --accent-rgb: 59, 130, 246; /* Dark mode accent as RGB triplet */
     --accent-hover: #60a5fa;    /* Lighter blue for hover */
     --accent-orange: #f59e0b;   /* Brighter amber */
     
@@ -250,7 +252,7 @@
 
 /* Dark mode paper buttons */
 [data-theme="dark"] .btn-abstract:hover {
-    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 8px rgba(var(--accent-rgb), 0.3);
 }
 
 [data-theme="dark"] .card-link {
@@ -292,7 +294,7 @@ h1, h2, h3, .name {
 
 /* Global Focus Styles - Softer, more subtle */
 *:focus {
-    outline: 2px solid rgba(39, 116, 174, 0.4);
+    outline: 2px solid rgba(var(--accent-rgb), 0.4);
     outline-offset: 2px;
 }
 
@@ -301,9 +303,9 @@ h1, h2, h3, .name {
 }
 
 *:focus-visible {
-    outline: 2px solid rgba(39, 116, 174, 0.5);
+    outline: 2px solid rgba(var(--accent-rgb), 0.5);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.1);
 }
 
 /* Prevent Safari showing a focus outline box after anchor jumps */
@@ -409,16 +411,16 @@ h1, h2, h3, .name {
 }
 
 .sidebar-btn:focus-visible {
-    outline: 2px solid rgba(39, 116, 174, 0.5);
+    outline: 2px solid rgba(var(--accent-rgb), 0.5);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.1);
 }
 
 .btn-primary { 
     background-color: var(--accent); 
     color: white; 
     border: 1px solid var(--accent); 
-    box-shadow: 0 2px 4px rgba(39, 116, 174, 0.2); 
+    box-shadow: 0 2px 4px rgba(var(--accent-rgb), 0.2); 
 }
 
 .btn-primary:hover { 
@@ -542,9 +544,9 @@ h1, h2, h3, .name {
 
 /* Focus styles */
 .theme-toggle:focus-visible {
-    outline: 2px solid rgba(39, 116, 174, 0.5);
+    outline: 2px solid rgba(var(--accent-rgb), 0.5);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.1);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.1);
 }
 
 
@@ -748,7 +750,7 @@ h2 {
     color: white;
     border-color: var(--accent);
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(39, 116, 174, 0.2);
+    box-shadow: 0 4px 8px rgba(var(--accent-rgb), 0.2);
 }
 
 .btn-abstract:active {
@@ -1115,11 +1117,11 @@ a .cv-logo:hover {
 .cv-role {
     color: var(--accent);
     font-weight: 500;
-    margin: var(--space-2) 0 var(--space-2) 40px;
+    margin: var(--space-2) 0 var(--space-2) var(--space-10);
 }
 
 .cv-desc {
-    margin-left: 40px;
+    margin-left: var(--space-10);
 }
 
 .cv-desc-no-indent {
@@ -1485,9 +1487,9 @@ a .cv-logo:hover {
 }
 
 .family-link:focus-visible {
-    outline: 2px solid rgba(39, 116, 174, 0.4);
+    outline: 2px solid rgba(var(--accent-rgb), 0.4);
     outline-offset: 1px;
-    background-color: rgba(39, 116, 174, 0.05);
+    background-color: rgba(var(--accent-rgb), 0.05);
 }
 
 .modal-overlay {
@@ -1506,9 +1508,9 @@ a .cv-logo:hover {
 }
 
 .modal-content { 
-    text-align: center; 
-    max-width: 90%; 
-    padding: 20px;
+    text-align: center;
+    max-width: 90%;
+    padding: var(--space-5);
     position: relative;
 }
 
@@ -1519,9 +1521,9 @@ a .cv-logo:hover {
     background: white;
     border: 2px solid var(--border);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
+    width: var(--space-10);
+    height: var(--space-10);
+    font-size: var(--text-5xl);
     line-height: 1;
     cursor: pointer;
     color: var(--text-light);
@@ -1540,9 +1542,9 @@ a .cv-logo:hover {
 }
 
 .modal-close:focus {
-    outline: 2px solid rgba(39, 116, 174, 0.5);
+    outline: 2px solid rgba(var(--accent-rgb), 0.5);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(39, 116, 174, 0.15);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15);
 }
 
 .modal-close:focus:not(:focus-visible) {
@@ -1560,7 +1562,7 @@ a .cv-logo:hover {
 .modal-caption { 
     margin-top: var(--space-4); 
     color: var(--text-light); 
-    font-family: serif; 
+    font-family: 'Merriweather', serif; 
     font-style: italic; 
     font-size: 1.1rem; 
 }
