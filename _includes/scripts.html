@@ -401,36 +401,40 @@
         });
     })();
 
+    /* ============================================================================
+       7. RESEARCH PAPERS: TOGGLE ABSTRACT (Event Delegation)
+       ============================================================================
+
+       Expands/collapses research paper abstracts when user clicks the toggle button.
+       Updates button text and ARIA attributes for accessibility.
+    */
+    document.addEventListener('click', function(e) {
+      const button = e.target.closest('[data-abstract]');
+      if (!button) return;
+
+      const index = button.getAttribute('data-abstract');
+      const abstractElement = document.getElementById('abstract-' + index);
+      if (!abstractElement) return;
+
+      if (abstractElement.classList.contains('collapsed')) {
+        abstractElement.classList.remove('collapsed');
+        abstractElement.classList.add('expanded');
+        button.textContent = 'Hide Abstract';
+        button.setAttribute('aria-expanded', 'true');
+      } else {
+        abstractElement.classList.remove('expanded');
+        abstractElement.classList.add('collapsed');
+        button.textContent = 'Show Abstract';
+        button.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     console.log(
       "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
       "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
       "color: #64748b; font-size: 12px; font-family: sans-serif;"
     );
   });
-
-  /* ============================================================================
-     7. RESEARCH PAPERS: TOGGLE ABSTRACT (Global scope for onclick attributes)
-     ============================================================================
-
-     Expands/collapses research paper abstracts when user clicks the toggle button.
-     Updates button text and ARIA attributes for accessibility.
-  */
-  function toggleAbstract(index, e) {
-    const abstractElement = document.getElementById(`abstract-${index}`);
-    const button = e.target;
-
-    if (abstractElement.classList.contains('collapsed')) {
-      abstractElement.classList.remove('collapsed');
-      abstractElement.classList.add('expanded');
-      button.textContent = 'Hide Abstract';
-      button.setAttribute('aria-expanded', 'true');
-    } else {
-      abstractElement.classList.remove('expanded');
-      abstractElement.classList.add('collapsed');
-      button.textContent = 'Show Abstract';
-      button.setAttribute('aria-expanded', 'false');
-    }
-  }
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js');

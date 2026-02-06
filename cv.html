@@ -163,8 +163,8 @@ description: Academic CV and professional background in analytics, operations, a
     <h3 class="cv-section-header">Honors & Awards</h3>
     <ul class="cv-talks-list">
         {% for item in site.data.cv.awards %}
-        <li style="margin-bottom: 0.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
+        <li class="cv-award-item">
+            <div class="cv-award-row">
                 <span>
                     {{ item.title }}, {{ item.organization }}
                 </span>
@@ -283,17 +283,17 @@ description: Academic CV and professional background in analytics, operations, a
     <h3 class="cv-section-header">References</h3>
     <div>
         {% for ref in site.data.cv.references %}
-        <div class="cv-entry" style="margin-bottom: 1.5rem;">
-            <div style="display: flex; gap: 0.6rem; align-items: baseline;">
-                <span style="color: var(--text-secondary); font-size: 1rem; line-height: 1; flex-shrink: 0;">&bull;</span>
-                <div style="flex-grow: 1;">
-                    <div class="cv-title" style="margin-bottom: 0.25rem;">
+        <div class="cv-entry cv-ref-entry">
+            <div class="cv-ref-row">
+                <span class="cv-ref-bullet">&bull;</span>
+                <div class="cv-ref-content">
+                    <div class="cv-title cv-ref-name">
                         {{ ref.name }}
                     </div>
                     <div class="cv-desc cv-desc-no-indent">
-                        <span style="display: block;">{{ ref.title }}</span>
-                        <span style="display: block; color: var(--text-secondary); margin-bottom: 0.25rem;">{{ ref.institution }}</span>
-                        <a href="mailto:{{ ref.email }}" style="color: var(--accent); text-decoration: none;">
+                        <span class="cv-ref-line">{{ ref.title }}</span>
+                        <span class="cv-ref-line cv-ref-institution">{{ ref.institution }}</span>
+                        <a href="mailto:{{ ref.email }}" class="cv-ref-email">
                             {{ ref.email }}
                         </a>
                     </div>
