@@ -1577,8 +1577,8 @@ a .cv-logo:hover {
     }
 }
 
-/* /* ============================================================================
-   15. RESPONSIVE DESIGN
+/* ============================================================================
+   15. RESPONSIVE DESIGN (Fixed Jitter)
    ============================================================================ */
 
 @media (max-width: 768px) { 
@@ -1629,7 +1629,7 @@ a .cv-logo:hover {
         scroll-margin-top: 140px;
     }
 
-    /* --- FOOTER MOBILE STABILIZATION (FIXED) --- */
+    /* --- FOOTER MOBILE STABILIZATION --- */
     
     .footer-main-row {
         flex-direction: column;
@@ -1642,9 +1642,9 @@ a .cv-logo:hover {
     .footer-col-left,
     .footer-col-right {
         width: 100%;
-        display: flex; /* Ensure flex is active */
+        display: flex;
         flex-direction: column;
-        align-items: center; /* Horizontally center children */
+        align-items: center; 
         text-align: center;
     }
 
@@ -1652,20 +1652,27 @@ a .cv-logo:hover {
     .copyright-text {
         justify-content: center;
         text-align: center;
-        flex-wrap: wrap; /* CRITICAL: Allows text to wrap without jumping */
+        flex-wrap: wrap; 
         width: 100%;
         line-height: 1.6; 
     }
     
+    /* THE FIX: Reserving space prevents the jitter */
     #copyright-content {
+        display: inline-block;
+        min-width: 260px; /* Forces the container to stay wide enough */
         text-align: center;
-        white-space: normal; /* Allows the text inside to wrap naturally */
+        white-space: normal; 
     }
 
-    /* Give the cross icon stable spacing so it doesn't disappear */
+    /* Give the cross icon stable spacing */
     #saint-trigger {
         margin: 0 6px; 
         display: inline-block;
+        padding: 10px; /* Increases tap area */
+        margin-top: -10px; 
+        margin-bottom: -10px;
+        cursor: pointer;
     }
 
     .credits {
@@ -1686,7 +1693,6 @@ a .cv-logo:hover {
         text-align: center;
     }
 }
-
 
 /* ============================================================================
    16. CARBON FOOTPRINT BADGE
