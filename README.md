@@ -53,13 +53,13 @@ All dynamic content is managed through YAML files in `_data/`, making updates si
 
 ```
 research-site/
-├── _config.yml                 # Jekyll configuration and site settings
+├── _config.yml                         # Jekyll configuration and site settings
 │
-├── _data/                      # YAML data files (single source of truth)
-│   ├── papers.yml              # Research papers with abstracts and metadata
-│   ├── activity.yml            # Recent activity feed (papers, talks, etc.)
-│   ├── teaching.yml            # Teaching experience (feeds CV & Teaching page)
-│   ├── status.yml              # Current status (location, reading, activities)
+├── _data/                              # YAML data files (single source of truth)
+│   ├── papers.yml                      # Research papers with abstracts and metadata
+│   ├── activity.yml                    # Recent activity feed (papers, talks, etc.)
+│   ├── teaching.yml                    # Teaching experience (feeds CV & Teaching page)
+│   ├── status.yml                      # Current status (location, reading, activities)
 │   │
 │   ├── cv/                     # Modularized CV Data
 │   │   ├── education.yml       # Degrees and institutions
@@ -71,29 +71,29 @@ research-site/
 │   │   ├── research_interests.yml # Research interest keywords
 │   │   └── references.yml      # References contact info
 │   │
-│   ├── ui/                     # UI Elements
-│   │   ├── navigation.yml      # Main navigation menu structure
-│   │   └── social.yml          # Social links and logos (for sidebar)
+│   ├── ui/                             # UI Elements
+│   │   ├── navigation.yml              # Main navigation menu structure
+│   │   └── social.yml                  # Social links and logos (for sidebar)
 │   │
-│   ├── library.yml             # Bookshelf data (The Human Supply Chain, Formation, Fun)
+│   ├── library.yml                     # Bookshelf data (The Human Supply Chain, Formation, Fun)
 │   │
-│   └── easter_eggs/            # Hidden features & Personal touches
-│       ├── family.yml          # Family member information for photo modal
-│       └── saints.yml          # Complete liturgical calendar (365+ days)
+│   └── easter_eggs/                    # Hidden features & Personal touches
+│       ├── family.yml                  # Family member information for photo modal
+│       └── saints.yml                  # Complete liturgical calendar (365+ days)
 │
-├── _includes/                  # Reusable HTML components
-│   ├── head.html               # Meta tags, SEO, analytics, theme scripts
-│   ├── sidebar.html            # Navigation, profile pic, social links
-│   ├── footer.html             # Copyright, credits, carbon badge, saint-of-the-day
-│   ├── scripts.html            # ~440 lines vanilla JS (mobile nav, dark mode, etc.)
-│   └── family-modal.html       # Accessible image modal dialog
+├── _includes/                          # Reusable HTML components
+│   ├── head.html                       # Meta tags, SEO, analytics, theme scripts
+│   ├── sidebar.html                    # Navigation, profile pic, social links
+│   ├── footer.html                     # Copyright, credits, carbon badge, saint-of-the-day
+│   ├── scripts.html                    # ~440 lines vanilla JS (mobile nav, dark mode, etc.)
+│   └── family-modal.html               # Accessible image modal dialog
 │
 ├── _layouts/                   # Page templates
 │   ├── default.html            # Main layout (sidebar + content container)
 │   └── cv-print.html           # Minimal layout for PDF generation
 │
-├── _drafts/                    # Draft content (not published)
-│   └── research-notes/         # Research note-taking system
+├── _drafts/                            # Draft content (not published)
+│   └── research-notes/                 # Research note-taking system
 │
 ├── .github/                    # GitHub Actions and automation
 │   ├── workflows/
@@ -102,9 +102,9 @@ research-site/
 │   └── scripts/
 │       └── generate-cv-pdf.js      # Puppeteer script for PDF rendering
 │
-├── sw.js                        # Service worker (offline support, caching)
+├── sw.js                                # Service worker (offline support, caching)
 │
-├── assets/                      # Static files
+├── assets/                              # Static files
 │   ├── css/
 │   │   └── style.scss           # Design system (~1820 lines SCSS, minified on build)
 │   ├── fonts/                   # Self-hosted web fonts (woff2)
@@ -122,10 +122,10 @@ research-site/
 │   └── cv-print.html            # Print-optimized CV (used for PDF generation)
 │
 ├── Configuration Files
-│   ├── robots.txt              # Bot access control
-│   └── README.md               # This file
+│   ├── robots.txt                       # Bot access control
+│   └── README.md                        # This file
 │
-└── .git/                       # Version control
+└── .git/                                # Version control
 ```
 ## Content Management
 

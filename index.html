@@ -93,7 +93,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 
             <div class="paper-abstract-container">
                 <div class="paper-abstract collapsed" id="abstract-{{ forloop.index }}">
-                    {{ paper.abstract }}
+                    {{ paper.abstract | markdownify }}
                 </div>
             </div>
 
