@@ -53,6 +53,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to PDF"
           else
-            git commit -m "Auto-generate CV PDF [skip ci]"
+            git commit -m "Auto-generate CV PDF"
             git push
           fi
