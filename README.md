@@ -5,10 +5,10 @@ This is the source code for my personal academic website, hosted at [martin.gonz
 I use this platform to share my research on the **Human Supply Chain of AI**, **Crowdwork Platforms**, and **Algorithmic Fairness**.
 
 ## Tech Stack
-* **Static Site Generator:** Jekyll (GitHub Pages)
-* **Styling:** Handcrafted CSS3 with custom design system
+* **Static Site Generator:** Jekyll
+* **Styling:** Handcrafted SCSS with custom design system (compiled & minified by Jekyll)
 * **Templating:** Liquid templates with data-driven content
-* **Hosting:** GitHub Pages with Cloudflare CDN
+* **Hosting:** Cloudflare Pages
 * **Analytics:** Google Analytics 4 (GA4)
 
 ## Key Features
@@ -20,10 +20,14 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Custom Typography:** Merriweather (serif) for headings, Atkinson Hyperlegible (sans-serif) for body text
 
 ### 🌱 Sustainable & Performance-Focused
-* **Optimized Assets:** Profile and social images use WebP format for maximum compression
+* **Optimized Assets:** All images converted to WebP; logos resized to display dimensions
+* **Lazy Loading:** Below-fold images use `loading="lazy"` to defer network requests
+* **Service Worker:** Offline-capable with pre-caching, stale-while-revalidate for static assets, and network-first for HTML
+* **CSS Minification:** Jekyll Sass pipeline compresses CSS in production
+* **Reduced Motion:** Respects `prefers-reduced-motion` to disable animations
+* **Carbon Footprint Badge:** Tracks and displays per-page CO2 emissions via Website Carbon API
 * **Zero Dependencies:** No JavaScript frameworks or heavy libraries
-* **Minimal JavaScript:** ~315 lines of vanilla JS for interactivity
-* **Fast Loading:** Optimized CSS with design tokens and efficient selectors
+* **Minimal JavaScript:** ~440 lines of vanilla JS for interactivity
 
 ### 🛡️ Privacy & Security
 * **Robots.txt:** Blocks unauthorized scraping by AI training bots (GPTBot, CCBot, etc.)
@@ -78,8 +82,8 @@ research-site/
 ├── _includes/                  # Reusable HTML components
 │   ├── head.html               # Meta tags, SEO, analytics, theme scripts
 │   ├── sidebar.html            # Navigation, profile pic, social links
-│   ├── footer.html             # Copyright, credits, saint-of-the-day
-│   ├── scripts.html            # ~315 lines vanilla JS (mobile nav, dark mode, etc.)
+│   ├── footer.html             # Copyright, credits, carbon badge, saint-of-the-day
+│   ├── scripts.html            # ~440 lines vanilla JS (mobile nav, dark mode, etc.)
 │   └── family-modal.html       # Accessible image modal dialog
 │
 ├── _layouts/                   # Page templates
@@ -91,11 +95,13 @@ research-site/
 ├── .github/workflows/          # GitHub Actions automation
 │   └── update-status-date.yml  # Auto-updates status.yml timestamp on push
 │
+├── sw.js                        # Service worker (offline support, caching)
+│
 ├── assets/                      # Static files
 │   ├── css/
-│   │   └── style.css            # Complete design system (~3000+ lines)
+│   │   └── style.scss           # Design system (~1680 lines SCSS, minified on build)
 │   ├── logos/                   # Institution and company logos (PNG/SVG)
-│   ├── family/                  # Family member photos
+│   ├── family/                  # Family photos (WebP)
 │   ├── profile_picture.webp     # Profile image (WebP)
 │   └── martin-gonzalez-cabello-cv.pdf
 │
@@ -180,7 +186,7 @@ This website follows a **digital minimalism** approach:
 
 ## Design System
 
-The site uses a comprehensive design system defined in `/assets/css/style.css`:
+The site uses a comprehensive design system defined in `/assets/css/style.scss`:
 
 ### CSS Custom Properties
 - **Color Palette:** 6+ background colors, 6+ text hierarchy levels
@@ -203,7 +209,7 @@ The site uses a comprehensive design system defined in `/assets/css/style.css`:
 
 ## JavaScript Features
 
-The site uses vanilla JavaScript (~315 lines in `_includes/scripts.html`) for:
+The site uses vanilla JavaScript (~440 lines in `_includes/scripts.html`) for:
 
 1. **Mobile Navigation** - Auto-scroll to main content on mobile
 2. **Profile Picture Spin** - 3.2s animation on click
@@ -212,19 +218,20 @@ The site uses vanilla JavaScript (~315 lines in `_includes/scripts.html`) for:
    - Focus trap and ARIA labels
    - Image + caption display
 4. **Dark Mode Toggle** - Theme switching with localStorage
-5. **Liturgical Calendar** - Saint-of-the-day in footer on hover
-6. **Web Vitals Monitoring** - Tracks LCP, FID/INP, CLS metrics sent to GA4
-7. **Mobile Scroll Guard** - Disables browser scroll restoration on mobile
+5. **Liturgical Calendar** - Saint-of-the-day in footer (hover on desktop, tap on mobile)
+6. **Carbon Footprint Badge** - Website Carbon API with caching and fallback values
+7. **Web Vitals Monitoring** - Tracks LCP, FID/INP, CLS metrics sent to GA4
+8. **Mobile Scroll Guard** - Disables browser scroll restoration on mobile
+9. **Service Worker Registration** - Offline support and asset caching
 
 ## Local Development
 
-This site uses Jekyll, which is automatically processed by GitHub Pages.
+This site uses Jekyll, deployed via Cloudflare Pages.
 
 ### Prerequisites
 * Ruby 2.7+ and Bundler (for local development)
-* Or just use GitHub Pages to build automatically
 
-### Option 1: Local Jekyll Server (Recommended)
+### Local Development
 
 1.  **Clone the repository:**
     ```bash
@@ -243,20 +250,12 @@ This site uses Jekyll, which is automatically processed by GitHub Pages.
     ```
     Then open `http://localhost:4000`
 
-### Option 2: Simple HTTP Server (Limited)
-
-If you don't want to install Jekyll locally, you can use a basic HTTP server, but note that Jekyll features (layouts, includes, data files) won't work:
-
-```bash
-python3 -m http.server
-```
-
 ## Privacy & Ethics
 
 This site respects user privacy and blocks AI training scrapers:
 
 ### robots.txt Configuration
-- **Blocked:** GPTBot, ChatGPT-User, CCBot, Google-Extended, Anthropic-AI, Claude-Web
+- **Blocked:** GPTBot, ChatGPT-User, CCBot, AnthropicAI
 - **Allowed:** Google, Bing (for legitimate SEO)
 
 ### Analytics
