@@ -5,6 +5,10 @@
   dates: "2022 - Present"
   role: "Teaching Assistant"
   courses:
+    - title: "Flamenco Dancing"
+      program: "Music"
+      year: "2022-2025"
+      students: 1000
     - title: "Data and Decisions"
       program: "MBA Core"
       year: "2022-2025"
