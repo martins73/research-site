@@ -1578,11 +1578,17 @@ a .cv-logo:hover {
 }
 
 /* ============================================================================
-   15. RESPONSIVE DESIGN (Fixed Jitter)
+   15. RESPONSIVE DESIGN
    ============================================================================ */
-
 @media (max-width: 768px) { 
-    /* --- Existing Layout Adjustments --- */
+    
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    /* ... (Your other Grid/Sidebar tweaks remain here) ... */
     .container { 
         grid-template-columns: 1fr; 
         padding: var(--space-8) var(--space-6); 
@@ -1593,44 +1599,20 @@ a .cv-logo:hover {
     }
     
     .sidebar { 
-        position: static;
+        position: static; 
         border-bottom: 1px solid var(--border); 
         padding-bottom: var(--space-8); 
         margin-bottom: var(--space-8); 
-        height: auto;
+        height: auto; 
         overflow-y: visible;
     } 
     
-    .research-grid { 
-        grid-template-columns: 1fr; 
-    }
-    
-    .now-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-8);
-    }
+    .research-grid, .now-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+    .cv-page-header { flex-direction: column; align-items: flex-start; }
+    .cv-actions, .cv-actions .cv-action-btn { width: 100%; }
+    #main-content { scroll-margin-top: 140px; }
 
-    /* --- CV Mobile Tweak --- */
-    .cv-page-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cv-actions {
-        width: 100%;
-    }
-
-    .cv-actions .cv-action-btn {
-        width: 100%;
-    }
-
-    /* anchor jump offset */
-    #main-content {
-        scroll-margin-top: 140px;
-    }
-
-    /* --- FOOTER MOBILE STABILIZATION --- */
-    
+    /* --- FOOTER FIXES --- */
     .footer-main-row {
         flex-direction: column;
         align-items: center;
@@ -1638,9 +1620,7 @@ a .cv-logo:hover {
         width: 100%; 
     }
 
-    /* Reset columns to be full width but centered content */
-    .footer-col-left,
-    .footer-col-right {
+    .footer-col-left, .footer-col-right {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -1648,50 +1628,39 @@ a .cv-logo:hover {
         text-align: center;
     }
 
-    /* STABILIZE COPYRIGHT TEXT & SAINT ICON */
+    .credits { justify-content: center; margin-bottom: var(--space-2); }
+
+    /* PERFECT CENTERING LOGIC */
     .copyright-text {
+        position: relative; 
+        display: flex;
         justify-content: center;
-        text-align: center;
-        flex-wrap: wrap; 
+        align-items: center;
         width: 100%;
         line-height: 1.6; 
     }
     
-    /* THE FIX: Reserving space prevents the jitter */
     #copyright-content {
         display: inline-block;
-        min-width: 260px; /* Forces the container to stay wide enough */
+        min-width: 260px; 
         text-align: center;
         white-space: normal; 
     }
 
-    /* Give the cross icon stable spacing */
+    /* Pins the cross to the absolute left so text stays centered */
     #saint-trigger {
-        margin: 0 6px; 
-        display: inline-block;
-        padding: 10px; /* Increases tap area */
-        margin-top: -10px; 
-        margin-bottom: -10px;
+        position: absolute;
+        left: 0; 
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 12px;
         cursor: pointer;
+        opacity: 0.6;
+        -webkit-tap-highlight-color: transparent;
     }
 
-    .credits {
-        justify-content: center;
-        margin-bottom: var(--space-2);
-    }
-
-    /* Stabilize the Carbon Badge */
-    .carbon-badge {
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Reset text alignment overrides for the badge specifically */
-    .carbon-badge span, 
-    .wcb-text {
-        text-align: center;
-    }
+    .carbon-badge { justify-content: center; text-align: center; width: 100%; }
+    .carbon-badge span, .wcb-text { text-align: center; }
 }
 
 /* ============================================================================
