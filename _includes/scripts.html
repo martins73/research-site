@@ -238,8 +238,9 @@
        - Intelligently formats saint names (singular/plural, strips prefix)
        - Falls back to copyright text if no saint is available
     */
-    const trigger = document.getElementById("saint-trigger");
+const trigger = document.getElementById("saint-trigger");
     const target = document.getElementById("copyright-content");
+    
     if (trigger && target) {
       const today = new Date();
       const key = (today.getMonth() + 1) + "-" + today.getDate();
@@ -277,22 +278,21 @@
       if (saints && saints.length > 0) {
         const saintText = formatSaintList(saints);
 
-        trigger.addEventListener("mouseenter", () => {
+        // Define the actions as functions so we can reuse them
+        const showSaint = () => {
           target.style.transition = "opacity 0.2s";
           target.style.opacity = "0";
-
           setTimeout(() => {
             target.innerText = "Feast of " + saintText;
             target.style.color = "#2774AE";
             target.style.fontWeight = "500";
             target.style.opacity = "1";
           }, 200);
-        });
+        };
 
-        trigger.addEventListener("mouseleave", () => {
+        const hideSaint = () => {
           target.style.transition = "opacity 0.2s";
           target.style.opacity = "0";
-
           setTimeout(() => {
             if (originalHTML !== originalText) {
               target.innerHTML = originalHTML;
@@ -303,7 +303,21 @@
             target.style.fontWeight = "normal";
             target.style.opacity = "1";
           }, 200);
-        });
+        };
+
+        // --- DESKTOP (Original Behavior) ---
+        trigger.addEventListener("mouseenter", showSaint);
+        trigger.addEventListener("mouseleave", hideSaint);
+
+        // --- MOBILE (New "Hold-to-View" Behavior) ---
+        // This effectively says: "When finger touches, show. When finger lifts, hide."
+        trigger.addEventListener("touchstart", (e) => {
+             e.preventDefault(); // Prevents the "sticky" mouse emulation
+             showSaint(); 
+        }, { passive: false });
+        
+        trigger.addEventListener("touchend", hideSaint);
+        trigger.addEventListener("touchcancel", hideSaint);
       }
     }
   });
