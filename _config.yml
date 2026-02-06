@@ -20,8 +20,11 @@ author:
   cv_phone: "+1 857 313 8511"
   cv_address: "B501, 110 Westwood Plaza, Los Angeles, CA 90095"
 
-# Brand color (used by favicon and can be referenced in templates)
+# Brand colors (single source of truth for favicon + CSS)
+# Change these to rebrand the entire site:
 accent_color: "#A31F34"
+accent_color_rgb: "163, 31, 52"
+accent_color_hover: "#7d1828"
 
 # Template Attribution
 template:

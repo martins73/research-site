@@ -91,10 +91,10 @@
     --text-muted: #94a3b8;      /* More muted/lighter text */
     --text-lighter: #cbd5e1;    /* Very light text */
     
-    /* Colors - Accent */
-    --accent: #2774AE;          /* UCLA Blue */
-    --accent-rgb: 39, 116, 174; /* UCLA Blue as RGB triplet for rgba() */
-    --accent-hover: #1e5f8e;    /* Darker blue for hover */
+    /* Colors - Accent (from _config.yml accent_color) */
+    --accent: {{ site.accent_color }};
+    --accent-rgb: {{ site.accent_color_rgb }};
+    --accent-hover: {{ site.accent_color_hover }};
     --accent-orange: #D97706;   /* Amber accent (job market tag) */
 
     /* Colors - Border */
