@@ -60,7 +60,6 @@ research-site/
 │   ├── activity.yml            # Recent activity feed (papers, talks, etc.)
 │   ├── teaching.yml            # Teaching experience (feeds CV & Teaching page)
 │   ├── status.yml              # Current status (location, reading, activities)
-│   ├── navigation.yml          # Main navigation menu structure
 │   │
 │   ├── cv/                     # Modularized CV Data
 │   │   ├── education.yml       # Degrees and institutions
@@ -102,6 +101,7 @@ research-site/
 ├── assets/                      # Static files
 │   ├── css/
 │   │   └── style.scss           # Design system (~1820 lines SCSS, minified on build)
+│   ├── fonts/                   # Self-hosted web fonts (woff2)
 │   ├── logos/                   # Institution and company logos (PNG/SVG)
 │   ├── family/                  # Family photos (WebP)
 │   ├── profile_picture.webp     # Profile image (WebP)
@@ -116,7 +116,6 @@ research-site/
 │
 ├── Configuration Files
 │   ├── robots.txt              # Bot access control
-│   ├── CNAME                   # Custom domain configuration
 │   └── README.md               # This file
 │
 └── .git/                       # Version control
@@ -160,11 +159,16 @@ Edit `_data/status.yml` to update:
 - Last updated date (auto-updated by GitHub Actions)
 
 #### 4. Managing the CV
-The CV is now fully modularized in `_data/cv/`. Update specific files to change sections:
+The CV is modularized in `_data/cv/`. Update specific files to change sections:
 - **`education.yml`**: Degrees, universities, logos, and years.
 - **`industry.yml`**: Professional roles, companies, and descriptions.
-- **`teaching.yml`**: Courses taught, roles (Instructor/TA), and ratings.
-- **`additional_information.yml`**: Skills, languages, and certifications.
+- **`skills.yml`**: Skills, languages, and qualifications.
+- **`awards.yml`**: Honors and awards.
+- **`service.yml`**: Academic service roles.
+- **`presentations.yml`**: Selected conference presentations.
+- **`references.yml`**: Academic references and contact info.
+
+Teaching experience is managed separately in `_data/teaching.yml` (shared by the CV and Teaching pages).
 
 #### 5. Managing the Library
 Edit `_data/library.yml` to manage your book collections. The file is structured by "shelves" (e.g., "The Human Supply Chain", "Formation"):
@@ -223,8 +227,8 @@ The site uses vanilla JavaScript (~440 lines in `_includes/scripts.html`) for:
 4. **Dark Mode Toggle** - Theme switching with localStorage
 5. **Liturgical Calendar** - Saint-of-the-day in footer (hover on desktop, tap on mobile)
 6. **Carbon Footprint Badge** - Website Carbon API with caching and fallback values
-7. **Web Vitals Monitoring** - Tracks LCP, FID/INP, CLS metrics sent to GA4
-8. **Mobile Scroll Guard** - Disables browser scroll restoration on mobile
+7. **Mobile Scroll Guard** - Disables browser scroll restoration on mobile
+8. **Paper Abstract Toggles** - Delegated event listener with ARIA-expanded state management
 9. **Service Worker Registration** - Offline support and asset caching
 
 ## Local Development
@@ -263,7 +267,6 @@ This site respects user privacy and blocks AI training scrapers:
 
 ### Analytics
 - Privacy-first Google Analytics 4 configuration
-- Web Vitals performance monitoring
 
 ## Automation
 
