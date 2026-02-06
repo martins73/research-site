@@ -1,0 +1,3 @@
+# Redirect internal-only pages
+/cv-print/ /cv/ 301
+/cv-print /cv/ 301

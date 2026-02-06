@@ -177,6 +177,11 @@
       font-size: 10pt;
     }
 
+    /* --- Multiple positions within same company --- */
+    .position-subsequent {
+      margin-top: 6pt;
+    }
+
     /* --- Page break control --- */
     .entry {
       page-break-inside: avoid;
@@ -184,6 +189,15 @@
 
     .paper-entry {
       page-break-inside: avoid;
+    }
+
+    section h2 {
+      page-break-after: avoid;
+    }
+
+    section {
+      page-break-inside: auto;
+      break-inside: auto;
     }
 
     @page {
