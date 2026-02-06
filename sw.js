@@ -6,7 +6,12 @@ const CACHE_NAME = 'v{{ site.time | date: "%s" }}';
 const PRECACHE = [
   '{{ "/assets/css/style.css" | relative_url }}?v={{ site.time | date: "%s" }}',
   '{{ "/assets/profile_picture.webp" | relative_url }}',
-  '{{ "/assets/logos/favicon.svg" | relative_url }}'
+  '{{ "/assets/logos/favicon.svg" | relative_url }}',
+  '{{ "/assets/fonts/atkinson-regular.woff2" | relative_url }}',
+  '{{ "/assets/fonts/atkinson-bold.woff2" | relative_url }}',
+  '{{ "/assets/fonts/merriweather-light.woff2" | relative_url }}',
+  '{{ "/assets/fonts/merriweather-regular.woff2" | relative_url }}',
+  '{{ "/assets/fonts/merriweather-bold.woff2" | relative_url }}'
 ];
 
 self.addEventListener('install', (event) => {
@@ -49,8 +54,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  const isStatic = /\.(css|js|png|jpg|webp|svg|woff2?|ttf)(\?.*)?$/.test(url.pathname) ||
-                   url.hostname === 'fonts.gstatic.com';
+  const isStatic = /\.(css|js|png|jpg|webp|svg|woff2?|ttf)(\?.*)?$/.test(url.pathname);
 
   if (isStatic) {
     event.respondWith(

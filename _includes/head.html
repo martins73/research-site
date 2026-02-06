@@ -29,10 +29,6 @@
 
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/logos/favicon.svg' | relative_url }}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
 {% if site.google_analytics %}
@@ -80,35 +76,21 @@
 }
 </script>
 
-<!-- Dark Mode Flash Prevention: Apply saved theme before page renders -->
-<!-- This prevents a white flash when user has selected dark mode -->
+<!-- Early Guards: Must run before first paint to prevent visual glitches -->
 <script>
+  // 1. Dark mode: apply saved theme before render to prevent white flash
   (function() {
-    const theme = localStorage.getItem('theme') || 'light';
+    var theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
   })();
-</script>
 
-<!-- Global Configuration: Mobile breakpoint must be consistent across all scripts -->
-<!-- This value (768px) matches the @media query in style.css -->
-<script>
+  // 2. Mobile breakpoint: shared constant used by all scripts
   window.MOBILE_BREAKPOINT_PX = 768;
-</script>
 
-<!-- Mobile Scroll Guard: Disable browser scroll restoration for mobile navigation -->
-<!-- When user clicks a sidebar link on mobile, we want to scroll to main content.
-     This disables the browser's automatic scroll restoration so we control it via JavaScript -->
-<script>
-  (function () {
-    const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
-    if (!isMobile) return;
-
-    const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
-    if (!shouldAutoScroll) return;
-
-    // Disable automatic scroll restoration so our JavaScript scroll code takes over
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
+  // 3. Scroll guard: disable browser scroll restoration before it fires
+  (function() {
+    if (!window.matchMedia('(max-width: ' + window.MOBILE_BREAKPOINT_PX + 'px)').matches) return;
+    if (sessionStorage.getItem('autoScrollToContent') !== '1') return;
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   })();
 </script>
