@@ -24,25 +24,6 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
     They are my greatest joy, my daily chaos, and my most important responsibility.</p>
 </section>
 
-<!-- Accessible Family Modal -->
-<div id="family-modal" 
-     class="modal-overlay" 
-     role="dialog" 
-     aria-modal="true" 
-     aria-labelledby="modal-caption"
-     aria-hidden="true"
-     style="display: none;">
-    <div class="modal-content">
-        <button id="modal-close" 
-                class="modal-close" 
-                aria-label="Close family photo">
-            ×
-        </button>
-        <img id="modal-img" src="" alt="" class="family-photo">
-        <p id="modal-caption" class="modal-caption"></p>
-    </div>
-</div>
-
 {% if site.data.activity.show_section and site.data.activity.items.size >= site.data.activity.min_items %}
 <section id="news">
     <h2>Recent Activity</h2>
@@ -113,7 +94,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
             </div>
 
             <div class="paper-actions">
-                <button class="btn-abstract" onclick="toggleAbstract({{ forloop.index }})" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
+                <button class="btn-abstract" onclick="toggleAbstract({{ forloop.index }}, event)" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
                     Show Abstract
                 </button>
                 <a href="{{ paper.link_url }}" class="card-link" {% if paper.link_url contains 'http' %}target="_blank" rel="noopener"{% endif %}>{{ paper.link_text }}</a>

@@ -279,7 +279,7 @@
           target.style.opacity = "0";
           setTimeout(() => {
             target.innerText = "Feast of " + saintText;
-            target.style.color = "#2774AE";
+            target.style.color = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
             target.style.fontWeight = "500";
             target.style.opacity = "1";
           }, 200);
@@ -331,7 +331,7 @@
        On mobile, refreshing the page (e.g. tapping Go in the address bar) restores
        scroll position by default. This overrides that to always start at the top.
     */
-    if (window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX || 768}px)`).matches) {
+    if (window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches) {
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
@@ -415,9 +415,9 @@
      Expands/collapses research paper abstracts when user clicks the toggle button.
      Updates button text and ARIA attributes for accessibility.
   */
-  function toggleAbstract(index) {
+  function toggleAbstract(index, e) {
     const abstractElement = document.getElementById(`abstract-${index}`);
-    const button = event.target;
+    const button = e.target;
 
     if (abstractElement.classList.contains('collapsed')) {
       abstractElement.classList.remove('collapsed');
