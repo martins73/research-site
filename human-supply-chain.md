@@ -35,7 +35,7 @@ Just as the industrial revolution required us to study the factory floor, the AI
 
 We cannot optimize what we refuse to see.
 
-<hr style="margin: 3rem 0; border: 0; border-top: 1px solid var(--border);">
+<hr class="manifesto-divider">
 
 </div>
 

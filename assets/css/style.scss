@@ -1345,8 +1345,14 @@ a .cv-logo:hover {
     margin-top: var(--space-12);
 }
 
-.manifesto-body p { 
-    margin-bottom: var(--space-6); 
+.manifesto-body p {
+    margin-bottom: var(--space-6);
+}
+
+.manifesto-divider {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 1px solid var(--border);
 }
 
 
