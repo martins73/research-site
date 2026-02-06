@@ -201,10 +201,6 @@
     box-sizing: border-box;
 }
 
-html {
-    overflow-x: clip;
-}
-
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--text-2xl); 
@@ -1593,6 +1589,11 @@ a .cv-logo:hover {
    ============================================================================ */
 
 @media (max-width: 768px) {
+
+    html, body {
+        width: 100%;
+        position: relative;
+    }
 
     /* --- Layout --- */
     .container { 
