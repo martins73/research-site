@@ -24,8 +24,15 @@
       font-weight: 400;
       font-style: italic;
     }
+    @font-face {
+      font-family: 'Atkinson Hyperlegible';
+      src: url('{{ "/assets/fonts/atkinson-bold-italic.woff2" | relative_url }}') format('woff2');
+      font-weight: 700;
+      font-style: italic;
+    }
 
-    /* Print CV Styles */
+    /* ===== Print CV Styles ===== */
+
     * {
       margin: 0;
       padding: 0;
@@ -34,64 +41,60 @@
 
     body {
       font-family: 'Atkinson Hyperlegible', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 10.5pt;
-      line-height: 1.4;
+      font-size: 10pt;
+      line-height: 1.25;
       color: #000;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
     }
 
     /* --- Header --- */
     .cv-header {
       text-align: center;
-      margin-bottom: 16pt;
+      margin-bottom: 12pt;
     }
 
     .cv-header h1 {
-      font-size: 18pt;
+      font-size: 16pt;
       font-weight: 700;
       letter-spacing: 2pt;
       text-transform: uppercase;
-      margin-bottom: 4pt;
-    }
-
-    .cv-header-affiliation {
-      font-size: 10.5pt;
-      margin-bottom: 2pt;
+      margin-bottom: 3pt;
     }
 
     .cv-header-contact {
       font-size: 9.5pt;
-      color: #333;
-    }
-
-    .cv-header-contact a {
-      color: #333;
-      text-decoration: none;
+      line-height: 1.4;
     }
 
     .cv-header-updated {
-      font-size: 8.5pt;
-      color: #666;
-      margin-top: 4pt;
+      font-size: 8pt;
+      color: #555;
+      margin-top: 3pt;
+      font-style: italic;
     }
 
     /* --- Sections --- */
     section {
-      margin-bottom: 14pt;
+      margin-bottom: 10pt;
     }
 
     section h2 {
-      font-size: 11pt;
+      font-size: 10.5pt;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1pt;
-      border-bottom: 1px solid #000;
-      padding-bottom: 2pt;
-      margin-bottom: 8pt;
+      border-bottom: 1.5pt solid #000;
+      padding-bottom: 1pt;
+      margin-bottom: 6pt;
     }
 
-    /* --- Entries --- */
+    /* --- Entries (education, teaching, industry) --- */
     .entry {
-      margin-bottom: 10pt;
+      margin-bottom: 8pt;
     }
 
     .entry-row {
@@ -108,103 +111,106 @@
     .entry-right {
       text-align: right;
       white-space: nowrap;
-      font-size: 10pt;
     }
 
     .entry-institution {
       font-weight: 700;
+      text-transform: uppercase;
     }
 
-    .entry-degree {
+    .entry-role {
+      font-weight: 700;
       font-style: italic;
     }
 
     .entry-desc {
-      margin-top: 2pt;
-      font-size: 10pt;
-      color: #222;
+      margin-top: 1pt;
+      font-size: 9.5pt;
     }
 
     .entry-desc ul {
-      margin: 2pt 0 0 16pt;
+      margin: 1pt 0 0 14pt;
       padding: 0;
     }
 
     .entry-desc li {
       margin-bottom: 1pt;
-      font-size: 10pt;
     }
 
-    /* --- Research/Papers --- */
+    /* --- Papers / Publications --- */
     .paper-entry {
-      margin-bottom: 8pt;
+      margin-bottom: 6pt;
     }
 
-    .paper-title {
-      font-weight: 700;
+    .paper-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .paper-title-text {
+      flex: 1;
+      padding-right: 12pt;
+    }
+
+    .paper-year {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .paper-meta {
+      font-size: 9.5pt;
+    }
+
+    .paper-meta em {
+      font-style: italic;
     }
 
     .paper-note {
       font-style: italic;
-      color: #444;
-    }
-
-    .paper-coauthors,
-    .paper-publication {
-      font-size: 10pt;
-    }
-
-    .paper-publication {
-      font-style: italic;
+      font-size: 9pt;
     }
 
     /* --- Presentations --- */
     .talk-list {
-      margin: 2pt 0 0 16pt;
+      margin: 1pt 0 0 14pt;
       padding: 0;
-      font-size: 10pt;
+      font-size: 9.5pt;
     }
 
     .talk-list li {
       margin-bottom: 1pt;
     }
 
-    /* --- Teaching --- */
-    .course-list {
-      margin: 2pt 0 0 16pt;
-      padding: 0;
+    /* --- Teaching courses --- */
+    .course-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.5pt;
     }
 
-    .course-list li {
-      margin-bottom: 1pt;
-      font-size: 10pt;
+    .course-row + .course-row {
+      margin-top: 0;
     }
 
-    /* --- Skills --- */
-    .skill-row {
-      margin-bottom: 3pt;
-      font-size: 10pt;
+    /* --- Skills / Additional Info --- */
+    .info-item {
+      margin-bottom: 2pt;
+      font-size: 9.5pt;
     }
 
     /* --- Research interests --- */
     .interests {
-      font-size: 10.5pt;
-    }
-
-    /* --- Sub-section headers --- */
-    .subsection-header {
-      font-weight: 700;
-      font-size: 10.5pt;
-      margin-top: 8pt;
-      margin-bottom: 4pt;
+      font-size: 10pt;
     }
 
     /* --- Page break control --- */
-    section {
+    .entry {
       page-break-inside: avoid;
     }
 
-    .entry {
+    .paper-entry {
       page-break-inside: avoid;
     }
 

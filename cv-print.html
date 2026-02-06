@@ -9,15 +9,9 @@ exclude_from_nav: true
 <!-- ===== HEADER ===== -->
 <header class="cv-header">
     <h1>{{ site.author.name }}</h1>
-    <div class="cv-header-affiliation">
-        {{ site.author.job_title }}<br>
-        {{ site.author.affiliation }}
-    </div>
     <div class="cv-header-contact">
         {{ site.author.cv_address }}<br>
-        {{ site.author.cv_phone }} |
-        <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a> |
-        <a href="{{ site.url }}">{{ site.url | remove: 'https://' }}</a>
+        {{ site.author.cv_phone }} | {{ site.author.email }}
     </div>
     <div class="cv-header-updated">
         Last Updated: {{ site.time | date: "%B %Y" }}
@@ -34,11 +28,22 @@ exclude_from_nav: true
             <span class="entry-right">{{ item.location }}</span>
         </div>
         <div class="entry-row">
-            <span class="entry-left entry-degree">{{ item.degree }}</span>
+            <span class="entry-left entry-role">{{ item.degree }}</span>
             <span class="entry-right">{{ item.dates }}</span>
         </div>
         {% if item.description and item.description != "" %}
-        <div class="entry-desc">{{ item.description }}</div>
+        <div class="entry-desc">
+            <ul>
+                {% assign desc_items = item.description | split: ". " %}
+                {% if desc_items.size > 1 %}
+                    {% for d in desc_items %}
+                        {% if d != "" %}<li>{{ d }}{% unless d contains "." %}.{% endunless %}</li>{% endif %}
+                    {% endfor %}
+                {% else %}
+                    <li>{{ item.description }}</li>
+                {% endif %}
+            </ul>
+        </div>
         {% endif %}
     </div>
     {% endfor %}
@@ -59,14 +64,15 @@ exclude_from_nav: true
     <h2>Publications</h2>
     {% for paper in publications %}
     <div class="paper-entry">
-        <span class="paper-title">"{{ paper.title }}"</span>
-        <div class="paper-coauthors">
+        <div class="paper-row">
+            <span class="paper-title-text">{{ paper.title }}</span>
+            <span class="paper-year">{{ paper.publication | split: "(" | last | split: ")" | first }}</span>
+        </div>
+        <div class="paper-meta">
             with
             {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+            {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
-        {% if paper.publication != "" %}
-        <div class="paper-publication">{{ paper.publication }}</div>
-        {% endif %}
     </div>
     {% endfor %}
 </section>
@@ -79,17 +85,17 @@ exclude_from_nav: true
     <h2>Working Papers</h2>
     {% for paper in working_papers %}
     <div class="paper-entry">
-        <span class="paper-title">"{{ paper.title }}"</span>
-        {% if paper.status == "Job Market Paper" %}
-        <span class="paper-note"> (Job Market Paper)</span>
-        {% endif %}
-        <div class="paper-coauthors">
-            with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+        <div class="paper-row">
+            <span class="paper-title-text">
+                {{ paper.title }}
+                {% if paper.status == "Job Market Paper" %}<span class="paper-note"> (Job Market Paper)</span>{% endif %}
+            </span>
+            <span class="paper-year">{{ site.time | date: "%Y" }}</span>
         </div>
-        {% if paper.submission != "" %}
-        <div class="paper-publication">{{ paper.submission }}</div>
-        {% endif %}
+        <div class="paper-meta">
+            with
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}{% if paper.submission != "" %}, <em>{{ paper.submission | downcase }}</em>{% endif %}
+        </div>
     </div>
     {% endfor %}
 </section>
@@ -102,10 +108,13 @@ exclude_from_nav: true
     <h2>Work in Progress</h2>
     {% for paper in wip %}
     <div class="paper-entry">
-        <span class="paper-title">"{{ paper.title }}"</span>
-        <div class="paper-coauthors">
+        <div class="paper-row">
+            <span class="paper-title-text">{{ paper.title }}</span>
+            <span class="paper-year">{{ site.time | date: "%Y" }}</span>
+        </div>
+        <div class="paper-meta">
             with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}
         </div>
     </div>
     {% endfor %}
@@ -118,7 +127,7 @@ exclude_from_nav: true
     <h2>Conference Presentations</h2>
     {% for paper in site.data.cv.presentations %}
     <div class="paper-entry">
-        <span class="paper-title">"{{ paper.title }}"</span>
+        <span class="paper-title-text">{{ paper.title }}</span>
         <ul class="talk-list">
             {% for talk in paper.talks %}
             <li>{{ talk.event }}, {{ talk.location }} ({{ talk.year }})</li>
@@ -139,14 +148,15 @@ exclude_from_nav: true
             <span class="entry-right">{{ item.location }}</span>
         </div>
         <div class="entry-row">
-            <span class="entry-left entry-degree">{{ item.role }}</span>
+            <span class="entry-left entry-role">{{ item.role }}</span>
             <span class="entry-right">{{ item.dates }}</span>
         </div>
-        <ul class="course-list">
-            {% for course in item.courses %}
-            <li>{{ course.title }} ({{ course.program }}{% if course.students %}, {{ course.students }} students{% endif %})</li>
-            {% endfor %}
-        </ul>
+        {% for course in item.courses %}
+        <div class="course-row">
+            <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
+            <span class="entry-right">{{ course.year }}</span>
+        </div>
+        {% endfor %}
     </div>
     {% endfor %}
 </section>
@@ -162,7 +172,7 @@ exclude_from_nav: true
         </div>
         {% for position in company.positions %}
         <div class="entry-row">
-            <span class="entry-left entry-degree">{{ position.role }}</span>
+            <span class="entry-left entry-role">{{ position.role }}</span>
             <span class="entry-right">{{ position.dates }}</span>
         </div>
         {% if position.description.size > 0 %}
@@ -209,17 +219,29 @@ exclude_from_nav: true
 </section>
 {% endif %}
 
-<!-- ===== SKILLS ===== -->
-{% if site.data.cv.skills.size > 0 %}
+<!-- ===== ADDITIONAL EDUCATION ===== -->
+{% assign certs = site.data.cv.skills | where: "category", "Certifications" | first %}
+{% if certs %}
 <section>
-    <h2>Skills &amp; Qualifications</h2>
-    {% for group in site.data.cv.skills %}
-    <div class="skill-row">
-        <strong>{{ group.category }}:</strong> {{ group.items | join: ", " }}
-    </div>
+    <h2>Additional Education</h2>
+    {% for item in certs.items %}
+    <div class="info-item">• {{ item }}</div>
     {% endfor %}
 </section>
 {% endif %}
+
+<!-- ===== ADDITIONAL INFORMATION ===== -->
+<section>
+    <h2>Additional Information</h2>
+    {% assign tech = site.data.cv.skills | where: "category", "Technical" | first %}
+    {% if tech %}
+    <div class="info-item">• <strong>Technical:</strong> {{ tech.items | join: ", " }}</div>
+    {% endif %}
+    {% assign langs = site.data.cv.skills | where: "category", "Languages" | first %}
+    {% if langs %}
+    <div class="info-item">• <strong>Languages:</strong> {{ langs.items | join: ", " }}</div>
+    {% endif %}
+</section>
 
 <!-- ===== REFERENCES (if populated) ===== -->
 {% if site.data.cv.references.size > 0 %}
@@ -229,9 +251,8 @@ exclude_from_nav: true
     <div class="entry">
         <div><strong>{{ ref.name }}</strong></div>
         <div class="entry-desc">
-            {{ ref.title }}<br>
-            {{ ref.institution }}<br>
-            <a href="mailto:{{ ref.email }}">{{ ref.email }}</a>
+            {{ ref.title }}, {{ ref.institution }}<br>
+            {{ ref.email }}
         </div>
     </div>
     {% endfor %}
