@@ -124,15 +124,19 @@
     /* Typography Scale */
     --text-xs: 0.65rem;   /* 10.4px */
     --text-sm: 0.75rem;   /* 12px */
+    --text-sm-plus: 0.8rem; /* 12.8px */
     --text-base: 0.85rem; /* 13.6px */
     --text-md: 0.9rem;    /* 14.4px */
     --text-normal: 0.95rem; /* 15.2px */
     --text-lg: 1rem;      /* 16px */
     --text-xl: 1.05rem;   /* 16.8px */
+    --text-xl-plus: 1.1rem; /* 17.6px */
     --text-2xl: 1.125rem; /* 18px */
+    --text-2xl-plus: 1.2rem; /* 19.2px */
     --text-3xl: 1.25rem;  /* 20px */
     --text-4xl: 1.4rem;   /* 22.4px */
     --text-5xl: 1.5rem;   /* 24px */
+    --text-h1: 1.75rem;   /* 28px */
     --text-6xl: 2.5rem;   /* 40px */
     
     /* Font Families */
@@ -292,7 +296,7 @@ body {
     margin: 0; 
     padding: 0; 
     background-color: var(--bg-body); 
-    background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
     background-size: 32px 32px; 
     min-height: 100vh; 
     display: flex; 
@@ -332,7 +336,7 @@ h1, h2, h3, .name {
     max-width: 1080px; 
     margin: var(--space-8) auto; 
     background-color: var(--bg-paper); 
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--border-medium);
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     border-radius: 4px;
     padding: var(--space-10);
@@ -382,7 +386,7 @@ h1, h2, h3, .name {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: var(--space-6);
-    border: 4px solid #f8fafc;
+    border: 4px solid var(--bg-paper);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     user-select: none;
     -webkit-user-drag: none;
@@ -448,7 +452,7 @@ h1, h2, h3, .name {
 .btn-outline:hover { 
     border-color: var(--accent); 
     color: var(--accent); 
-    background-color: #f8fafc; 
+    background-color: var(--bg-accent);
 }
 
 .btn-active { 
@@ -566,7 +570,7 @@ h1, h2, h3, .name {
    ============================================================================ */
 
 h1 {
-    font-size: 1.75rem;
+    font-size: var(--text-h1);
     margin-bottom: var(--space-4);
     margin-top: 0;
     color: var(--text-primary);
@@ -615,7 +619,7 @@ h2 {
 }
 
 .paper-card {
-    background: white; 
+    background: var(--bg-paper);
     border: 1px solid var(--border); 
     border-radius: 8px; 
     padding: var(--space-10); 
@@ -888,7 +892,7 @@ h2 {
 }
 
 .now-label {
-    font-size: 0.8rem;
+    font-size: var(--text-sm-plus);
     text-transform: uppercase;
     color: var(--text-light);
     margin-bottom: var(--space-4);
@@ -1298,7 +1302,7 @@ a .cv-logo:hover {
 
 .book-title {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: var(--text-xl-plus);
     color: var(--text-primary);
     display: block;
     margin-bottom: var(--space-1);
@@ -1344,7 +1348,7 @@ a .cv-logo:hover {
 }
 
 .manifesto-body {
-    font-size: 1.2rem; 
+    font-size: var(--text-2xl-plus);
     max-width: 700px;
     margin-top: var(--space-12);
 }
@@ -1632,8 +1636,8 @@ a .cv-logo:hover {
     margin-top: var(--space-4); 
     color: var(--text-light); 
     font-family: var(--font-heading); 
-    font-style: italic; 
-    font-size: 1.1rem; 
+    font-style: italic;
+    font-size: var(--text-xl-plus);
 }
 
 @keyframes fadeIn { 

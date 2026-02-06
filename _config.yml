@@ -20,6 +20,9 @@ author:
   cv_phone: "+1 857 313 8511"
   cv_address: "B501, 110 Westwood Plaza, Los Angeles, CA 90095"
 
+# Brand color (used by favicon and can be referenced in templates)
+accent_color: "#A31F34"
+
 # Template Attribution
 template:
   author: Martin Gonzalez Cabello
