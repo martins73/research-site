@@ -6,15 +6,15 @@
     - role: Head of Advanced Analytics
       dates: "2019 - 2021"
       description:
-        - Created and led the analytics department, to start using machine learning algorithms to make a better use of our data and improve decision making across the whole organization, both for healthcare and for job safety analysis for our clients
-        - Conceptualized and launched the Research and Innovation area within the company, promoting collaboration with universities and startups. Led ~10 research projects with universities and strengthened the relationship between ACHS and academia
-        - Defined a business problem, organized data and built a team to participate as a project sponsor at 2020 MIT's Analytics Lab, working with the student team, giving them guidance, support, and computing resources during the semester
+        - Created and led the analytics department, applying machine learning to healthcare and job safety decision-making
+        - Launched the Research and Innovation area, promoting collaboration with universities and startups across ~10 projects
+        - Project sponsor at MIT Analytics Lab (2020), providing data, guidance, and computing resources to the student team
     - role: Head of Customer Experience, Analytics and Remote Channels
       dates: "2018 - 2019"
       description:
-        - Led three areas at the largest insurer for work-related accidents in Chile, covering ~50% of the country employees with ~90 ambulatory centers across the country
-        - In charge of designing strategies and products to improve customer satisfaction for workers (B2C) and companies (B2B)
-        - Managed the call center (~200 agents) and the team in charge of the digital channels (e.g. public and transactional sites)
+        - Designed strategies and products to improve customer satisfaction for workers (B2C) and companies (B2B)
+        - Created the analytics area from scratch to support data-driven decision-making across the organization
+        - Managed the call center (~200 agents) and digital channels (public and transactional sites)
 
 - company: Asociación DEC Chile
   company_url: https://asociaciondec-cl.org/
@@ -24,7 +24,7 @@
     - role: Founder and President
       dates: "2018 - 2021"
       description:
-        - Founded the Chilean chapter of the Association for the Development of Customer Experience.
+        - Founded the Chilean chapter of the Association for the Development of Customer Experience
 
 - company: Oliver Wyman
   company_url: https://www.oliverwyman.com/
@@ -34,13 +34,9 @@
     - role: Management Consultant
       dates: "2011 - 2017"
       description:
-        - Based in Madrid and New York with global projects in Europe, Latin America, the Middle East and the United States
-        - Designed the mass affluent value proposition, designing new products and positioning for a regional US bank
-        - Worked on the creation of the Digital Practice within Oliver Wyman, being one of the key POC for Digital within the firm
-        - Designed the CRM strategy for a Mexican bank, defining the implementation roadmap and launching pilot campaigns
-        - Achieved a 17% churn rate reduction for a European incumbent operator by identifying customers at risk and designing and implementing a new retention strategy
-        - Developed the 4G/LTE launch strategy for a Brazilian mobile operator, sizing the market and defining the positioning of the company and the network roll-out plan; ensuring the successful launch of the product to meet the regulatory deadlines
-        - Worked in the launch of a Rights Issue process of a Saudi mobile operator, preparing the necessary analysis for the government institutions and creating the road-show presentations for investors; successfully restructuring the $2.3 BN loan
+        - Based in Madrid and New York with global projects across Europe, Latin America, the Middle East and the US
+        - Focused on Financial Services and Telecommunications industries
+        - Led engagements in strategy, digital transformation, advanced analytics, and value proposition design
 
 - company: Thinkids Project
   logo: /assets/logos/thinkids.png
@@ -49,7 +45,7 @@
     - role: Co-Founder
       dates: "2012 - Present"
       description:
-        - Co-founded and developed the methodology and strategy of the company, that has the goal of teaching and promoting entrepreneurship in Spain, Nepal, Pakistan, Peru and the Philippines with children between the ages of 8 to 14
+        - Co-founded an organization teaching entrepreneurship to children (ages 8-14) in five countries
 
 - company: Telefonica
   company_url: https://www.telefonica.com/
@@ -59,7 +55,7 @@
     - role: Global Affairs and New Ventures - MBA Intern
       dates: "Summer 2014"
       description:
-        - Analyzed the Education & Tech startup ecosystem worldwide providing a detailed quantitative and qualitative study identifying key indicators, trends and investment opportunities
+        - Analyzed the global EdTech startup ecosystem, identifying key indicators, trends, and investment opportunities
 
 - company: Accenture
   company_url: https://www.accenture.com/
@@ -69,4 +65,4 @@
     - role: Management Consultant Intern
       dates: "2009 - 2010"
       description:
-        - Full-time management consulting internship.
+        - Full-time management consulting internship
