@@ -323,85 +323,60 @@
         });
       }
     }
-    
-      /* ============================================================================
-         5. RESEARCH PAPERS: TOGGLE ABSTRACT
-         ============================================================================
-    
-         Expands/collapses research paper abstracts when user clicks the toggle button.
-         Updates button text and ARIA attributes for accessibility.
-      */
-      function toggleAbstract(index) {
-        const abstractElement = document.getElementById(`abstract-${index}`);
-        const button = event.target;
-    
-        if (abstractElement.classList.contains('collapsed')) {
-          // Expand abstract
-          abstractElement.classList.remove('collapsed');
-          abstractElement.classList.add('expanded');
-          button.textContent = 'Hide Abstract';
-          button.setAttribute('aria-expanded', 'true');
-        } else {
-          // Collapse abstract
-          abstractElement.classList.remove('expanded');
-          abstractElement.classList.add('collapsed');
-          button.textContent = 'Show Abstract';
-          button.setAttribute('aria-expanded', 'false');
-        }
-      }
-    
-      console.log(
-        "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
-        "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
-        "color: #64748b; font-size: 12px; font-family: sans-serif;"
-      );
 
-  /* ============================================================================
+    /* ============================================================================
+       5. MOBILE: SCROLL TO TOP ON REFRESH
+       ============================================================================
+
+       On mobile, refreshing the page (e.g. tapping Go in the address bar) restores
+       scroll position by default. This overrides that to always start at the top.
+    */
+    if (window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX || 768}px)`).matches) {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    }
+
+    /* ============================================================================
        6. CARBON BADGE (WEBSITE CARBON API)
        ============================================================================ */
     (function() {
       const badgeContainer = document.getElementById('wcb');
       if (!badgeContainer) return;
-  
-      // --- CONFIGURATION ---
-      const SITE_URL = '{{ site.url }}'; 
+
+      const SITE_URL = '{{ site.url }}';
       const domainSlug = SITE_URL
         .replace(/^https?:\/\//, '')
         .replace(/\/$/, '')
         .replace(/\./g, '-');
-        
+
       const reportUrl = `https://www.websitecarbon.com/website/${domainSlug}/`;
-      // ---------------------
-  
       const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(SITE_URL + '/');
-  
+
       function renderBadge(data) {
         if (!data || data.c === undefined) {
-          renderBadge({ c: '0.05', p: '92' });
+          badgeContainer.innerHTML = '';
           return;
         }
-        
-        // New single-line HTML structure
-        // The main text will inherit the base color.
-        // Only "tested" is wrapped in the anchor tag with the .wcb-link class.
-        const html = `
+
+        badgeContainer.innerHTML = `
           <span class="wcb-text">
             ${data.c}g of CO<sub>2</sub>/view<br>
-            Cleaner than ${data.p}% of pages 
+            Cleaner than ${data.p}% of pages
             <a class="wcb-link" target="_blank" rel="noopener" href="${reportUrl}">tested</a>.
           </span>
         `;
-        badgeContainer.innerHTML = html;
       }
-  
-      const cacheKey = 'wcb_' + domainSlug; 
+
+      const cacheKey = 'wcb_' + domainSlug;
       const cached = localStorage.getItem(cacheKey);
       const now = new Date().getTime();
-  
+
       if (cached) {
         try {
           const r = JSON.parse(cached);
-          if (now - r.t < 86400000) { 
+          if (now - r.t < 86400000) {
             renderBadge(r.d);
             return;
           }
@@ -409,7 +384,7 @@
           localStorage.removeItem(cacheKey);
         }
       }
-  
+
       fetch(apiUrl)
         .then(response => {
           if (!response.ok) throw new Error('Network status: ' + response.status);
@@ -421,7 +396,38 @@
         })
         .catch(err => {
           console.error('Carbon Badge Error:', err);
-          renderBadge({ c: '0.05', p: '92' }); 
+          badgeContainer.innerHTML = '';
         });
     })();
+
+    console.log(
+      "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
+      "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
+      "color: #64748b; font-size: 12px; font-family: sans-serif;"
+    );
+  });
+
+  /* ============================================================================
+     7. RESEARCH PAPERS: TOGGLE ABSTRACT (Global scope for onclick attributes)
+     ============================================================================
+
+     Expands/collapses research paper abstracts when user clicks the toggle button.
+     Updates button text and ARIA attributes for accessibility.
+  */
+  function toggleAbstract(index) {
+    const abstractElement = document.getElementById(`abstract-${index}`);
+    const button = event.target;
+
+    if (abstractElement.classList.contains('collapsed')) {
+      abstractElement.classList.remove('collapsed');
+      abstractElement.classList.add('expanded');
+      button.textContent = 'Hide Abstract';
+      button.setAttribute('aria-expanded', 'true');
+    } else {
+      abstractElement.classList.remove('expanded');
+      abstractElement.classList.add('collapsed');
+      button.textContent = 'Show Abstract';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  }
 </script>
