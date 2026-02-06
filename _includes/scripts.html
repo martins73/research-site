@@ -354,7 +354,7 @@
       const reportUrl = `https://www.websitecarbon.com/website/${domainSlug}/`;
       const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(SITE_URL + '/');
 
-      const FALLBACK = { c: '0.05', p: '92' };
+      const FALLBACK = { c: '0.03', p: '94' };
 
       function renderBadge(data) {
         if (!data || data.c === undefined) {
