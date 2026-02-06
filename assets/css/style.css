@@ -1590,6 +1590,11 @@ a .cv-logo:hover {
 
 @media (max-width: 768px) {
 
+    html, body {
+        width: 100%;
+        position: relative;
+    }
+
     /* --- Layout --- */
     .container { 
         grid-template-columns: 1fr; 
