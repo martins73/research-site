@@ -16,6 +16,9 @@ author:
   affiliation: UCLA Anderson School of Management
   affiliation_short: UCLA Anderson
   affiliation_url: https://www.anderson.ucla.edu
+  # CV-only contact info (not shown on public website, only in generated PDF)
+  cv_phone: "+1 857 313 8511"
+  cv_address: "B501, 110 Westwood Plaza, Los Angeles, CA 90095"
 
 # Template Attribution
 template:

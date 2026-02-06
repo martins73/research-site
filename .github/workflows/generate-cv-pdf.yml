@@ -1,0 +1,55 @@
+name: Generate CV PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_data/cv/**'
+      - '_data/papers.yml'
+      - '_data/teaching.yml'
+      - '_config.yml'
+      - 'cv-print.html'
+      - '_layouts/cv-print.html'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Puppeteer
+        run: npm install puppeteer@latest
+
+      - name: Generate PDF
+        run: node .github/scripts/generate-cv-pdf.js
+
+      - name: Commit updated PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/martin-gonzalez-cabello-cv.pdf
+          if git diff --staged --quiet; then
+            echo "No changes to PDF"
+          else
+            git commit -m "Auto-generate CV PDF [skip ci]"
+            git push
+          fi

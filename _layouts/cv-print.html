@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{{ page.title }}</title>
+  <style>
+    /* Self-hosted fonts */
+    @font-face {
+      font-family: 'Atkinson Hyperlegible';
+      src: url('{{ "/assets/fonts/atkinson-regular.woff2" | relative_url }}') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Atkinson Hyperlegible';
+      src: url('{{ "/assets/fonts/atkinson-bold.woff2" | relative_url }}') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Atkinson Hyperlegible';
+      src: url('{{ "/assets/fonts/atkinson-italic.woff2" | relative_url }}') format('woff2');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /* Print CV Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Atkinson Hyperlegible', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.4;
+      color: #000;
+    }
+
+    /* --- Header --- */
+    .cv-header {
+      text-align: center;
+      margin-bottom: 16pt;
+    }
+
+    .cv-header h1 {
+      font-size: 18pt;
+      font-weight: 700;
+      letter-spacing: 2pt;
+      text-transform: uppercase;
+      margin-bottom: 4pt;
+    }
+
+    .cv-header-affiliation {
+      font-size: 10.5pt;
+      margin-bottom: 2pt;
+    }
+
+    .cv-header-contact {
+      font-size: 9.5pt;
+      color: #333;
+    }
+
+    .cv-header-contact a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .cv-header-updated {
+      font-size: 8.5pt;
+      color: #666;
+      margin-top: 4pt;
+    }
+
+    /* --- Sections --- */
+    section {
+      margin-bottom: 14pt;
+    }
+
+    section h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1pt;
+      border-bottom: 1px solid #000;
+      padding-bottom: 2pt;
+      margin-bottom: 8pt;
+    }
+
+    /* --- Entries --- */
+    .entry {
+      margin-bottom: 10pt;
+    }
+
+    .entry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .entry-left {
+      flex: 1;
+      padding-right: 12pt;
+    }
+
+    .entry-right {
+      text-align: right;
+      white-space: nowrap;
+      font-size: 10pt;
+    }
+
+    .entry-institution {
+      font-weight: 700;
+    }
+
+    .entry-degree {
+      font-style: italic;
+    }
+
+    .entry-desc {
+      margin-top: 2pt;
+      font-size: 10pt;
+      color: #222;
+    }
+
+    .entry-desc ul {
+      margin: 2pt 0 0 16pt;
+      padding: 0;
+    }
+
+    .entry-desc li {
+      margin-bottom: 1pt;
+      font-size: 10pt;
+    }
+
+    /* --- Research/Papers --- */
+    .paper-entry {
+      margin-bottom: 8pt;
+    }
+
+    .paper-title {
+      font-weight: 700;
+    }
+
+    .paper-note {
+      font-style: italic;
+      color: #444;
+    }
+
+    .paper-coauthors,
+    .paper-publication {
+      font-size: 10pt;
+    }
+
+    .paper-publication {
+      font-style: italic;
+    }
+
+    /* --- Presentations --- */
+    .talk-list {
+      margin: 2pt 0 0 16pt;
+      padding: 0;
+      font-size: 10pt;
+    }
+
+    .talk-list li {
+      margin-bottom: 1pt;
+    }
+
+    /* --- Teaching --- */
+    .course-list {
+      margin: 2pt 0 0 16pt;
+      padding: 0;
+    }
+
+    .course-list li {
+      margin-bottom: 1pt;
+      font-size: 10pt;
+    }
+
+    /* --- Skills --- */
+    .skill-row {
+      margin-bottom: 3pt;
+      font-size: 10pt;
+    }
+
+    /* --- Research interests --- */
+    .interests {
+      font-size: 10.5pt;
+    }
+
+    /* --- Sub-section headers --- */
+    .subsection-header {
+      font-weight: 700;
+      font-size: 10.5pt;
+      margin-top: 8pt;
+      margin-bottom: 4pt;
+    }
+
+    /* --- Page break control --- */
+    section {
+      page-break-inside: avoid;
+    }
+
+    .entry {
+      page-break-inside: avoid;
+    }
+
+    @page {
+      size: letter;
+      margin: 0.75in 1in 0.75in 1in;
+    }
+  </style>
+</head>
+<body>
+  {{ content }}
+</body>
+</html>

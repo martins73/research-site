@@ -1,0 +1,239 @@
+---
+layout: cv-print
+title: "Martin Gonzalez Cabello - Curriculum Vitae"
+sitemap: false
+permalink: /cv-print/
+exclude_from_nav: true
+---
+
+<!-- ===== HEADER ===== -->
+<header class="cv-header">
+    <h1>{{ site.author.name }}</h1>
+    <div class="cv-header-affiliation">
+        {{ site.author.job_title }}<br>
+        {{ site.author.affiliation }}
+    </div>
+    <div class="cv-header-contact">
+        {{ site.author.cv_address }}<br>
+        {{ site.author.cv_phone }} |
+        <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a> |
+        <a href="{{ site.url }}">{{ site.url | remove: 'https://' }}</a>
+    </div>
+    <div class="cv-header-updated">
+        Last Updated: {{ site.time | date: "%B %Y" }}
+    </div>
+</header>
+
+<!-- ===== EDUCATION ===== -->
+<section>
+    <h2>Education</h2>
+    {% for item in site.data.cv.education %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left entry-institution">{{ item.institution }}</span>
+            <span class="entry-right">{{ item.location }}</span>
+        </div>
+        <div class="entry-row">
+            <span class="entry-left entry-degree">{{ item.degree }}</span>
+            <span class="entry-right">{{ item.dates }}</span>
+        </div>
+        {% if item.description and item.description != "" %}
+        <div class="entry-desc">{{ item.description }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ===== RESEARCH INTERESTS ===== -->
+{% if site.data.cv.research_interests.size > 0 %}
+<section>
+    <h2>Research Interests</h2>
+    <p class="interests">{{ site.data.cv.research_interests | join: " · " }}</p>
+</section>
+{% endif %}
+
+<!-- ===== PUBLICATIONS ===== -->
+{% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
+{% if publications.size > 0 %}
+<section>
+    <h2>Publications</h2>
+    {% for paper in publications %}
+    <div class="paper-entry">
+        <span class="paper-title">"{{ paper.title }}"</span>
+        <div class="paper-coauthors">
+            with
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+        </div>
+        {% if paper.publication != "" %}
+        <div class="paper-publication">{{ paper.publication }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== WORKING PAPERS ===== -->
+{% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
+{% if working_papers.size > 0 %}
+<section>
+    <h2>Working Papers</h2>
+    {% for paper in working_papers %}
+    <div class="paper-entry">
+        <span class="paper-title">"{{ paper.title }}"</span>
+        {% if paper.status == "Job Market Paper" %}
+        <span class="paper-note"> (Job Market Paper)</span>
+        {% endif %}
+        <div class="paper-coauthors">
+            with
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+        </div>
+        {% if paper.submission != "" %}
+        <div class="paper-publication">{{ paper.submission }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== WORK IN PROGRESS ===== -->
+{% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
+{% if wip.size > 0 %}
+<section>
+    <h2>Work in Progress</h2>
+    {% for paper in wip %}
+    <div class="paper-entry">
+        <span class="paper-title">"{{ paper.title }}"</span>
+        <div class="paper-coauthors">
+            with
+            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== CONFERENCE PRESENTATIONS ===== -->
+{% if site.data.cv.presentations.size > 0 %}
+<section>
+    <h2>Conference Presentations</h2>
+    {% for paper in site.data.cv.presentations %}
+    <div class="paper-entry">
+        <span class="paper-title">"{{ paper.title }}"</span>
+        <ul class="talk-list">
+            {% for talk in paper.talks %}
+            <li>{{ talk.event }}, {{ talk.location }} ({{ talk.year }})</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== TEACHING EXPERIENCE ===== -->
+<section>
+    <h2>Teaching Experience</h2>
+    {% for item in site.data.teaching %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left entry-institution">{{ item.institution }}</span>
+            <span class="entry-right">{{ item.location }}</span>
+        </div>
+        <div class="entry-row">
+            <span class="entry-left entry-degree">{{ item.role }}</span>
+            <span class="entry-right">{{ item.dates }}</span>
+        </div>
+        <ul class="course-list">
+            {% for course in item.courses %}
+            <li>{{ course.title }} ({{ course.program }}{% if course.students %}, {{ course.students }} students{% endif %})</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ===== PROFESSIONAL EXPERIENCE ===== -->
+<section>
+    <h2>Professional Experience</h2>
+    {% for company in site.data.cv.industry %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left entry-institution">{{ company.company }}</span>
+            <span class="entry-right">{{ company.location }}</span>
+        </div>
+        {% for position in company.positions %}
+        <div class="entry-row">
+            <span class="entry-left entry-degree">{{ position.role }}</span>
+            <span class="entry-right">{{ position.dates }}</span>
+        </div>
+        {% if position.description.size > 0 %}
+        <div class="entry-desc">
+            <ul>
+                {% for point in position.description %}
+                <li>{{ point }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ===== AWARDS (if populated) ===== -->
+{% if site.data.cv.awards.size > 0 %}
+<section>
+    <h2>Honors &amp; Awards</h2>
+    {% for item in site.data.cv.awards %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left">{{ item.title }}, {{ item.organization }}</span>
+            <span class="entry-right">{{ item.year }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== SERVICE (if populated) ===== -->
+{% if site.data.cv.service.size > 0 %}
+<section>
+    <h2>Professional Service</h2>
+    {% for item in site.data.cv.service %}
+    <div class="entry">
+        <div class="entry-row">
+            <span class="entry-left"><strong>{{ item.role }}</strong>, {{ item.organization }}</span>
+            <span class="entry-right">{{ item.year }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== SKILLS ===== -->
+{% if site.data.cv.skills.size > 0 %}
+<section>
+    <h2>Skills &amp; Qualifications</h2>
+    {% for group in site.data.cv.skills %}
+    <div class="skill-row">
+        <strong>{{ group.category }}:</strong> {{ group.items | join: ", " }}
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== REFERENCES (if populated) ===== -->
+{% if site.data.cv.references.size > 0 %}
+<section>
+    <h2>References</h2>
+    {% for ref in site.data.cv.references %}
+    <div class="entry">
+        <div><strong>{{ ref.name }}</strong></div>
+        <div class="entry-desc">
+            {{ ref.title }}<br>
+            {{ ref.institution }}<br>
+            <a href="mailto:{{ ref.email }}">{{ ref.email }}</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
