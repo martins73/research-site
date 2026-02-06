@@ -260,16 +260,17 @@ description: Academic CV and professional background in analytics, operations, a
                         <span class="cv-location">, {{ item.location }}</span>
                     </div>
                 </div>
-
-                <span class="cv-date">{{ item.dates }}</span>
             </div>
 
+            <div class="cv-entry-header">
+                <div class="cv-role">{{ item.role }}</div>
+                <span class="cv-date">{{ item.dates }}</span>
+            </div>
             <div class="cv-desc">
-                {{ item.role }} for:
                 <ul>
                     {% for course in item.courses %}
                         <li>
-                            <strong>{{ course.title }}</strong> ({{ course.program }})
+                            {{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}, {{ course.year }}
                         </li>
                     {% endfor %}
                 </ul>
