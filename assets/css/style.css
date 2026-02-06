@@ -1578,17 +1578,18 @@ a .cv-logo:hover {
 }
 
 /* ============================================================================
-   15. RESPONSIVE DESIGN
+   15. RESPONSIVE DESIGN (Final Polish)
    ============================================================================ */
+
 @media (max-width: 768px) { 
     
+    /* 1. RESTORE NATIVE SCROLLING (The Bounce) */
     html, body {
-        overflow-x: hidden;
         width: 100%;
         position: relative;
     }
 
-    /* ... (Your other Grid/Sidebar tweaks remain here) ... */
+    /* --- Existing Layout --- */
     .container { 
         grid-template-columns: 1fr; 
         padding: var(--space-8) var(--space-6); 
@@ -1612,7 +1613,7 @@ a .cv-logo:hover {
     .cv-actions, .cv-actions .cv-action-btn { width: 100%; }
     #main-content { scroll-margin-top: 140px; }
 
-    /* --- FOOTER FIXES --- */
+    /* --- FOOTER ALIGNMENT --- */
     .footer-main-row {
         flex-direction: column;
         align-items: center;
@@ -1630,12 +1631,13 @@ a .cv-logo:hover {
 
     .credits { justify-content: center; margin-bottom: var(--space-2); }
 
-    /* PERFECT CENTERING LOGIC */
+    /* --- COPYRIGHT & SAINT CROSS --- */
     .copyright-text {
         position: relative; 
         display: flex;
         justify-content: center;
-        align-items: center;
+        /* Aligns text to the top to prevent shifting */
+        align-items: flex-start; 
         width: 100%;
         line-height: 1.6; 
     }
@@ -1647,16 +1649,33 @@ a .cv-logo:hover {
         white-space: normal; 
     }
 
-    /* Pins the cross to the absolute left so text stays centered */
+    /* THE FIX: PIN CROSS TO THE TOP LINE */
     #saint-trigger {
         position: absolute;
         left: 0; 
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 12px;
+        /* 1. Anchors cross to the top edge (ignores line-height changes) */
+        top: 0; 
+        transform: none; 
+        
+        /* 2. Forces cross to equal the height of ONE text line */
+        height: 1.6em; 
+        display: flex;
+        align-items: center; 
+        
+        padding: 0 12px;
         cursor: pointer;
         opacity: 0.6;
-        -webkit-tap-highlight-color: transparent;
+        
+        /* 3. Prevents blue tap box and shifting */
+        outline: none; 
+        border: none;
+        -webkit-tap-highlight-color: transparent; 
+        user-select: none;
+    }
+    
+    #saint-trigger:focus, #saint-trigger:active {
+        outline: none;
+        border: none;
     }
 
     .carbon-badge { justify-content: center; text-align: center; width: 100%; }
