@@ -80,33 +80,33 @@
     /* Colors - Background */
     --bg-body: #FAFAF9;         /* The Desk: Warm off-white */
     --bg-paper: #ffffff;        /* The Page: Pure white */
-    --bg-accent: #f0f9ff;       /* Light blue background */
-    --bg-accent-hover: #e0f2fe; /* Hover state for accent bg */
-    
+    --bg-accent: {{ site.theme.light.bg_accent }};
+    --bg-accent-hover: {{ site.theme.light.bg_accent_hover }};
+
     /* Colors - Text Hierarchy */
-    --text-primary: #1e293b;    /* Main headings and important text */
-    --text-secondary: #334155;  /* Secondary text */
-    --text-tertiary: #475569;   /* Tertiary text */
-    --text-light: #64748b;      /* Standard light text */
-    --text-muted: #94a3b8;      /* More muted/lighter text */
-    --text-lighter: #cbd5e1;    /* Very light text */
-    
-    /* Colors - Accent (from _config.yml accent_color) */
-    --accent: {{ site.accent_color }};
-    --accent-rgb: {{ site.accent_color_rgb }};
-    --accent-hover: {{ site.accent_color_hover }};
-    --accent-orange: #D97706;   /* Amber accent (job market tag) */
+    --text-primary: #1e293b;
+    --text-secondary: #334155;
+    --text-tertiary: #475569;
+    --text-light: #64748b;
+    --text-muted: #94a3b8;
+    --text-lighter: #cbd5e1;
+
+    /* Colors - Accent (from _config.yml theme.light) */
+    --accent: {{ site.theme.light.accent }};
+    --accent-rgb: {{ site.theme.light.accent_rgb }};
+    --accent-hover: {{ site.theme.light.accent_hover }};
+    --accent-orange: {{ site.theme.light.accent_orange }};
 
     /* Colors - Border */
-    --border: #e2e8f0;          /* Default border */
-    --border-dashed: #e2e8f0;   /* Dashed borders */
-    --border-medium: #cbd5e1;   /* Medium border */
-    --border-dark: #94a3b8;     /* Dark border */
-    
-    /* Colors - Status/Info */
-    --info-text: #0284c7;       /* Info badges text */
-    --info-bg: #e0f2fe;         /* Info badges background */
-    --info-bg-hover: #bae6fd;   /* Info badges hover */
+    --border: #e2e8f0;
+    --border-dashed: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --border-dark: #94a3b8;
+
+    /* Colors - Status/Info (from _config.yml theme.light) */
+    --info-text: {{ site.theme.light.info_text }};
+    --info-bg: {{ site.theme.light.info_bg }};
+    --info-bg-hover: {{ site.theme.light.info_bg_hover }};
     
     /* Spacing System - Based on 4px grid */
     --space-1: 0.25rem;   /* 4px */
@@ -155,33 +155,33 @@
     /* Colors - Background */
     --bg-body: #0f172a;         /* Dark slate background */
     --bg-paper: #1e293b;        /* Dark paper */
-    --bg-accent: #1e3a5f;       /* Dark blue background */
-    --bg-accent-hover: #2d4a6f; /* Hover state for accent bg */
-    
+    --bg-accent: {{ site.theme.dark.bg_accent }};
+    --bg-accent-hover: {{ site.theme.dark.bg_accent_hover }};
+
     /* Colors - Text Hierarchy */
-    --text-primary: #f1f5f9;    /* Light text for dark bg */
-    --text-secondary: #e2e8f0;  /* Secondary light text */
-    --text-tertiary: #cbd5e1;   /* Tertiary light text */
-    --text-light: #94a3b8;      /* Lighter gray text */
-    --text-muted: #64748b;      /* Muted text */
-    --text-lighter: #475569;    /* Even lighter/darker gray */
-    
-    /* Colors - Accent (slightly brighter for dark mode) */
-    --accent: #3b82f6;          /* Brighter blue for dark mode */
-    --accent-rgb: 59, 130, 246; /* Dark mode accent as RGB triplet */
-    --accent-hover: #60a5fa;    /* Lighter blue for hover */
-    --accent-orange: #f59e0b;   /* Brighter amber */
-    
+    --text-primary: #f1f5f9;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e1;
+    --text-light: #94a3b8;
+    --text-muted: #64748b;
+    --text-lighter: #475569;
+
+    /* Colors - Accent (from _config.yml theme.dark) */
+    --accent: {{ site.theme.dark.accent }};
+    --accent-rgb: {{ site.theme.dark.accent_rgb }};
+    --accent-hover: {{ site.theme.dark.accent_hover }};
+    --accent-orange: {{ site.theme.dark.accent_orange }};
+
     /* Colors - Border */
-    --border: #334155;          /* Dark border */
-    --border-dashed: #334155;   /* Dashed borders */
-    --border-medium: #475569;   /* Medium border */
-    --border-dark: #64748b;     /* Lighter border in dark mode */
-    
-    /* Colors - Status/Info */
-    --info-text: #38bdf8;       /* Brighter info text */
-    --info-bg: #1e3a5f;         /* Dark info background */
-    --info-bg-hover: #2d4a6f;   /* Info hover */
+    --border: #334155;
+    --border-dashed: #334155;
+    --border-medium: #475569;
+    --border-dark: #64748b;
+
+    /* Colors - Status/Info (from _config.yml theme.dark) */
+    --info-text: {{ site.theme.dark.info_text }};
+    --info-bg: {{ site.theme.dark.info_bg }};
+    --info-bg-hover: {{ site.theme.dark.info_bg_hover }};
     
     /* Dark mode specific adjustments */
     --container-border: #334155;
