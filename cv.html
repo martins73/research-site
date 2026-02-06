@@ -31,10 +31,10 @@ description: Academic CV and professional background in analytics, operations, a
                 <div class="cv-header-group">
                     {% if item.institution_url %}
                         <a href="{{ item.institution_url }}" target="_blank">
-                            <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                            <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
                         </a>
                     {% else %}
-                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
                     {% endif %}
 
                     <div>
@@ -123,10 +123,10 @@ description: Academic CV and professional background in analytics, operations, a
                 <div class="cv-header-group">
                     {% if item.institution_url %}
                         <a href="{{ item.institution_url }}" target="_blank">
-                            <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                            <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
                         </a>
                     {% else %}
-                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo">
+                        <img src="{{ item.logo }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
                     {% endif %}
 
                     <div>
@@ -227,13 +227,13 @@ description: Academic CV and professional background in analytics, operations, a
                 <div class="cv-header-group">
                     {% if company.company_url %}
                         <a href="{{ company.company_url }}" target="_blank">
-                            <img src="{{ company.logo }}" alt="{{ company.company }}" class="cv-logo">
+                            <img src="{{ company.logo }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
                         </a>
                         <a href="{{ company.company_url }}" target="_blank" class="cv-institution-link cv-title">
                             {{ company.company }}
                         </a>
                     {% else %}
-                        <img src="{{ company.logo }}" alt="{{ company.company }}" class="cv-logo">
+                        <img src="{{ company.logo }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
                         <span class="cv-title">{{ company.company }}</span>
                     {% endif %}
                 </div>
