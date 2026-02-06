@@ -238,47 +238,42 @@
        - Intelligently formats saint names (singular/plural, strips prefix)
        - Falls back to copyright text if no saint is available
     */
-const trigger = document.getElementById("saint-trigger");
+    
+    const trigger = document.getElementById("saint-trigger");
     const target = document.getElementById("copyright-content");
     
     if (trigger && target) {
       const today = new Date();
       const key = (today.getMonth() + 1) + "-" + today.getDate();
-
+    
+      // Retrieve saint data
       const saintsByDay = {{ site.data.easter_eggs.saints | jsonify }};
       const saints = saintsByDay ? saintsByDay[key] : null;
-
+    
+      // Capture original state
       const originalHTML = target.innerHTML;
       const originalText = target.innerText;
-
+    
+      // Format Helper
       const formatSaintList = (arr) => {
         if (!arr || arr.length === 0) return "";
         if (arr.length === 1) return arr[0];
-
         const cleaned = arr.map((s) => (s || "").trim()).filter(Boolean);
-
-        const allStartWithSaint = cleaned.every((s) => /^Saint\s+/i.test(s));
-        const allStartWithBlessed = cleaned.every((s) => /^Blessed\s+/i.test(s));
-
-        const stripPrefix = (s, prefixRegex) => s.replace(prefixRegex, "").trim();
-
-        if (allStartWithSaint) {
-          const names = cleaned.map((s) => stripPrefix(s, /^Saint\s+/i));
-          return "Saints " + names.join(" and ");
+        const stripPrefix = (s, rx) => s.replace(rx, "").trim();
+        
+        if (cleaned.every((s) => /^Saint\s+/i.test(s))) {
+          return "Saints " + cleaned.map((s) => stripPrefix(s, /^Saint\s+/i)).join(" and ");
         }
-
-        if (allStartWithBlessed) {
-          const names = cleaned.map((s) => stripPrefix(s, /^Blessed\s+/i));
-          return "Blesseds " + names.join(" and ");
+        if (cleaned.every((s) => /^Blessed\s+/i.test(s))) {
+          return "Blesseds " + cleaned.map((s) => stripPrefix(s, /^Blessed\s+/i)).join(" and ");
         }
-
         return cleaned.join(" and ");
       };
-
+    
       if (saints && saints.length > 0) {
         const saintText = formatSaintList(saints);
-
-        // Define the actions as functions so we can reuse them
+    
+        // --- Action: Show ---
         const showSaint = () => {
           target.style.transition = "opacity 0.2s";
           target.style.opacity = "0";
@@ -289,7 +284,8 @@ const trigger = document.getElementById("saint-trigger");
             target.style.opacity = "1";
           }, 200);
         };
-
+    
+        // --- Action: Hide ---
         const hideSaint = () => {
           target.style.transition = "opacity 0.2s";
           target.style.opacity = "0";
@@ -304,58 +300,64 @@ const trigger = document.getElementById("saint-trigger");
             target.style.opacity = "1";
           }, 200);
         };
-
-        // --- DESKTOP (Original Behavior) ---
+    
+        // --- DESKTOP (Hover) ---
         trigger.addEventListener("mouseenter", showSaint);
         trigger.addEventListener("mouseleave", hideSaint);
-
-        // --- MOBILE (New "Hold-to-View" Behavior) ---
-        // This effectively says: "When finger touches, show. When finger lifts, hide."
+    
+        // --- MOBILE (Hold + Delay) ---
+        // 1. Touch Starts: Show immediately
         trigger.addEventListener("touchstart", (e) => {
-             e.preventDefault(); // Prevents the "sticky" mouse emulation
+             // Prevent default only if cancelable to stop 'sticky' clicks
+             if(e.cancelable) e.preventDefault(); 
              showSaint(); 
         }, { passive: false });
         
-        trigger.addEventListener("touchend", hideSaint);
-        trigger.addEventListener("touchcancel", hideSaint);
+        // 2. Touch Ends: Wait 0.5s (500ms) before hiding
+        trigger.addEventListener("touchend", () => {
+            setTimeout(hideSaint, 500); // <--- THE DELAY IS HERE
+        });
+    
+        trigger.addEventListener("touchcancel", () => {
+            setTimeout(hideSaint, 500);
+        });
       }
     }
-  });
+    
+      /* ============================================================================
+         5. RESEARCH PAPERS: TOGGLE ABSTRACT
+         ============================================================================
+    
+         Expands/collapses research paper abstracts when user clicks the toggle button.
+         Updates button text and ARIA attributes for accessibility.
+      */
+      function toggleAbstract(index) {
+        const abstractElement = document.getElementById(`abstract-${index}`);
+        const button = event.target;
+    
+        if (abstractElement.classList.contains('collapsed')) {
+          // Expand abstract
+          abstractElement.classList.remove('collapsed');
+          abstractElement.classList.add('expanded');
+          button.textContent = 'Hide Abstract';
+          button.setAttribute('aria-expanded', 'true');
+        } else {
+          // Collapse abstract
+          abstractElement.classList.remove('expanded');
+          abstractElement.classList.add('collapsed');
+          button.textContent = 'Show Abstract';
+          button.setAttribute('aria-expanded', 'false');
+        }
+      }
+    
+      console.log(
+        "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
+        "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
+        "color: #64748b; font-size: 12px; font-family: sans-serif;"
+      );
 
   /* ============================================================================
-     RESEARCH PAPERS: TOGGLE ABSTRACT
-     ============================================================================
-
-     Expands/collapses research paper abstracts when user clicks the toggle button.
-     Updates button text and ARIA attributes for accessibility.
-  */
-  function toggleAbstract(index) {
-    const abstractElement = document.getElementById(`abstract-${index}`);
-    const button = event.target;
-
-    if (abstractElement.classList.contains('collapsed')) {
-      // Expand abstract
-      abstractElement.classList.remove('collapsed');
-      abstractElement.classList.add('expanded');
-      button.textContent = 'Hide Abstract';
-      button.setAttribute('aria-expanded', 'true');
-    } else {
-      // Collapse abstract
-      abstractElement.classList.remove('expanded');
-      abstractElement.classList.add('collapsed');
-      button.textContent = 'Show Abstract';
-      button.setAttribute('aria-expanded', 'false');
-    }
-  }
-
-  console.log(
-    "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
-    "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
-    "color: #64748b; font-size: 12px; font-family: sans-serif;"
-  );
-
-  /* ============================================================================
-       5. CARBON BADGE (WEBSITE CARBON API)
+       6. CARBON BADGE (WEBSITE CARBON API)
        ============================================================================ */
     (function() {
       const badgeContainer = document.getElementById('wcb');
