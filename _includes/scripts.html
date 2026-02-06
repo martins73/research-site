@@ -1,4 +1,4 @@
-<script>
+o<script>
   /**
    * Main application JavaScript
    *
@@ -313,13 +313,13 @@
              showSaint(); 
         }, { passive: false });
         
-        // 2. Touch Ends: Wait 0.5s (500ms) before hiding
+        // 2. Touch Ends: Wait 0.8s (800ms) before hiding
         trigger.addEventListener("touchend", () => {
-            setTimeout(hideSaint, 500); // <--- THE DELAY IS HERE
+            setTimeout(hideSaint, 800); // <--- THE DELAY IS HERE
         });
     
         trigger.addEventListener("touchcancel", () => {
-            setTimeout(hideSaint, 500);
+            setTimeout(hideSaint, 800);
         });
       }
     }
