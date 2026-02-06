@@ -197,6 +197,14 @@
    1. GLOBAL STYLES & RESET
    ============================================================================ */
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
 body { 
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--text-2xl); 
@@ -1241,10 +1249,11 @@ a .cv-logo:hover {
    ============================================================================ */
 
 .site-footer {
-    padding: var(--space-2) 0 var(--space-8) 0; 
+    padding: var(--space-2) 0 var(--space-8) 0;
     margin-top: 0;
     border-top: none;
     background: transparent;
+    text-align: center;
 }
 
 /* --- Layout Wrappers --- */
@@ -1368,9 +1377,8 @@ a .cv-logo:hover {
 
 /* --- Bottom Center Elements --- */
 
-.amdg { 
-    display: block;
-    text-align: center;
+.amdg {
+    display: inline-block;
     font-size: var(--text-sm); 
     color: var(--text-lighter); 
     letter-spacing: 2px; 
