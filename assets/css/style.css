@@ -1297,18 +1297,21 @@ a .cv-logo:hover {
     margin: 0;
 }
 
-/* Carbon Badge Specifics */
+/* Carbon Badge */
 .carbon-badge {
+    margin: 0;
     font-family: inherit;
     font-size: var(--text-md);
     line-height: var(--leading-snug);
     color: var(--text-light);
     display: flex;
-    /* Forces the container to the right */
     justify-content: flex-end;
-    /* Forces the text lines INSIDE to align right */
-    text-align: right; 
-    width: 100%; 
+    text-align: right;
+    width: 100%;
+}
+
+.wcb-loading {
+    opacity: 0.6;
 }
 
 /* Crucial: Forces the inserted span to respect right alignment */
@@ -1581,15 +1584,9 @@ a .cv-logo:hover {
    15. RESPONSIVE DESIGN (Final Polish)
    ============================================================================ */
 
-@media (max-width: 768px) { 
-    
-    /* 1. RESTORE NATIVE SCROLLING (The Bounce) */
-    html, body {
-        width: 100%;
-        position: relative;
-    }
+@media (max-width: 768px) {
 
-    /* --- Existing Layout --- */
+    /* --- Layout --- */
     .container { 
         grid-template-columns: 1fr; 
         padding: var(--space-8) var(--space-6); 
@@ -1681,39 +1678,3 @@ a .cv-logo:hover {
     .carbon-badge { justify-content: center; text-align: center; width: 100%; }
     .carbon-badge span, .wcb-text { text-align: center; }
 }
-
-/* ============================================================================
-   16. CARBON FOOTPRINT BADGE
-   ============================================================================ */
-
-.carbon-badge {
-    margin: var(--space-4) 0;
-    font-family: inherit;
-    font-size: var(--text-md); /* Matches copyright text size */
-    line-height: var(--leading-snug);
-    text-align: center;
-    /* Sets the base color for all text to match the copyright notice */
-    color: var(--text-light); 
-}
-
-.wcb-loading {
-    opacity: 0.6;
-}
-
-/* Styling for the link on the word "tested" */
-.wcb-link {
-    /* Use the main accent color (blue) */
-    color: var(--accent) !important;
-    /* Remove default underline */
-    text-decoration: none;
-    font-weight: 500; /* Optional: makes the link pop slightly */
-    transition: all 0.2s ease;
-}
-
-/* Add underline on hover for clarity */
-.wcb-link:hover {
-    text-decoration: underline;
-    color: var(--accent-hover) !important;
-}
-
-/* Dark mode adjustments are handled automatically by your theme variables */
