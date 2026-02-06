@@ -17,7 +17,7 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Responsive Design:** Mobile-first approach with optimized layouts for all screen sizes
 * **Dark Mode:** User-togglable theme with localStorage persistence and flash prevention
 * **Accessibility:** Semantic HTML, ARIA labels, keyboard navigation, and focus management
-* **Custom Typography:** Merriweather (serif) for headings, Atkinson Hyperlegible (sans-serif) for body text
+* **Custom Typography:** Merriweather (serif) for headings, Atkinson Hyperlegible (sans-serif) for body text — centralized via `--font-heading` and `--font-body` CSS custom properties
 
 ### 🌱 Sustainable & Performance-Focused
 * **Optimized Assets:** All images converted to WebP; logos resized to display dimensions
@@ -26,11 +26,13 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **CSS Minification:** Jekyll Sass pipeline compresses CSS in production
 * **Reduced Motion:** Respects `prefers-reduced-motion` to disable animations
 * **Carbon Footprint Badge:** Tracks and displays per-page CO2 emissions via Website Carbon API
+* **Portable Asset Paths:** All internal URLs use Jekyll's `relative_url` filter for baseurl-safe deployment
 * **Zero Dependencies:** No JavaScript frameworks or heavy libraries
 * **Minimal JavaScript:** ~440 lines of vanilla JS for interactivity
 
 ### 🛡️ Privacy & Security
 * **Robots.txt:** Blocks unauthorized scraping by AI training bots (GPTBot, CCBot, etc.)
+* **Link Hardening:** All `target="_blank"` links include `rel="noopener"` to prevent tabnabbing
 * **Privacy-First Analytics:** Configured to respect user privacy
 * **Structured Data:** Schema.org markup for better SEO and discoverability
 * **Open Graph & Meta Tags:** Optimized social media previews
@@ -99,7 +101,7 @@ research-site/
 │
 ├── assets/                      # Static files
 │   ├── css/
-│   │   └── style.scss           # Design system (~1680 lines SCSS, minified on build)
+│   │   └── style.scss           # Design system (~1820 lines SCSS, minified on build)
 │   ├── logos/                   # Institution and company logos (PNG/SVG)
 │   ├── family/                  # Family photos (WebP)
 │   ├── profile_picture.webp     # Profile image (WebP)
@@ -192,6 +194,7 @@ The site uses a comprehensive design system defined in `/assets/css/style.scss`:
 - **Color Palette:** 6+ background colors, 6+ text hierarchy levels
 - **Spacing Scale:** 4px grid system (space-1 through space-24)
 - **Typography Scale:** text-xs through text-6xl
+- **Font Families:** `--font-body` (Atkinson Hyperlegible) and `--font-heading` (Merriweather) — change fonts site-wide by editing two variables
 - **Line Heights:** tight, snug, normal, relaxed
 
 ### Dark Mode
