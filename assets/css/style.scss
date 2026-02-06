@@ -1666,3 +1666,16 @@ a .cv-logo:hover {
     .carbon-badge { justify-content: center; text-align: center; width: 100%; }
     .carbon-badge span, .wcb-text { text-align: center; }
 }
+
+/* ============================================================================
+   16. REDUCED MOTION (WSG 3.12 — Respect user preferences)
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
