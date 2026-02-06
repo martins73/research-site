@@ -239,19 +239,21 @@ exclude_from_nav: true
             <span class="entry-right">{{ company.location }}</span>
         </div>
         {% for position in company.positions %}
-        <div class="entry-row">
-            <span class="entry-left entry-role">{{ position.role }}</span>
-            <span class="entry-right">{{ position.dates }}</span>
+        <div class="position{% unless forloop.first %} position-subsequent{% endunless %}">
+            <div class="entry-row">
+                <span class="entry-left entry-role">{{ position.role }}</span>
+                <span class="entry-right">{{ position.dates }}</span>
+            </div>
+            {% if position.description.size > 0 %}
+            <div class="entry-desc">
+                <ul>
+                    {% for point in position.description %}
+                    <li>{{ point }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
-        {% if position.description.size > 0 %}
-        <div class="entry-desc">
-            <ul>
-                {% for point in position.description %}
-                <li>{{ point }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
         {% endfor %}
     </div>
     {% endfor %}

@@ -70,6 +70,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Include files that Jekyll would normally skip (underscore-prefixed)
+include:
+  - _redirects
+
 # Exclude from processing
 exclude:
   - README.md
