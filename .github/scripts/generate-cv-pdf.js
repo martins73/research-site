@@ -101,12 +101,12 @@ async function generatePDF() {
       printBackground: false,
       displayHeaderFooter: true,
       headerTemplate: `
-        <div style="width: 100%; font-size: 8px; text-align: right; padding-right: 1in; color: #666; font-family: Arial, sans-serif;">
+        <div style="width: 100%; font-size: 8px; text-align: right; padding-right: 1in; color: #666; font-family: Palatino, Georgia, serif;">
           <span style="margin-right: 4px;">Martin Gonzalez Cabello</span>
         </div>
       `,
       footerTemplate: `
-        <div style="width: 100%; font-size: 8px; text-align: center; color: #666; font-family: Arial, sans-serif;">
+        <div style="width: 100%; font-size: 8px; text-align: center; color: #666; font-family: Palatino, Georgia, serif;">
           <span class="pageNumber"></span>
         </div>
       `,

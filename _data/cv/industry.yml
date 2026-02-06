@@ -7,13 +7,13 @@
       dates: "2019 - 2021"
       description:
         - Created and led the analytics department, applying machine learning to healthcare and job safety decision-making
-        - Launched the Research and Innovation area, leading ~10 collaborative projects with universities
-        - Project sponsor at MIT Analytics Lab (2020), providing data, guidance, and resources to the student team
+        - Launched the Research and Innovation area, promoting collaboration with universities and startups across ~10 projects
+        - Project sponsor at MIT Analytics Lab (2020), providing data, guidance, and computing resources to the student team
     - role: Head of Customer Experience, Analytics and Remote Channels
       dates: "2018 - 2019"
       description:
-        - Led three areas at Chile's largest work-accident insurer, covering ~50% of the country's employees
-        - Designed CX strategies for workers (B2C) and companies (B2B) across ~90 ambulatory centers
+        - Designed strategies and products to improve customer satisfaction for workers (B2C) and companies (B2B)
+        - Created the analytics area from scratch to support data-driven decision-making across the organization
         - Managed the call center (~200 agents) and digital channels (public and transactional sites)
 
 - company: Asociación DEC Chile
@@ -35,9 +35,8 @@
       dates: "2011 - 2017"
       description:
         - Based in Madrid and New York with global projects across Europe, Latin America, the Middle East and the US
-        - Led digital strategy, CRM, and product positioning engagements for banks and telecom operators
-        - Achieved a 17% churn reduction for a European operator through targeted retention strategies
-        - Managed a $2.3 BN Rights Issue process for a Saudi mobile operator, including investor roadshows
+        - Focused on Financial Services and Telecommunications industries
+        - Led engagements in strategy, digital transformation, advanced analytics, and value proposition design
 
 - company: Thinkids Project
   logo: /assets/logos/thinkids.png
