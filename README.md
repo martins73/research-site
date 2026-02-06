@@ -61,14 +61,15 @@ research-site/
 │   ├── teaching.yml                    # Teaching experience (feeds CV & Teaching page)
 │   ├── status.yml                      # Current status (location, reading, activities)
 │   │
-│   ├── cv/                             # Modularized CV Data
-│   │   ├── education.yml               # Degrees and institutions
-│   │   ├── awards.yml                  # Honors & Awards
-│   │   ├── service.yml                 # Academic Service
-│   │   ├── presentations.yml           # Selected Presentations
-│   │   ├── industry.yml                # Professional experience
-│   │   ├── skills.yml                  # Skills & Qualifications
-│   │   └── references.yml              # References contact info
+│   ├── cv/                     # Modularized CV Data
+│   │   ├── education.yml       # Degrees and institutions
+│   │   ├── awards.yml          # Honors & Awards
+│   │   ├── service.yml         # Academic Service
+│   │   ├── presentations.yml   # Selected Presentations
+│   │   ├── industry.yml        # Professional experience (with locations)
+│   │   ├── skills.yml          # Skills & Qualifications
+│   │   ├── research_interests.yml # Research interest keywords
+│   │   └── references.yml      # References contact info
 │   │
 │   ├── ui/                             # UI Elements
 │   │   ├── navigation.yml              # Main navigation menu structure
@@ -87,32 +88,38 @@ research-site/
 │   ├── scripts.html                    # ~440 lines vanilla JS (mobile nav, dark mode, etc.)
 │   └── family-modal.html               # Accessible image modal dialog
 │
-├── _layouts/                           # Page templates
-│   └── default.html                    # Main layout (sidebar + content container)
+├── _layouts/                   # Page templates
+│   ├── default.html            # Main layout (sidebar + content container)
+│   └── cv-print.html           # Minimal layout for PDF generation
 │
 ├── _drafts/                            # Draft content (not published)
 │   └── research-notes/                 # Research note-taking system
 │
-├── .github/workflows/                  # GitHub Actions automation
-│   └── update-status-date.yml          # Auto-updates status.yml timestamp on push
+├── .github/                    # GitHub Actions and automation
+│   ├── workflows/
+│   │   ├── update-status-date.yml  # Auto-updates status.yml timestamp
+│   │   └── generate-cv-pdf.yml     # Auto-generates CV PDF from data
+│   └── scripts/
+│       └── generate-cv-pdf.js      # Puppeteer script for PDF rendering
 │
 ├── sw.js                                # Service worker (offline support, caching)
 │
 ├── assets/                              # Static files
 │   ├── css/
-│   │   └── style.scss                   # Design system (~1820 lines SCSS, minified on build)
-│   ├── fonts/                           # Self-hosted web fonts (woff2)
-│   ├── logos/                           # Institution and company logos (PNG/SVG)
-│   ├── family/                          # Family photos (WebP)
-│   ├── profile_picture.webp             # Profile image (WebP)
-│   └── martin-gonzalez-cabello-cv.pdf
+│   │   └── style.scss           # Design system (~1820 lines SCSS, minified on build)
+│   ├── fonts/                   # Self-hosted web fonts (woff2)
+│   ├── logos/                   # Institution and company logos (PNG/SVG)
+│   ├── family/                  # Family photos (WebP)
+│   ├── profile_picture.webp     # Profile image (WebP)
+│   └── martin-gonzalez-cabello-cv.pdf  # Auto-generated from YAML data
 │
 ├── Content Pages
-│   ├── index.html                       # Homepage (about, research, activity, status)
-│   ├── cv.html                          # Curriculum Vitae (fully data-driven)
-│   ├── teaching.md                      # Teaching philosophy + experience (data-driven)
-│   ├── library.html                     # Curated book library (data-driven)
-│   └── human-supply-chain.md            # Research manifesto
+│   ├── index.html               # Homepage (about, research, activity, status)
+│   ├── cv.html                  # Curriculum Vitae (fully data-driven)
+│   ├── teaching.md              # Teaching philosophy + experience (data-driven)
+│   ├── library.html             # Curated book library (data-driven)
+│   ├── human-supply-chain.md    # Research manifesto
+│   └── cv-print.html            # Print-optimized CV (used for PDF generation)
 │
 ├── Configuration Files
 │   ├── robots.txt                       # Bot access control
@@ -169,6 +176,8 @@ The CV is modularized in `_data/cv/`. Update specific files to change sections:
 - **`references.yml`**: Academic references and contact info.
 
 Teaching experience is managed separately in `_data/teaching.yml` (shared by the CV and Teaching pages).
+
+**Automatic PDF Generation:** When you push changes to any CV data file, the GitHub Action automatically rebuilds the downloadable PDF. No manual export needed. The PDF includes a "Last Updated" date stamped at build time.
 
 #### 5. Managing the Library
 Edit `_data/library.yml` to manage your book collections. The file is structured by "shelves" (e.g., "The Human Supply Chain", "Formation"):
@@ -271,10 +280,18 @@ This site respects user privacy and blocks AI training scrapers:
 ## Automation
 
 ### GitHub Actions
-`.github/workflows/update-status-date.yml` automatically:
+
+#### Status Date (`update-status-date.yml`)
 - Triggers on push to `_data/status.yml`
 - Updates the "Updated:" date field with the current date
 - Commits and pushes changes
+
+#### CV PDF Generation (`generate-cv-pdf.yml`)
+- Triggers on push to `_data/cv/`, `_data/papers.yml`, `_data/teaching.yml`, `_config.yml`, `cv-print.html`, or `_layouts/cv-print.html`
+- Builds the Jekyll site, then uses Puppeteer to render `cv-print.html` to PDF
+- Commits the generated PDF to `assets/martin-gonzalez-cabello-cv.pdf`
+- Can also be triggered manually via `workflow_dispatch`
+- The PDF includes a "Last Updated: [Month Year]" timestamp in the header
 
 ## License
 

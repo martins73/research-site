@@ -1,6 +1,7 @@
 - company: ACHS (Safety Association of Chile)
   company_url: https://www.achs.cl/
   logo: /assets/logos/achs.png
+  location: "Santiago, Chile"
   positions:
     - role: Head of Advanced Analytics
       dates: "2019 - 2021"
@@ -17,6 +18,7 @@
 - company: Asociación DEC Chile
   company_url: https://asociaciondec-cl.org/
   logo: /assets/logos/dec.png
+  location: "Santiago, Chile"
   positions:
     - role: Founder and President
       dates: "2018 - 2021"
@@ -26,6 +28,7 @@
 - company: Oliver Wyman
   company_url: https://www.oliverwyman.com/
   logo: /assets/logos/oliver.png
+  location: "Madrid, Spain & New York, NY"
   positions:
     - role: Management Consultant
       dates: "2011 - 2017"
@@ -36,6 +39,7 @@
 
 - company: Thinkids Project
   logo: /assets/logos/thinkids.png
+  location: "Madrid, Spain"
   positions:
     - role: Co-Founder
       dates: "2012 - Present"
@@ -45,8 +49,19 @@
 - company: Telefonica
   company_url: https://www.telefonica.com/
   logo: /assets/logos/telefonica.png
+  location: "Madrid, Spain"
   positions:
     - role: MBA Intern
       dates: "Summer 2014"
       description:
         - Analyzed the global Education & Tech startup ecosystem to identify investment opportunities.
+
+- company: Accenture
+  company_url: https://www.accenture.com/
+  logo: /assets/logos/accenture.png
+  location: "Madrid, Spain"
+  positions:
+    - role: Management Consultant Intern
+      dates: "2009 - 2010"
+      description:
+        - Full-time management consulting internship.
