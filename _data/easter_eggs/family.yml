@@ -3,25 +3,25 @@
 # Images are organized in /assets/family/ folder
 
 family:
-  img: /assets/family/family.jpg
+  img: /assets/family/family.webp
   text: The real reason for everything.
 
 andrea:
-  img: /assets/family/andrea.jpg
+  img: /assets/family/andrea.webp
   text: My partner in crime and biggest support.
 
 carlota:
-  img: /assets/family/carlota.jpg
+  img: /assets/family/carlota.webp
   text: Our fearless firstborn.
 
 martin:
-  img: /assets/family/martin.jpg
+  img: /assets/family/martin.webp
   text: The curious explorer.
 
 joaquin:
-  img: /assets/family/joaquin.jpg
+  img: /assets/family/joaquin.webp
   text: Our little energizer.
 
 juanpablo:
-  img: /assets/family/juanpablo.jpg
+  img: /assets/family/juanpablo.webp
   text: Our newest blessing.

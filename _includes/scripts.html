@@ -431,4 +431,8 @@ o<script>
       button.setAttribute('aria-expanded', 'false');
     }
   }
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
 </script>

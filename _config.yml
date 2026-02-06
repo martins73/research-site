@@ -61,6 +61,8 @@ google_analytics: G-SKK42FETN2
 
 # Build Settings
 markdown: kramdown
+sass:
+  style: compressed
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
