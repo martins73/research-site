@@ -25,7 +25,6 @@ papers:
       if the potential labor pool seems large, platforms actively compete to attract and 
       keep the most reliable workers.
 
-
       We study fairness and worker engagement on a large online crowdwork platform using 
       a comprehensive dataset that records approximately 64 million tasks completed between 
       January 2024 and May 2025. Focusing on new workers, we analyze how early experiences 
@@ -34,7 +33,6 @@ papers:
       link submission records, study metadata, and dashboard data to reconstruct what each 
       worker saw before choosing a task. Using instrumental variable methods to address 
       endogeneity, we assess how early exposure to these frictions influences ongoing engagement.
-
 
       Our results show that early procedural frictions substantially reduce worker retention. 
       A 10 percentage point increase in returned tasks during the first 14 days reduces the 
