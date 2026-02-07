@@ -20,7 +20,7 @@ color_theme: iese    # or ucla, harvard, stanford, etc.
 
 | Preview | Theme ID | Institution | Light Accent | Dark Accent | Brand Reference |
 |:-------:|:---------|:------------|:-------------|:------------|:----------------|
-| ![#2774AE](https://via.placeholder.com/24/2774AE/2774AE.png) | `ucla` | UCLA | `#2774AE` | `#3b82f6` | [UCLA Brand Guidelines](https://brand.ucla.edu/identity/colors) |
+| ![#2774AE](https://dummyimage.com/24x24/2774AE/2774AE.png) | `ucla` | UCLA | `#2774AE` | `#3b82f6` | [UCLA Brand Guidelines](https://brand.ucla.edu/identity/colors) |
 | ![#A51C30](https://via.placeholder.com/24/A51C30/A51C30.png) | `harvard` | Harvard University | `#A51C30` | `#e05a6b` | [Harvard Identity](https://identityguide.hbs.edu/visual-identity/color) |
 | ![#A31F34](https://via.placeholder.com/24/A31F34/A31F34.png) | `mit` | MIT | `#A31F34` | `#e05a6b` | [MIT Brand Colors](https://brand.mit.edu/color) |
 | ![#8C1515](https://via.placeholder.com/24/8C1515/8C1515.png) | `stanford` | Stanford University | `#8C1515` | `#d45050` | [Stanford Identity](https://identity.stanford.edu/design-elements/color/) |
