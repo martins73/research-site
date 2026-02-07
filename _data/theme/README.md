@@ -14,6 +14,116 @@ color_theme: iese    # or ucla, harvard, stanford, etc.
 
 ---
 
+## Understanding Theme Colors
+
+Each theme defines 9 color properties that control different aspects of your website's appearance. Here's what each color property does:
+
+### How the Theme System Works
+
+1. **Color Definition** (`themes.yml`): Contains 29 university theme presets with both light and dark mode variants
+2. **Theme Selection** (`_config.yml`): Set your active theme via `color_theme: ucla`
+3. **CSS Variable Injection** (`assets/css/style.scss`): Jekyll's Liquid templating reads the theme colors and injects them as CSS custom properties
+4. **Usage**: All UI elements reference these colors using CSS variables like `var(--accent)`, `var(--bg-accent)`, etc.
+
+### Color Properties & Their Effects
+
+#### 1. **`accent`** - Primary Brand Color
+**The workhorse of your theme** - used extensively throughout:
+- **Buttons**: Primary action button backgrounds
+- **Links**: All hyperlinks site-wide
+- **Navigation**: Active page indicator text
+- **Social Icons**: Hover effects on social media icons
+- **Borders**: Pull quote borders, manifesto header border
+- **Tags**: Paper status badges (e.g., "Working Paper", "Published")
+- **Text Elements**: News links, saint-of-the-day text
+- **Interactive Elements**: CV entry hover borders, abstract button text
+- **Footer**: "AMDG" hover effect
+- **Favicon**: Background color in your site icon
+
+*Example: UCLA light uses `#2774AE` (official UCLA Blue), dark uses `#3b82f6` (lighter for contrast)*
+
+#### 2. **`accent_rgb`** - RGB Version of Accent
+**For transparency effects** - the same color as `accent` but in RGB format:
+- **Focus States**: Semi-transparent outline rings on interactive elements (uses `rgba(var(--accent-rgb), 0.2)`)
+- **Shadows**: Soft shadows on buttons and cards with opacity
+- **Accessibility**: Focus indicators for keyboard navigation
+
+*Example: `"39, 116, 174"` for UCLA's blue*
+
+#### 3. **`accent_hover`** - Darkened/Lightened Accent
+**Interactive feedback** on hover:
+- **Button Hovers**: Primary button hover state
+- **Link Hovers**: Footer link hover effects
+
+*In light mode: darker than accent. In dark mode: lighter than accent*
+
+#### 4. **`accent_orange`** - Job Market Paper Highlight
+**Special designation color** - intentionally consistent across all themes:
+- **Job Market Paper Tag**: The prominent orange "Job Market Paper" badge on your research page
+- **Paper Highlights**: Any emphasized paper markers
+
+*Always `#D97706` in light mode, `#f59e0b` in dark mode - maintains visibility regardless of your chosen university theme*
+
+#### 5. **`bg_accent`** - Light Tinted Background
+**Subtle colored backgrounds** (~5-10% opacity tint of your accent color):
+- **Button States**: Outline button hover, active navigation button
+- **Interactive Areas**: Theme toggle hover, abstract button backgrounds
+- **Content Boxes**: Callout boxes (like "Looking Forward" on teaching page)
+- **Card Hovers**: Paper card link hover backgrounds
+
+*Creates a gentle wash of your brand color*
+
+#### 6. **`bg_accent_hover`** - Darker Tinted Background
+**Stronger tinted background** for deeper interaction states:
+- **Active State Hovers**: When hovering over an already-active button
+- **Layered Interactions**: Provides a second level of visual feedback
+
+*Slightly more saturated than `bg_accent`*
+
+#### 7. **`info_text`** - Badge Text Color
+**Technology and method badges**:
+- **Research Methods**: The pill-shaped badges on papers (e.g., "MTurk", "Regression Discontinuity", "Field Experiment")
+- **Badge Hover**: Text color when hovering over technology badges
+
+*Typically matches or complements your accent color*
+
+#### 8. **`info_bg`** - Badge Background
+**Badge pill backgrounds**:
+- **Technology Tags**: Background for all the methodology and platform badges on your research papers
+- Creates the colored pill effect with `info_text`
+
+#### 9. **`info_bg_hover`** - Badge Hover Background
+**Interactive badge feedback**:
+- **Hover State**: Darker/lighter background when hovering over technology badges
+- **Border Color**: Also used for active button borders
+
+### Visual Hierarchy Summary
+
+**High Impact (Most Visible)**:
+- `accent` - Your primary brand color, used everywhere
+- `accent_orange` - Job Market Paper designation (orange across all themes)
+
+**Medium Impact (Supporting Colors)**:
+- `bg_accent` - Subtle backgrounds for interactive elements
+- `info_text` & `info_bg` - Research methodology badges
+
+**Low Impact (Refinements)**:
+- `accent_hover`, `bg_accent_hover`, `info_bg_hover` - Hover state variations
+- `accent_rgb` - Transparency effects and focus states
+
+### Example in Context
+
+When someone views your research page with the **UCLA theme**:
+- Paper titles are linked in **`accent`** blue (`#2774AE`)
+- "Job Market Paper" tag is **`accent_orange`** orange (`#D97706`)
+- Method badges like "MTurk" have **`info_bg`** background (`#e8f4fd`) with **`info_text`** text (`#2774AE`)
+- Clicking "Abstract" shows a button with **`bg_accent`** background (`#f0f9ff`)
+- Hovering over links darkens them to **`accent_hover`** (`#1e5f8e`)
+
+If they switch to dark mode, all these colors automatically transition to the dark mode variants!
+
+---
+
 ## Theme Gallery
 
 ### US Universities
