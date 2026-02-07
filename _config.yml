@@ -21,58 +21,15 @@ author:
   cv_address: "B501, 110 Westwood Plaza, Los Angeles, CA 90095"
 
 # =============================================================================
-# THEME COLORS — Single source of truth for the entire site (favicon + CSS)
-# To switch themes, swap the active block below. Presets:
-#
-#   UCLA:  accent=#2774AE  hover=#1e5f8e  rgb=39,116,174
-#   IESE:  accent=#A31F34  hover=#7d1828  rgb=163,31,52
+# THEME — Change the value below to switch university color scheme.
+# Available presets are defined in _data/themes.yml
+# Examples: ucla, iese, harvard, mit, stanford, yale, columbia, wharton,
+#           chicago_booth, kellogg, notre_dame, lbs, insead, ie, cunef,
+#           bocconi, catholic, thomas_aquinas, ave_maria, franciscan,
+#           dartmouth, nyu, cornell, michigan, ut_austin, uc_berkeley,
+#           duke, usc, boston_university
 # =============================================================================
-theme:
-  # --- Light mode ---
-  light:
-    accent: "#A31F34"
-    accent_rgb: "163, 31, 52"
-    accent_hover: "#7d1828"
-    accent_orange: "#D97706"
-    bg_accent: "#fdf6f6"
-    bg_accent_hover: "#fceaea"
-    info_text: "#A31F34"
-    info_bg: "#fdf2f2"
-    info_bg_hover: "#fce4e4"
-  # --- Dark mode ---
-  dark:
-    accent: "#e05a6b"
-    accent_rgb: "224, 90, 107"
-    accent_hover: "#f0828f"
-    accent_orange: "#f59e0b"
-    bg_accent: "#3d1a1f"
-    bg_accent_hover: "#4d2228"
-    info_text: "#e05a6b"
-    info_bg: "#3d1a1f"
-    info_bg_hover: "#4d2228"
-
-# UCLA preset (uncomment and swap with above to switch):
-# theme:
-#   light:
-#     accent: "#2774AE"
-#     accent_rgb: "39, 116, 174"
-#     accent_hover: "#1e5f8e"
-#     accent_orange: "#D97706"
-#     bg_accent: "#f0f9ff"
-#     bg_accent_hover: "#e0f2fe"
-#     info_text: "#0284c7"
-#     info_bg: "#e0f2fe"
-#     info_bg_hover: "#bae6fd"
-#   dark:
-#     accent: "#3b82f6"
-#     accent_rgb: "59, 130, 246"
-#     accent_hover: "#60a5fa"
-#     accent_orange: "#f59e0b"
-#     bg_accent: "#1e3a5f"
-#     bg_accent_hover: "#2d4a6f"
-#     info_text: "#38bdf8"
-#     info_bg: "#1e3a5f"
-#     info_bg_hover: "#2d4a6f"
+theme: iese
 
 # Template Attribution
 template:

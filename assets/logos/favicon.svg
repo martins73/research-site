@@ -2,6 +2,6 @@
 layout: null
 ---
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="100" fill="{{ site.theme.light.accent }}"/>
+  <rect width="512" height="512" rx="100" fill="{{ site.data.themes[site.theme].light.accent }}"/>
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="220" fill="white">MGC</text>
 </svg>
