@@ -44,7 +44,7 @@ color_theme: iese    # or ucla, harvard, stanford, etc.
 
 | Preview | Theme ID | Institution | Light Accent | Dark Accent | Brand Reference |
 |:-------:|:---------|:------------|:-------------|:------------|:----------------|
-| ![#990000](https://dummyimage.com/24x24/990000/990000.png) | `catholic` | Catholic University of America | `#990000` | `#cc4444` | [CUA Identity](https://communications.catholic.edu/brand/visual-identity/color-palette.html) |
+| ![#990000](https://dummyimage.com/24x24/B21F2C/B21F2C.png) | `catholic` | Catholic University of America | `#B21F2C` | `#cc4444` | [CUA Identity](https://communications.catholic.edu/styleguide/identity-standards2.html) |
 | ![#005794](https://dummyimage.com/24x24/005794/005794.png) | `thomas_aquinas` | Thomas Aquinas College | `#005794` | `#4a9ad4` | [TAC Website](https://thomasaquinas.edu) |
 | ![#0A2240](https://dummyimage.com/24x24/002B5C/002B5C.png) | `ave_maria` | Ave Maria University | `#002B5C` | `#4a7ab0` | [AMU Website]([https://www.avemaria.edu](https://www.avemarialaw.edu/wp-content/uploads/2024/01/Ave-Maria-School-of-Law-Graphic-Standards-FINAL.pdf#page=25.00)) |
 | ![#21412a](https://dummyimage.com/24x24/21412a/21412a.png) | `franciscan` | Franciscan University | `#21412a` | `#5a9a6a` | [Franciscan Brand](https://www.franciscan.edu) |
