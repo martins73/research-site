@@ -396,8 +396,8 @@ bocconi:
 catholic:
   name: "Catholic University of America"
   light:
-    accent: "#990000"
-    accent_rgb: "153, 0, 0"
+    accent: "#B21F2C"
+    accent_rgb: "178, 32, 44"
     accent_hover: "#730000"
     accent_orange: "#D97706"
     bg_accent: "#fdf2f2"
