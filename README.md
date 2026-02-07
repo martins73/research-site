@@ -31,6 +31,13 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Zero Dependencies:** No JavaScript frameworks or heavy libraries
 * **Minimal JavaScript:** ~440 lines of vanilla JS for interactivity
 
+### Asset Optimization
+Visual assets are processed to balance high-resolution display with fast load times:
+* **Tools:** Images are resized and converted to WebP via [Squoosh](https://squoosh.app); backgrounds are removed via [remove.bg](https://www.remove.bg).
+* **Profile Picture:** Main headshot is a **1000x1000px** WebP. Maintain a **1:1 square ratio** to ensure the CSS circular masking aligns correctly.
+* **Social Preview:** Uses a **1200x630px** JPG for platform compatibility. Maintain a **1.91:1 aspect ratio** to prevent unwanted cropping on WhatsApp or LinkedIn.
+* **Logos:** Saved as transparent PNGs at **60x60px** or larger. Use a **1:1 square ratio** to ensure consistent alignment within the CV list items.
+
 ### Privacy & Security
 * **Robots.txt:** Blocks unauthorized scraping by AI training bots (GPTBot, CCBot, etc.)
 * **Link Hardening:** All `target="_blank"` links include `rel="noopener"` to prevent tabnabbing
