@@ -60,7 +60,7 @@ iese:
 harvard:
   name: "Harvard University"
   light:
-    accent: "#A51C30"
+    accent: "#A41034"
     accent_rgb: "165, 28, 48"
     accent_hover: "#7d1524"
     accent_orange: "#D97706"
