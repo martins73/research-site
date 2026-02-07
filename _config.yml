@@ -31,7 +31,7 @@ author:
 # Note: "theme" is reserved by Jekyll for gem-based themes, so we use
 #       "color_theme" instead.
 # =============================================================================
-color_theme: iese
+color_theme: ucla
 
 # Template Attribution
 template:
