@@ -22,7 +22,7 @@ author:
 
 # =============================================================================
 # COLOR THEME — Change the value below to switch university color scheme.
-# Available presets are defined in _data/themes.yml
+# Available presets are defined in _data/theme/themes.yml
 # Examples: ucla, iese, harvard, mit, stanford, yale, columbia, wharton,
 #           chicago_booth, kellogg, notre_dame, lbs, insead, ie, cunef,
 #           bocconi, catholic, thomas_aquinas, ave_maria, franciscan,
@@ -83,13 +83,21 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Pages collection (content pages live in _pages/)
+# Each page defines its own permalink in front matter.
+collections:
+  pages:
+    output: true
+
 # Include files that Jekyll would normally skip (underscore-prefixed)
 include:
   - _redirects
+  - _pages
 
 # Exclude from processing
 exclude:
   - README.md
+  - _data/theme/README.md
   - LICENSE
   - Gemfile
   - Gemfile.lock

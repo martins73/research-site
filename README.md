@@ -13,13 +13,14 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 
 ## Key Features
 
-### 🎨 Design & UX
+### Design & UX
 * **Responsive Design:** Mobile-first approach with optimized layouts for all screen sizes
 * **Dark Mode:** User-togglable theme with localStorage persistence and flash prevention
 * **Accessibility:** Semantic HTML, ARIA labels, keyboard navigation, and focus management
 * **Custom Typography:** Merriweather (serif) for headings, Atkinson Hyperlegible (sans-serif) for body text — centralized via `--font-heading` and `--font-body` CSS custom properties
+* **University Color Themes:** 29 preset color schemes derived from official university brand guidelines ([see full gallery](_data/theme/README.md))
 
-### 🌱 Sustainable & Performance-Focused
+### Sustainable & Performance-Focused
 * **Optimized Assets:** All images converted to WebP; logos resized to display dimensions
 * **Lazy Loading:** Below-fold images use `loading="lazy"` to defer network requests
 * **Service Worker:** Offline-capable with pre-caching, stale-while-revalidate for static assets, and network-first for HTML
@@ -30,54 +31,64 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Zero Dependencies:** No JavaScript frameworks or heavy libraries
 * **Minimal JavaScript:** ~440 lines of vanilla JS for interactivity
 
-### 🛡️ Privacy & Security
+### Privacy & Security
 * **Robots.txt:** Blocks unauthorized scraping by AI training bots (GPTBot, CCBot, etc.)
 * **Link Hardening:** All `target="_blank"` links include `rel="noopener"` to prevent tabnabbing
 * **Privacy-First Analytics:** Configured to respect user privacy
 * **Structured Data:** Schema.org markup for better SEO and discoverability
 * **Open Graph & Meta Tags:** Optimized social media previews
 
-### 📊 Data-Driven Content
+### Data-Driven Content
 All dynamic content is managed through YAML files in `_data/`, making updates simple and centralized:
-* **Navigation:** Site navigation structure
 * **Research Papers:** Complete paper metadata with abstracts, coauthors, and links
-* **CV Sections:** Education, Industry, and Additional Info are modularized
+* **CV Sections:** Education, Industry, Skills, Awards, and more — modularized
 * **Activity Feed:** Recent publications, presentations, and research updates
 * **Teaching Experience:** Course history with student counts and institutions
 * **Status/Now:** Current location, reading list, and activities
 * **Library:** Curated book lists with personalized commentary
-* **Family Information:** Photo gallery data for easter egg
-* **Saints Calendar:** Liturgical calendar for footer easter egg
 
 ## Project Structure
 
 ```
 research-site/
-├── _config.yml                         # Jekyll configuration and site settings
+├── _config.yml                         # Jekyll configuration, site settings, color theme selector
+│
+├── _pages/                             # Content pages (Jekyll collection)
+│   ├── cv.html                         # Curriculum Vitae (fully data-driven)
+│   ├── cv-print.html                   # Print-optimized CV (used for PDF generation)
+│   ├── teaching.md                     # Teaching philosophy + experience
+│   ├── library.html                    # Curated book library
+│   └── human-supply-chain.md           # Research manifesto
+│
+├── index.html                          # Homepage (about, research, activity, status)
 │
 ├── _data/                              # YAML data files (single source of truth)
 │   ├── papers.yml                      # Research papers with abstracts and metadata
 │   ├── activity.yml                    # Recent activity feed (papers, talks, etc.)
 │   ├── teaching.yml                    # Teaching experience (feeds CV & Teaching page)
 │   ├── status.yml                      # Current status (location, reading, activities)
+│   ├── library.yml                     # Bookshelf data (by shelf/category)
+│   │
+│   ├── theme/                          # Color Theme System
+│   │   ├── themes.yml                  # 29 university color presets (light + dark mode)
+│   │   └── README.md                   # Visual gallery of all themes with brand references
 │   │
 │   ├── cv/                             # Modularized CV Data
 │   │   ├── education.yml               # Degrees and institutions
-│   │   ├── awards.yml                  # Honors & Awards
-│   │   ├── service.yml                 # Academic Service
-│   │   ├── presentations.yml           # Selected Presentations
+│   │   ├── appointments.yml            # Academic appointments
 │   │   ├── industry.yml                # Professional experience (with locations)
-│   │   ├── skills.yml                  # Skills & Qualifications
+│   │   ├── awards.yml                  # Honors & Awards
+│   │   ├── service.yml                 # Academic service
+│   │   ├── presentations.yml           # Selected presentations
+│   │   ├── skills.yml                  # Skills & qualifications
 │   │   ├── research_interests.yml      # Research interest keywords
 │   │   └── references.yml              # References contact info
 │   │
-│   ├── ui/                             # UI Elements
+│   ├── ui/                             # UI Configuration
 │   │   ├── navigation.yml              # Main navigation menu structure
 │   │   └── social.yml                  # Social links and logos (for sidebar)
 │   │
-│   ├── library.yml                     # Bookshelf data (The Human Supply Chain, Formation, Fun)
-│   │
-│   └── easter_eggs/                    # Hidden features & Personal touches
+│   └── easter_eggs/                    # Hidden Features
 │       ├── family.yml                  # Family member information for photo modal
 │       └── saints.yml                  # Complete liturgical calendar (365+ days)
 │
@@ -95,15 +106,6 @@ research-site/
 ├── _drafts/                            # Draft content (not published)
 │   └── research-notes/                 # Research note-taking system
 │
-├── .github/                            # GitHub Actions and automation
-│   ├── workflows/
-│   │   ├── update-status-date.yml      # Auto-updates status.yml timestamp
-│   │   └── generate-cv-pdf.yml         # Auto-generates CV PDF from data
-│   └── scripts/
-│       └── generate-cv-pdf.js          # Puppeteer script for PDF rendering
-│
-├── sw.js                               # Service worker (offline support, caching)
-│
 ├── assets/                             # Static files
 │   ├── css/
 │   │   └── style.scss                  # Design system (~1820 lines SCSS, minified on build)
@@ -113,20 +115,19 @@ research-site/
 │   ├── profile_picture.webp            # Profile image (WebP)
 │   └── martin-gonzalez-cabello-cv.pdf  # Auto-generated from YAML data
 │
-├── Content Pages
-│   ├── index.html                      # Homepage (about, research, activity, status)
-│   ├── cv.html                         # Curriculum Vitae (fully data-driven)
-│   ├── teaching.md                     # Teaching philosophy + experience (data-driven)
-│   ├── library.html                    # Curated book library (data-driven)
-│   ├── human-supply-chain.md           # Research manifesto
-│   └── cv-print.html                   # Print-optimized CV (used for PDF generation)
+├── .github/                            # GitHub Actions and automation
+│   ├── workflows/
+│   │   ├── update-status-date.yml      # Auto-updates status.yml timestamp
+│   │   └── generate-cv-pdf.yml         # Auto-generates CV PDF from data
+│   └── scripts/
+│       └── generate-cv-pdf.js          # Puppeteer script for PDF rendering
 │
-├── Configuration Files
-│   ├── robots.txt                      # Bot access control
-│   └── README.md                       # This file
-│
-└── .git/                               # Version control
+├── sw.js                               # Service worker (offline support, caching)
+├── robots.txt                          # Bot access control
+├── _redirects                          # Cloudflare Pages URL redirects
+└── README.md                           # This file
 ```
+
 ## Content Management
 
 ### Data-Driven Updates (Recommended)
@@ -142,12 +143,9 @@ Edit `_data/papers.yml` to add or update papers:
 - **Abstract:** Full abstract text (collapsible on homepage)
 - **Submission:** Submission status (for working papers)
 - **Highlights:** Optional awards or achievements
-- Full abstract text
 - Link text and URL (Request Draft, Journal Version, View Preprint)
 
-The CV and Teaching pages automatically pull from this file.
-
-The homepage automatically generates paper cards with collapsible abstracts from this file.
+The CV and Teaching pages automatically pull from this file. The homepage automatically generates paper cards with collapsible abstracts.
 
 #### 2. Adding Research Updates
 Edit `_data/activity.yml` to add:
@@ -167,20 +165,21 @@ Edit `_data/status.yml` to update:
 
 #### 4. Managing the CV
 The CV is modularized in `_data/cv/`. Update specific files to change sections:
-- **`education.yml`**: Degrees, universities, logos, and years.
-- **`industry.yml`**: Professional roles, companies, and descriptions.
-- **`skills.yml`**: Skills, languages, and qualifications.
-- **`awards.yml`**: Honors and awards.
-- **`service.yml`**: Academic service roles.
-- **`presentations.yml`**: Selected conference presentations.
-- **`references.yml`**: Academic references and contact info.
+- **`education.yml`**: Degrees, universities, logos, and years
+- **`appointments.yml`**: Academic appointments
+- **`industry.yml`**: Professional roles, companies, and descriptions
+- **`skills.yml`**: Skills, languages, and qualifications
+- **`awards.yml`**: Honors and awards
+- **`service.yml`**: Academic service roles
+- **`presentations.yml`**: Selected conference presentations
+- **`references.yml`**: Academic references and contact info
 
 Teaching experience is managed separately in `_data/teaching.yml` (shared by the CV and Teaching pages).
 
-**Automatic PDF Generation:** When you push changes to any CV data file, the GitHub Action automatically rebuilds the downloadable PDF. No manual export needed. The PDF includes a "Last Updated" date stamped at build time.
+**Automatic PDF Generation:** When you push changes to any CV data file, the GitHub Action automatically rebuilds the downloadable PDF. No manual export needed.
 
 #### 5. Managing the Library
-Edit `_data/library.yml` to manage your book collections. The file is structured by "shelves" (e.g., "The Human Supply Chain", "Formation"):
+Edit `_data/library.yml` to manage your book collections:
 ```yaml
 - shelf: "Formation"
   books:
@@ -190,21 +189,19 @@ Edit `_data/library.yml` to manage your book collections. The file is structured
       comment: "Lewis tackles the hardest problem of faith..."
 ```
 
-## Design Philosophy
-
-This website follows a **digital minimalism** approach:
-- Clean, distraction-free reading experience
-- Thoughtful typography and spacing
-- Respect for user preferences (dark mode, reduced motion support)
-- Fast, accessible, and sustainable by design
-- Data-driven content management for easy updates
+#### 6. Switching University Color Theme
+Edit `_config.yml` and change the `color_theme` value:
+```yaml
+color_theme: iese    # or ucla, harvard, stanford, etc.
+```
+See [`_data/theme/README.md`](_data/theme/README.md) for the full visual gallery of all 29 available themes with color swatches and brand references.
 
 ## Design System
 
-The site uses a comprehensive design system defined in `/assets/css/style.scss`:
+The site uses a comprehensive design system defined in `assets/css/style.scss`:
 
 ### CSS Custom Properties
-- **Color Palette:** 6+ background colors, 6+ text hierarchy levels
+- **Color Palette:** 6+ background colors, 6+ text hierarchy levels, university-branded accents
 - **Spacing Scale:** 4px grid system (space-1 through space-24)
 - **Typography Scale:** text-xs through text-6xl
 - **Font Families:** `--font-body` (Atkinson Hyperlegible) and `--font-heading` (Merriweather) — change fonts site-wide by editing two variables
@@ -229,10 +226,7 @@ The site uses vanilla JavaScript (~440 lines in `_includes/scripts.html`) for:
 
 1. **Mobile Navigation** - Auto-scroll to main content on mobile
 2. **Profile Picture Spin** - 3.2s animation on click
-3. **Family Photo Modal** - Accessible lightbox with:
-   - Keyboard navigation (Enter/Space to open, Escape to close)
-   - Focus trap and ARIA labels
-   - Image + caption display
+3. **Family Photo Modal** - Accessible lightbox with keyboard navigation, focus trap, and ARIA labels
 4. **Dark Mode Toggle** - Theme switching with localStorage
 5. **Liturgical Calendar** - Saint-of-the-day in footer (hover on desktop, tap on mobile)
 6. **Carbon Footprint Badge** - Website Carbon API with caching and fallback values
@@ -245,9 +239,9 @@ The site uses vanilla JavaScript (~440 lines in `_includes/scripts.html`) for:
 This site uses Jekyll, deployed via Cloudflare Pages.
 
 ### Prerequisites
-* Ruby 2.7+ and Bundler (for local development)
+* Ruby 2.7+ and Bundler
 
-### Local Development
+### Setup
 
 1.  **Clone the repository:**
     ```bash
@@ -266,17 +260,6 @@ This site uses Jekyll, deployed via Cloudflare Pages.
     ```
     Then open `http://localhost:4000`
 
-## Privacy & Ethics
-
-This site respects user privacy and blocks AI training scrapers:
-
-### robots.txt Configuration
-- **Blocked:** GPTBot, ChatGPT-User, CCBot, AnthropicAI
-- **Allowed:** Google, Bing (for legitimate SEO)
-
-### Analytics
-- Privacy-first Google Analytics 4 configuration
-
 ## Automation
 
 ### GitHub Actions
@@ -287,17 +270,21 @@ This site respects user privacy and blocks AI training scrapers:
 - Commits and pushes changes
 
 #### CV PDF Generation (`generate-cv-pdf.yml`)
-- Triggers on push to `_data/cv/`, `_data/papers.yml`, `_data/teaching.yml`, `_config.yml`, `cv-print.html`, or `_layouts/cv-print.html`
+- Triggers on push to `_data/cv/`, `_data/papers.yml`, `_data/teaching.yml`, `_config.yml`, `_pages/cv-print.html`, or `_layouts/cv-print.html`
 - Builds the Jekyll site, then uses Puppeteer to render `cv-print.html` to PDF
 - Commits the generated PDF to `assets/martin-gonzalez-cabello-cv.pdf`
 - Can also be triggered manually via `workflow_dispatch`
-- The PDF includes a "Last Updated: [Month Year]" timestamp in the header
 
-## License
+## Privacy & Ethics
 
-The code in this repository is licensed under the MIT License.
+This site respects user privacy and blocks AI training scrapers:
 
-All site content, including text, images, PDFs, and data files, is © 2026 Martín González Cabello. All rights reserved unless otherwise stated.
+### robots.txt Configuration
+- **Blocked:** GPTBot, ChatGPT-User, CCBot, AnthropicAI
+- **Allowed:** Google, Bing (for legitimate SEO)
+
+### Analytics
+- Privacy-first Google Analytics 4 configuration
 
 ## Architecture Notes
 
@@ -330,3 +317,9 @@ This site minimizes hard-coded HTML. Instead, it treats content as data stored i
 ```
 
 This ensures that all pages are always in sync with your source data.
+
+## License
+
+The code in this repository is licensed under the MIT License.
+
+All site content, including text, images, PDFs, and data files, is &copy; 2026 Martin Gonzalez Cabello. All rights reserved unless otherwise stated.

@@ -2,7 +2,7 @@
 # University Theme Presets
 #
 # Each theme provides accent colors for light and dark modes.
-# To use: set "theme: ucla" (or any key below) in _config.yml
+# To use: set "color_theme: ucla" (or any key below) in _config.yml
 #
 # Colors are derived from each university's official brand guidelines.
 # accent_orange is consistent across themes (used for Job Market Paper tag).
