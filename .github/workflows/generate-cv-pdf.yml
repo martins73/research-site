@@ -8,7 +8,7 @@ on:
       - '_data/papers.yml'
       - '_data/teaching.yml'
       - '_config.yml'
-      - 'cv-print.html'
+      - '_pages/cv-print.html'
       - '_layouts/cv-print.html'
   workflow_dispatch:  # Allow manual trigger
 

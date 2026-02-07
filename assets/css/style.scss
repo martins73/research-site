@@ -80,8 +80,8 @@
     /* Colors - Background */
     --bg-body: #FAFAF9;         /* The Desk: Warm off-white */
     --bg-paper: #ffffff;        /* The Page: Pure white */
-    --bg-accent: {{ site.data.themes[site.color_theme].light.bg_accent }};
-    --bg-accent-hover: {{ site.data.themes[site.color_theme].light.bg_accent_hover }};
+    --bg-accent: {{ site.data.theme.themes[site.color_theme].light.bg_accent }};
+    --bg-accent-hover: {{ site.data.theme.themes[site.color_theme].light.bg_accent_hover }};
 
     /* Colors - Text Hierarchy */
     --text-primary: #1e293b;
@@ -91,11 +91,11 @@
     --text-muted: #94a3b8;
     --text-lighter: #cbd5e1;
 
-    /* Colors - Accent (from _data/themes.yml) */
-    --accent: {{ site.data.themes[site.color_theme].light.accent }};
-    --accent-rgb: {{ site.data.themes[site.color_theme].light.accent_rgb }};
-    --accent-hover: {{ site.data.themes[site.color_theme].light.accent_hover }};
-    --accent-orange: {{ site.data.themes[site.color_theme].light.accent_orange }};
+    /* Colors - Accent (from _data/theme/themes.yml) */
+    --accent: {{ site.data.theme.themes[site.color_theme].light.accent }};
+    --accent-rgb: {{ site.data.theme.themes[site.color_theme].light.accent_rgb }};
+    --accent-hover: {{ site.data.theme.themes[site.color_theme].light.accent_hover }};
+    --accent-orange: {{ site.data.theme.themes[site.color_theme].light.accent_orange }};
 
     /* Colors - Border */
     --border: #e2e8f0;
@@ -103,10 +103,10 @@
     --border-medium: #cbd5e1;
     --border-dark: #94a3b8;
 
-    /* Colors - Status/Info (from _data/themes.yml) */
-    --info-text: {{ site.data.themes[site.color_theme].light.info_text }};
-    --info-bg: {{ site.data.themes[site.color_theme].light.info_bg }};
-    --info-bg-hover: {{ site.data.themes[site.color_theme].light.info_bg_hover }};
+    /* Colors - Status/Info (from _data/theme/themes.yml) */
+    --info-text: {{ site.data.theme.themes[site.color_theme].light.info_text }};
+    --info-bg: {{ site.data.theme.themes[site.color_theme].light.info_bg }};
+    --info-bg-hover: {{ site.data.theme.themes[site.color_theme].light.info_bg_hover }};
     
     /* Spacing System - Based on 4px grid */
     --space-1: 0.25rem;   /* 4px */
@@ -155,8 +155,8 @@
     /* Colors - Background */
     --bg-body: #0f172a;         /* Dark slate background */
     --bg-paper: #1e293b;        /* Dark paper */
-    --bg-accent: {{ site.data.themes[site.color_theme].dark.bg_accent }};
-    --bg-accent-hover: {{ site.data.themes[site.color_theme].dark.bg_accent_hover }};
+    --bg-accent: {{ site.data.theme.themes[site.color_theme].dark.bg_accent }};
+    --bg-accent-hover: {{ site.data.theme.themes[site.color_theme].dark.bg_accent_hover }};
 
     /* Colors - Text Hierarchy */
     --text-primary: #f1f5f9;
@@ -166,11 +166,11 @@
     --text-muted: #64748b;
     --text-lighter: #475569;
 
-    /* Colors - Accent (from _data/themes.yml) */
-    --accent: {{ site.data.themes[site.color_theme].dark.accent }};
-    --accent-rgb: {{ site.data.themes[site.color_theme].dark.accent_rgb }};
-    --accent-hover: {{ site.data.themes[site.color_theme].dark.accent_hover }};
-    --accent-orange: {{ site.data.themes[site.color_theme].dark.accent_orange }};
+    /* Colors - Accent (from _data/theme/themes.yml) */
+    --accent: {{ site.data.theme.themes[site.color_theme].dark.accent }};
+    --accent-rgb: {{ site.data.theme.themes[site.color_theme].dark.accent_rgb }};
+    --accent-hover: {{ site.data.theme.themes[site.color_theme].dark.accent_hover }};
+    --accent-orange: {{ site.data.theme.themes[site.color_theme].dark.accent_orange }};
 
     /* Colors - Border */
     --border: #334155;
@@ -178,10 +178,10 @@
     --border-medium: #475569;
     --border-dark: #64748b;
 
-    /* Colors - Status/Info (from _data/themes.yml) */
-    --info-text: {{ site.data.themes[site.color_theme].dark.info_text }};
-    --info-bg: {{ site.data.themes[site.color_theme].dark.info_bg }};
-    --info-bg-hover: {{ site.data.themes[site.color_theme].dark.info_bg_hover }};
+    /* Colors - Status/Info (from _data/theme/themes.yml) */
+    --info-text: {{ site.data.theme.themes[site.color_theme].dark.info_text }};
+    --info-bg: {{ site.data.theme.themes[site.color_theme].dark.info_bg }};
+    --info-bg-hover: {{ site.data.theme.themes[site.color_theme].dark.info_bg_hover }};
     
     /* Dark mode specific adjustments */
     --container-border: #334155;
