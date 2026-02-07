@@ -24,7 +24,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.research_interests.size > 0 %}
 <section id="research-interests" class="section-spacing">
-    <h2 class="cv-section-header">Research Interests</h3>
+    <h2 class="cv-section-header">Research Interests</h2>
     <div class="cv-entry">
         <div class="cv-desc cv-desc-no-indent">
             {{ site.data.cv.research_interests | join: " · " }}
@@ -37,7 +37,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.appointments and site.data.cv.appointments.size > 0 %}
 <section id="appointments" class="section-spacing">
-    <h2 class="cv-section-header">Academic Appointments</h3>
+    <h2 class="cv-section-header">Academic Appointments</h2>
 
     {% for item in site.data.cv.appointments %}
         <div class="cv-entry">
@@ -73,7 +73,7 @@ description: Academic CV and professional background in analytics, operations, a
 <!-- ### EDUCATION ### -->
 
 <section id="education" class="section-spacing">
-    <h2 class="cv-section-header">Education</h3>
+    <h2 class="cv-section-header">Education</h2>
 
     {% for item in site.data.cv.education %}
         <div class="cv-entry">
@@ -111,7 +111,7 @@ description: Academic CV and professional background in analytics, operations, a
 {% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
 {% if publications.size > 0 %}
 <section id="publications" class="section-spacing">
-    <h2 class="cv-section-header">Publications</h3>
+    <h2 class="cv-section-header">Publications</h2>
     {% for paper in publications %}
     <div class="cv-entry">
         <span class="cv-title">{{ paper.title }}</span>
@@ -132,7 +132,7 @@ description: Academic CV and professional background in analytics, operations, a
 {% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
 {% if working_papers.size > 0 %}
 <section id="working-papers" class="section-spacing">
-    <h2 class="cv-section-header">Working Papers</h3>
+    <h2 class="cv-section-header">Working Papers</h2>
     {% for paper in working_papers %}
     <div class="cv-entry">
         <span class="cv-title">{{ paper.title }}</span>
@@ -153,7 +153,7 @@ description: Academic CV and professional background in analytics, operations, a
 {% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
 {% if wip.size > 0 %}
 <section id="work-in-progress" class="section-spacing">
-    <h2 class="cv-section-header">Selected Work in Progress</h3>
+    <h2 class="cv-section-header">Selected Work in Progress</h2>
     {% for paper in wip %}
     <div class="cv-entry">
         <span class="cv-title">{{ paper.title }}</span>
@@ -173,7 +173,7 @@ description: Academic CV and professional background in analytics, operations, a
 {% assign other_articles = site.data.papers.papers | where: "cv_category", "Other Article" %}
 {% if other_articles.size > 0 %}
 <section id="other-articles" class="section-spacing">
-    <h2 class="cv-section-header">Other Articles</h3>
+    <h2 class="cv-section-header">Other Articles</h2>
     {% for paper in other_articles %}
     <div class="cv-entry">
         <span class="cv-title">{{ paper.title }}</span>
@@ -193,7 +193,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.awards.size > 0 %}
 <section id="awards" class="section-spacing">
-    <h2 class="cv-section-header">Awards &amp; Scholarships</h3>
+    <h2 class="cv-section-header">Awards &amp; Scholarships</h2>
     <ul class="cv-talks-list">
         {% for item in site.data.cv.awards %}
         <li class="cv-award-item">
@@ -215,7 +215,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.presentations.size > 0 %}
 <section id="presentations" class="section-spacing">
-    <h2 class="cv-section-header">Conference Presentations &amp; Talks</h3>
+    <h2 class="cv-section-header">Conference Presentations &amp; Talks</h2>
     {% for paper in site.data.cv.presentations %}
     <div class="cv-entry cv-paper-block">
         <div class="cv-paper-title">
@@ -237,7 +237,7 @@ description: Academic CV and professional background in analytics, operations, a
 <!-- ### TEACHING ### -->
 
 <section id="teaching" class="section-spacing">
-    <h2 class="cv-section-header">Teaching</h3>
+    <h2 class="cv-section-header">Teaching</h2>
 
     {% for item in site.data.teaching %}
         <div class="cv-entry">
@@ -283,7 +283,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.service.size > 0 %}
 <section id="service" class="section-spacing">
-    <h2 class="cv-section-header">Service &amp; Professional Organizations</h3>
+    <h2 class="cv-section-header">Service &amp; Professional Organizations</h2>
     {% for item in site.data.cv.service %}
     <div class="cv-entry">
         <div class="cv-desc cv-desc-no-indent">
@@ -297,7 +297,7 @@ description: Academic CV and professional background in analytics, operations, a
 <!-- ### INDUSTRY ### -->
 
 <section id="industry" class="section-spacing">
-    <h2 class="cv-section-header">Work Experience</h3>
+    <h2 class="cv-section-header">Work Experience</h2>
 
     {% for company in site.data.cv.industry %}
         <div class="cv-entry">
@@ -339,7 +339,7 @@ description: Academic CV and professional background in analytics, operations, a
 <!-- ### SKILLS ### -->
 
 <section id="skills" class="section-spacing">
-    <h2 class="cv-section-header">Other Skills</h3>
+    <h2 class="cv-section-header">Other Skills</h2>
     <div class="cv-entry">
         <div class="cv-desc cv-desc-no-indent cv-skills-container">
             {% for group in site.data.cv.skills %}
@@ -358,7 +358,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.references.size > 0 %}
 <section id="references" class="section-spacing">
-    <h2 class="cv-section-header">References</h3>
+    <h2 class="cv-section-header">References</h2>
     <div>
         {% for ref in site.data.cv.references %}
         <div class="cv-entry cv-ref-entry">
