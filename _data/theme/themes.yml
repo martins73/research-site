@@ -444,7 +444,7 @@ thomas_aquinas:
 ave_maria:
   name: "Ave Maria University"
   light:
-    accent: "#0A2240"
+    accent: "#002B5C"
     accent_rgb: "10, 34, 64"
     accent_hover: "#061830"
     accent_orange: "#D97706"
