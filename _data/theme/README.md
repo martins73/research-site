@@ -21,12 +21,12 @@ color_theme: iese    # or ucla, harvard, stanford, etc.
 | Preview | Theme ID | Institution | Light Accent | Dark Accent | Brand Reference |
 |:-------:|:---------|:------------|:-------------|:------------|:----------------|
 | ![#2774AE](https://dummyimage.com/24x24/2774AE/2774AE.png) | `ucla` | UCLA | `#2774AE` | `#3b82f6` | [UCLA Brand Guidelines](https://brand.ucla.edu/identity/colors) |
-| ![#A51C30](https://dummyimage.com/24x24/A51C30/A51C30.png) | `harvard` | Harvard University | `#A51C30` | `#e05a6b` | [Harvard Identity](https://identityguide.hbs.edu/visual-identity/color) |
-| ![#A31F34](https://dummyimage.com/24x24/A31F34/A31F34.png) | `mit` | MIT | `#A31F34` | `#e05a6b` | [MIT Brand Colors](https://brand.mit.edu/color) |
+| ![#A51C30](https://dummyimage.com/24x24/A41034/A41034.png) | `harvard` | Harvard University | `#A41034` | `#e05a6b` | [Harvard Identity](https://identity.hbs.edu/color/) |
+| ![#A31F34](https://dummyimage.com/24x24/750014/750014.png) | `mit` | MIT | `#750014` | `#e05a6b` | [MIT Brand Colors](https://brand.mit.edu/color) |
 | ![#8C1515](https://dummyimage.com/24x24/8C1515/8C1515.png) | `stanford` | Stanford University | `#8C1515` | `#d45050` | [Stanford Identity](https://identity.stanford.edu/design-elements/color/) |
 | ![#00356B](https://dummyimage.com/24x24/00356B/00356B.png) | `yale` | Yale University | `#00356B` | `#4a8fd4` | [Yale Identity](https://yaleidentity.yale.edu/colors) |
 | ![#1D4F91](https://dummyimage.com/24x24/1D4F91/1D4F91.png) | `columbia` | Columbia University | `#1D4F91` | `#5a8fcc` | [Columbia Identity](https://visualidentity.columbia.edu/branding/color-palette) |
-| ![#011F5B](https://dummyimage.com/24x24/011F5B/011F5B.png) | `wharton` | Wharton (UPenn) | `#011F5B` | `#4a7ac4` | [Penn Brand Standards](https://branding.web-resources.upenn.edu/color-palette) |
+| ![#011F5B](https://dummyimage.com/24x24/011F5B/011F5B.png) | `wharton` | Wharton (UPenn) | `#011F5B` | `#4a7ac4` | [Wharton School Colors](https://standards.wharton.upenn.edu/color/) |
 | ![#800000](https://dummyimage.com/24x24/800000/800000.png) | `chicago_booth` | Chicago Booth | `#800000` | `#cc4444` | [UChicago Identity](https://news.uchicago.edu/sites/default/files/attachments/_UChicago.Identity.Guidelines.pdf) |
 | ![#4E2A84](https://dummyimage.com/24x24/4E2A84/4E2A84.png) | `kellogg` | Kellogg (Northwestern) | `#4E2A84` | `#8a6abf` | [Northwestern Brand](https://www.northwestern.edu/brand/visual-identity/color/) |
 | ![#0C2340](https://dummyimage.com/24x24/0C2340/0C2340.png) | `notre_dame` | University of Notre Dame | `#0C2340` | `#4a7ab0` | [Notre Dame Brand](https://onmessage.nd.edu/visual-identity/color/) |
