@@ -84,7 +84,7 @@ harvard:
 mit:
   name: "MIT"
   light:
-    accent: "#A31F34"
+    accent: "#750014"
     accent_rgb: "163, 31, 52"
     accent_hover: "#7d1828"
     accent_orange: "#D97706"
