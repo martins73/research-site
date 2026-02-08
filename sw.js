@@ -5,13 +5,13 @@ const CACHE_NAME = 'v{{ site.time | date: "%s" }}';
 
 const PRECACHE = [
   '{{ "/assets/css/style.css" | relative_url }}?v={{ site.time | date: "%s" }}',
-  '{{ "/assets/profile_picture.webp" | relative_url }}',
-  '{{ "/assets/logos/favicon.svg" | relative_url }}',
-  '{{ "/assets/fonts/atkinson-regular.woff2" | relative_url }}',
-  '{{ "/assets/fonts/atkinson-bold.woff2" | relative_url }}',
-  '{{ "/assets/fonts/merriweather-light.woff2" | relative_url }}',
-  '{{ "/assets/fonts/merriweather-regular.woff2" | relative_url }}',
-  '{{ "/assets/fonts/merriweather-bold.woff2" | relative_url }}'
+  '{{ "/assets/profile_picture.webp" | relative_url }}?v={{ site.time | date: "%s" }}',
+  '{{ "/assets/logos/favicon.svg" | relative_url }}?v={{ site.time | date: "%s" }}',
+  '{{ "/assets/fonts/atkinson-regular.woff2" | relative_url }}?v={{ site.time | date: "%s" }}',
+  '{{ "/assets/fonts/atkinson-bold.woff2" | relative_url }}?v={{ site.time | date: "%s" }}',
+  '{{ "/assets/fonts/merriweather-light.woff2" | relative_url }}?v={{ site.time | date: "%s" }}',
+  '{{ "/assets/fonts/merriweather-regular.woff2" | relative_url }}?v={{ site.time | date: "%s" }}',
+  '{{ "/assets/fonts/merriweather-bold.woff2" | relative_url }}?v={{ site.time | date: "%s" }}'
 ];
 
 self.addEventListener('install', (event) => {
