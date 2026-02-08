@@ -105,7 +105,7 @@
 
         lastFocusedElement = document.activeElement;
 
-        modalImg.src = personData.img;
+        modalImg.src = personData.img + '?v={{ site.time | date: "%s" }}';
         modalImg.alt = personData.text;
         modalCaption.innerText = personData.text;
 
