@@ -2,7 +2,7 @@
 <!-- Contains: Profile picture, name, navigation links, social links, dark mode toggle -->
 <aside class="sidebar">
   <img
-    src="{{ '/assets/profile_picture.webp' | relative_url }}"
+    src="{{ '/assets/profile_picture.webp' | relative_url }}?v={{ site.time | date: '%s' }}"
     alt="{{ site.author.name }}"
     class="profile-img js-spin-trigger"
     width="180"
