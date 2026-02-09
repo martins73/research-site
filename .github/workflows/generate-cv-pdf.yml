@@ -39,8 +39,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Puppeteer
-        run: npm install puppeteer@latest
+      - name: Install dependencies
+        run: npm install puppeteer@latest pdf-lib
 
       - name: Generate PDF
         run: node .github/scripts/generate-cv-pdf.js
