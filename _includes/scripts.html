@@ -25,13 +25,16 @@
 
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
+      const sidebarLinks = document.querySelectorAll(".sidebar .sidebar-nav");
+      console.log("Mobile mode: Found", sidebarLinks.length, "sidebar navigation links");
 
-      document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
+      sidebarLinks.forEach(link => {
         link.addEventListener("click", () => {
           // Store whether sidebar was visible at time of click
           const sidebarTop = sidebar.getBoundingClientRect().top;
           const wasScrolledDown = sidebarTop < 0 || sidebarTop > 100;
 
+          console.log("Mobile sidebar link clicked, setting autoScrollToContent flag");
           sessionStorage.setItem("autoScrollToContent", "1");
           sessionStorage.setItem("wasScrolledDown", wasScrolledDown ? "1" : "0");
         });
@@ -40,6 +43,7 @@
       const shouldAutoScroll = sessionStorage.getItem("autoScrollToContent") === "1";
 
       if (shouldAutoScroll) {
+        console.log("Mobile auto-scroll triggered");
         sessionStorage.removeItem("autoScrollToContent");
         const wasScrolledDown = sessionStorage.getItem("wasScrolledDown") === "1";
         sessionStorage.removeItem("wasScrolledDown");
@@ -47,14 +51,22 @@
         const main = document.getElementById("main-content");
         if (main) {
           didAutoScrollToContent = true;  // Mark that we're doing auto-scroll
-          const y = main.getBoundingClientRect().top + window.scrollY - 20;
+          console.log("Scrolling to main content, wasScrolledDown:", wasScrolledDown);
 
-          // If user was at top when they clicked, use smooth scroll to show animation
-          // If user was scrolled down when they clicked, use instant scroll
-          window.scrollTo({
-            top: y,
-            behavior: wasScrolledDown ? "auto" : "smooth"
+          // Use requestAnimationFrame to ensure layout is complete before scrolling
+          requestAnimationFrame(() => {
+            const y = main.getBoundingClientRect().top + window.scrollY - 20;
+            console.log("Scroll position:", y, "Current scrollY:", window.scrollY);
+
+            // If user was at top when they clicked, use smooth scroll to show animation
+            // If user was scrolled down when they clicked, use instant scroll
+            window.scrollTo({
+              top: y,
+              behavior: wasScrolledDown ? "auto" : "smooth"
+            });
           });
+        } else {
+          console.warn("main-content element not found!");
         }
       }
     }
