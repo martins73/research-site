@@ -1,7 +1,6 @@
 # THE CONTROL TOWER
 # Edit this file to update your sidebar instantly.
-
-updated: "Jan 28, 2026"
+# The "last updated" date is automatically updated in _data/last_updated.yml
 
 location: 
   text: "Los Angeles, CA"

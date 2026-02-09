@@ -10,8 +10,6 @@ on:
 jobs:
   update-date:
     runs-on: ubuntu-latest
-    # Prevent infinite loop by skipping when the actor is github-actions bot
-    if: github.actor != 'github-actions[bot]'
     permissions:                # REQUIRED: Authorizes the bot to push changes
       contents: write
     steps:
@@ -20,18 +18,18 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update date in status.yml
+      - name: Update date in last_updated.yml
         run: |
           # Use %b for abbreviated month (e.g., "Feb") to match your file style
           DATE=$(date '+%b %d, %Y')
-          # Added escaped quotes \" to match the format: updated: "Feb 09, 2026"
-          sed -i "s/^updated:.*/updated: \"$DATE\"/" _data/status.yml
+          # Update the separate last_updated.yml file (not status.yml, avoiding infinite loop)
+          sed -i "s/^date:.*/date: \"$DATE\"/" _data/last_updated.yml
 
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add _data/status.yml
-          # Only commit if there are changes, and use [skip ci] to prevent triggering other workflows
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update status date [skip ci]"
+          git add _data/last_updated.yml
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update last updated date"
           git push
