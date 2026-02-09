@@ -330,12 +330,17 @@
 
        On mobile, refreshing the page (e.g. tapping Go in the address bar) restores
        scroll position by default. This overrides that to always start at the top.
+
+       IMPORTANT: Don't scroll to top if we're auto-scrolling to content from sidebar.
     */
     if (window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches) {
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
-      window.scrollTo(0, 0);
+      // Only scroll to top if we're NOT auto-scrolling to content
+      if (sessionStorage.getItem("autoScrollToContent") !== "1") {
+        window.scrollTo(0, 0);
+      }
     }
 
     /* ============================================================================
