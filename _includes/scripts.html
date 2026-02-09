@@ -47,13 +47,17 @@
         const main = document.getElementById("main-content");
         if (main) {
           didAutoScrollToContent = true;  // Mark that we're doing auto-scroll
-          const y = main.getBoundingClientRect().top + window.scrollY - 20;
 
-          // If user was at top when they clicked, use smooth scroll to show animation
-          // If user was scrolled down when they clicked, use instant scroll
-          window.scrollTo({
-            top: y,
-            behavior: wasScrolledDown ? "auto" : "smooth"
+          // Use requestAnimationFrame to ensure layout is complete before scrolling
+          requestAnimationFrame(() => {
+            const y = main.getBoundingClientRect().top + window.scrollY - 20;
+
+            // If user was at top when they clicked, use smooth scroll to show animation
+            // If user was scrolled down when they clicked, use instant scroll
+            window.scrollTo({
+              top: y,
+              behavior: wasScrolledDown ? "auto" : "smooth"
+            });
           });
         }
       }
