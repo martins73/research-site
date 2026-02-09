@@ -10,8 +10,8 @@ on:
 jobs:
   update-date:
     runs-on: ubuntu-latest
-    permissions:                # Add this block
-      contents: write           # Grant write access to repository contents
+    permissions:                # REQUIRED: Authorizes the bot to push changes
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -20,14 +20,15 @@ jobs:
 
       - name: Update date in status.yml
         run: |
-          DATE=$(date '+%B %d, %Y')
-          sed -i "s/^updated:.*/updated: $DATE/" _data/status.yml
+          # Use %b for abbreviated month (e.g., "Feb") to match your file style
+          DATE=$(date '+%b %d, %Y')
+          # Added escaped quotes \" to match the format: updated: "Feb 09, 2026"
+          sed -i "s/^updated:.*/updated: \"$DATE\"/" _data/status.yml
 
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add _data/status.yml
-          # Check for changes before committing to avoid empty commit errors
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update status date"
           git push
