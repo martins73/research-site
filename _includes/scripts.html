@@ -21,6 +21,7 @@
        Note: MOBILE_BREAKPOINT_PX is defined in head.html for consistency
     */
     const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
+    let didAutoScrollToContent = false;  // Track if we auto-scrolled this page load
 
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
@@ -45,6 +46,7 @@
 
         const main = document.getElementById("main-content");
         if (main) {
+          didAutoScrollToContent = true;  // Mark that we're doing auto-scroll
           const y = main.getBoundingClientRect().top + window.scrollY - 20;
 
           // If user was at top when they clicked, use smooth scroll to show animation
@@ -338,7 +340,7 @@
         history.scrollRestoration = 'manual';
       }
       // Only scroll to top if we're NOT auto-scrolling to content
-      if (sessionStorage.getItem("autoScrollToContent") !== "1") {
+      if (!didAutoScrollToContent) {
         window.scrollTo(0, 0);
       }
     }
