@@ -10,6 +10,8 @@ on:
 jobs:
   update-date:
     runs-on: ubuntu-latest
+    permissions:                # Add this block
+      contents: write           # Grant write access to repository contents
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,5 +28,6 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add _data/status.yml
+          # Check for changes before committing to avoid empty commit errors
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update status date"
           git push
