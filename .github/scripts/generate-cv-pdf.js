@@ -8,6 +8,7 @@
  */
 
 const puppeteer = require('puppeteer');
+const { PDFDocument } = require('pdf-lib');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -111,6 +112,14 @@ async function generatePDF() {
         </div>
       `,
     });
+
+    // Set PDF metadata (author, subject)
+    const pdfBytes = fs.readFileSync(OUTPUT_PATH);
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+    pdfDoc.setAuthor('Martin Gonzalez Cabello');
+    pdfDoc.setSubject('Curriculum Vitae');
+    const savedBytes = await pdfDoc.save();
+    fs.writeFileSync(OUTPUT_PATH, savedBytes);
 
     console.log(`PDF generated: ${OUTPUT_PATH}`);
   } finally {

@@ -262,15 +262,15 @@ description: Academic CV and professional background in analytics, operations, a
                 </div>
             </div>
 
-            <div class="cv-entry-header">
-                <div class="cv-role">{{ item.role }}</div>
-                <span class="cv-date">{{ item.dates }}</span>
-            </div>
+            <div class="cv-role">{{ item.role }}</div>
             <div class="cv-desc">
                 <ul>
                     {% for course in item.courses %}
                         <li>
-                            {{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}, {{ course.year }}
+                            <div class="cv-award-row">
+                                <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
+                                <span class="cv-date">{{ course.year }}</span>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>

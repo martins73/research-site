@@ -201,14 +201,16 @@ exclude_from_nav: true
             <span class="entry-left entry-institution">{{ item.institution }}</span>
             <span class="entry-right">{{ item.location }}</span>
         </div>
-        <div class="entry-row">
-            <span class="entry-left entry-role">{{ item.role }}</span>
-            <span class="entry-right">{{ item.dates }}</span>
-        </div>
+        <span class="entry-role">{{ item.role }}</span>
         <div class="entry-desc">
             <ul>
                 {% for course in item.courses %}
-                <li>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}, {{ course.year }}</li>
+                <li>
+                    <div class="course-row">
+                        <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
+                        <span>{{ course.year }}</span>
+                    </div>
+                </li>
                 {% endfor %}
             </ul>
         </div>
