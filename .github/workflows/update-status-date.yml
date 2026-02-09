@@ -10,6 +10,8 @@ on:
 jobs:
   update-date:
     runs-on: ubuntu-latest
+    # Prevent infinite loop by skipping when the actor is github-actions bot
+    if: github.actor != 'github-actions[bot]'
     permissions:                # REQUIRED: Authorizes the bot to push changes
       contents: write
     steps:
@@ -30,5 +32,6 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add _data/status.yml
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update status date"
+          # Only commit if there are changes, and use [skip ci] to prevent triggering other workflows
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update status date [skip ci]"
           git push
