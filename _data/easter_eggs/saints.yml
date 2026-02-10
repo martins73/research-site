@@ -80,7 +80,8 @@
 "2-9":
   - "Saint Apollonia"
 "2-10":
-  - "Saint Scholastica and San Jose Sanchez del Rio"
+  - "Saint Scholastica"
+  - "San Jose Sanchez del Rio"
 "2-11":
   - "Our Lady of Lourdes"
 "2-12":
@@ -167,7 +168,7 @@
 "3-23":
   - "Santo Toribio de Mogrovejo"
 "3-24":
-  - "Saint Oscar Romero"
+  - "San Oscar Romero"
 "3-25":
   - "The Annunciation of the Lord"
 "3-26":
@@ -268,6 +269,7 @@
   - "Saint Ignatius of Laconi"
 "5-12":
   - "Saint Pancras"
+  - "Beato Alvaro del Portillo"
 "5-13":
   - "Our Lady of Fatima"
 "5-14":
@@ -365,7 +367,9 @@
   - "Saint Irenaeus"
 "6-29":
   - "Saints Peter and Paul"
-
+"6-30":
+  - "The First Martyrs of the Holy Roman Church"
+  
 "7-1":
   - "Saint Junipero Serra"
 "7-2":
@@ -392,6 +396,7 @@
   - "Saint John Gualbert"
 "7-13":
   - "Saint Henry"
+  - "Santa Teresa de Los Andes"
 "7-14":
   - "Saint Camillus de Lellis"
 "7-15":
@@ -427,7 +432,7 @@
 "7-30":
   - "Saint Peter Chrysologus"
 "7-31":
-  - "Saint Ignatius of Loyola"
+  - "San Ignacio de Loyola"
 
 "8-1":
   - "Saint Alphonsus Liguori"
@@ -465,6 +470,7 @@
   - "Saint Hyacinth"
 "8-18":
   - "Saint Helena"
+  - "San Alberto Hurtado"
 "8-19":
   - "Saint John Eudes"
 "8-20":
@@ -474,7 +480,7 @@
 "8-22":
   - "The Queenship of the Blessed Virgin Mary"
 "8-23":
-  - "Saint Rose of Lima"
+  - "Santa Rosa de Lima"
 "8-24":
   - "Saint Bartholomew, Apostle"
 "8-25":
@@ -596,7 +602,7 @@
 "10-21":
   - "Saint Ursula"
 "10-22":
-  - "Saint John Paul II"
+  - "San Juan Pablo II"
 "10-23":
   - "Saint John of Capistrano"
 "10-24":
