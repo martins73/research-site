@@ -59,7 +59,7 @@
 
 - company: Accenture
   company_url: https://www.accenture.com/
-  logo: /assets/logos/accenture.png
+  logo: /assets/logos/accenture.svg
   location: "Madrid, Spain"
   positions:
     - role: Management Consultant Intern
