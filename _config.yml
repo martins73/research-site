@@ -99,7 +99,7 @@ footer:
   credits:
     - name: Gemini
       url: "https://gemini.google.com"
-      logo: "/assets/logos/gemini.png"
+      logo: "/assets/logos/gemini.svg"
     - name: Claude
       url: "https://claude.ai"
       logo: "/assets/logos/claude.svg"
