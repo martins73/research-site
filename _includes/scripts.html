@@ -8,19 +8,64 @@
   document.addEventListener("DOMContentLoaded", function () {
 
     /* ============================================================================
+       CONFIGURATION BRIDGE
+       ============================================================================
+       Injects Jekyll data from _config.yml into a JavaScript object.
+       This separates data from logic, preventing hardcoded values in the script.
+    */
+    const CONFIG = {
+      // Logic & Paths
+      mobileBreakpoint: {{ site.mobile_breakpoint | default: 768 }},
+      spinDuration: {{ site.spin_duration | default: 3200 }},
+      serviceWorker: "{{ site.service_worker | default: '/sw.js' | relative_url }}",
+      
+      // Data
+      authorName: "{{ site.author.given_name }}",
+      repoUrl: "{{ site.social.github }}",
+      themeColor: "{{ site.data.theme.themes[site.color_theme].light.accent | default: '#2774AE' }}",
+      
+      // Text & Data Labels (from _config.yml)
+      text: {
+        darkMode: {
+          toLight: "{{ site.ui_text.dark_mode.to_light | default: 'Switch to light mode' }}",
+          toDark: "{{ site.ui_text.dark_mode.to_dark | default: 'Switch to dark mode' }}"
+        },
+        saints: {
+          feast: "{{ site.ui_text.saints.feast_prefix | default: 'Feast of ' }}",
+          and: "{{ site.ui_text.saints.conjunction | default: ' and ' }}"
+        },
+        carbon: {
+          grams: "{{ site.ui_text.carbon.grams | default: 'g of CO<sub>2</sub>/view' }}",
+          cleaner: "{{ site.ui_text.carbon.cleaner | default: 'Cleaner than' }}",
+          percent: "{{ site.ui_text.carbon.percent | default: '% of pages' }}",
+          tested: "{{ site.ui_text.carbon.tested | default: 'tested' }}",
+          // Fallback Data
+          fallbackC: "{{ site.ui_text.carbon.fallback_grams | default: '0.03' }}",
+          fallbackP: "{{ site.ui_text.carbon.fallback_percent | default: '94' }}"
+        },
+        research: {
+          show: "{{ site.ui_text.research.show_abstract | default: 'Show Abstract' }}",
+          hide: "{{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' }}"
+        },
+        console: {
+          greeting: "{{ site.ui_text.console.greeting | default: "👋 Hi, I'm" }}",
+          repo: "{{ site.ui_text.console.repo | default: 'Check out the repo:' }}"
+        }
+      }
+    };
+
+    /* ============================================================================
        0. MOBILE: SCROLL FROM SIDEBAR TO CONTENT
        ============================================================================
 
-       On mobile devices (≤768px), when user clicks a sidebar link:
+       On mobile devices, when user clicks a sidebar link:
        - If sidebar is visible at top of screen: smooth scroll to main content (shows animation)
        - If sidebar is scrolled past screen: instant scroll to main content (no animation)
 
        This provides visual feedback about where the content is while avoiding
        animation when the user is already reading further down the page.
-
-       Note: MOBILE_BREAKPOINT_PX is defined in head.html for consistency
     */
-    const isMobile = window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches;
+    const isMobile = window.matchMedia(`(max-width: ${CONFIG.mobileBreakpoint}px)`).matches;
     let didAutoScrollToContent = false;  // Track if we auto-scrolled this page load
 
     if (isMobile) {
@@ -67,17 +112,22 @@
        1. SPINNING PROFILE PICTURE
        ============================================================================
 
-       Clicking the profile picture triggers a 3.2 second spinning animation.
-       Uses CSS animation defined in style.css with the "spin-effect" class.
+       Clicking the profile picture triggers a spinning animation.
+       Duration is configured in _config.yml (default 3.2s).
     */
     const profilePic = document.querySelector(".js-spin-trigger");
     if (profilePic) {
-      const SPIN_DURATION = 3200;
       profilePic.addEventListener("click", function () {
+        // Force the CSS duration to match the Config (milliseconds -> seconds)
+        profilePic.style.animationDuration = (CONFIG.spinDuration / 1000) + 's';
+        
         profilePic.classList.add("spin-effect");
+        
+        // Remove class after the exact duration from config
         setTimeout(() => {
           profilePic.classList.remove("spin-effect");
-        }, SPIN_DURATION);
+          profilePic.style.animationDuration = ''; // Clean up
+        }, CONFIG.spinDuration);
       });
     }
 
@@ -99,7 +149,6 @@
     const modalCaption = document.getElementById("modal-caption");
     const closeButton = document.getElementById("modal-close");
     const triggers = document.querySelectorAll(".family-link");
-
     const familyData = {{ site.data.easter_eggs.family | jsonify }};
 
     if (modal && triggers.length > 0 && familyData) {
@@ -143,15 +192,13 @@
 
         trigger.addEventListener("click", function (e) {
           e.preventDefault();
-          const personKey = this.getAttribute("data-person");
-          openModal(personKey);
+          openModal(this.getAttribute("data-person"));
         });
 
         trigger.addEventListener("keydown", function (e) {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            const personKey = this.getAttribute("data-person");
-            openModal(personKey);
+            openModal(this.getAttribute("data-person"));
           }
         });
       });
@@ -168,6 +215,7 @@
         }
       });
 
+      // Focus Trap
       modal.addEventListener("keydown", function (e) {
         if (e.key === "Tab") {
           const focusableElements = modal.querySelectorAll(
@@ -212,8 +260,9 @@
 
       const updateThemeLabels = (theme) => {
         const isDark = theme === "dark";
-        themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-        themeToggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+        const label = isDark ? CONFIG.text.darkMode.toLight : CONFIG.text.darkMode.toDark;
+        themeToggle.setAttribute("aria-label", label);
+        themeToggle.setAttribute("title", label);
       };
 
       const setTheme = (theme) => {
@@ -244,22 +293,21 @@
        - Intelligently formats saint names (singular/plural, strips prefix)
        - Falls back to copyright text if no saint is available
     */
-    
     const trigger = document.getElementById("saint-trigger");
     const target = document.getElementById("copyright-content");
     
     if (trigger && target) {
       const today = new Date();
       const key = (today.getMonth() + 1) + "-" + today.getDate();
-    
+      
       // Retrieve saint data
       const saintsByDay = {{ site.data.easter_eggs.saints | jsonify }};
       const saints = saintsByDay ? saintsByDay[key] : null;
-    
+      
       // Capture original state
       const originalHTML = target.innerHTML;
       const originalText = target.innerText;
-    
+      
       // Format Helper
       const formatSaintList = (arr) => {
         if (!arr || arr.length === 0) return "";
@@ -268,29 +316,29 @@
         const stripPrefix = (s, rx) => s.replace(rx, "").trim();
         
         if (cleaned.every((s) => /^Saint\s+/i.test(s))) {
-          return "Saints " + cleaned.map((s) => stripPrefix(s, /^Saint\s+/i)).join(" and ");
+          return "Saints " + cleaned.map((s) => stripPrefix(s, /^Saint\s+/i)).join(CONFIG.text.saints.and);
         }
         if (cleaned.every((s) => /^Blessed\s+/i.test(s))) {
-          return "Blesseds " + cleaned.map((s) => stripPrefix(s, /^Blessed\s+/i)).join(" and ");
+          return "Blesseds " + cleaned.map((s) => stripPrefix(s, /^Blessed\s+/i)).join(CONFIG.text.saints.and);
         }
-        return cleaned.join(" and ");
+        return cleaned.join(CONFIG.text.saints.and);
       };
-    
+      
       if (saints && saints.length > 0) {
         const saintText = formatSaintList(saints);
-    
+        
         // --- Action: Show ---
         const showSaint = () => {
           target.style.transition = "opacity 0.2s";
           target.style.opacity = "0";
           setTimeout(() => {
-            target.innerText = "Feast of " + saintText;
+            target.innerText = CONFIG.text.saints.feast + saintText;
             target.style.color = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
             target.style.fontWeight = "500";
             target.style.opacity = "1";
           }, 200);
         };
-    
+        
         // --- Action: Hide ---
         const hideSaint = () => {
           target.style.transition = "opacity 0.2s";
@@ -306,11 +354,11 @@
             target.style.opacity = "1";
           }, 200);
         };
-    
+        
         // --- DESKTOP (Hover) ---
         trigger.addEventListener("mouseenter", showSaint);
         trigger.addEventListener("mouseleave", hideSaint);
-    
+        
         // --- MOBILE (Hold + Delay) ---
         // 1. Touch Starts: Show immediately
         trigger.addEventListener("touchstart", (e) => {
@@ -319,11 +367,11 @@
              showSaint(); 
         }, { passive: false });
         
-        // 2. Touch Ends: Wait 0.8s (800ms) before hiding
+        // 2. Touch Ends: Wait before hiding
         trigger.addEventListener("touchend", () => {
-            setTimeout(hideSaint, 800); // <--- THE DELAY IS HERE
+            setTimeout(hideSaint, 800); 
         });
-    
+        
         trigger.addEventListener("touchcancel", () => {
             setTimeout(hideSaint, 800);
         });
@@ -339,7 +387,7 @@
 
        IMPORTANT: Don't scroll to top if we're auto-scrolling to content from sidebar.
     */
-    if (window.matchMedia(`(max-width: ${window.MOBILE_BREAKPOINT_PX}px)`).matches) {
+    if (window.matchMedia(`(max-width: ${CONFIG.mobileBreakpoint}px)`).matches) {
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
@@ -365,7 +413,8 @@
       const reportUrl = `https://www.websitecarbon.com/website/${domainSlug}/`;
       const apiUrl = 'https://api.websitecarbon.com/b?url=' + encodeURIComponent(SITE_URL + '/');
 
-      const FALLBACK = { c: '0.03', p: '94' };
+      // Uses config values for fallback if API fails
+      const FALLBACK = { c: CONFIG.text.carbon.fallbackC, p: CONFIG.text.carbon.fallbackP };
 
       function renderBadge(data) {
         if (!data || data.c === undefined) {
@@ -374,9 +423,9 @@
 
         badgeContainer.innerHTML = `
           <span class="wcb-text">
-            ${data.c}g of CO<sub>2</sub>/view<br>
-            Cleaner than ${data.p}% of pages
-            <a class="wcb-link" target="_blank" rel="noopener" href="${reportUrl}">tested</a>.
+            ${data.c}${CONFIG.text.carbon.grams}<br>
+            ${CONFIG.text.carbon.cleaner} ${data.p}${CONFIG.text.carbon.percent}
+            <a class="wcb-link" target="_blank" rel="noopener" href="${reportUrl}">${CONFIG.text.carbon.tested}</a>.
           </span>
         `;
       }
@@ -430,24 +479,27 @@
       if (abstractElement.classList.contains('collapsed')) {
         abstractElement.classList.remove('collapsed');
         abstractElement.classList.add('expanded');
-        button.textContent = 'Hide Abstract';
+        button.textContent = CONFIG.text.research.hide;
         button.setAttribute('aria-expanded', 'true');
       } else {
         abstractElement.classList.remove('expanded');
         abstractElement.classList.add('collapsed');
-        button.textContent = 'Show Abstract';
+        button.textContent = CONFIG.text.research.show;
         button.setAttribute('aria-expanded', 'false');
       }
     });
 
     console.log(
-      "%c👋 Hi, I'm {{ site.author.given_name }}.\n%cInterested in my code? Check out the repo: {{ site.social.github }}",
-      "color: #2774AE; font-size: 20px; font-weight: bold; font-family: sans-serif;",
+      `%c${CONFIG.text.console.greeting} ${CONFIG.authorName}.\n%c${CONFIG.text.console.repo} ${CONFIG.repoUrl}`,
+      `color: ${CONFIG.themeColor}; font-size: 20px; font-weight: bold; font-family: sans-serif;`,
       "color: #64748b; font-size: 12px; font-family: sans-serif;"
     );
   });
 
+  /* ============================================================================
+     8. SERVICE WORKER REGISTRATION
+     ============================================================================ */
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}');
+    navigator.serviceWorker.register(CONFIG.serviceWorker);
   }
 </script>
