@@ -1,12 +1,11 @@
-<!-- Sidebar: Main navigation, profile info, and theme toggle -->
-<!-- Contains: Profile picture, name, navigation links, social links, dark mode toggle -->
 <aside class="sidebar">
   <img
-    src="{{ '/assets/profile_picture.webp' | relative_url }}?v={{ site.time | date: '%s' }}"
+    src="{{ site.avatar | relative_url }}?v={{ site.time | date: '%s' }}"
     alt="{{ site.author.name }}"
     class="profile-img js-spin-trigger"
     width="180"
     height="180">
+
   <div class="name">{{ site.author.name }}</div>
   <div class="affiliation">{{ site.author.title_short }}<br>{{ site.author.affiliation_short }}</div>
   
@@ -18,7 +17,9 @@
     </a>
   {% endfor %}
 
-  <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">Email Me</a>
+  <a href="mailto:{{ site.author.email }}" class="sidebar-btn btn-primary">
+    {{ site.email_button_text | default: "Email Me" }}
+  </a>
 
   <div class="social-links">
     {% for social in site.data.ui.social %}
@@ -34,7 +35,9 @@
     {% endfor %}
   </div>
 
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <button id="theme-toggle" class="theme-toggle" 
+          aria-label="{{ site.theme_toggle_label | default: 'Toggle dark mode' }}" 
+          title="{{ site.theme_toggle_label | default: 'Toggle dark mode' }}">
     <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
