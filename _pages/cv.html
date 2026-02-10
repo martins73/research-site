@@ -225,7 +225,10 @@ description: Academic CV and professional background in analytics, operations, a
         <ul class="cv-talks-list">
             {% for talk in paper.talks %}
                 <li>
-                    {{ talk.event }} ({{ talk.year }})
+                    {{ talk.event }}
+                    <span class="cv-date">
+                        {{ talk.year }}
+                    </span>
                 </li>
             {% endfor %}
         </ul>
