@@ -3,7 +3,11 @@ title: Martin Gonzalez Cabello
 description: PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.
 url: https://martin.gonzalezcabello.com
 baseurl: ""
+
+# Assets & Logic
 favicon: /assets/logos/favicon.svg
+main_css: /assets/css/style.css
+mobile_breakpoint: 768
 
 # Author Information
 author:
