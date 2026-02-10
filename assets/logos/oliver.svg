@@ -1,15 +1,18 @@
-<svg class="cv-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<svg class="cv-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <title>Oliver Wyman</title>
   
   <rect width="48" height="48" fill="#000F47"/>
   
-  <g>
-    <path d="M11.2 29.56h.54L0 12v25h4.43V26.21l6.77 3.35Z" fill="#FFFFFF"/>
-    
-    <path d="M19.18 26.21V37h4.43V12l-11.74 17.56h.54L19.18 26.21Z" fill="#CEECFF"/>
-    
-    <path d="M24.38 37h4.43V26.2l6.8 3.35h.51L24.38 12V37Z" fill="#CEECFF"/>
-    
-    <path d="M48 12 36.26 29.55h.51l6.8 3.35V37H48V12Z" fill="#FFFFFF"/>
+  <g clip-path="url(#clip0_38_174)">
+    <path d="M11.1952 29.5565H11.736L0 12V37H4.4304V26.2084L11.1952 29.5581V29.5565Z" fill="white"/>
+    <path d="M19.1806 26.2084V37H23.611V12L11.875 29.5565H12.4158L19.1806 26.2084Z" fill="#CEECFF"/>
+    <path d="M24.3809 37H28.8129V26.2036L35.6145 29.5549H36.1217L24.3809 12V37Z" fill="#CEECFF"/>
+    <path d="M47.9999 12L36.2607 29.5549H36.7679L43.5679 26.2052V37H47.9999V12Z" fill="white"/>
   </g>
+  
+  <defs>
+    <clipPath id="clip0_38_174">
+      <rect width="48" height="25" fill="white" transform="translate(0 12)"/>
+    </clipPath>
+  </defs>
 </svg>
