@@ -1,6 +1,6 @@
 - company: ACHS (Safety Association of Chile)
   company_url: https://www.achs.cl/
-  logo: /assets/logos/achs.png
+  logo: /assets/logos/achs.svg
   location: "Santiago, Chile"
   positions:
     - role: Head of Advanced Analytics
