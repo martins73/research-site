@@ -62,6 +62,7 @@ main_css: /assets/css/style.css
 mobile_breakpoint: 768
 avatar: /assets/profile_picture.webp
 spin_duration: 3200
+service_worker: /sw.js  # <--- NEW
 
 # UI Text / Labels
 email_button_text: "Email Me"
@@ -79,6 +80,9 @@ ui_text:
     cleaner: "Cleaner than"
     percent: "% of pages"
     tested: "tested"
+    # Fallback values if API fails
+    fallback_grams: "0.03" # <--- NEW
+    fallback_percent: "94" # <--- NEW
   research:
     show_abstract: "Show Abstract"
     hide_abstract: "Hide Abstract"
