@@ -1,0 +1,8 @@
+<svg class="telefonica-icon" viewBox="0 0 100 100" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <title>Telefónica</title>
+  <circle cx="20" cy="20" r="16" fill="currentColor"/>
+  <circle cx="50" cy="20" r="16" fill="currentColor"/>
+  <circle cx="80" cy="20" r="16" fill="currentColor"/>
+  <circle cx="50" cy="50" r="16" fill="currentColor"/>
+  <circle cx="50" cy="80" r="16" fill="currentColor"/>
+</svg>
