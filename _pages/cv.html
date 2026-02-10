@@ -198,12 +198,8 @@ description: Academic CV and professional background in analytics, operations, a
         {% for item in site.data.cv.awards %}
         <li class="cv-award-item">
             <div class="cv-award-row">
-                <span>
-                    {{ item.title }}, {{ item.organization }}
-                </span>
-                <span class="cv-date">
-                    {{ item.year }}
-                </span>
+                <span> {{ item.title }}, {{ item.organization }} </span>
+                <span class="cv-date"> {{ item.year }} </span>
             </div>
         </li>
         {% endfor %}
@@ -225,10 +221,10 @@ description: Academic CV and professional background in analytics, operations, a
         <ul class="cv-talks-list">
             {% for talk in paper.talks %}
                 <li>
-                    {{ talk.event }}
-                    <span class="cv-date">
-                        {{ talk.year }}
-                    </span>
+                    <div class="cv-award-row">
+                        <span> {{ talk.event }} </span>
+                        <span class="cv-date"> {{ talk.year }} </span>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
