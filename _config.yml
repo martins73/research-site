@@ -102,7 +102,7 @@ footer:
       logo: "/assets/logos/gemini.png"
     - name: Claude
       url: "https://claude.ai"
-      logo: "/assets/logos/claude.png"
+      logo: "/assets/logos/claude.svg"
 
 # Schema.org Structured Data
 schema:
