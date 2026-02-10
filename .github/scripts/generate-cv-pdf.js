@@ -116,6 +116,7 @@ async function generatePDF() {
     // Set PDF metadata (author, subject)
     const pdfBytes = fs.readFileSync(OUTPUT_PATH);
     const pdfDoc = await PDFDocument.load(pdfBytes);
+    pdfDoc.setTitle('Martin Gonzalez Cabello - Curriculum Vitae');
     pdfDoc.setAuthor('Martin Gonzalez Cabello');
     pdfDoc.setSubject('Curriculum Vitae');
     const savedBytes = await pdfDoc.save();
