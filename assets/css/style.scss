@@ -1082,9 +1082,10 @@ a .cv-logo:hover {
     opacity: 1;
 }
 
-/* Forces SVGs with class .cv-logo to turn white in Dark Mode */
+/* Force the override of the inline style="color:..." */
 [data-theme="dark"] svg.cv-logo {
     color: #FFFFFF !important;
+    fill: #FFFFFF !important; /* Safety net for some browsers */
 }
 
 .cv-institution-link {
