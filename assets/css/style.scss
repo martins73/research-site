@@ -1082,6 +1082,11 @@ a .cv-logo:hover {
     opacity: 1;
 }
 
+/* Forces SVGs with class .cv-logo to turn white in Dark Mode */
+[data-theme="dark"] svg.cv-logo {
+    color: #FFFFFF !important;
+}
+
 .cv-institution-link {
     color: inherit;
     text-decoration: none;
