@@ -4,10 +4,18 @@ description: PhD Candidate at UCLA Anderson researching the human supply chain o
 url: https://martin.gonzalezcabello.com
 baseurl: ""
 
-# Assets & Logic
-favicon: /assets/logos/favicon.svg
-main_css: /assets/css/style.css
-mobile_breakpoint: 768
+# =============================================================================
+# COLOR THEME — Change the value below to switch university color scheme.
+# Available presets are defined in _data/theme/themes.yml
+# Examples: ucla, iese, harvard, mit, stanford, yale, columbia, wharton,
+#           chicago_booth, kellogg, notre_dame, lbs, insead, ie, cunef,
+#           bocconi, catholic, thomas_aquinas, ave_maria, franciscan,
+#           dartmouth, nyu, cornell, michigan, ut_austin, uc_berkeley,
+#           duke, usc, boston_university
+# Note: "theme" is reserved by Jekyll for gem-based themes, so we use
+#       "color_theme" instead.
+# =============================================================================
+color_theme: ucla
 
 # Author Information
 author:
@@ -24,19 +32,6 @@ author:
   # CV-only contact info (not shown on public website, only in generated PDF)
   cv_phone: "+1 857 313 8511"
   cv_address: "B-501 Gold Hall, 110 Westwood Plaza, Los Angeles, California 90095"
-
-# =============================================================================
-# COLOR THEME — Change the value below to switch university color scheme.
-# Available presets are defined in _data/theme/themes.yml
-# Examples: ucla, iese, harvard, mit, stanford, yale, columbia, wharton,
-#           chicago_booth, kellogg, notre_dame, lbs, insead, ie, cunef,
-#           bocconi, catholic, thomas_aquinas, ave_maria, franciscan,
-#           dartmouth, nyu, cornell, michigan, ut_austin, uc_berkeley,
-#           duke, usc, boston_university
-# Note: "theme" is reserved by Jekyll for gem-based themes, so we use
-#       "color_theme" instead.
-# =============================================================================
-color_theme: ucla
 
 # Template Attribution
 template:
@@ -60,6 +55,50 @@ social:
   goodreads: https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello
   lastfm: https://www.last.fm/user/tinjr
   github: https://github.com/martins73/research-site
+
+# Assets & Logic
+favicon: /assets/logos/favicon.svg
+main_css: /assets/css/style.css
+mobile_breakpoint: 768
+avatar: /assets/profile_picture.webp
+spin_duration: 3200
+
+# UI Text / Labels
+email_button_text: "Email Me"
+theme_toggle_label: "Toggle dark mode"
+
+ui_text:
+  dark_mode:
+    to_light: "Switch to light mode"
+    to_dark: "Switch to dark mode"
+  saints:
+    feast_prefix: "Feast of "
+    conjunction: " and "
+  carbon:
+    grams: "g of CO<sub>2</sub>/view"
+    cleaner: "Cleaner than"
+    percent: "% of pages"
+    tested: "tested"
+  research:
+    show_abstract: "Show Abstract"
+    hide_abstract: "Hide Abstract"
+  console:
+    greeting: "👋 Hi, I'm"
+    repo: "Interested in my code? Check out the repo:"
+
+# Footer Settings
+footer:
+  amdg: "A.M.D.G."
+  amdg_title: "Ad Majorem Dei Gloriam"
+  carbon_loading_text: "Measuring CO<sub>2</sub>..."
+  credits_intro: "Built with"
+  credits:
+    - name: Gemini
+      url: "https://gemini.google.com"
+      logo: "/assets/logos/gemini.png"
+    - name: Claude
+      url: "https://claude.ai"
+      logo: "/assets/logos/claude.png"
 
 # Schema.org Structured Data
 schema:
