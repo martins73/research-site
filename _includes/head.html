@@ -1,7 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 {% assign meta_desc = page.description | default: site.description %}
 
 <link rel="canonical" href="{{ page.url | absolute_url }}">
@@ -24,12 +23,10 @@
 <meta property="og:image:width" content="{{ site.og_image_width }}">
 <meta property="og:image:height" content="{{ site.og_image_height }}">
 <meta property="og:type" content="website">
-
 <meta name="twitter:card" content="{{ site.twitter_card }}">
 
 <link rel="icon" type="image/svg+xml" href="{{ site.favicon | relative_url }}?v={{ site.time | date: '%s' }}">
-
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.main_css | default: '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
 {% if site.google_analytics %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
@@ -69,25 +66,24 @@
   "email": "{{ site.author.email }}",
   "url": "{{ site.url }}",
   "sameAs": [
-    "{{ site.social.linkedin }}",
-    "{{ site.social.google_scholar }}",
-    "{{ site.social.goodreads }}"
+    {% for platform in site.social %}
+    "{{ platform[1] }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
   ]
 }
 </script>
 
-<!-- Early Guards: Must run before first paint to prevent visual glitches -->
 <script>
-  // 1. Dark mode: apply saved theme before render to prevent white flash
+  // 1. Dark mode
   (function() {
     var theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
   })();
 
-  // 2. Mobile breakpoint: shared constant used by all scripts
-  window.MOBILE_BREAKPOINT_PX = 768;
+  // 2. Mobile breakpoint: Pulled from _config.yml
+  window.MOBILE_BREAKPOINT_PX = {{ site.mobile_breakpoint | default: 768 }};
 
-  // 3. Scroll guard: disable browser scroll restoration before it fires
+  // 3. Scroll guard
   (function() {
     if (!window.matchMedia('(max-width: ' + window.MOBILE_BREAKPOINT_PX + 'px)').matches) return;
     if (sessionStorage.getItem('autoScrollToContent') !== '1') return;
