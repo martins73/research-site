@@ -1,7 +1,7 @@
 - degree: PhD Candidate in Decisions, Operations, and Technology Management
   institution: UCLA Anderson School of Management
   institution_url: https://www.anderson.ucla.edu/degrees/phd-program/areas-of-study/decisions-operations-and-technology-management
-  logo: /assets/logos/ucla.png
+  logo: /assets/logos/ucla.svg
   location: Los Angeles, CA
   dates: "2021 - 2027"
   description: "Dissertation Committee: Charles Corbett, Auyon Siddiq, Felipe Caro, Brett Hollenbeck"
@@ -9,7 +9,7 @@
 - degree: Master of Business Administration (MBA)
   institution: MIT Sloan School of Management
   institution_url: https://mitsloan.mit.edu/mba/explore-program
-  logo: /assets/logos/mit.png
+  logo: /assets/logos/mit.svg
   location: Cambridge, MA
   dates: "2013 - 2015"
   description: Entrepreneurship & Innovation Track
