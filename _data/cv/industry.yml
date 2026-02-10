@@ -28,7 +28,7 @@
 
 - company: Oliver Wyman
   company_url: https://www.oliverwyman.com/
-  logo: /assets/logos/oliver.png
+  logo: /assets/logos/oliver.svg
   location: "Madrid, Spain; New York, NY"
   positions:
     - role: Management Consultant
