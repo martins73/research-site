@@ -148,6 +148,9 @@
     --leading-snug: 1.3;
     --leading-normal: 1.6;
     --leading-relaxed: 1.7;
+   
+   /* Animation Timing (Calculated from _config.yml) */
+    --spin-duration: {{ site.spin_duration | default: 3200 | divided_by: 1000.0 }}s;
 }
 
 /* Dark Mode Variables */
@@ -1533,7 +1536,8 @@ a .cv-logo:hover {
 
 /* Spinning Profile Picture */
 .spin-effect {
-    transition: transform 3.2s ease-in-out;
+    /* Uses the calculated variable from :root */
+    transition: transform var(--spin-duration) ease-in-out;
     transform: perspective(1000px) rotateY(720deg);
 }
 
