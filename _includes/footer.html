@@ -4,14 +4,20 @@
     
     <div class="footer-col-left">
       <div class="credits">
-        <span>Built with</span>
-        <a href="https://gemini.google.com" target="_blank" rel="noopener" title="Gemini" class="gemini-link">
-          <img src="{{ '/assets/logos/gemini.png' | relative_url }}?v={{ site.time | date: '%s' }}" alt="Gemini" width="20" height="20" class="gemini-icon" loading="lazy">
-        </a>
-        <span>and</span>
-        <a href="https://claude.ai" target="_blank" rel="noopener" title="Claude" class="claude-link">
-          <img src="{{ '/assets/logos/claude.png' | relative_url }}?v={{ site.time | date: '%s' }}" alt="Claude" width="20" height="20" class="claude-icon" loading="lazy">
-        </a>
+        <span>{{ site.footer.credits_intro | default: "Built with" }}</span>
+
+        {% for tool in site.footer.credits %}
+          <a href="{{ tool.url }}" target="_blank" rel="noopener" title="{{ tool.name }}" class="{{ tool.name | downcase }}-link">
+            <img src="{{ tool.logo | relative_url }}?v={{ site.time | date: '%s' }}" 
+                 alt="{{ tool.name }}" 
+                 width="20" height="20" 
+                 class="{{ tool.name | downcase }}-icon" 
+                 loading="lazy">
+          </a>
+          {% unless forloop.last %}
+            <span>and</span>
+          {% endunless %}
+        {% endfor %}
       </div>
 
       <p class="copyright-text">
@@ -29,11 +35,13 @@
 
     <div class="footer-col-right">
       <div id="wcb" class="carbon-badge">
-        <span class="wcb-loading">Measuring CO<sub>2</sub>...</span>
+        <span class="wcb-loading">{{ site.footer.carbon_loading_text | default: "Measuring CO<sub>2</sub>..." }}</span>
       </div>
     </div>
 
   </div>
 
-  <span class="amdg" title="Ad Majorem Dei Gloriam">A.M.D.G.</span>
+  <span class="amdg" title="{{ site.footer.amdg_title | default: 'Ad Majorem Dei Gloriam' }}">
+    {{ site.footer.amdg | default: "A.M.D.G." }}
+  </span>
 </footer>
