@@ -106,10 +106,17 @@ async function generatePDF() {
     const pdfDoc = await PDFDocument.load(pdfBytes);
     
     // This title is what shows up in the PDF properties
-    pdfDoc.setTitle('Martin Gonzalez Cabello - CV'); 
+    pdfDoc.setTitle('Martin Gonzalez Cabello - CV');
     pdfDoc.setAuthor('Martin Gonzalez Cabello');
     pdfDoc.setSubject('Curriculum Vitae');
-    
+
+    // Tell PDF viewers (including browsers) to display the document title
+    // instead of the filename/URL in the title bar
+    pdfDoc.catalog.set(
+      pdfDoc.context.obj('ViewerPreferences'),
+      pdfDoc.context.obj({ DisplayDocTitle: true })
+    );
+
     const savedBytes = await pdfDoc.save();
     fs.writeFileSync(OUTPUT_PATH, savedBytes);
 
