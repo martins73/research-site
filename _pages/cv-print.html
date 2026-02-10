@@ -181,8 +181,10 @@ exclude_from_nav: true
         <span class="paper-title-text">{{ paper.title }}</span>
         <ul class="talk-list">
             {% for talk in paper.talks %}
-            <li>{{ talk.event }}, {{ talk.location }}</li>
-            <span class="entry-right">{{ talk.year }}</span>
+            <li class="cv-talk-item">
+                <span class="talk-info">{{ talk.event }}, {{ talk.location }}</span>
+                <span class="entry-right">{{ talk.year }}</span>
+            </li>
             {% endfor %}
         </ul>
     </div>
