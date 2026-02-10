@@ -107,7 +107,6 @@ exclude_from_nav: true
                 {{ paper.title }}
                 {% if paper.status == "Job Market Paper" %}<span class="paper-note"> (Job Market Paper)</span>{% endif %}
             </span>
-            <span class="paper-year">{{ site.time | date: "%Y" }}</span>
         </div>
         <div class="paper-meta">
             with
@@ -127,7 +126,6 @@ exclude_from_nav: true
     <div class="paper-entry">
         <div class="paper-row">
             <span class="paper-title-text">{{ paper.title }}</span>
-            <span class="paper-year">{{ site.time | date: "%Y" }}</span>
         </div>
         <div class="paper-meta">
             with
@@ -148,7 +146,6 @@ exclude_from_nav: true
         <div class="paper-row">
             <span class="paper-title-text">{{ paper.title }}</span>
             {% assign pub_parts = paper.publication | split: "(" %}
-            <span class="paper-year">{{ pub_parts[1] | split: ")" | first }}</span>
         </div>
         <div class="paper-meta">
             with
@@ -184,7 +181,8 @@ exclude_from_nav: true
         <span class="paper-title-text">{{ paper.title }}</span>
         <ul class="talk-list">
             {% for talk in paper.talks %}
-            <li>{{ talk.event }}, {{ talk.location }} ({{ talk.year }})</li>
+            <li>{{ talk.event }}, {{ talk.location }}</li>
+            <span class="entry-right">{{ talk.year }}</span>
             {% endfor %}
         </ul>
     </div>
@@ -208,7 +206,7 @@ exclude_from_nav: true
                 <li>
                     <div class="course-row">
                         <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
-                        <span>{{ course.year }}</span>
+                        <span class="entry-right">{{ course.year }}</span>
                     </div>
                 </li>
                 {% endfor %}
