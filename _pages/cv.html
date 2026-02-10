@@ -304,13 +304,21 @@ description: Academic CV and professional background in analytics, operations, a
                 <div class="cv-header-group">
                     {% if company.company_url %}
                         <a href="{{ company.company_url }}" target="_blank" rel="noopener">
-                            <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
+                            {% if company.logo_svg %}
+                                {% include {{ company.logo_svg }} %}
+                            {% else %}
+                                <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
+                            {% endif %}
                         </a>
                         <a href="{{ company.company_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title">
                             {{ company.company }}
                         </a>
                     {% else %}
-                        <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
+                        {% if company.logo_svg %}
+                            {% include {{ company.logo_svg }} %}
+                        {% else %}
+                            <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
+                        {% endif %}
                         <span class="cv-title">{{ company.company }}</span>
                     {% endif %}
                 </div>
