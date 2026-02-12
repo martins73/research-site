@@ -489,6 +489,46 @@
       }
     });
 
+    /* ============================================================================
+       8. SCROLL REVEAL — BLOCK FADE-IN ON SCROLL
+       ============================================================================
+
+       Fades in .scroll-reveal elements as they enter the viewport.
+       One-shot: once visible, elements stay visible permanently (unobserved).
+       Controlled by scroll_reveal in _config.yml.
+    */
+    {% if site.scroll_reveal %}
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('sr-enabled');
+
+      var srObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sr-visible');
+            srObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: {{ site.scroll_reveal_threshold | default: 0.15 }},
+        rootMargin: '0px 0px {{ site.scroll_reveal_margin | default: "-15%" }} 0px'
+      });
+
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        srObserver.observe(el);
+      });
+
+      // Guarantee bottom-of-page elements always reveal
+      window.addEventListener('scroll', function() {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2)) {
+          document.querySelectorAll('.scroll-reveal:not(.sr-visible)').forEach(function(el) {
+            el.classList.add('sr-visible');
+            srObserver.unobserve(el);
+          });
+        }
+      }, { passive: true });
+    }
+    {% endif %}
+
     console.log(
       `%c${CONFIG.text.console.greeting} ${CONFIG.authorName}.\n%c${CONFIG.text.console.repo} ${CONFIG.repoUrl}`,
       `color: ${CONFIG.themeColor}; font-size: 20px; font-weight: bold; font-family: sans-serif;`,
@@ -497,7 +537,7 @@
   });
 
   /* ============================================================================
-     8. SERVICE WORKER REGISTRATION
+     9. SERVICE WORKER REGISTRATION
      ============================================================================ */
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(CONFIG.serviceWorker);
