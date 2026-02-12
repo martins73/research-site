@@ -477,10 +477,10 @@
       var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       {% endif %}
 
-      // Store original HTML for each abstract (before we touch the DOM)
+      // Store original HTML for each abstract (trimmed to remove template whitespace)
       var abstractStore = {};
       document.querySelectorAll('.paper-abstract').forEach(function(el) {
-        abstractStore[el.id] = el.innerHTML;
+        abstractStore[el.id] = el.innerHTML.trim();
       });
 
       {% if site.typewriter_abstract %}
@@ -496,27 +496,68 @@
 
       function typewriterReveal(el, id) {
         var originalHTML = abstractStore[id];
-        // Extract plain text from the stored HTML
+
+        // Parse original HTML to extract paragraph texts (markdownify wraps in <p>)
         var temp = document.createElement('div');
         temp.innerHTML = originalHTML;
-        var fullText = temp.textContent || temp.innerText || '';
+        var sourceParagraphs = temp.querySelectorAll('p');
+        var paraTexts = [];
+        sourceParagraphs.forEach(function(p) {
+          var text = p.textContent.trim();
+          if (text) paraTexts.push(text);
+        });
+        // Fallback: if no <p> tags, treat entire content as one block
+        if (paraTexts.length === 0) {
+          var fallback = (temp.textContent || '').trim();
+          if (fallback) paraTexts.push(fallback);
+        }
 
-        // Clear and set up the container
-        el.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor">|</span>';
-        var textSpan = el.querySelector('.typewriter-text');
-        var cursor = el.querySelector('.typewriter-cursor');
+        // Build the typing DOM: one <p> per paragraph, cursor in the first
+        el.innerHTML = '';
+        var cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        cursor.textContent = '|';
+
+        var currentPara = document.createElement('p');
+        el.appendChild(currentPara);
+        var textNode = document.createTextNode('');
+        currentPara.appendChild(textNode);
+        currentPara.appendChild(cursor);
+
+        var paraIndex = 0;
         var charIndex = 0;
 
         function typeNext() {
-          if (charIndex < fullText.length) {
-            textSpan.textContent += fullText.charAt(charIndex);
-            charIndex++;
-            activeTimers[id] = setTimeout(typeNext, TYPEWRITER_SPEED);
-          } else {
-            // Typing complete: restore original HTML with formatting and remove cursor
+          if (paraIndex >= paraTexts.length) {
+            // Typing complete: restore original HTML with formatting
             cursor.remove();
             el.innerHTML = originalHTML;
             delete activeTimers[id];
+            return;
+          }
+          var currentText = paraTexts[paraIndex];
+          if (charIndex < currentText.length) {
+            textNode.textContent += currentText.charAt(charIndex);
+            charIndex++;
+            activeTimers[id] = setTimeout(typeNext, TYPEWRITER_SPEED);
+          } else {
+            // Paragraph done — move to next
+            paraIndex++;
+            charIndex = 0;
+            if (paraIndex < paraTexts.length) {
+              cursor.remove();
+              currentPara = document.createElement('p');
+              el.appendChild(currentPara);
+              textNode = document.createTextNode('');
+              currentPara.appendChild(textNode);
+              currentPara.appendChild(cursor);
+              activeTimers[id] = setTimeout(typeNext, TYPEWRITER_SPEED);
+            } else {
+              // All paragraphs done
+              cursor.remove();
+              el.innerHTML = originalHTML;
+              delete activeTimers[id];
+            }
           }
         }
 
