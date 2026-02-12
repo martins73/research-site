@@ -10,7 +10,7 @@ description: Teaching philosophy and experience in data analytics, operations ma
 
 # Teaching Philosophy
 
-<p class="lead">Bridging theory and practice through active learning.</p>
+<p class="lead scroll-reveal">Bridging theory and practice through active learning.</p>
 
 My journey into academia was not traditional. After five years as a Management Consultant and four years as the Head of Advanced Analytics, I returned to the university environment inspired by the mentors who shaped my own career.
 
@@ -20,7 +20,7 @@ Because of my background, I view the classroom as a bridge between abstract theo
 
 In fields like Operations and Data Analytics, technical skills are only half the equation. My teaching will emphasize critical thinking and ethical decision-making. I will challenge students to consider the broader consequences of their work. They must understand not just the ''how’’, but the ''why’’. I also advocate for the thoughtful integration of technology. We cannot ignore tools like Generative AI. Instead, I will encourage students to use them to understand both their capabilities and their limitations.
 
-<p class="callout-box">
+<p class="callout-box scroll-reveal">
 <strong>Looking Forward:</strong> I am particularly interested in teaching <strong>Data Analytics</strong> and <strong>Artificial Intelligence</strong> courses. These subjects are the perfect venue to demonstrate the power of advanced analytics while tackling the ethical issues that arise with new technologies.
 </p>
 
@@ -31,7 +31,7 @@ In fields like Operations and Data Analytics, technical skills are only half the
 <section id="history" class="section-spacing">
     {% for inst in site.data.teaching %}
         {% for course in inst.courses %}
-            <div class="cv-entry">
+            <div class="cv-entry scroll-reveal">
                 <div class="course-header">
                     <span class="cv-title">{{ course.title }}</span>
                     <span class="cv-date">{{ course.year }}</span>

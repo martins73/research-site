@@ -7,7 +7,7 @@ description: Curated list of my favorite books.
 ---
 
 <section>
-    <div class="library-intro">
+    <div class="library-intro scroll-reveal">
         <h1>Books That Shaped My Thinking</h1>
         <p class="lead">A catalog of mental models.</p>
         <p>Research is more than data analysis; it is a synthesis of ideas. Everything I read shapes my research. I draw on philosophy, economics, theology, behavioral science, and even novels. Here are some of my personal favorites.</p>
@@ -17,7 +17,7 @@ description: Curated list of my favorite books.
     <h3 class="bookshelf-title">{{ shelf.shelf }}</h3>
     <div class="book-grid">
         {% for book in shelf.books %}
-        <div class="book-item">
+        <div class="book-item scroll-reveal">
             <div class="book-meta">{{ book.meta }}</div>
             <div class="book-content">
                 <span class="book-title">{{ book.title }}</span>

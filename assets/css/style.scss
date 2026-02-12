@@ -1649,7 +1649,25 @@ a .cv-logo:hover {
 
 
 /* ============================================================================
-   14. PRINT STYLES (for CV)
+   14. SCROLL REVEAL — BLOCK FADE-IN
+   ============================================================================
+   Elements with .scroll-reveal start invisible and fade in when scrolled into
+   view. Activated only when JS adds .sr-enabled to <html> (progressive
+   enhancement: without JS, everything is visible).
+*/
+
+.sr-enabled .scroll-reveal {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sr-enabled .scroll-reveal.sr-visible {
+    opacity: 1;
+}
+
+
+/* ============================================================================
+   15. PRINT STYLES (for CV)
    ============================================================================ */
 
 @media print {
@@ -1707,14 +1725,18 @@ a .cv-logo:hover {
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
     }
-    
+
     h2 {
         page-break-after: avoid;
+    }
+
+    .scroll-reveal {
+        opacity: 1 !important;
     }
 }
 
 /* ============================================================================
-   15. RESPONSIVE DESIGN (Final Polish)
+   16. RESPONSIVE DESIGN (Final Polish)
    ============================================================================ */
 
 @media (max-width: 768px) {
@@ -1813,7 +1835,7 @@ a .cv-logo:hover {
 }
 
 /* ============================================================================
-   16. REDUCED MOTION (WSG 3.12 — Respect user preferences)
+   17. REDUCED MOTION (WSG 3.12 — Respect user preferences)
    ============================================================================ */
 
 @media (prefers-reduced-motion: reduce) {

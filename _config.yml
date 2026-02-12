@@ -64,6 +64,7 @@ mobile_breakpoint: 768
 avatar: /assets/profile_picture.webp
 spin_duration: 3200
 service_worker: /sw.js  # <--- NEW
+scroll_reveal: true      # Fade-in blocks on scroll (set to false to disable)
 
 # UI Text / Labels
 email_button_text: "Email Me"

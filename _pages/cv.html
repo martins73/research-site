@@ -8,7 +8,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### PAGE HEADER ### -->
 
-<div class="cv-page-header">
+<div class="cv-page-header scroll-reveal">
     <h1 class="cv-page-title">Curriculum Vitae</h1>
 
     <div class="cv-actions">
@@ -25,7 +25,7 @@ description: Academic CV and professional background in analytics, operations, a
 {% if site.data.cv.research_interests.size > 0 %}
 <section id="research-interests" class="section-spacing">
     <h2 class="cv-section-header">Research Interests</h2>
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <div class="cv-desc cv-desc-no-indent">
             {{ site.data.cv.research_interests | join: " · " }}
         </div>
@@ -40,7 +40,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Academic Appointments</h2>
 
     {% for item in site.data.cv.appointments %}
-        <div class="cv-entry">
+        <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header">
                 <div class="cv-header-group">
                     {% if item.institution_url %}
@@ -76,7 +76,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Education</h2>
 
     {% for item in site.data.cv.education %}
-        <div class="cv-entry">
+        <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header">
                 <div class="cv-header-group">
                     {% if item.institution_url %}
@@ -113,7 +113,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="publications" class="section-spacing">
     <h2 class="cv-section-header">Publications</h2>
     {% for paper in publications %}
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
@@ -134,7 +134,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="working-papers" class="section-spacing">
     <h2 class="cv-section-header">Working Papers</h2>
     {% for paper in working_papers %}
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
@@ -155,7 +155,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="work-in-progress" class="section-spacing">
     <h2 class="cv-section-header">Selected Work in Progress</h2>
     {% for paper in wip %}
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
@@ -175,7 +175,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="other-articles" class="section-spacing">
     <h2 class="cv-section-header">Other Articles</h2>
     {% for paper in other_articles %}
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
@@ -196,7 +196,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Awards &amp; Scholarships</h2>
     <ul class="cv-talks-list">
         {% for item in site.data.cv.awards %}
-        <li class="cv-award-item">
+        <li class="cv-award-item scroll-reveal">
             <div class="cv-award-row">
                 <span> {{ item.title }}, {{ item.organization }} </span>
                 <span class="cv-date"> {{ item.year }} </span>
@@ -213,7 +213,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="presentations" class="section-spacing">
     <h2 class="cv-section-header">Conference Presentations &amp; Talks</h2>
     {% for paper in site.data.cv.presentations %}
-    <div class="cv-entry cv-paper-block">
+    <div class="cv-entry cv-paper-block scroll-reveal">
         <div class="cv-paper-title">
             {{ paper.title }}
         </div>
@@ -239,7 +239,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Teaching</h2>
 
     {% for item in site.data.teaching %}
-        <div class="cv-entry">
+        <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header">
                 <div class="cv-header-group">
                     {% if item.institution_url %}
@@ -284,7 +284,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="service" class="section-spacing">
     <h2 class="cv-section-header">Service &amp; Professional Organizations</h2>
     {% for item in site.data.cv.service %}
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <div class="cv-desc cv-desc-no-indent">
             <strong>{{ item.role }}</strong>, {{ item.organization }} ({{ item.year }})
         </div>
@@ -299,7 +299,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Work Experience</h2>
 
     {% for company in site.data.cv.industry %}
-        <div class="cv-entry">
+        <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header cv-company-header">
                 <div class="cv-header-group">
                     {% if company.company_url %}
@@ -343,7 +343,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <section id="skills" class="section-spacing">
     <h2 class="cv-section-header">Other Skills</h2>
-    <div class="cv-entry">
+    <div class="cv-entry scroll-reveal">
         <div class="cv-desc cv-desc-no-indent cv-skills-container">
             {% for group in site.data.cv.skills %}
             <div class="cv-skill-row">
@@ -364,7 +364,7 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">References</h2>
     <div>
         {% for ref in site.data.cv.references %}
-        <div class="cv-entry cv-ref-entry">
+        <div class="cv-entry cv-ref-entry scroll-reveal">
             <div class="cv-ref-row">
                 <span class="cv-ref-bullet">&bull;</span>
                 <div class="cv-ref-content">

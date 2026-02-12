@@ -7,24 +7,24 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 ---
 
 <section id="about">
-    <h1>About Me</h1>
-    <p class="lead">I study the human supply chain of Artificial Intelligence.</p> 
-    
-    <p>Hello! I am a fifth-year PhD student at Anderson School of Management, UCLA, advised by Charles Corbett and Auyon Siddiq.</p>
-    
-    <p>My research focuses on the human infrastructure behind AI. Artificial intelligence relies on invisible labor to label images, annotate text, and teach algorithms right from wrong. I study <strong>crowdwork platforms</strong>, the digital assembly lines where this work happens, using econometric methods to understand fairness, task estimation, and worker retention in these marketplaces.</p>
-    
-    <p>Before joining UCLA, I was the Head of Advanced Analytics at ACHS in Chile and a management consultant at Oliver Wyman. I hold an MBA from MIT Sloan. I am expecting to graduate in June 2027.</p>
-    
-    <p>Beyond the research and the data, my life is centered on 
-    <span class="family-link" data-person="family">my family</span>. 
-    I am incredibly fortunate to walk this path with my wife, 
-    <span class="family-link" data-person="andrea">Andrea</span>, 
-    and our four children: 
-    <span class="family-link" data-person="carlota">Carlota</span>, 
-    <span class="family-link" data-person="martin">Martín</span>, 
-    <span class="family-link" data-person="joaquin">Joaquín</span>, and 
-    <span class="family-link" data-person="juanpablo">Juan Pablo</span>. 
+    <h1 class="scroll-reveal">About Me</h1>
+    <p class="lead scroll-reveal">I study the human supply chain of Artificial Intelligence.</p>
+
+    <p class="scroll-reveal">Hello! I am a fifth-year PhD student at Anderson School of Management, UCLA, advised by Charles Corbett and Auyon Siddiq.</p>
+
+    <p class="scroll-reveal">My research focuses on the human infrastructure behind AI. Artificial intelligence relies on invisible labor to label images, annotate text, and teach algorithms right from wrong. I study <strong>crowdwork platforms</strong>, the digital assembly lines where this work happens, using econometric methods to understand fairness, task estimation, and worker retention in these marketplaces.</p>
+
+    <p class="scroll-reveal">Before joining UCLA, I was the Head of Advanced Analytics at ACHS in Chile and a management consultant at Oliver Wyman. I hold an MBA from MIT Sloan. I am expecting to graduate in June 2027.</p>
+
+    <p class="scroll-reveal">Beyond the research and the data, my life is centered on
+    <span class="family-link" data-person="family">my family</span>.
+    I am incredibly fortunate to walk this path with my wife,
+    <span class="family-link" data-person="andrea">Andrea</span>,
+    and our four children:
+    <span class="family-link" data-person="carlota">Carlota</span>,
+    <span class="family-link" data-person="martin">Martín</span>,
+    <span class="family-link" data-person="joaquin">Joaquín</span>, and
+    <span class="family-link" data-person="juanpablo">Juan Pablo</span>.
     They are my greatest joy, my daily chaos, and my most important responsibility.</p>
 </section>
 
@@ -33,7 +33,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
     <h2>Recent Activity</h2>
     <ul class="news-list">
         {% for item in site.data.activity.items %}
-        <li class="news-item">
+        <li class="news-item scroll-reveal">
             <span class="news-date">{{ item.date }}</span>
             <span class="news-text">
                 {{ item.text }}
@@ -55,7 +55,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 
     <div class="research-grid">
         {% for paper in site.data.papers.papers %}
-        <div class="paper-card">
+        <div class="paper-card scroll-reveal">
             {% if paper.status_class != "" %}
             <span class="paper-tag {{ paper.status_class }}">{{ paper.status }}</span>
             {% else %}
@@ -116,9 +116,9 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
             Updated: {{ site.data.last_updated.date }}
         </span>
     </div>
-    
+
     <div class="now-grid">
-        <div class="now-item">
+        <div class="now-item scroll-reveal">
             <h4 class="now-label">Location</h4>
             <div class="now-value">
                 <span>{{ site.data.status.location.emoji }}</span>
@@ -126,7 +126,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
             </div>
         </div>
 
-        <div class="now-item">
+        <div class="now-item scroll-reveal">
             <h4 class="now-label">
                 <a href="{{ '/library/' | relative_url }}" class="now-label-link" title="View Full Library">
   Reading
@@ -141,7 +141,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
             {% endfor %}
         </div>
 
-        <div class="now-item">
+        <div class="now-item scroll-reveal">
              <h4 class="now-label">Off Duty</h4>
              {% if site.data.status.playing != "" %}
              <div class="now-activity">
