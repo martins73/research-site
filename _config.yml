@@ -69,7 +69,7 @@ scroll_reveal_threshold: 0.25   # Fraction of element that must be visible befor
 scroll_reveal_margin: "-25%"    # Shrinks the trigger zone from viewport bottom so
                                 # elements start appearing when they're well in view,
                                 # not at the very edge. Negative = inward.
-scroll_reveal_duration: "2.0s"  # How long the fade-in + slide-up transition takes.
+scroll_reveal_duration: "0.8s"  # How long the fade-in + slide-up transition takes.
 
 # UI Text / Labels
 email_button_text: "Email Me"
