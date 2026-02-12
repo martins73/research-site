@@ -1,10 +1,7 @@
 ---
 layout: null
 ---
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid slice">
-  <rect x="-50" y="-50" width="612" height="612" fill="{{ site.data.theme.themes[site.color_theme].light.accent }}"/>
-  
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="220" fill="white">
-    {{ site.author.initials | default: "ME" }}
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="{{ site.data.theme.themes[site.color_theme].light.accent }}"/>
+  <text x="256" y="256" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="220" fill="white">{{ site.author.initials | default: "ME" }}</text>
 </svg>
