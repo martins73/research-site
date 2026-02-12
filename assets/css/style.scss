@@ -1659,7 +1659,8 @@ a .cv-logo:hover {
 .sr-enabled .scroll-reveal {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: opacity {{ site.scroll_reveal_duration | default: "0.8s" }} ease,
+                transform {{ site.scroll_reveal_duration | default: "0.8s" }} ease;
 }
 
 .sr-enabled .scroll-reveal.sr-visible {
