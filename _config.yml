@@ -70,6 +70,7 @@ scroll_reveal_margin: "-15%"    # Shrinks the trigger zone from viewport bottom 
                                 # elements start appearing when they're well in view,
                                 # not at the very edge. Negative = inward.
 scroll_reveal_duration: "0.8s"  # How long the fade-in + slide-up transition takes.
+typewriter_abstract: true       # Letter-by-letter typing effect on abstract expand (set to false to disable)
 typewriter_speed: 12            # Milliseconds between each character when typing abstracts.
                                 # Lower = faster. 12ms ≈ ~80 chars/sec, feels like fast typing.
 
