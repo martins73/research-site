@@ -462,32 +462,144 @@
     })();
 
     /* ============================================================================
-       7. RESEARCH PAPERS: TOGGLE ABSTRACT (Event Delegation)
+       7. RESEARCH PAPERS: TOGGLE ABSTRACT
        ============================================================================
 
        Expands/collapses research paper abstracts when user clicks the toggle button.
-       Updates button text and ARIA attributes for accessibility.
+       {% if site.typewriter_abstract %}
+       When enabled, text is revealed letter-by-letter with a blinking cursor.
+       Controlled by typewriter_abstract in _config.yml.
+       {% endif %}
     */
-    document.addEventListener('click', function(e) {
-      const button = e.target.closest('[data-abstract]');
-      if (!button) return;
+    (function() {
+      {% if site.typewriter_abstract %}
+      var TYPEWRITER_SPEED = {{ site.typewriter_speed | default: 12 }};
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      {% endif %}
 
-      const index = button.getAttribute('data-abstract');
-      const abstractElement = document.getElementById('abstract-' + index);
-      if (!abstractElement) return;
+      // Store original HTML for each abstract (trimmed to remove template whitespace)
+      var abstractStore = {};
+      document.querySelectorAll('.paper-abstract').forEach(function(el) {
+        abstractStore[el.id] = el.innerHTML.trim();
+      });
 
-      if (abstractElement.classList.contains('collapsed')) {
-        abstractElement.classList.remove('collapsed');
-        abstractElement.classList.add('expanded');
-        button.textContent = CONFIG.text.research.hide;
-        button.setAttribute('aria-expanded', 'true');
-      } else {
-        abstractElement.classList.remove('expanded');
-        abstractElement.classList.add('collapsed');
-        button.textContent = CONFIG.text.research.show;
-        button.setAttribute('aria-expanded', 'false');
+      {% if site.typewriter_abstract %}
+      // Track active typewriter timers so we can cancel mid-typing
+      var activeTimers = {};
+
+      function cancelTypewriter(id) {
+        if (activeTimers[id]) {
+          clearTimeout(activeTimers[id]);
+          delete activeTimers[id];
+        }
       }
-    });
+
+      function typewriterReveal(el, id) {
+        var originalHTML = abstractStore[id];
+
+        // Parse original HTML to extract paragraph texts (markdownify wraps in <p>)
+        var temp = document.createElement('div');
+        temp.innerHTML = originalHTML;
+        var sourceParagraphs = temp.querySelectorAll('p');
+        var paraTexts = [];
+        sourceParagraphs.forEach(function(p) {
+          var text = p.textContent.trim();
+          if (text) paraTexts.push(text);
+        });
+        // Fallback: if no <p> tags, treat entire content as one block
+        if (paraTexts.length === 0) {
+          var fallback = (temp.textContent || '').trim();
+          if (fallback) paraTexts.push(fallback);
+        }
+
+        // Build the typing DOM: one <p> per paragraph, cursor in the first
+        el.innerHTML = '';
+        var cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        cursor.textContent = '|';
+
+        var currentPara = document.createElement('p');
+        el.appendChild(currentPara);
+        var textNode = document.createTextNode('');
+        currentPara.appendChild(textNode);
+        currentPara.appendChild(cursor);
+
+        var paraIndex = 0;
+        var charIndex = 0;
+
+        function typeNext() {
+          if (paraIndex >= paraTexts.length) {
+            // Typing complete: restore original HTML with formatting
+            cursor.remove();
+            el.innerHTML = originalHTML;
+            delete activeTimers[id];
+            return;
+          }
+          var currentText = paraTexts[paraIndex];
+          if (charIndex < currentText.length) {
+            textNode.textContent += currentText.charAt(charIndex);
+            charIndex++;
+            activeTimers[id] = setTimeout(typeNext, TYPEWRITER_SPEED);
+          } else {
+            // Paragraph done — move to next
+            paraIndex++;
+            charIndex = 0;
+            if (paraIndex < paraTexts.length) {
+              cursor.remove();
+              currentPara = document.createElement('p');
+              el.appendChild(currentPara);
+              textNode = document.createTextNode('');
+              currentPara.appendChild(textNode);
+              currentPara.appendChild(cursor);
+              activeTimers[id] = setTimeout(typeNext, TYPEWRITER_SPEED);
+            } else {
+              // All paragraphs done
+              cursor.remove();
+              el.innerHTML = originalHTML;
+              delete activeTimers[id];
+            }
+          }
+        }
+
+        typeNext();
+      }
+      {% endif %}
+
+      document.addEventListener('click', function(e) {
+        var button = e.target.closest('[data-abstract]');
+        if (!button) return;
+
+        var index = button.getAttribute('data-abstract');
+        var abstractElement = document.getElementById('abstract-' + index);
+        if (!abstractElement) return;
+        var abstractId = abstractElement.id;
+
+        if (abstractElement.classList.contains('collapsed')) {
+          // --- EXPAND ---
+          {% if site.typewriter_abstract %}cancelTypewriter(abstractId);{% endif %}
+          abstractElement.classList.remove('collapsed');
+          abstractElement.classList.add('expanded');
+          button.textContent = CONFIG.text.research.hide;
+          button.setAttribute('aria-expanded', 'true');
+
+          {% if site.typewriter_abstract %}
+          if (prefersReducedMotion) {
+            abstractElement.innerHTML = abstractStore[abstractId];
+          } else {
+            typewriterReveal(abstractElement, abstractId);
+          }
+          {% endif %}
+        } else {
+          // --- COLLAPSE ---
+          {% if site.typewriter_abstract %}cancelTypewriter(abstractId);{% endif %}
+          abstractElement.innerHTML = abstractStore[abstractId];
+          abstractElement.classList.remove('expanded');
+          abstractElement.classList.add('collapsed');
+          button.textContent = CONFIG.text.research.show;
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
 
     /* ============================================================================
        8. SCROLL REVEAL — BLOCK FADE-IN ON SCROLL
