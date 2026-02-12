@@ -462,32 +462,99 @@
     })();
 
     /* ============================================================================
-       7. RESEARCH PAPERS: TOGGLE ABSTRACT (Event Delegation)
+       7. RESEARCH PAPERS: TOGGLE ABSTRACT WITH TYPEWRITER EFFECT
        ============================================================================
 
        Expands/collapses research paper abstracts when user clicks the toggle button.
-       Updates button text and ARIA attributes for accessibility.
+       On expand, text is revealed letter-by-letter with a blinking cursor, like
+       real-time typing. Skipped when user prefers reduced motion.
+
+       Speed is configurable in _config.yml via typewriter_speed (ms per character).
     */
-    document.addEventListener('click', function(e) {
-      const button = e.target.closest('[data-abstract]');
-      if (!button) return;
+    (function() {
+      var TYPEWRITER_SPEED = {{ site.typewriter_speed | default: 12 }};
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const index = button.getAttribute('data-abstract');
-      const abstractElement = document.getElementById('abstract-' + index);
-      if (!abstractElement) return;
+      // Store original HTML for each abstract (before we touch the DOM)
+      var abstractStore = {};
+      document.querySelectorAll('.paper-abstract').forEach(function(el) {
+        abstractStore[el.id] = el.innerHTML;
+      });
 
-      if (abstractElement.classList.contains('collapsed')) {
-        abstractElement.classList.remove('collapsed');
-        abstractElement.classList.add('expanded');
-        button.textContent = CONFIG.text.research.hide;
-        button.setAttribute('aria-expanded', 'true');
-      } else {
-        abstractElement.classList.remove('expanded');
-        abstractElement.classList.add('collapsed');
-        button.textContent = CONFIG.text.research.show;
-        button.setAttribute('aria-expanded', 'false');
+      // Track active typewriter timers so we can cancel mid-typing
+      var activeTimers = {};
+
+      function cancelTypewriter(id) {
+        if (activeTimers[id]) {
+          clearTimeout(activeTimers[id]);
+          delete activeTimers[id];
+        }
       }
-    });
+
+      function typewriterReveal(el, id) {
+        var originalHTML = abstractStore[id];
+        // Extract plain text from the stored HTML
+        var temp = document.createElement('div');
+        temp.innerHTML = originalHTML;
+        var fullText = temp.textContent || temp.innerText || '';
+
+        // Clear and set up the container
+        el.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor">|</span>';
+        var textSpan = el.querySelector('.typewriter-text');
+        var cursor = el.querySelector('.typewriter-cursor');
+        var charIndex = 0;
+
+        function typeNext() {
+          if (charIndex < fullText.length) {
+            textSpan.textContent += fullText.charAt(charIndex);
+            charIndex++;
+            activeTimers[id] = setTimeout(typeNext, TYPEWRITER_SPEED);
+          } else {
+            // Typing complete: restore original HTML with formatting and remove cursor
+            cursor.remove();
+            el.innerHTML = originalHTML;
+            delete activeTimers[id];
+          }
+        }
+
+        typeNext();
+      }
+
+      document.addEventListener('click', function(e) {
+        var button = e.target.closest('[data-abstract]');
+        if (!button) return;
+
+        var index = button.getAttribute('data-abstract');
+        var abstractElement = document.getElementById('abstract-' + index);
+        if (!abstractElement) return;
+        var abstractId = abstractElement.id;
+
+        if (abstractElement.classList.contains('collapsed')) {
+          // --- EXPAND ---
+          cancelTypewriter(abstractId);
+          abstractElement.classList.remove('collapsed');
+          abstractElement.classList.add('expanded');
+          button.textContent = CONFIG.text.research.hide;
+          button.setAttribute('aria-expanded', 'true');
+
+          if (prefersReducedMotion) {
+            // Skip animation; show content instantly
+            abstractElement.innerHTML = abstractStore[abstractId];
+          } else {
+            typewriterReveal(abstractElement, abstractId);
+          }
+        } else {
+          // --- COLLAPSE ---
+          cancelTypewriter(abstractId);
+          // Restore original HTML so next expand starts fresh
+          abstractElement.innerHTML = abstractStore[abstractId];
+          abstractElement.classList.remove('expanded');
+          abstractElement.classList.add('collapsed');
+          button.textContent = CONFIG.text.research.show;
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
 
     /* ============================================================================
        8. SCROLL REVEAL — BLOCK FADE-IN ON SCROLL
