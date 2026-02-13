@@ -2,21 +2,22 @@
   books:
     - title: "Ghost Work"
       author: "Mary L. Gray & Siddharth Suri"
-      meta: "SOCIOLOGY"
+      meta: "PLATFORM WORK"
       comment: "An eye-opening look at the invisible workforce powering our digital lives. It reveals the human reality behind the 'AI magic' we take for granted."
 
     - title: "Rerum Novarum"
       author: "Pope Leo XIII"
-      meta: "FOUNDATION"
-      comment: "Written in 1891, this letter defends the dignity of workers against unchecked capitalism. It is foundational for understanding the ethical dimensions of labor today."
-
-    - title: "Wanting: The Power of Mimetic Desire in Everyday Life"
-      author: "Luke Burgis"
-      meta: "BEHAVIOR"
-      comment: "We think our desires are internal, but they are often imitated. A compelling application of René Girard’s mimetic theory to our modern world."
+      meta: "CATHOLIC SOCIAL TEACHING"
+      comment: "Leo XIII’s 1891 encyclical articulates the modern Catholic defense of worker dignity, just wages, and the limits of both laissez-faire capitalism and socialism."
 
 - shelf: "Formation"
   books:
+
+    - title: "Man's Search for Meaning"
+      author: "Viktor Frankl"
+      meta: "PSYCHOLOGY"
+      comment: "Frankl's memoir of the Holocaust is a testament to the power of purpose. It argues that our primary drive is not pleasure, but meaning."
+
     - title: "Justice: What's the Right Thing to Do?"
       author: "Michael Sandel"
       meta: "ETHICS"
@@ -24,7 +25,7 @@
 
     - title: "The Problem of Pain"
       author: "C.S. Lewis"
-      meta: "THEOLOGY"
+      meta: "PHILOSOPHICAL THEOLOGY"
       comment: "Lewis tackles the hardest problem of faith: if God is good, why is there suffering? A profound look at the purpose of pain in the human experience."
 
     - title: "Hannah's Children"
@@ -34,13 +35,13 @@
 
     - title: "Tiny Habits"
       author: "B.J. Fogg"
-      meta: "DESIGN"
+      meta: "BEHAVIOR CHANGE"
       comment: "Forget motivation; focus on design. Fogg shows how making habits incredibly small can make lasting behavioral change."
 
-    - title: "Man's Search for Meaning"
-      author: "Viktor Frankl"
-      meta: "CLASSIC"
-      comment: "Frankl's memoir of the Holocaust is a testament to the power of purpose. It argues that our primary drive is not pleasure, but meaning."
+    - title: "Wanting: The Power of Mimetic Desire in Everyday Life"
+      author: "Luke Burgis"
+      meta: "BEHAVIOR"
+      comment: "We think our desires are internal, but they are often imitated. A compelling application of René Girard’s mimetic theory to our modern world."
 
     - title: "The Whole-Brain Child"
       author: "Daniel J. Siegel & Tina Payne Bryson"
@@ -51,7 +52,7 @@
   books:
     - title: "The Man Who Was Thursday"
       author: "G.K. Chesterton"
-      meta: "FAVORITE"
+      meta: "PHILOSOPHICAL FICTION"
       comment: "Chesterton is a genius. This is a metaphysical thriller that turns anarchy into a theological puzzle. It is chaotic, witty, and profoundly sane. One of my absolute favorites."
 
     - title: "Stoner"
@@ -61,7 +62,7 @@
 
     - title: "The Screwtape Letters"
       author: "C.S. Lewis"
-      meta: "SATIRE"
+      meta: "SATIRE / SPIRITUAL FORMATION"
       comment: "A brilliant study of human nature from the perspective of a demon. It exposes the subtle ways we justify our own vices."
 
     - title: "The Thursday Murder Club"
