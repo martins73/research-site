@@ -2,7 +2,7 @@
 
 This is the source code for my personal academic website, hosted at [martin.gonzalezcabello.com](https://martin.gonzalezcabello.com).
 
-I use this platform to share my research on the **Human Supply Chain of AI**, **Crowdwork Platforms**, and **Algorithmic Fairness**.
+I use this platform to share my research on the **Human Supply Chain of AI**, **Crowdwork Platforms**, and **Fairness**.
 
 ## Tech Stack
 * **Static Site Generator:** Jekyll
