@@ -1,4 +1,7 @@
 <script>
+  const SITE_CONFIG = window.__SITE_CONFIG || {};
+  const SERVICE_WORKER_URL = SITE_CONFIG.serviceWorker || {{ site.service_worker | default: '/sw.js' | relative_url | jsonify }};
+
   /**
    * Main application JavaScript
    *
@@ -15,41 +18,40 @@
     */
     const CONFIG = {
       // Logic & Paths
-      mobileBreakpoint: {{ site.mobile_breakpoint | default: 768 }},
+      mobileBreakpoint: SITE_CONFIG.mobileBreakpoint || {{ site.mobile_breakpoint | default: 768 }},
       spinDuration: {{ site.spin_duration | default: 3200 }},
-      serviceWorker: "{{ site.service_worker | default: '/sw.js' | relative_url }}",
       
       // Data
-      authorName: "{{ site.author.given_name }}",
-      repoUrl: "{{ site.social.github }}",
-      themeColor: "{{ site.data.theme.themes[site.color_theme].light.accent | default: '#2774AE' }}",
+      authorName: {{ site.author.given_name | jsonify }},
+      repoUrl: {{ site.social.github | jsonify }},
+      themeColor: {{ site.data.theme.themes[site.color_theme].light.accent | default: '#2774AE' | jsonify }},
       
       // Text & Data Labels (from _config.yml)
       text: {
         darkMode: {
-          toLight: "{{ site.ui_text.dark_mode.to_light | default: 'Switch to light mode' }}",
-          toDark: "{{ site.ui_text.dark_mode.to_dark | default: 'Switch to dark mode' }}"
+          toLight: {{ site.ui_text.dark_mode.to_light | default: 'Switch to light mode' | jsonify }},
+          toDark: {{ site.ui_text.dark_mode.to_dark | default: 'Switch to dark mode' | jsonify }}
         },
         saints: {
-          feast: "{{ site.ui_text.saints.feast_prefix | default: 'Feast of ' }}",
-          and: "{{ site.ui_text.saints.conjunction | default: ' and ' }}"
+          feast: {{ site.ui_text.saints.feast_prefix | default: 'Feast of ' | jsonify }},
+          and: {{ site.ui_text.saints.conjunction | default: ' and ' | jsonify }}
         },
         carbon: {
-          grams: "{{ site.ui_text.carbon.grams | default: 'g of CO<sub>2</sub>/view' }}",
-          cleaner: "{{ site.ui_text.carbon.cleaner | default: 'Cleaner than' }}",
-          percent: "{{ site.ui_text.carbon.percent | default: '% of pages' }}",
-          tested: "{{ site.ui_text.carbon.tested | default: 'tested' }}",
+          grams: {{ site.ui_text.carbon.grams | default: 'g of CO<sub>2</sub>/view' | jsonify }},
+          cleaner: {{ site.ui_text.carbon.cleaner | default: 'Cleaner than' | jsonify }},
+          percent: {{ site.ui_text.carbon.percent | default: '% of pages' | jsonify }},
+          tested: {{ site.ui_text.carbon.tested | default: 'tested' | jsonify }},
           // Fallback Data
-          fallbackC: "{{ site.ui_text.carbon.fallback_grams | default: '0.03' }}",
-          fallbackP: "{{ site.ui_text.carbon.fallback_percent | default: '94' }}"
+          fallbackC: {{ site.ui_text.carbon.fallback_grams | default: '0.03' | jsonify }},
+          fallbackP: {{ site.ui_text.carbon.fallback_percent | default: '94' | jsonify }}
         },
         research: {
-          show: "{{ site.ui_text.research.show_abstract | default: 'Show Abstract' }}",
-          hide: "{{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' }}"
+          show: {{ site.ui_text.research.show_abstract | default: 'Show Abstract' | jsonify }},
+          hide: {{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' | jsonify }}
         },
         console: {
-          greeting: "{{ site.ui_text.console.greeting | default: "👋 Hi, I'm" }}",
-          repo: "{{ site.ui_text.console.repo | default: 'Check out the repo:' }}"
+          greeting: {{ site.ui_text.console.greeting | default: "👋 Hi, I'm" | jsonify }},
+          repo: {{ site.ui_text.console.repo | default: 'Check out the repo:' | jsonify }}
         }
       }
     };
@@ -646,12 +648,17 @@
       `color: ${CONFIG.themeColor}; font-size: 20px; font-weight: bold; font-family: sans-serif;`,
       "color: #64748b; font-size: 12px; font-family: sans-serif;"
     );
+
   });
 
   /* ============================================================================
      9. SERVICE WORKER REGISTRATION
      ============================================================================ */
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(CONFIG.serviceWorker);
+  if ('serviceWorker' in navigator && SERVICE_WORKER_URL) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register(SERVICE_WORKER_URL).catch(function(error) {
+        console.warn('Service worker registration failed:', error);
+      });
+    });
   }
 </script>

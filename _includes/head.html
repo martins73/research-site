@@ -84,12 +84,15 @@
     document.documentElement.setAttribute('data-theme', theme);
   })();
 
-  // 2. Mobile breakpoint: Pulled from _config.yml
-  window.MOBILE_BREAKPOINT_PX = {{ site.mobile_breakpoint | default: 768 }};
+  // 2. Shared runtime config bridge for inline scripts
+  window.__SITE_CONFIG = Object.assign({}, window.__SITE_CONFIG, {
+    mobileBreakpoint: {{ site.mobile_breakpoint | default: 768 }},
+    serviceWorker: {{ site.service_worker | default: '/sw.js' | relative_url | jsonify }}
+  });
 
   // 3. Scroll guard
   (function() {
-    if (!window.matchMedia('(max-width: ' + window.MOBILE_BREAKPOINT_PX + 'px)').matches) return;
+    if (!window.matchMedia('(max-width: ' + window.__SITE_CONFIG.mobileBreakpoint + 'px)').matches) return;
     if (sessionStorage.getItem('autoScrollToContent') !== '1') return;
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   })();
