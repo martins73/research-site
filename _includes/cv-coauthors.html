@@ -7,13 +7,13 @@
         {%- if forloop.first -%}
             {{ coauthor.name }}
         {%- else -%}
-            and {{ coauthor.name }}
+             and {{ coauthor.name }}
         {%- endif -%}
     {%- else -%}
         {%- if forloop.first -%}
             {{ coauthor.name }}
         {%- elsif forloop.last -%}
-            , and {{ coauthor.name }}
+             and {{ coauthor.name }}
         {%- else -%}
             , {{ coauthor.name }}
         {%- endif -%}
