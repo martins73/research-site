@@ -291,6 +291,28 @@
     color: var(--text-light);
 }
 
+/* Skip-to-content link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-4);
+    z-index: 9999;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--accent);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    border-radius: 0 0 var(--radius-sm, 4px) var(--radius-sm, 4px);
+    text-decoration: none;
+
+    &:focus {
+        top: 0;
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+}
+
 body {
     font-family: var(--font-body);
     font-size: var(--text-2xl); 

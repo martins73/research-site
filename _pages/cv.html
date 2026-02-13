@@ -55,6 +55,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### EDUCATION ### -->
 
+{% if site.data.cv.education and site.data.cv.education.size > 0 %}
 <section id="education" class="section-spacing">
     <h2 class="cv-section-header">Education</h2>
 
@@ -71,6 +72,7 @@ description: Academic CV and professional background in analytics, operations, a
         </div>
     {% endfor %}
 </section>
+{% endif %}
 
 <!-- ### PUBLICATIONS ### -->
 

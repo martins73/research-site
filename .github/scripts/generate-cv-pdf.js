@@ -97,7 +97,7 @@ async function generatePDF() {
 
     // 2. Set permanent PDF metadata using pdf-lib
     const pdfBytes = fs.readFileSync(OUTPUT_PATH);
-    const pdfDoc = await PDFDocument.load(pdfBytes);
+    const pdfDoc = await PDFDocument.load(pdfBytes, { updateMetadata: false });
 
     // Keep metadata in both places (Info + XMP) and explicitly ask viewers to
     // use the document title in their UI (tab/window title) when supported.

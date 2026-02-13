@@ -99,7 +99,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 
             <div class="paper-actions">
                 <button class="btn-abstract" data-abstract="{{ forloop.index }}" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
-                    Show Abstract
+                    {{ site.ui_text.research.show_abstract | default: "Show Abstract" }}
                 </button>
                 <a href="{{ paper.link_url }}" class="card-link" {% if paper.link_url contains 'http' %}target="_blank" rel="noopener"{% endif %}>{{ paper.link_text }}</a>
             </div>

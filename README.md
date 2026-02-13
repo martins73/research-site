@@ -29,7 +29,7 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Carbon Footprint Badge:** Tracks and displays per-page CO2 emissions via Website Carbon API
 * **Portable Asset Paths:** All internal URLs use Jekyll's `relative_url` filter for baseurl-safe deployment
 * **Zero Dependencies:** No JavaScript frameworks or heavy libraries
-* **Minimal JavaScript:** ~440 lines of vanilla JS for interactivity
+* **Minimal JavaScript:** ~664 lines of vanilla JS for interactivity
 
 ### Asset Optimization
 Visual assets are processed to balance high-resolution display with fast load times:
@@ -74,6 +74,7 @@ research-site/
 │   ├── activity.yml                    # Recent activity feed (papers, talks, etc.)
 │   ├── teaching.yml                    # Teaching experience (feeds CV & Teaching page)
 │   ├── status.yml                      # Current status (location, reading, activities)
+│   ├── last_updated.yml                # Auto-updated timestamp (set by GitHub Actions)
 │   ├── library.yml                     # Bookshelf data (by shelf/category)
 │   │
 │   ├── theme/                          # Color Theme System
@@ -103,8 +104,10 @@ research-site/
 │   ├── head.html                       # Meta tags, SEO, analytics, theme scripts
 │   ├── sidebar.html                    # Navigation, profile pic, social links
 │   ├── footer.html                     # Copyright, credits, carbon badge, saint-of-the-day
-│   ├── scripts.html                    # ~440 lines vanilla JS (mobile nav, dark mode, etc.)
-│   └── family-modal.html               # Accessible image modal dialog
+│   ├── scripts.html                    # ~664 lines vanilla JS (mobile nav, dark mode, etc.)
+│   ├── family-modal.html               # Accessible image modal dialog
+│   ├── cv-coauthors.html               # Renders paper coauthors for CV
+│   └── cv-institution-header.html      # CV institution header with logo and location
 │
 ├── _layouts/                           # Page templates
 │   ├── default.html                    # Main layout (sidebar + content container)
@@ -115,7 +118,7 @@ research-site/
 │
 ├── assets/                             # Static files
 │   ├── css/
-│   │   └── style.scss                  # Design system (~1820 lines SCSS, minified on build)
+│   │   └── style.scss                  # Design system (~1873 lines SCSS, minified on build)
 │   ├── fonts/                          # Self-hosted web fonts (woff2)
 │   ├── logos/                          # Institution and company logos (PNG/SVG)
 │   ├── family/                         # Family photos (WebP)
@@ -125,9 +128,11 @@ research-site/
 ├── .github/                            # GitHub Actions and automation
 │   ├── workflows/
 │   │   ├── update-status-date.yml      # Auto-updates status.yml timestamp
-│   │   └── generate-cv-pdf.yml         # Auto-generates CV PDF from data
+│   │   ├── generate-cv-pdf.yml         # Auto-generates CV PDF from data
+│   │   └── generate-favicons.yml       # Auto-generates favicon PNGs from theme config
 │   └── scripts/
-│       └── generate-cv-pdf.js          # Puppeteer script for PDF rendering
+│       ├── generate-cv-pdf.js          # Puppeteer script for PDF rendering
+│       └── generate-favicons.py        # Python script for favicon generation
 │
 ├── sw.js                               # Service worker (offline support, caching)
 ├── robots.txt                          # Bot access control
@@ -229,7 +234,7 @@ The site uses a comprehensive design system defined in `assets/css/style.scss`:
 
 ## JavaScript Features
 
-The site uses vanilla JavaScript (~440 lines in `_includes/scripts.html`) for:
+The site uses vanilla JavaScript (~664 lines in `_includes/scripts.html`) for:
 
 1. **Mobile Navigation** - Auto-scroll to main content on mobile
 2. **Profile Picture Spin** - 3.2s animation on click
@@ -280,6 +285,13 @@ This site uses Jekyll, deployed via Cloudflare Pages.
 - Triggers on push to `_data/cv/`, `_data/papers.yml`, `_data/teaching.yml`, `_config.yml`, `_pages/cv-print.html`, or `_layouts/cv-print.html`
 - Builds the Jekyll site, then uses Puppeteer to render `cv-print.html` to PDF
 - Commits the generated PDF to `assets/martin-gonzalez-cabello-cv.pdf`
+- Can also be triggered manually via `workflow_dispatch`
+
+#### Favicon Generation (`generate-favicons.yml`)
+- Triggers on push to `_config.yml` or `_data/theme/themes.yml`
+- Reads the active `color_theme` from `_config.yml` and looks up its accent color in the theme data
+- Uses Python (Pillow) to generate 192px and 512px PNG favicons with the author's initials (MGC)
+- Commits the generated PNGs to `assets/logos/favicon-192.png` and `assets/logos/favicon-512.png`
 - Can also be triggered manually via `workflow_dispatch`
 
 ## Privacy & Ethics
