@@ -1,0 +1,10 @@
+{%- assign coauthors = include.coauthors | default: empty -%}
+{%- for coauthor in coauthors -%}
+    {%- if forloop.length == 2 and forloop.last -%}
+        and {{ coauthor.name }}
+    {%- elsif forloop.length > 2 and forloop.last -%}
+        , and {{ coauthor.name }}
+    {%- else -%}
+        {{ coauthor.name }}{%- unless forloop.last -%}, {% endunless %}
+    {%- endif -%}
+{%- endfor -%}

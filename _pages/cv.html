@@ -42,24 +42,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% for item in site.data.cv.appointments %}
         <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header">
-                <div class="cv-header-group">
-                    {% if item.institution_url %}
-                        <a href="{{ item.institution_url }}" target="_blank" rel="noopener">
-                            <img src="{{ item.logo }}?v={{ site.time | date: '%s' }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-                        </a>
-                    {% else %}
-                        <img src="{{ item.logo }}?v={{ site.time | date: '%s' }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-                    {% endif %}
-
-                    <div>
-                        {% if item.institution_url -%}
-                            <a href="{{ item.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ item.institution }}</a>
-                        {%- else -%}
-                            <span class="cv-title cv-inline">{{ item.institution }}</span>
-                        {%- endif -%}
-                        <span class="cv-location">, {{ item.location }}</span>
-                    </div>
-                </div>
+                {% include cv-institution-header.html entity=item %}
 
                 <span class="cv-date">{{ item.dates }}</span>
             </div>
@@ -78,24 +61,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% for item in site.data.cv.education %}
         <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header">
-                <div class="cv-header-group">
-                    {% if item.institution_url %}
-                        <a href="{{ item.institution_url }}" target="_blank" rel="noopener">
-                            <img src="{{ item.logo }}?v={{ site.time | date: '%s' }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-                        </a>
-                    {% else %}
-                        <img src="{{ item.logo }}?v={{ site.time | date: '%s' }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-                    {% endif %}
-
-                    <div>
-                        {% if item.institution_url -%}
-                            <a href="{{ item.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ item.institution }}</a>
-                        {%- else -%}
-                            <span class="cv-title cv-inline">{{ item.institution }}</span>
-                        {%- endif -%}
-                        <span class="cv-location">, {{ item.location }}</span>
-                    </div>
-                </div>
+                {% include cv-institution-header.html entity=item %}
 
                 <span class="cv-date">{{ item.dates }}</span>
             </div>
@@ -117,9 +83,7 @@ description: Academic CV and professional background in analytics, operations, a
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
-            {% for coauthor in paper.coauthors %}
-                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}
+            {% include cv-coauthors.html coauthors=paper.coauthors %}
             {% if paper.publication != "" %}<br><em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
@@ -138,9 +102,7 @@ description: Academic CV and professional background in analytics, operations, a
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
-            {% for coauthor in paper.coauthors %}
-                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}
+            {% include cv-coauthors.html coauthors=paper.coauthors %}
             {% if paper.submission != "" %}<br>{{ paper.submission }}{% endif %}
         </div>
     </div>
@@ -159,9 +121,7 @@ description: Academic CV and professional background in analytics, operations, a
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
-            {% for coauthor in paper.coauthors %}
-                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}
+            {% include cv-coauthors.html coauthors=paper.coauthors %}
         </div>
     </div>
     {% endfor %}
@@ -179,9 +139,7 @@ description: Academic CV and professional background in analytics, operations, a
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
             with
-            {% for coauthor in paper.coauthors %}
-                {% if forloop.last and forloop.length > 1 %}and {% endif %}{{ coauthor.name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}
-            {% endfor %}
+            {% include cv-coauthors.html coauthors=paper.coauthors %}
             {% if paper.publication != "" %}<br><em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
@@ -241,24 +199,7 @@ description: Academic CV and professional background in analytics, operations, a
     {% for item in site.data.teaching %}
         <div class="cv-entry scroll-reveal">
             <div class="cv-entry-header">
-                <div class="cv-header-group">
-                    {% if item.institution_url %}
-                        <a href="{{ item.institution_url }}" target="_blank" rel="noopener">
-                            <img src="{{ item.logo }}?v={{ site.time | date: '%s' }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-                        </a>
-                    {% else %}
-                        <img src="{{ item.logo }}?v={{ site.time | date: '%s' }}" alt="{{ item.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-                    {% endif %}
-
-                    <div>
-                        {% if item.institution_url -%}
-                            <a href="{{ item.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ item.institution }}</a>
-                        {%- else -%}
-                            <span class="cv-title cv-inline">{{ item.institution }}</span>
-                        {%- endif -%}
-                        <span class="cv-location">, {{ item.location }}</span>
-                    </div>
-                </div>
+                {% include cv-institution-header.html entity=item %}
             </div>
 
             <div class="cv-role">{{ item.role }}</div>
