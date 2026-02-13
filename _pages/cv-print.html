@@ -87,7 +87,7 @@ exclude_from_nav: true
         <div class="paper-title-text">{{ paper.title }}</div>
         <div class="paper-meta">
             with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+            {% include cv-coauthors.html coauthors=paper.coauthors %}.
             {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
@@ -110,7 +110,7 @@ exclude_from_nav: true
         </div>
         <div class="paper-meta">
             with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}{% if paper.submission != "" %}, <em>{{ paper.submission }}</em>{% endif %}
+            {% include cv-coauthors.html coauthors=paper.coauthors %}{% if paper.submission != "" %}, <em>{{ paper.submission }}</em>{% endif %}
         </div>
     </div>
     {% endfor %}
@@ -129,7 +129,7 @@ exclude_from_nav: true
         </div>
         <div class="paper-meta">
             with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}
+            {% include cv-coauthors.html coauthors=paper.coauthors %}
         </div>
     </div>
     {% endfor %}
@@ -149,7 +149,7 @@ exclude_from_nav: true
         </div>
         <div class="paper-meta">
             with
-            {% for coauthor in paper.coauthors %}{% if forloop.last and forloop.length > 1 %} and {% elsif forloop.first == false %}, {% endif %}{{ coauthor.name }}{% endfor %}.
+            {% include cv-coauthors.html coauthors=paper.coauthors %}.
             {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>

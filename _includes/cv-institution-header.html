@@ -1,0 +1,19 @@
+{% assign entity = include.entity %}
+<div class="cv-header-group">
+    {% if entity.institution_url %}
+        <a href="{{ entity.institution_url }}" target="_blank" rel="noopener">
+            <img src="{{ entity.logo }}?v={{ site.time | date: '%s' }}" alt="{{ entity.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+        </a>
+    {% else %}
+        <img src="{{ entity.logo }}?v={{ site.time | date: '%s' }}" alt="{{ entity.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+    {% endif %}
+
+    <div>
+        {% if entity.institution_url -%}
+            <a href="{{ entity.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ entity.institution }}</a>
+        {%- else -%}
+            <span class="cv-title cv-inline">{{ entity.institution }}</span>
+        {%- endif -%}
+        <span class="cv-location">, {{ entity.location }}</span>
+    </div>
+</div>
