@@ -1,0 +1,75 @@
+---
+layout: pdf-viewer
+title: Martin Gonzalez Cabello - CV
+permalink: /cv-pdf/
+description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a print-optimized version, visit /cv-print/.
+---
+
+<header class="cv-pdf-topbar">
+  <a class="sidebar-btn btn-outline cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
+</header>
+
+<section class="cv-pdf-wrapper" aria-label="CV PDF viewer page">
+  <iframe
+    src="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}#toolbar=1&navpanes=0"
+    title="Martin Gonzalez Cabello - CV"
+    loading="eager"
+    height="800">
+    <p class="cv-pdf-fallback-text">
+      Your browser cannot display embedded PDFs.
+      <a href="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}" target="_blank" rel="noopener">
+        Open or download the CV PDF
+      </a>.
+    </p>
+  </iframe>
+</section>
+
+<style>
+  .pdf-viewer-body {
+    margin: 0;
+  }
+
+  .pdf-viewer-shell {
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .cv-pdf-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0.75rem;
+    background: var(--bg-paper);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cv-back-link {
+    width: auto;
+    display: inline-flex;
+    margin: 0;
+    padding: 0.5rem 1rem;
+  }
+
+  .cv-pdf-wrapper {
+    width: 100%;
+    padding-top: 4.25rem;
+  }
+
+  .cv-pdf-wrapper iframe {
+    display: block;
+    width: 100%;
+    min-height: calc(100vh - 4.25rem);
+    border: 0;
+    background: #fff;
+  }
+
+  .cv-pdf-fallback-text {
+    margin: 1rem;
+  }
+</style>
