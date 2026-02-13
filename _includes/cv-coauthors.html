@@ -1,10 +1,21 @@
 {%- assign coauthors = include.coauthors | default: empty -%}
+{%- assign coauthor_count = coauthors | size -%}
 {%- for coauthor in coauthors -%}
-    {%- if forloop.length == 2 and forloop.last -%}
-        and {{ coauthor.name }}
-    {%- elsif forloop.length > 2 and forloop.last -%}
-        , and {{ coauthor.name }}
+    {%- if coauthor_count == 1 -%}
+        {{ coauthor.name }}
+    {%- elsif coauthor_count == 2 -%}
+        {%- if forloop.first -%}
+            {{ coauthor.name }}
+        {%- else -%}
+            and {{ coauthor.name }}
+        {%- endif -%}
     {%- else -%}
-        {{ coauthor.name }}{%- unless forloop.last -%}, {% endunless %}
+        {%- if forloop.first -%}
+            {{ coauthor.name }}
+        {%- elsif forloop.last -%}
+            , and {{ coauthor.name }}
+        {%- else -%}
+            , {{ coauthor.name }}
+        {%- endif -%}
     {%- endif -%}
 {%- endfor -%}
