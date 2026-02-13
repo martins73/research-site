@@ -3,6 +3,7 @@ layout: pdf-viewer
 title: Martin Gonzalez Cabello - CV
 permalink: /cv-pdf/
 description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a print-optimized version, visit /cv-print/.
+pdf_pages: 2
 ---
 
 <header class="cv-pdf-topbar">
@@ -120,11 +121,12 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     }
 
     /* Make the iframe tall enough to show all PDF pages without internal scroll.
-       300vh ≈ 2400px on most phones, comfortably fitting a 2-page A4/Letter PDF
-       scaled to viewport width. The user scrolls the page, not inside the iframe. */
+       150vh per page gives a ~2× safety margin over the actual page height
+       (an A4 page at viewport width ≈ 66vh on most phones). Update pdf_pages
+       in the front matter whenever the CV grows. */
     .cv-pdf-wrapper iframe {
       width: 100%;
-      height: 300vh;
+      height: {{ page.pdf_pages | times: 150 }}vh;
     }
   }
 </style>
