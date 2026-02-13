@@ -63,7 +63,9 @@ main_css: /assets/css/style.css
 mobile_breakpoint: 768
 avatar: /assets/profile_picture.webp
 spin_duration: 3200
-service_worker: /sw.js  # <--- NEW
+service_worker: /sw.js
+
+# Client-side interaction toggles
 scroll_reveal: false      # Fade-in blocks on scroll (set to false to disable)
 scroll_reveal_threshold: 0.15   # Fraction of element that must be visible before reveal (0–1)
 scroll_reveal_margin: "-15%"    # Shrinks the trigger zone from viewport bottom so
@@ -91,8 +93,8 @@ ui_text:
     percent: "% of pages"
     tested: "tested"
     # Fallback values if API fails
-    fallback_grams: "0.03" # <--- NEW
-    fallback_percent: "94" # <--- NEW
+    fallback_grams: "0.03"
+    fallback_percent: "94"
   research:
     show_abstract: "Show Abstract"
     hide_abstract: "Hide Abstract"
