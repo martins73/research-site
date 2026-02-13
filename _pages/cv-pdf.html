@@ -3,13 +3,13 @@ layout: pdf-viewer
 title: Martin Gonzalez Cabello - CV
 permalink: /cv-pdf/
 description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a print-optimized version, visit /cv-print/.
-pdf_pages: 2
 ---
 
 <header class="cv-pdf-topbar">
   <a class="sidebar-btn btn-outline cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
 </header>
 
+<!-- Desktop: native browser PDF viewer in iframe -->
 <section class="cv-pdf-wrapper" aria-label="CV PDF viewer page">
   <iframe
     src="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}#toolbar=1&navpanes=0&view=FitH"
@@ -24,6 +24,11 @@ pdf_pages: 2
     </p>
   </iframe>
 </section>
+
+<!-- Mobile: PDF.js canvas renderer — JS populates this -->
+<div id="cv-pdf-mobile" class="cv-pdf-mobile" aria-label="CV PDF canvas viewer">
+  <p class="cv-pdf-loading">Loading CV…</p>
+</div>
 
 <style>
   :root {
@@ -89,15 +94,25 @@ pdf_pages: 2
     margin: 1rem;
   }
 
+  /* Mobile canvas container — hidden on desktop */
+  .cv-pdf-mobile {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     :root {
       --cv-pdf-topbar-height: 64px;
     }
 
-    /* On iOS, overflow-x: hidden on html blocks body scroll — override it */
+    /* overflow-x: hidden on html blocks body scroll on iOS — override it */
     html {
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    .pdf-viewer-shell {
+      height: auto;
+      overflow: visible;
     }
 
     .cv-pdf-topbar {
@@ -109,24 +124,95 @@ pdf_pages: 2
       font-size: 0.95rem;
     }
 
-    /* Let the page scroll instead of requiring scroll inside the iframe */
-    .pdf-viewer-shell {
-      height: auto;
-      overflow: visible;
-    }
-
+    /* Hide iframe — canvas renderer takes over */
     .cv-pdf-wrapper {
-      height: auto;
-      overflow: visible;
+      display: none;
     }
 
-    /* Make the iframe tall enough to show all PDF pages without internal scroll.
-       150vh per page gives a ~2× safety margin over the actual page height
-       (an A4 page at viewport width ≈ 66vh on most phones). Update pdf_pages
-       in the front matter whenever the CV grows. */
-    .cv-pdf-wrapper iframe {
+    /* Canvas renderer container */
+    .cv-pdf-mobile {
+      display: block;
       width: 100%;
-      height: {{ page.pdf_pages | times: 150 }}vh;
+      padding-top: var(--cv-pdf-topbar-height);
+      box-sizing: border-box;
+      background: #525659; /* matches PDF.js viewer background */
+    }
+
+    /* Each rendered page canvas */
+    .cv-pdf-mobile canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 4px;
+    }
+
+    .cv-pdf-loading,
+    .cv-pdf-error {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.95rem;
+      font-family: var(--font-body, sans-serif);
+    }
+
+    .cv-pdf-error a {
+      color: #90caf9;
     }
   }
 </style>
+
+<script>
+(function () {
+  if (window.innerWidth > 768) return; // desktop keeps the iframe
+
+  var pdfUrl = '{{ "/assets/martin-gonzalez-cabello-cv.pdf" | relative_url }}';
+  var container = document.getElementById('cv-pdf-mobile');
+
+  import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.9.155/build/pdf.min.mjs')
+    .then(function (pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.9.155/build/pdf.worker.min.mjs';
+      return pdfjsLib.getDocument({ url: pdfUrl, verbosity: 0 }).promise;
+    })
+    .then(function (pdf) {
+      container.innerHTML = ''; // clear "Loading CV…"
+
+      var containerWidth = container.clientWidth;
+      var dpr = window.devicePixelRatio || 1;
+
+      // Render pages one by one so they appear top-to-bottom as they finish
+      function renderPage(pageNum) {
+        if (pageNum > pdf.numPages) return Promise.resolve();
+
+        return pdf.getPage(pageNum).then(function (page) {
+          // Scale so the page fills the container width, at device resolution
+          var naturalWidth = page.getViewport({ scale: 1 }).width;
+          var scale = (containerWidth * dpr) / naturalWidth;
+          var vp = page.getViewport({ scale: scale });
+
+          var canvas = document.createElement('canvas');
+          canvas.width  = Math.round(vp.width);
+          canvas.height = Math.round(vp.height);
+          // Display at CSS pixel size (dpr handles sharpness on retina screens)
+          canvas.style.width  = containerWidth + 'px';
+          canvas.style.height = Math.round(vp.height / dpr) + 'px';
+          container.appendChild(canvas);
+
+          return page.render({
+            canvasContext: canvas.getContext('2d'),
+            viewport: vp
+          }).promise.then(function () {
+            return renderPage(pageNum + 1);
+          });
+        });
+      }
+
+      return renderPage(1);
+    })
+    .catch(function () {
+      container.innerHTML =
+        '<p class="cv-pdf-error">Could not load the PDF.<br>' +
+        '<a href="' + pdfUrl + '" target="_blank" rel="noopener">Open CV PDF directly</a></p>';
+    });
+}());
+</script>
