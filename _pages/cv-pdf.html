@@ -44,7 +44,11 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     left: 0;
     right: 0;
     z-index: 1000;
+    height: var(--cv-pdf-topbar-height);
+    display: flex;
+    align-items: center;
     padding: 0.75rem;
+    box-sizing: border-box;
     background: var(--bg-paper);
     border-bottom: 1px solid var(--border);
   }
@@ -58,18 +62,37 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
 
   .cv-pdf-wrapper {
     width: 100%;
-    padding-top: 4.25rem;
+    padding-top: var(--cv-pdf-topbar-height);
   }
 
   .cv-pdf-wrapper iframe {
     display: block;
     width: 100%;
-    min-height: calc(100vh - 4.25rem);
+    height: calc(100dvh - var(--cv-pdf-topbar-height));
     border: 0;
     background: #fff;
   }
 
   .cv-pdf-fallback-text {
     margin: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --cv-pdf-topbar-height: 64px;
+    }
+
+    .cv-pdf-topbar {
+      padding: 0.5rem;
+    }
+
+    .cv-back-link {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .cv-pdf-wrapper iframe {
+      height: calc(100dvh - var(--cv-pdf-topbar-height));
+    }
   }
 </style>
