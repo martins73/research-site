@@ -1,0 +1,112 @@
+---
+layout: pdf-viewer
+title: Martin Gonzalez Cabello - CV
+permalink: /cv-pdf/
+description: Printable PDF curriculum vitae for Martin Gonzalez Cabello.
+---
+
+<header class="cv-pdf-topbar">
+  <a class="sidebar-btn btn-outline cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
+</header>
+
+<section class="cv-pdf-wrapper" aria-label="CV PDF viewer page">
+  <iframe
+    src="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}#toolbar=1&navpanes=0"
+    title="Martin Gonzalez Cabello - CV"
+    loading="eager">
+    <p class="cv-pdf-fallback-text">
+      Your browser cannot display embedded PDFs.
+      <a href="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}" target="_blank" rel="noopener">
+        Open or download the CV PDF
+      </a>.
+    </p>
+  </iframe>
+
+  <noscript>
+    <p class="cv-pdf-fallback-text">
+      JavaScript is disabled. You can still
+      <a href="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}" target="_blank" rel="noopener">
+        open or download the CV PDF
+      </a>.
+    </p>
+  </noscript>
+</section>
+
+<style>
+  :root {
+    --cv-pdf-topbar-height: 72px;
+  }
+
+  .pdf-viewer-body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .pdf-viewer-shell {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .cv-pdf-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--cv-pdf-topbar-height);
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    background: var(--bg-paper);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cv-back-link {
+    width: auto;
+    display: inline-flex;
+    margin: 0;
+    padding: 0.5rem 1rem;
+  }
+
+  .cv-pdf-wrapper {
+    width: 100%;
+    padding-top: var(--cv-pdf-topbar-height);
+  }
+
+  .cv-pdf-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: calc(100dvh - var(--cv-pdf-topbar-height));
+    border: 0;
+    background: #fff;
+  }
+
+  .cv-pdf-fallback-text {
+    margin: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --cv-pdf-topbar-height: 64px;
+    }
+
+    .cv-pdf-topbar {
+      padding: 0.5rem;
+    }
+
+    .cv-back-link {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .cv-pdf-wrapper iframe {
+      height: calc(100dvh - var(--cv-pdf-topbar-height));
+    }
+  }
+</style>
