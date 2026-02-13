@@ -119,17 +119,25 @@
     */
     const profilePic = document.querySelector(".js-spin-trigger");
     if (profilePic) {
-      profilePic.addEventListener("click", function () {
+      const triggerSpin = () => {
         // Force the CSS duration to match the Config (milliseconds -> seconds)
         profilePic.style.animationDuration = (CONFIG.spinDuration / 1000) + 's';
-        
+
         profilePic.classList.add("spin-effect");
-        
+
         // Remove class after the exact duration from config
         setTimeout(() => {
           profilePic.classList.remove("spin-effect");
           profilePic.style.animationDuration = ''; // Clean up
         }, CONFIG.spinDuration);
+      };
+
+      profilePic.addEventListener("click", triggerSpin);
+      profilePic.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          triggerSpin();
+        }
       });
     }
 
