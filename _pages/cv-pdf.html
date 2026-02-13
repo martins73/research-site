@@ -5,9 +5,11 @@ permalink: /cv-pdf/
 description: Printable PDF curriculum vitae for Martin Gonzalez Cabello.
 ---
 
-<section class="cv-pdf-wrapper" aria-label="CV PDF viewer page">
-  <a class="cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
+<header class="cv-pdf-topbar">
+  <a class="sidebar-btn btn-outline cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
+</header>
 
+<section class="cv-pdf-wrapper" aria-label="CV PDF viewer page">
   <iframe
     src="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}#toolbar=1&navpanes=0"
     title="Martin Gonzalez Cabello - CV"
@@ -40,27 +42,31 @@ description: Printable PDF curriculum vitae for Martin Gonzalez Cabello.
     max-width: 100vw;
     min-height: 100vh;
     margin: 0;
-    padding: 0.75rem 0.75rem 0;
+    padding: 0;
     box-sizing: border-box;
+  }
+
+  .cv-pdf-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0.75rem;
+    background: var(--bg-paper);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cv-back-link {
+    width: auto;
+    display: inline-flex;
+    margin: 0;
+    padding: 0.5rem 1rem;
   }
 
   .cv-pdf-wrapper {
     width: 100%;
-  }
-
-  .cv-back-link {
-    display: inline-block;
-    margin: 0 0 0.75rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
-    border: 1px solid #d0d7e2;
-    text-decoration: none;
-    color: #1f2b3d;
-    background: #ffffff;
-  }
-
-  .cv-back-link:hover {
-    border-color: #2f7ab8;
+    padding-top: 4.25rem;
   }
 
   .cv-pdf-wrapper iframe {
@@ -68,11 +74,10 @@ description: Printable PDF curriculum vitae for Martin Gonzalez Cabello.
     width: 100%;
     min-height: calc(100vh - 4.25rem);
     border: 0;
-    border-radius: 0.5rem;
     background: #fff;
   }
 
   .cv-pdf-fallback-text {
-    margin: 1rem 0;
+    margin: 1rem;
   }
 </style>
