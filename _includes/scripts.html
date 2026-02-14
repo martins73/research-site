@@ -637,6 +637,23 @@
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('sr-enabled');
 
+      // Assign staggered delays to sibling .scroll-reveal elements
+      // so grouped items (cards, list items, now-items) cascade in.
+      var SR_STAGGER = 0.1; // seconds between each sibling
+      var processed = new Set();
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        var parent = el.parentElement;
+        if (processed.has(parent)) return;
+        processed.add(parent);
+        var siblings = parent.querySelectorAll(':scope > .scroll-reveal');
+        if (siblings.length > 1) {
+          siblings.forEach(function(sib, i) {
+            sib.style.setProperty('--sr-delay', (i * SR_STAGGER) + 's');
+            sib.setAttribute('data-sr-delay', '');
+          });
+        }
+      });
+
       var srObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {

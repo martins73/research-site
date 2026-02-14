@@ -284,6 +284,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .noscript-message {
     text-align: center;
     padding: var(--space-4);
@@ -1680,14 +1684,19 @@ a .cv-logo:hover {
 
 .sr-enabled .scroll-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity {{ site.scroll_reveal_duration | default: "0.8s" }} ease,
-                transform {{ site.scroll_reveal_duration | default: "0.8s" }} ease;
+    transform: translateY(24px);
+    transition: opacity {{ site.scroll_reveal_duration | default: "0.8s" }} cubic-bezier(0.16, 1, 0.3, 1),
+                transform {{ site.scroll_reveal_duration | default: "0.8s" }} cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sr-enabled .scroll-reveal.sr-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Staggered reveal for grouped items — each child delays slightly more */
+.sr-enabled .scroll-reveal[data-sr-delay] {
+    transition-delay: var(--sr-delay, 0s);
 }
 
 
