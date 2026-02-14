@@ -1688,7 +1688,9 @@ a .cv-logo:hover {
 
 /* -- Slide mode: JS drives transform continuously, CSS just opts in to GPU -- */
 .sr-mode-slide .scroll-reveal {
-    will-change: transform;
+    will-change: transform, opacity;
+    transition: transform {{ site.scroll_reveal_smoothing | default: "0.18s" }} ease-out,
+                opacity {{ site.scroll_reveal_smoothing | default: "0.18s" }} ease-out;
 }
 
 /* -- Fade mode: elements start hidden, transition to visible -- */

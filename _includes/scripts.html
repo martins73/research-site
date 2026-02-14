@@ -649,7 +649,8 @@
 
       var SR_MAX_OFFSET = {{ site.scroll_reveal_offset | default: 60 }};
       var SR_START_OPACITY = {{ site.scroll_reveal_opacity | default: 0.4 }};
-      var SR_SETTLE = {{ site.scroll_reveal_settle | default: 0.25 }};
+      var SR_SETTLE = {{ site.scroll_reveal_settle | default: 0.5 }};
+      var SR_EASING = {{ site.scroll_reveal_easing | default: 3 }};
       var srElements = document.querySelectorAll('.scroll-reveal');
       var srTicking = false;
 
@@ -659,7 +660,7 @@
           var rect = el.getBoundingClientRect();
           var progress = 1 - (rect.top - vh * SR_SETTLE) / (vh * (1 - SR_SETTLE));
           progress = Math.max(0, Math.min(1, progress));
-          var eased = 1 - Math.pow(1 - progress, 3);
+          var eased = 1 - Math.pow(1 - progress, SR_EASING);
           var offset = (1 - eased) * SR_MAX_OFFSET;
           var opacity = SR_START_OPACITY + eased * (1 - SR_START_OPACITY);
           el.style.transform = 'translateY(' + offset + 'px)';
