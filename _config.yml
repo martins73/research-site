@@ -70,11 +70,15 @@ service_worker: /sw.js
 scroll_reveal: true       # Enable scroll animations (set to false to disable)
 scroll_reveal_mode: "slide"     # "fade" = elements start invisible and fade in + slide up on scroll (one-shot)
                                 # "slide" = elements stay visible but continuously slide up into position as you scroll
-scroll_reveal_threshold: 0.15   # (fade mode only) Fraction of element that must be visible before reveal (0–1)
-scroll_reveal_margin: "-15%"    # (fade mode only) Shrinks the trigger zone from viewport bottom so
+scroll_reveal_offset: 60        # (slide mode) Max translateY in px — how far below elements start
+scroll_reveal_opacity: 0.4      # (slide mode) Starting opacity (0–1). Fades up to 1.0 as elements arrive.
+scroll_reveal_settle: 0.25      # (slide mode) Viewport fraction (0–1) where elements reach final position.
+                                #   Lower = elements settle earlier (near top). Higher = settle later (near center).
+scroll_reveal_threshold: 0.15   # (fade mode) Fraction of element that must be visible before reveal (0–1)
+scroll_reveal_margin: "-15%"    # (fade mode) Shrinks the trigger zone from viewport bottom so
                                 # elements start appearing when they're well in view,
                                 # not at the very edge. Negative = inward.
-scroll_reveal_duration: "0.8s"  # (fade mode only) How long the fade-in + slide-up transition takes.
+scroll_reveal_duration: "0.8s"  # (fade mode) How long the fade-in + slide-up transition takes.
 typewriter_abstract: false       # Letter-by-letter typing effect on abstract expand (set to false to disable)
 typewriter_speed: 12            # Milliseconds between each character when typing abstracts.
                                 # Lower = faster. 12ms ≈ ~80 chars/sec, feels like fast typing.
