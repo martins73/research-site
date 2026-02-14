@@ -1,13 +1,15 @@
 <aside class="sidebar">
   <img
-    src="{{ site.avatar | relative_url }}?v={{ site.time | date: '%s' }}"
+    src="{{ site.avatar | relative_url }}?v={{ site.avatar_version | default: '1' }}"
     alt="{{ site.author.name }}"
     class="profile-img js-spin-trigger"
     role="button"
     tabindex="0"
     aria-label="Spin the profile picture"
     width="180"
-    height="180">
+    height="180"
+    fetchpriority="high"
+    decoding="async">
 
   <div class="name">{{ site.author.name }}</div>
   <div class="affiliation">{{ site.author.title_short }}<br>{{ site.author.affiliation_short }}</div>

@@ -32,6 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/logos/favicon-192.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="192x192" href="{{ '/assets/logos/favicon-192.png' | relative_url }}">
 <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+<link rel="preload" as="image" href="{{ site.avatar | relative_url }}?v={{ site.avatar_version | default: '1' }}" fetchpriority="high">
 <link rel="stylesheet" href="{{ site.main_css | default: '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
 {% if site.google_analytics %}
