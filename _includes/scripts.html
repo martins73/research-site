@@ -647,7 +647,7 @@
       /* ---- Slide mode: continuous scroll-linked translation ---- */
       document.documentElement.classList.add('sr-mode-slide');
 
-      var SR_MAX_OFFSET = 30;
+      var SR_MAX_OFFSET = 60;  // px — how far below elements start
       var srElements = document.querySelectorAll('.scroll-reveal');
       var srTicking = false;
 
@@ -655,12 +655,14 @@
         var vh = window.innerHeight;
         srElements.forEach(function(el) {
           var rect = el.getBoundingClientRect();
-          // progress: 0 when element top is at viewport bottom, 1 when at 40% from top
-          var progress = 1 - (rect.top - vh * 0.4) / (vh * 0.6);
+          // progress: 0 when element top is at viewport bottom, 1 when at 25% from top
+          var progress = 1 - (rect.top - vh * 0.25) / (vh * 0.75);
           progress = Math.max(0, Math.min(1, progress));
           var eased = 1 - Math.pow(1 - progress, 3);
           var offset = (1 - eased) * SR_MAX_OFFSET;
+          var opacity = 0.4 + eased * 0.6; // 0.4 → 1.0
           el.style.transform = 'translateY(' + offset + 'px)';
+          el.style.opacity = opacity;
         });
         srTicking = false;
       }
