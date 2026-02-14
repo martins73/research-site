@@ -626,59 +626,46 @@
     })();
 
     /* ============================================================================
-       8. SCROLL REVEAL — BLOCK FADE-IN ON SCROLL
+       8. SCROLL REVEAL — SCROLL-LINKED SLIDE-UP
        ============================================================================
 
-       Fades in .scroll-reveal elements as they enter the viewport.
-       One-shot: once visible, elements stay visible permanently (unobserved).
+       Elements with .scroll-reveal stay visible at all times but start offset
+       downward. As the user scrolls, each element's translateY is continuously
+       mapped to its viewport position so content slides up into place.
        Controlled by scroll_reveal in _config.yml.
     */
     {% if site.scroll_reveal %}
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('sr-enabled');
 
-      // Assign staggered delays to sibling .scroll-reveal elements
-      // so grouped items (cards, list items, now-items) cascade in.
-      var SR_STAGGER = 0.1; // seconds between each sibling
-      var processed = new Set();
-      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
-        var parent = el.parentElement;
-        if (processed.has(parent)) return;
-        processed.add(parent);
-        var siblings = parent.querySelectorAll(':scope > .scroll-reveal');
-        if (siblings.length > 1) {
-          siblings.forEach(function(sib, i) {
-            sib.style.setProperty('--sr-delay', (i * SR_STAGGER) + 's');
-            sib.setAttribute('data-sr-delay', '');
-          });
-        }
-      });
+      var SR_MAX_OFFSET = 30; // max translateY in px when fully below viewport
+      var srElements = document.querySelectorAll('.scroll-reveal');
+      var srTicking = false;
 
-      var srObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('sr-visible');
-            srObserver.unobserve(entry.target);
-          }
+      function srUpdate() {
+        var vh = window.innerHeight;
+        srElements.forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          // progress: 0 when element top is at viewport bottom, 1 when at 40% from top
+          var progress = 1 - (rect.top - vh * 0.4) / (vh * 0.6);
+          progress = Math.max(0, Math.min(1, progress));
+          // Ease-out for a decelerating feel
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var offset = (1 - eased) * SR_MAX_OFFSET;
+          el.style.transform = 'translateY(' + offset + 'px)';
         });
-      }, {
-        threshold: {{ site.scroll_reveal_threshold | default: 0.15 }},
-        rootMargin: '0px 0px {{ site.scroll_reveal_margin | default: "-15%" }} 0px'
-      });
+        srTicking = false;
+      }
 
-      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
-        srObserver.observe(el);
-      });
-
-      // Guarantee bottom-of-page elements always reveal
       window.addEventListener('scroll', function() {
-        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2)) {
-          document.querySelectorAll('.scroll-reveal:not(.sr-visible)').forEach(function(el) {
-            el.classList.add('sr-visible');
-            srObserver.unobserve(el);
-          });
+        if (!srTicking) {
+          requestAnimationFrame(srUpdate);
+          srTicking = true;
         }
       }, { passive: true });
+
+      // Run once on load so initial viewport elements are positioned correctly
+      srUpdate();
     }
     {% endif %}
 
