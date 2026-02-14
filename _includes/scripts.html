@@ -73,14 +73,23 @@
     if (isMobile) {
       const sidebar = document.querySelector(".sidebar");
 
+      // Track sidebar visibility without forcing layout on click.
+      // IntersectionObserver updates this flag asynchronously so the
+      // click handler can read a pre-cached value instead of calling
+      // getBoundingClientRect() which forces a synchronous layout.
+      let sidebarIsScrolledDown = false;
+      if (sidebar) {
+        const sidebarObserver = new IntersectionObserver(
+          (entries) => { sidebarIsScrolledDown = !entries[0].isIntersecting; },
+          { threshold: 0.5 }
+        );
+        sidebarObserver.observe(sidebar);
+      }
+
       document.querySelectorAll(".sidebar .sidebar-nav").forEach(link => {
         link.addEventListener("click", () => {
-          // Store whether sidebar was visible at time of click
-          const sidebarTop = sidebar.getBoundingClientRect().top;
-          const wasScrolledDown = sidebarTop < 0 || sidebarTop > 100;
-
           sessionStorage.setItem("autoScrollToContent", "1");
-          sessionStorage.setItem("wasScrolledDown", wasScrolledDown ? "1" : "0");
+          sessionStorage.setItem("wasScrolledDown", sidebarIsScrolledDown ? "1" : "0");
         });
       });
 
@@ -410,6 +419,10 @@
     /* ============================================================================
        6. CARBON BADGE (WEBSITE CARBON API)
        ============================================================================ */
+    // Deferred with requestIdleCallback (or setTimeout fallback) so the badge
+    // fetch and innerHTML update do not run during early user interactions,
+    // which was causing INP regressions (~400ms) on the #wcb element.
+    (window.requestIdleCallback || function(cb) { setTimeout(cb, 200); })(function() {
     (function() {
       const badgeContainer = document.getElementById('wcb');
       if (!badgeContainer) return;
@@ -470,6 +483,7 @@
           renderBadge(FALLBACK);
         });
     })();
+    }); // end requestIdleCallback
 
     /* ============================================================================
        7. RESEARCH PAPERS: TOGGLE ABSTRACT

@@ -62,6 +62,7 @@ favicon: /assets/logos/favicon.svg
 main_css: /assets/css/style.css
 mobile_breakpoint: 768
 avatar: /assets/profile_picture.webp
+avatar_version: 1   # Bump this number only when you update the profile picture
 spin_duration: 3200
 service_worker: /sw.js
 
