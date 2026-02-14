@@ -1675,16 +1675,38 @@ a .cv-logo:hover {
 
 
 /* ============================================================================
-   14. SCROLL REVEAL — SCROLL-LINKED SLIDE-UP
+   14. SCROLL REVEAL
    ============================================================================
-   Elements with .scroll-reveal stay visible but start offset downward.
-   As the user scrolls, JS continuously maps each element's viewport position
-   to a translateY value so content slides up into its natural position.
-   Progressive enhancement: without JS, everything is in its final position.
+   Two modes (set scroll_reveal_mode in _config.yml):
+
+   "fade"  — Elements start invisible, fade in + slide up on scroll (one-shot).
+   "slide" — Elements stay visible, continuously slide up into position as you
+             scroll (scroll-linked).
+
+   Progressive enhancement: without JS everything is in its final position.
 */
 
-.sr-enabled .scroll-reveal {
+/* -- Slide mode: JS drives transform continuously, CSS just opts in to GPU -- */
+.sr-mode-slide .scroll-reveal {
     will-change: transform;
+}
+
+/* -- Fade mode: elements start hidden, transition to visible -- */
+.sr-mode-fade .scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity {{ site.scroll_reveal_duration | default: "0.8s" }} cubic-bezier(0.16, 1, 0.3, 1),
+                transform {{ site.scroll_reveal_duration | default: "0.8s" }} cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sr-mode-fade .scroll-reveal.sr-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered reveal for grouped items in fade mode */
+.sr-mode-fade .scroll-reveal[data-sr-delay] {
+    transition-delay: var(--sr-delay, 0s);
 }
 
 

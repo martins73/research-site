@@ -626,19 +626,28 @@
     })();
 
     /* ============================================================================
-       8. SCROLL REVEAL — SCROLL-LINKED SLIDE-UP
+       8. SCROLL REVEAL
        ============================================================================
 
-       Elements with .scroll-reveal stay visible at all times but start offset
-       downward. As the user scrolls, each element's translateY is continuously
-       mapped to its viewport position so content slides up into place.
-       Controlled by scroll_reveal in _config.yml.
+       Two modes controlled by scroll_reveal + scroll_reveal_mode in _config.yml:
+
+       "fade"  — Elements start invisible (opacity 0, translateY 24px) and fade in
+                 + slide up when they enter the viewport. One-shot via IntersectionObserver.
+                 Staggered delays for sibling groups.
+
+       "slide" — Elements stay visible but start offset downward (30px).
+                 translateY is continuously mapped to viewport position via
+                 requestAnimationFrame, giving a smooth "sliding into place" feel.
     */
     {% if site.scroll_reveal %}
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('sr-enabled');
 
-      var SR_MAX_OFFSET = 30; // max translateY in px when fully below viewport
+      {% if site.scroll_reveal_mode == "slide" %}
+      /* ---- Slide mode: continuous scroll-linked translation ---- */
+      document.documentElement.classList.add('sr-mode-slide');
+
+      var SR_MAX_OFFSET = 30;
       var srElements = document.querySelectorAll('.scroll-reveal');
       var srTicking = false;
 
@@ -649,7 +658,6 @@
           // progress: 0 when element top is at viewport bottom, 1 when at 40% from top
           var progress = 1 - (rect.top - vh * 0.4) / (vh * 0.6);
           progress = Math.max(0, Math.min(1, progress));
-          // Ease-out for a decelerating feel
           var eased = 1 - Math.pow(1 - progress, 3);
           var offset = (1 - eased) * SR_MAX_OFFSET;
           el.style.transform = 'translateY(' + offset + 'px)';
@@ -664,8 +672,54 @@
         }
       }, { passive: true });
 
-      // Run once on load so initial viewport elements are positioned correctly
       srUpdate();
+
+      {% else %}
+      /* ---- Fade mode: one-shot IntersectionObserver reveal ---- */
+      document.documentElement.classList.add('sr-mode-fade');
+
+      // Stagger sibling .scroll-reveal elements so grouped items cascade in
+      var SR_STAGGER = 0.1;
+      var processed = new Set();
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        var parent = el.parentElement;
+        if (processed.has(parent)) return;
+        processed.add(parent);
+        var siblings = parent.querySelectorAll(':scope > .scroll-reveal');
+        if (siblings.length > 1) {
+          siblings.forEach(function(sib, i) {
+            sib.style.setProperty('--sr-delay', (i * SR_STAGGER) + 's');
+            sib.setAttribute('data-sr-delay', '');
+          });
+        }
+      });
+
+      var srObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sr-visible');
+            srObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: {{ site.scroll_reveal_threshold | default: 0.15 }},
+        rootMargin: '0px 0px {{ site.scroll_reveal_margin | default: "-15%" }} 0px'
+      });
+
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        srObserver.observe(el);
+      });
+
+      // Guarantee bottom-of-page elements always reveal
+      window.addEventListener('scroll', function() {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2)) {
+          document.querySelectorAll('.scroll-reveal:not(.sr-visible)').forEach(function(el) {
+            el.classList.add('sr-visible');
+            srObserver.unobserve(el);
+          });
+        }
+      }, { passive: true });
+      {% endif %}
     }
     {% endif %}
 
