@@ -70,14 +70,14 @@ service_worker: /sw.js
 scroll_reveal: true       # Enable scroll animations (set to false to disable)
 scroll_reveal_mode: "slide"     # "fade" = elements start invisible and fade in + slide up on scroll (one-shot)
                                 # "slide" = elements stay visible but continuously slide up into position as you scroll
-scroll_reveal_offset: 150        # (slide mode) Max translateY in px — how far below elements start
-scroll_reveal_opacity: 0.4      # (slide mode) Starting opacity (0–1). Fades up to 1.0 as elements arrive.
-scroll_reveal_settle: 0.5       # (slide mode) Viewport fraction (0–1) where elements reach final position.
-                                #   Lower = elements settle earlier (near top). Higher = settle later (near center).
-scroll_reveal_smoothing: "0.18s"  # (slide mode) CSS transition duration that smooths per-frame updates.
-                                  #   Higher = more lag but silkier. "0s" = instant (no smoothing).
-scroll_reveal_easing: 2           # (slide mode) Ease-out exponent. Controls how the animation decelerates.
-                                  #   1 = linear, 2 = gentle ease, 3 = cubic (default), 5 = very snappy start
+scroll_reveal_offset: 84         # (slide mode) Max translateY in px — lower values feel tighter and less floaty.
+scroll_reveal_opacity: 0.65      # (slide mode) Starting opacity (0–1). Keeps text readable while still animating.
+scroll_reveal_settle: 0.58       # (slide mode) Viewport fraction (0–1) where elements reach final position.
+                                 #   Lower = elements settle earlier (near top). Higher = settle later (near center).
+scroll_reveal_smoothing: "0.12s" # (slide mode) CSS transition duration that smooths per-frame updates.
+                                 #   Higher = more lag but silkier. "0s" = instant (no smoothing).
+scroll_reveal_easing: 2.4        # (slide mode) Ease-out exponent. Controls how the animation decelerates.
+                                 #   1 = linear, 2 = gentle ease, 3 = stronger ease-out
 scroll_reveal_threshold: 0.15   # (fade mode) Fraction of element that must be visible before reveal (0–1)
 scroll_reveal_margin: "-15%"    # (fade mode) Shrinks the trigger zone from viewport bottom so
                                 # elements start appearing when they're well in view,

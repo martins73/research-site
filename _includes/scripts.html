@@ -641,6 +641,16 @@
     */
     {% if site.scroll_reveal %}
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Ensure section titles participate in reveal dynamics without
+      // requiring manual .scroll-reveal classes on every heading.
+      document.querySelectorAll(
+        '#main-content > h1, #main-content > h2, #main-content > h3, ' +
+        '#main-content section > h1, #main-content section > h2, #main-content section > h3, ' +
+        '#main-content .cv-section-header'
+      ).forEach(function(el) {
+        el.classList.add('scroll-reveal');
+      });
+
       document.documentElement.classList.add('sr-enabled');
 
       {% if site.scroll_reveal_mode == "slide" %}
