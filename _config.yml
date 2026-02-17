@@ -70,7 +70,7 @@ service_worker: /sw.js
 scroll_reveal: true       # Enable scroll animations (set to false to disable)
 scroll_reveal_mode: "slide"     # "fade" = elements start invisible and fade in + slide up on scroll (one-shot)
                                 # "slide" = elements stay visible but continuously slide up into position as you scroll
-scroll_reveal_offset: 90         # (slide mode) Max translateY in px — reduced to avoid section overlap artifacts.
+scroll_reveal_offset: 110         # (slide mode) Max translateY in px — reduced to avoid section overlap artifacts.
 scroll_reveal_opacity: 0.65      # (slide mode) Starting opacity (0–1). Higher improves readability during movement.
 scroll_reveal_settle: 0.58       # (slide mode) Viewport fraction (0–1) where elements reach final position.
                                  #   Higher values make elements settle sooner after entering viewport.
