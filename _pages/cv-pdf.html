@@ -7,11 +7,6 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
 
 <header class="cv-pdf-topbar">
   <a class="sidebar-btn btn-outline cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
-  <a class="sidebar-btn btn-primary cv-download-link cv-download-desktop"
-     href="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}"
-     download="martin-gonzalez-cabello-cv.pdf">
-    Download PDF
-  </a>
 </header>
 
 <!-- Desktop: native browser PDF viewer in iframe -->
@@ -78,8 +73,7 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     height: var(--cv-pdf-topbar-height);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
+    justify-content: flex-start;
     padding: 0.75rem;
     box-sizing: border-box;
     background: var(--bg-paper);
@@ -101,9 +95,6 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     white-space: nowrap;
   }
 
-  .cv-download-desktop {
-    display: inline-flex;
-  }
 
   .cv-pdf-wrapper {
     width: 100%;
@@ -153,10 +144,6 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     .cv-back-link {
       padding: 0.45rem 0.75rem;
       font-size: 0.95rem;
-    }
-
-    .cv-download-desktop {
-      display: none;
     }
 
     /* Hide iframe — canvas renderer takes over */
