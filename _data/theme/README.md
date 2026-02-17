@@ -214,4 +214,3 @@ theme_id:
    - **Dark mode backgrounds**: dark tint of the accent (~85% black)
 4. Add the new theme ID to the list in `_config.yml` comments
 5. Update this README
-6. Run `scripts/validate_themes.rb` and fix any reported mismatches before committing
