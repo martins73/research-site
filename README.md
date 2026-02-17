@@ -18,7 +18,7 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Dark Mode:** User-togglable theme with localStorage persistence and flash prevention
 * **Accessibility:** Semantic HTML, ARIA labels, keyboard navigation, and focus management
 * **Custom Typography:** Merriweather (serif) for headings, Atkinson Hyperlegible (sans-serif) for body text — centralized via `--font-heading` and `--font-body` CSS custom properties
-* **University Color Themes:** 29 preset color schemes derived from official university brand guidelines ([see full gallery](_data/theme/README.md))
+* **University Color Themes:** 30 preset color schemes derived from official university brand guidelines ([see full gallery](_data/theme/README.md))
 
 ### Sustainable & Performance-Focused
 * **Optimized Assets:** All images converted to WebP; logos resized to display dimensions
@@ -29,7 +29,7 @@ I use this platform to share my research on the **Human Supply Chain of AI**, **
 * **Carbon Footprint Badge:** Tracks and displays per-page CO2 emissions via Website Carbon API
 * **Portable Asset Paths:** All internal URLs use Jekyll's `relative_url` filter for baseurl-safe deployment
 * **Zero Dependencies:** No JavaScript frameworks or heavy libraries
-* **Minimal JavaScript:** ~664 lines of vanilla JS for interactivity
+* **Minimal JavaScript:** ~792 lines of vanilla JS for interactivity
 
 ### Asset Optimization
 Visual assets are processed to balance high-resolution display with fast load times:
@@ -63,6 +63,7 @@ research-site/
 ├── _pages/                             # Content pages (Jekyll collection)
 │   ├── cv.html                         # Curriculum Vitae (fully data-driven)
 │   ├── cv-print.html                   # Print-optimized CV (used for PDF generation)
+│   ├── cv-pdf.html                     # PDF viewer page (desktop iframe + mobile canvas)
 │   ├── teaching.md                     # Teaching philosophy + experience
 │   ├── library.html                    # Curated book library
 │   └── human-supply-chain.md           # Research manifesto
@@ -78,7 +79,7 @@ research-site/
 │   ├── library.yml                     # Bookshelf data (by shelf/category)
 │   │
 │   ├── theme/                          # Color Theme System
-│   │   ├── themes.yml                  # 29 university color presets (light + dark mode)
+│   │   ├── themes.yml                  # 30 university color presets (light + dark mode)
 │   │   └── README.md                   # Visual gallery of all themes with brand references
 │   │
 │   ├── cv/                             # Modularized CV Data
@@ -104,25 +105,27 @@ research-site/
 │   ├── head.html                       # Meta tags, SEO, analytics, theme scripts
 │   ├── sidebar.html                    # Navigation, profile pic, social links
 │   ├── footer.html                     # Copyright, credits, carbon badge, saint-of-the-day
-│   ├── scripts.html                    # ~664 lines vanilla JS (mobile nav, dark mode, etc.)
+│   ├── scripts.html                    # ~792 lines vanilla JS (mobile nav, dark mode, etc.)
 │   ├── family-modal.html               # Accessible image modal dialog
 │   ├── cv-coauthors.html               # Renders paper coauthors for CV
 │   └── cv-institution-header.html      # CV institution header with logo and location
 │
 ├── _layouts/                           # Page templates
 │   ├── default.html                    # Main layout (sidebar + content container)
-│   └── cv-print.html                   # Minimal layout for PDF generation
+│   ├── cv-print.html                   # Minimal layout for PDF generation
+│   └── pdf-viewer.html                 # Standalone PDF viewer layout
 │
 ├── _drafts/                            # Draft content (not published)
 │   └── research-notes/                 # Research note-taking system
 │
 ├── assets/                             # Static files
 │   ├── css/
-│   │   └── style.scss                  # Design system (~1873 lines SCSS, minified on build)
+│   │   └── style.scss                  # Design system (~1916 lines SCSS, minified on build)
 │   ├── fonts/                          # Self-hosted web fonts (woff2)
 │   ├── logos/                          # Institution and company logos (PNG/SVG)
 │   ├── family/                         # Family photos (WebP)
 │   ├── profile_picture.webp            # Profile image (WebP)
+│   ├── social_preview.jpg              # Open Graph social media preview (1200x630)
 │   └── martin-gonzalez-cabello-cv.pdf  # Auto-generated from YAML data
 │
 ├── .github/                            # GitHub Actions and automation
@@ -206,7 +209,7 @@ Edit `_config.yml` and change the `color_theme` value:
 ```yaml
 color_theme: iese    # or ucla, harvard, stanford, etc.
 ```
-See [`_data/theme/README.md`](_data/theme/README.md) for the full visual gallery of all 29 available themes with color swatches and brand references.
+See [`_data/theme/README.md`](_data/theme/README.md) for the full visual gallery of all 30 available themes with color swatches and brand references.
 
 ## Design System
 
@@ -234,7 +237,7 @@ The site uses a comprehensive design system defined in `assets/css/style.scss`:
 
 ## JavaScript Features
 
-The site uses vanilla JavaScript (~664 lines in `_includes/scripts.html`) for:
+The site uses vanilla JavaScript (~792 lines in `_includes/scripts.html`) for:
 
 1. **Mobile Navigation** - Auto-scroll to main content on mobile
 2. **Profile Picture Spin** - 3.2s animation on click
