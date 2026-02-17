@@ -61,7 +61,7 @@ harvard:
   name: "Harvard University"
   light:
     accent: "#A41034"
-    accent_rgb: "165, 28, 48"
+    accent_rgb: "164, 16, 52"
     accent_hover: "#7d1524"
     accent_orange: "#D97706"
     bg_accent: "#fdf2f3"
@@ -85,7 +85,7 @@ mit:
   name: "MIT"
   light:
     accent: "#750014"
-    accent_rgb: "163, 31, 52"
+    accent_rgb: "117, 0, 20"
     accent_hover: "#7d1828"
     accent_orange: "#D97706"
     bg_accent: "#fdf2f3"
@@ -397,7 +397,7 @@ catholic:
   name: "Catholic University of America"
   light:
     accent: "#B21F2C"
-    accent_rgb: "178, 32, 44"
+    accent_rgb: "178, 31, 44"
     accent_hover: "#730000"
     accent_orange: "#D97706"
     bg_accent: "#fdf2f2"
@@ -445,7 +445,7 @@ ave_maria:
   name: "Ave Maria University"
   light:
     accent: "#002B5C"
-    accent_rgb: "10, 34, 64"
+    accent_rgb: "0, 43, 92"
     accent_hover: "#061830"
     accent_orange: "#D97706"
     bg_accent: "#f0f2f5"
@@ -591,7 +591,7 @@ ut_austin:
     accent: "#BF5700"
     accent_rgb: "191, 87, 0"
     accent_hover: "#8f4100"
-    accent_orange: "#BF5700"
+    accent_orange: "#D97706"
     bg_accent: "#fef6f0"
     bg_accent_hover: "#fdece0"
     info_text: "#BF5700"
@@ -709,4 +709,3 @@ boston_university:
 
 # --- Dartmouth / Tuck (alias) ---
 # See 'dartmouth' above
-
