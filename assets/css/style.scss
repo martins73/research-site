@@ -101,7 +101,6 @@
     --border: #e2e8f0;
     --border-dashed: #e2e8f0;
     --border-medium: #cbd5e1;
-    --border-dark: #94a3b8;
 
     /* Colors - Status/Info (from _data/theme/themes.yml) */
     --info-text: {{ site.data.theme.themes[site.color_theme].light.info_text }};
@@ -122,7 +121,6 @@
     --space-24: 6rem;     /* 96px */
     
     /* Typography Scale */
-    --text-xs: 0.65rem;   /* 10.4px */
     --text-sm: 0.75rem;   /* 12px */
     --text-sm-plus: 0.8rem; /* 12.8px */
     --text-base: 0.85rem; /* 13.6px */
@@ -179,7 +177,6 @@
     --border: #334155;
     --border-dashed: #334155;
     --border-medium: #475569;
-    --border-dark: #64748b;
 
     /* Colors - Status/Info (from _data/theme/themes.yml) */
     --info-text: {{ site.data.theme.themes[site.color_theme].dark.info_text }};
