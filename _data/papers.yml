@@ -17,35 +17,18 @@ papers:
     publication: ""
     highlights: ""
     abstract: >
-      Crowdwork platforms are central to the data supply chains that power AI systems, 
-      particularly through large-scale data labeling, and they also sustain countless 
-      academic, marketing, and political surveys. Despite this importance, the dynamics 
-      of worker engagement remain poorly understood. Platforms face strong demand for 
-      workers who can deliver fast and high-quality results, making retention critical—even 
-      if the potential labor pool seems large, platforms actively compete to attract and 
-      keep the most reliable workers.
-
-
-      We study fairness and worker engagement on a large online crowdwork platform using 
-      a comprehensive dataset that records approximately 64 million tasks completed between 
-      January 2024 and May 2025. Focusing on new workers, we analyze how early experiences 
-      shape subsequent activity. We examine two dimensions of procedural fairness: task 
-      returns (process failures) and duration underestimation (information asymmetry). We 
-      link submission records, study metadata, and dashboard data to reconstruct what each 
-      worker saw before choosing a task. Using instrumental variable methods to address 
-      endogeneity, we assess how early exposure to these frictions influences ongoing engagement.
-
-
-      Our results show that early procedural frictions substantially reduce worker retention. 
-      A 10 percentage point increase in returned tasks during the first 14 days reduces the 
-      probability of remaining active by 3.8 percentage points. The effect of underestimation 
-      is substantially larger: a 10 percentage point increase in underestimated tasks reduces 
-      retention by 21 percentage points. Conditional on remaining active, we find no significant 
-      effects on task volume, indicating that attrition rather than demotivation among survivors 
-      is the primary channel through which frictions affect labor supply. These findings show 
-      that process reliability and accurate information are critical for worker retention. The 
-      implications are direct: improving early task experiences can reduce churn and help 
-      platforms secure the reliable workforce they need in an increasingly competitive environment.
+      Crowdwork platforms are central to the data supply chains that power AI systems 
+      and sustain large-scale academic and commercial research. Despite this importance,
+      worker engagement dynamics remain poorly understood. We study how early procedural
+      frictions shape retention using approximately 64 million task submissions from 
+      Prolific. Focusing on new workers, we examine two frictions: task returns, reflecting
+      study design failures, and duration underestimation, reflecting inaccurate platform 
+      information. Using instrumental variables to address endogeneity, we find that a 
+      10 percentage point increase in returned tasks reduces retention by 3.8 percentage 
+      points, while the same increase in underestimated tasks reduces retention by 
+      21 percentage points. Frictions operate through attrition rather than demotivation
+      among survivors. Process reliability and accurate information are critical for 
+      sustaining the engaged workforce platforms need to compete.
     link_text: "Request Draft"
     link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting JMP Draft: First Impressions Matter"
 
