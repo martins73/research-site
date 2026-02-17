@@ -7,8 +7,8 @@ baseurl: ""
 # =============================================================================
 # COLOR THEME — Change the value below to switch university color scheme.
 # Available presets are defined in _data/theme/themes.yml
-# Examples: ucla, iese, harvard, mit, stanford, yale, columbia, wharton,
-#           chicago_booth, kellogg, notre_dame, lbs, insead, ie, cunef,
+# Examples: ucla, iese, iese_web, harvard, mit, stanford, yale, columbia,
+#           wharton, chicago_booth, kellogg, notre_dame, lbs, insead, ie, cunef,
 #           bocconi, catholic, thomas_aquinas, ave_maria, franciscan,
 #           dartmouth, nyu, cornell, michigan, ut_austin, uc_berkeley,
 #           duke, usc, boston_university
