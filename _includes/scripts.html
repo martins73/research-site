@@ -664,79 +664,51 @@
       var SR_SECTION_GAP = 4; // px safety gap to avoid crossing section boundaries
       var srElements = Array.from(document.querySelectorAll('.scroll-reveal'));
       var srTicking = false;
-      var srSectionCache = new Map();
+      var srCurrentOffset = new Map();
 
-      // Cache each element's nearest section so we can clamp reveal motion
-      // within the section and prevent visual bleed into the next heading.
       srElements.forEach(function(el) {
-        srSectionCache.set(el, el.closest('section'));
+        srCurrentOffset.set(el, 0);
       });
 
       function srUpdate() {
         var vh = window.innerHeight;
-        var sectionRectCache = new Map();
         var states = srElements.map(function(el) {
           var rect = el.getBoundingClientRect();
-          var progress = 1 - (rect.top - vh * SR_SETTLE) / (vh * (1 - SR_SETTLE));
+          var prevOffset = srCurrentOffset.get(el) || 0;
+          // Measure against layout position, not the previously transformed box.
+          var naturalTop = rect.top - prevOffset;
+          var naturalBottom = rect.bottom - prevOffset;
+
+          var progress = 1 - (naturalTop - vh * SR_SETTLE) / (vh * (1 - SR_SETTLE));
           progress = Math.max(0, Math.min(1, progress));
           var eased = 1 - Math.pow(1 - progress, SR_EASING);
           var offset = (1 - eased) * SR_MAX_OFFSET;
-          var section = srSectionCache.get(el);
-
-          // Prevent an element from being translated below the visual bounds
-          // of its section.
-          if (section) {
-            var sectionRect = sectionRectCache.get(section);
-            if (!sectionRect) {
-              sectionRect = section.getBoundingClientRect();
-              sectionRectCache.set(section, sectionRect);
-            }
-            var maxOffsetInSection = sectionRect.bottom - rect.bottom - SR_SECTION_GAP;
-            if (maxOffsetInSection < offset) {
-              offset = Math.max(0, maxOffsetInSection);
-            }
-          }
 
           var opacity = SR_START_OPACITY + eased * (1 - SR_START_OPACITY);
-          return { el: el, rect: rect, offset: offset, opacity: opacity };
+          return {
+            el: el,
+            naturalTop: naturalTop,
+            naturalBottom: naturalBottom,
+            offset: offset,
+            opacity: opacity
+          };
         });
 
-        function isHeading(el) {
-          return /^H[1-3]$/.test(el.tagName) || el.classList.contains('cv-section-header');
-        }
-
-        // Preserve strong movement while preventing visual crossing at the
-        // places where overlap is noticeable:
-        // 1) section heading vs first/next content in the same section
-        // 2) last item of a section vs next section heading
+        // Preserve layout order globally: no reveal element can move below
+        // the element that follows it in document flow.
         for (var i = states.length - 2; i >= 0; i--) {
           var current = states[i];
           var next = states[i + 1];
-          var currentSection = srSectionCache.get(current.el);
-          var nextSection = srSectionCache.get(next.el);
-          var clampHeaderAgainstOwnContent = (
-            isHeading(current.el) &&
-            currentSection &&
-            currentSection === nextSection
-          );
-          var clampPrevSectionAgainstNextHeader = (
-            isHeading(next.el) &&
-            currentSection &&
-            nextSection &&
-            currentSection !== nextSection
-          );
-
-          if (clampHeaderAgainstOwnContent || clampPrevSectionAgainstNextHeader) {
-            var maxOffsetBeforeNext = next.rect.top + next.offset - current.rect.bottom - SR_SECTION_GAP;
-            if (current.offset > maxOffsetBeforeNext) {
-              current.offset = Math.max(0, maxOffsetBeforeNext);
-            }
+          var maxOffsetBeforeNext = next.naturalTop + next.offset - current.naturalBottom - SR_SECTION_GAP;
+          if (current.offset > maxOffsetBeforeNext) {
+            current.offset = Math.max(0, maxOffsetBeforeNext);
           }
         }
 
         states.forEach(function(state) {
           state.el.style.transform = 'translateY(' + state.offset + 'px)';
           state.el.style.opacity = state.opacity;
+          srCurrentOffset.set(state.el, state.offset);
         });
         srTicking = false;
       }
