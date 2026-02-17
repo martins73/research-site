@@ -172,14 +172,14 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="presentations" class="section-spacing">
     <h2 class="cv-section-header">Conference Presentations &amp; Talks</h2>
     {% for paper in site.data.cv.presentations %}
-    <div class="cv-entry cv-paper-block scroll-reveal">
-        <div class="cv-paper-title">
+    <div class="cv-entry cv-paper-block">
+        <div class="cv-paper-title scroll-reveal">
             {{ paper.title }}
         </div>
 
         <ul class="cv-talks-list">
             {% for talk in paper.talks %}
-                <li>
+                <li class="scroll-reveal">
                     <div class="cv-award-row">
                         <span> {{ talk.event }} </span>
                         <span class="cv-date"> {{ talk.year }} </span>
@@ -198,16 +198,16 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Teaching</h2>
 
     {% for item in site.data.teaching %}
-        <div class="cv-entry scroll-reveal">
-            <div class="cv-entry-header">
+        <div class="cv-entry">
+            <div class="cv-entry-header scroll-reveal">
                 {% include cv-institution-header.html entity=item %}
             </div>
 
-            <div class="cv-role">{{ item.role }}</div>
+            <div class="cv-role scroll-reveal">{{ item.role }}</div>
             <div class="cv-desc">
                 <ul>
                     {% for course in item.courses %}
-                        <li>
+                        <li class="scroll-reveal">
                             <div class="cv-award-row">
                                 <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
                                 <span class="cv-date">{{ course.year }}</span>
@@ -241,8 +241,8 @@ description: Academic CV and professional background in analytics, operations, a
     <h2 class="cv-section-header">Work Experience</h2>
 
     {% for company in site.data.cv.industry %}
-        <div class="cv-entry scroll-reveal">
-            <div class="cv-entry-header cv-company-header">
+        <div class="cv-entry">
+            <div class="cv-entry-header cv-company-header scroll-reveal">
                 <div class="cv-header-group">
                     {% if company.company_url %}
                         <a href="{{ company.company_url }}" target="_blank" rel="noopener">
@@ -263,7 +263,7 @@ description: Academic CV and professional background in analytics, operations, a
             </div>
 
             {% for position in company.positions %}
-                <div class="cv-subentry">
+                <div class="cv-subentry scroll-reveal">
                     <div class="cv-entry-header">
                         <div class="cv-role">{{ position.role }}</div>
                         <span class="cv-date">{{ position.dates }}</span>
@@ -285,10 +285,10 @@ description: Academic CV and professional background in analytics, operations, a
 
 <section id="skills" class="section-spacing">
     <h2 class="cv-section-header">Other Skills</h2>
-    <div class="cv-entry scroll-reveal">
+    <div class="cv-entry">
         <div class="cv-desc cv-desc-no-indent cv-skills-container">
             {% for group in site.data.cv.skills %}
-            <div class="cv-skill-row">
+            <div class="cv-skill-row scroll-reveal">
                 <strong class="cv-skill-category">{{ group.category }}:</strong>
                 <span class="cv-skill-list">
                     {{ group.items | join: ", " }}
