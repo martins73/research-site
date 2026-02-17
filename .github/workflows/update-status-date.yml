@@ -19,9 +19,17 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update date in last_updated.yml
+        env:
+          TRIGGER_SHA: ${{ github.sha }}
         run: |
-          # Use %b for abbreviated month (e.g., "Feb") to match your file style
-          DATE=$(date '+%b %d, %Y')
+          set -euo pipefail
+
+          # Use the triggering commit's author-local calendar date.
+          # This preserves the date as seen by the user when they made the change.
+          AUTHOR_ISO=$(git show -s --format=%aI "$TRIGGER_SHA")
+          AUTHOR_YMD="${AUTHOR_ISO%%T*}"
+          DATE=$(date -u -d "$AUTHOR_YMD" '+%b %d, %Y')
+
           # Update the separate last_updated.yml file (not status.yml, avoiding infinite loop)
           sed -i "s/^date:.*/date: \"$DATE\"/" _data/last_updated.yml
 

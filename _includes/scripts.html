@@ -641,6 +641,16 @@
     */
     {% if site.scroll_reveal %}
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Ensure section titles participate in reveal dynamics without
+      // requiring manual .scroll-reveal classes on every heading.
+      document.querySelectorAll(
+        '#main-content > h1, #main-content > h2, #main-content > h3, ' +
+        '#main-content section > h1, #main-content section > h2, #main-content section > h3, ' +
+        '#main-content .cv-section-header'
+      ).forEach(function(el) {
+        el.classList.add('scroll-reveal');
+      });
+
       document.documentElement.classList.add('sr-enabled');
 
       {% if site.scroll_reveal_mode == "slide" %}
@@ -651,17 +661,42 @@
       var SR_START_OPACITY = {{ site.scroll_reveal_opacity | default: 0.4 }};
       var SR_SETTLE = {{ site.scroll_reveal_settle | default: 0.5 }};
       var SR_EASING = {{ site.scroll_reveal_easing | default: 3 }};
-      var srElements = document.querySelectorAll('.scroll-reveal');
+      var SR_SECTION_GAP = 4; // px safety gap to avoid crossing section boundaries
+      var srElements = Array.from(document.querySelectorAll('.scroll-reveal'));
       var srTicking = false;
+      var srSectionCache = new Map();
+
+      // Cache each element's nearest section so we can clamp reveal motion
+      // within the section and prevent visual bleed into the next heading.
+      srElements.forEach(function(el) {
+        srSectionCache.set(el, el.closest('section'));
+      });
 
       function srUpdate() {
         var vh = window.innerHeight;
+        var sectionRectCache = new Map();
         srElements.forEach(function(el) {
           var rect = el.getBoundingClientRect();
           var progress = 1 - (rect.top - vh * SR_SETTLE) / (vh * (1 - SR_SETTLE));
           progress = Math.max(0, Math.min(1, progress));
           var eased = 1 - Math.pow(1 - progress, SR_EASING);
           var offset = (1 - eased) * SR_MAX_OFFSET;
+          var section = srSectionCache.get(el);
+
+          // Prevent an element from being translated below the visual bounds
+          // of its section (fixes overlap into next section titles).
+          if (section) {
+            var sectionRect = sectionRectCache.get(section);
+            if (!sectionRect) {
+              sectionRect = section.getBoundingClientRect();
+              sectionRectCache.set(section, sectionRect);
+            }
+            var maxOffsetInSection = sectionRect.bottom - rect.bottom - SR_SECTION_GAP;
+            if (maxOffsetInSection < offset) {
+              offset = Math.max(0, maxOffsetInSection);
+            }
+          }
+
           var opacity = SR_START_OPACITY + eased * (1 - SR_START_OPACITY);
           el.style.transform = 'translateY(' + offset + 'px)';
           el.style.opacity = opacity;
