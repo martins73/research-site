@@ -675,7 +675,7 @@
       function srUpdate() {
         var vh = window.innerHeight;
         var sectionRectCache = new Map();
-        srElements.forEach(function(el) {
+        var states = srElements.map(function(el) {
           var rect = el.getBoundingClientRect();
           var progress = 1 - (rect.top - vh * SR_SETTLE) / (vh * (1 - SR_SETTLE));
           progress = Math.max(0, Math.min(1, progress));
@@ -684,7 +684,7 @@
           var section = srSectionCache.get(el);
 
           // Prevent an element from being translated below the visual bounds
-          // of its section (fixes overlap into next section titles).
+          // of its section.
           if (section) {
             var sectionRect = sectionRectCache.get(section);
             if (!sectionRect) {
@@ -698,8 +698,23 @@
           }
 
           var opacity = SR_START_OPACITY + eased * (1 - SR_START_OPACITY);
-          el.style.transform = 'translateY(' + offset + 'px)';
-          el.style.opacity = opacity;
+          return { el: el, rect: rect, offset: offset, opacity: opacity };
+        });
+
+        // Ensure reveal elements never visually cross in document order,
+        // including between neighboring sections.
+        for (var i = states.length - 2; i >= 0; i--) {
+          var current = states[i];
+          var next = states[i + 1];
+          var maxOffsetBeforeNext = next.rect.top + next.offset - current.rect.bottom - SR_SECTION_GAP;
+          if (current.offset > maxOffsetBeforeNext) {
+            current.offset = Math.max(0, maxOffsetBeforeNext);
+          }
+        }
+
+        states.forEach(function(state) {
+          state.el.style.transform = 'translateY(' + state.offset + 'px)';
+          state.el.style.opacity = state.opacity;
         });
         srTicking = false;
       }
