@@ -701,14 +701,36 @@
           return { el: el, rect: rect, offset: offset, opacity: opacity };
         });
 
-        // Ensure reveal elements never visually cross in document order,
-        // including between neighboring sections.
+        function isHeading(el) {
+          return /^H[1-3]$/.test(el.tagName) || el.classList.contains('cv-section-header');
+        }
+
+        // Preserve strong movement while preventing visual crossing at the
+        // places where overlap is noticeable:
+        // 1) section heading vs first/next content in the same section
+        // 2) last item of a section vs next section heading
         for (var i = states.length - 2; i >= 0; i--) {
           var current = states[i];
           var next = states[i + 1];
-          var maxOffsetBeforeNext = next.rect.top + next.offset - current.rect.bottom - SR_SECTION_GAP;
-          if (current.offset > maxOffsetBeforeNext) {
-            current.offset = Math.max(0, maxOffsetBeforeNext);
+          var currentSection = srSectionCache.get(current.el);
+          var nextSection = srSectionCache.get(next.el);
+          var clampHeaderAgainstOwnContent = (
+            isHeading(current.el) &&
+            currentSection &&
+            currentSection === nextSection
+          );
+          var clampPrevSectionAgainstNextHeader = (
+            isHeading(next.el) &&
+            currentSection &&
+            nextSection &&
+            currentSection !== nextSection
+          );
+
+          if (clampHeaderAgainstOwnContent || clampPrevSectionAgainstNextHeader) {
+            var maxOffsetBeforeNext = next.rect.top + next.offset - current.rect.bottom - SR_SECTION_GAP;
+            if (current.offset > maxOffsetBeforeNext) {
+              current.offset = Math.max(0, maxOffsetBeforeNext);
+            }
           }
         }
 
