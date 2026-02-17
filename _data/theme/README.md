@@ -1,6 +1,6 @@
 # University Color Themes
 
-This file documents all 29 university color presets available in [`themes.yml`](themes.yml). Each theme provides accent colors for both **light** and **dark** modes, derived from each institution's official brand guidelines.
+This file documents all 30 university color presets available in [`themes.yml`](themes.yml). Each theme provides accent colors for both **light** and **dark** modes, derived from each institution's official brand guidelines.
 
 ## How to Use
 
@@ -20,7 +20,7 @@ Each theme defines 9 color properties that control different aspects of your web
 
 ### How the Theme System Works
 
-1. **Color Definition** (`themes.yml`): Contains 29 university theme presets with both light and dark mode variants
+1. **Color Definition** (`themes.yml`): Contains 30 university theme presets with both light and dark mode variants
 2. **Theme Selection** (`_config.yml`): Set your active theme via `color_theme: ucla`
 3. **CSS Variable Injection** (`assets/css/style.scss`): Jekyll's Liquid templating reads the theme colors and injects them as CSS custom properties
 4. **Usage**: All UI elements reference these colors using CSS variables like `var(--accent)`, `var(--bg-accent)`, etc.
@@ -164,6 +164,7 @@ If they switch to dark mode, all these colors automatically transition to the da
 | Preview | Theme ID | Institution | Light Accent | Dark Accent | Brand Reference |
 |:-------:|:---------|:------------|:-------------|:------------|:----------------|
 | ![#A31F34](https://dummyimage.com/24x24/A31F34/A31F34.png) | `iese` | IESE Business School | `#A31F34` | `#e05a6b` | [IESE Visual Identity](https://www.iese.edu) |
+| ![#FF0000](https://dummyimage.com/24x24/FF0000/FF0000.png) | `iese_web` | IESE Business School (Website Red) | `#FF0000` | `#f04040` | [IESE Website Logo (Red)](https://www.iese.edu/wp-content/themes/iese/public/assets/images/logo-red.svg) |
 | ![#001E62](https://dummyimage.com/24x24/001E62/001E62.png) | `lbs` | London Business School | `#001E62` | `#4a70c4` | [LBS Brand](https://www.london.edu) |
 | ![#00684B](https://dummyimage.com/24x24/00684B/00684B.png) | `insead` | INSEAD | `#00684B` | `#33b890` | [INSEAD Brand](https://www.insead.edu) |
 | ![#000066](https://dummyimage.com/24x24/000066/000066.png) | `ie` | IE Business School | `#000066` | `#6666cc` | [IE University Brand](https://www.ie.edu) |

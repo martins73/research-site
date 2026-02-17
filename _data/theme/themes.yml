@@ -56,6 +56,30 @@ iese:
     info_bg: "#3d1a1f"
     info_bg_hover: "#4d2228"
 
+# --- IESE Business School (Website Red) ---
+iese_web:
+  name: "IESE Business School (Website Red)"
+  light:
+    accent: "#FF0000"
+    accent_rgb: "255, 0, 0"
+    accent_hover: "#cc0000"
+    accent_orange: "#D97706"
+    bg_accent: "#fff0f0"
+    bg_accent_hover: "#ffe0e0"
+    info_text: "#FF0000"
+    info_bg: "#ffeded"
+    info_bg_hover: "#ffdcdc"
+  dark:
+    accent: "#f04040"
+    accent_rgb: "240, 64, 64"
+    accent_hover: "#f06060"
+    accent_orange: "#f59e0b"
+    bg_accent: "#3d1a1a"
+    bg_accent_hover: "#4d2222"
+    info_text: "#f04040"
+    info_bg: "#3d1a1a"
+    info_bg_hover: "#4d2222"
+
 # --- Harvard University ---
 harvard:
   name: "Harvard University"
