@@ -7,12 +7,17 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
 
 <header class="cv-pdf-topbar">
   <a class="sidebar-btn btn-outline cv-back-link" href="{{ '/cv/' | relative_url }}">← Go back to CV page</a>
+  <a class="sidebar-btn btn-primary cv-download-link cv-download-desktop"
+     href="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}"
+     download="martin-gonzalez-cabello-cv.pdf">
+    Download PDF
+  </a>
 </header>
 
 <!-- Desktop: native browser PDF viewer in iframe -->
 <section class="cv-pdf-wrapper" aria-label="CV PDF viewer page">
   <iframe
-    src="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}#toolbar=1&navpanes=0&view=FitH"
+    src="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}#toolbar=1&navpanes=0&view=Fit"
     title="Martin Gonzalez Cabello - CV"
     loading="eager"
     height="800">
@@ -27,7 +32,19 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
 
 <!-- Mobile: PDF.js canvas renderer — JS populates this -->
 <div id="cv-pdf-mobile" class="cv-pdf-mobile" aria-label="CV PDF canvas viewer">
-  <p class="cv-pdf-loading">Loading CV…</p>
+  <div class="cv-pdf-mobile-actions">
+    <a class="sidebar-btn btn-primary cv-download-link"
+       href="{{ '/assets/martin-gonzalez-cabello-cv.pdf' | relative_url }}"
+       download="martin-gonzalez-cabello-cv.pdf">
+      Download PDF
+    </a>
+    <button id="cv-pdf-share-mobile" class="sidebar-btn btn-outline cv-share-btn" type="button" hidden>
+      Share PDF
+    </button>
+  </div>
+  <div id="cv-pdf-mobile-pages" class="cv-pdf-mobile-pages">
+    <p class="cv-pdf-loading">Loading CV…</p>
+  </div>
 </div>
 
 <style>
@@ -61,6 +78,8 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     height: var(--cv-pdf-topbar-height);
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
     padding: 0.75rem;
     box-sizing: border-box;
     background: var(--bg-paper);
@@ -72,6 +91,18 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
     display: inline-flex;
     margin: 0;
     padding: 0.5rem 1rem;
+  }
+
+  .cv-download-link {
+    width: auto;
+    display: inline-flex;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+  }
+
+  .cv-download-desktop {
+    display: inline-flex;
   }
 
   .cv-pdf-wrapper {
@@ -124,6 +155,10 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
       font-size: 0.95rem;
     }
 
+    .cv-download-desktop {
+      display: none;
+    }
+
     /* Hide iframe — canvas renderer takes over */
     .cv-pdf-wrapper {
       display: none;
@@ -135,11 +170,32 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
       width: 100%;
       padding-top: var(--cv-pdf-topbar-height);
       box-sizing: border-box;
+    }
+
+    .cv-pdf-mobile-actions {
+      position: sticky;
+      top: var(--cv-pdf-topbar-height);
+      z-index: 900;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: var(--bg-paper);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-pdf-mobile-actions .sidebar-btn {
+      margin: 0;
+      width: 50%;
+      padding: 0.45rem 0.65rem;
+      font-size: 0.9rem;
+    }
+
+    .cv-pdf-mobile-pages {
       background: #525659; /* matches PDF.js viewer background */
     }
 
     /* Each rendered page canvas */
-    .cv-pdf-mobile canvas {
+    .cv-pdf-mobile-pages canvas {
       display: block;
       width: 100%;
       height: auto;
@@ -163,10 +219,53 @@ description: PDF viewer for Martin Gonzalez Cabello's curriculum vitae. For a pr
 
 <script>
 (function () {
+  var pdfUrl = '{{ "/assets/martin-gonzalez-cabello-cv.pdf" | relative_url }}';
+  var pdfAbsoluteUrl = new URL(pdfUrl, window.location.origin).href;
+  var shareButton = document.getElementById('cv-pdf-share-mobile');
+
+  if (shareButton && navigator.share) {
+    shareButton.hidden = false;
+    shareButton.addEventListener('click', async function () {
+      var originalLabel = shareButton.textContent;
+      shareButton.disabled = true;
+      shareButton.textContent = 'Preparing...';
+
+      try {
+        if (navigator.canShare && window.File) {
+          var response = await fetch(pdfAbsoluteUrl);
+          if (response.ok) {
+            var blob = await response.blob();
+            var pdfFile = new File([blob], 'martin-gonzalez-cabello-cv.pdf', { type: 'application/pdf' });
+
+            if (navigator.canShare({ files: [pdfFile] })) {
+              await navigator.share({
+                title: 'Martin Gonzalez Cabello - CV',
+                files: [pdfFile]
+              });
+              return;
+            }
+          }
+        }
+
+        await navigator.share({
+          title: 'Martin Gonzalez Cabello - CV',
+          url: pdfAbsoluteUrl
+        });
+      } catch (err) {
+        if (!err || err.name !== 'AbortError') {
+          window.open(pdfAbsoluteUrl, '_blank', 'noopener');
+        }
+      } finally {
+        shareButton.disabled = false;
+        shareButton.textContent = originalLabel;
+      }
+    });
+  }
+
   if (window.innerWidth > 768) return; // desktop keeps the iframe
 
-  var pdfUrl = '{{ "/assets/martin-gonzalez-cabello-cv.pdf" | relative_url }}';
-  var container = document.getElementById('cv-pdf-mobile');
+  var container = document.getElementById('cv-pdf-mobile-pages');
+  if (!container) return;
 
   import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.9.155/build/pdf.min.mjs')
     .then(function (pdfjsLib) {
