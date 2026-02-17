@@ -15,7 +15,7 @@ baseurl: ""
 # Note: "theme" is reserved by Jekyll for gem-based themes, so we use
 #       "color_theme" instead.
 # =============================================================================
-color_theme: ucla
+color_theme: iese_web
 
 # Author Information
 author:
@@ -70,11 +70,11 @@ service_worker: /sw.js
 scroll_reveal: true       # Enable scroll animations (set to false to disable)
 scroll_reveal_mode: "slide"     # "fade" = elements start invisible and fade in + slide up on scroll (one-shot)
                                 # "slide" = elements stay visible but continuously slide up into position as you scroll
-scroll_reveal_offset: 72         # (slide mode) Max translateY in px — reduced to avoid section overlap artifacts.
+scroll_reveal_offset: 90         # (slide mode) Max translateY in px — reduced to avoid section overlap artifacts.
 scroll_reveal_opacity: 0.78      # (slide mode) Starting opacity (0–1). Higher improves readability during movement.
 scroll_reveal_settle: 0.72       # (slide mode) Viewport fraction (0–1) where elements reach final position.
                                  #   Higher values make elements settle sooner after entering viewport.
-scroll_reveal_smoothing: "0.10s" # (slide mode) CSS transition duration that smooths per-frame updates.
+scroll_reveal_smoothing: "0.12s" # (slide mode) CSS transition duration that smooths per-frame updates.
                                  #   Higher = more lag but silkier. "0s" = instant (no smoothing).
 scroll_reveal_easing: 2.2        # (slide mode) Ease-out exponent. Controls how the animation decelerates.
                                  #   1 = linear, 2 = gentle ease, 3 = stronger ease-out
