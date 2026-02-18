@@ -21,7 +21,7 @@ description: Teaching philosophy and experience in data analytics, operations ma
 <p class="scroll-reveal">In fields like Operations and Data Analytics, technical skills are only half the equation. My teaching will emphasize critical thinking and ethical decision-making. I will challenge students to consider the broader consequences of their work. They must understand not just the ''how'', but the ''why''. I also advocate for the thoughtful integration of technology. We cannot ignore tools like Generative AI. Instead, I will encourage students to use them to understand both their capabilities and their limitations.</p>
 
 <p class="callout-box scroll-reveal">
-<strong>Looking Forward:</strong> I am particularly interested in teaching <strong>Data Analytics</strong> and <strong>Artificial Intelligence</strong> courses. These subjects are the perfect venue to demonstrate the power of advanced analytics while tackling the ethical issues that arise with new technologies.
+<strong>Looking Forward:</strong> I believe we are at an inflection point in how data and AI reshape organizations, markets, and society, and I want to bring that urgency into the classroom. I am particularly interested in teaching <strong>Data Analytics</strong> and <strong>Artificial Intelligence</strong> courses, equipping students with both the technical tools and the ethical frameworks to navigate this transformation responsibly.
 </p>
 
 </section>
