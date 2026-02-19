@@ -697,9 +697,15 @@
         for (var i = states.length - 2; i >= 0; i--) {
           var current = states[i];
           var next = states[i + 1];
-          var maxOffsetBeforeNext = next.naturalTop + next.offset - current.naturalBottom - SR_SECTION_GAP;
-          if (current.offset > maxOffsetBeforeNext) {
-            current.offset = Math.max(0, maxOffsetBeforeNext);
+          // Only apply anti-overlap clamping for elements that are vertically
+          // stacked in normal flow. Grid/flex siblings can share the same row,
+          // and clamping those would suppress the reveal motion for all but the
+          // last item in that row.
+          if (next.naturalTop >= current.naturalBottom - 1) {
+            var maxOffsetBeforeNext = next.naturalTop + next.offset - current.naturalBottom - SR_SECTION_GAP;
+            if (current.offset > maxOffsetBeforeNext) {
+              current.offset = Math.max(0, maxOffsetBeforeNext);
+            }
           }
         }
 
