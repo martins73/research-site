@@ -17,18 +17,18 @@ papers:
     publication: ""
     highlights: ""
     abstract: >
-      Crowdwork platforms are central to the data supply chains that power AI systems 
-      and sustain large-scale academic and commercial research. Despite this importance,
-      worker engagement dynamics remain poorly understood. We study how early procedural
-      frictions shape retention using approximately 64 million task submissions from 
-      Prolific. Focusing on new workers, we examine two frictions: task returns, reflecting
-      study design failures, and duration underestimation, reflecting inaccurate platform 
-      information. Using instrumental variables to address endogeneity, we find that a 
-      10 percentage point increase in returned tasks reduces retention by 3.8 percentage 
-      points, while the same increase in underestimated tasks reduces retention by 
-      21 percentage points. Frictions operate through attrition rather than demotivation
-      among survivors. Process reliability and accurate information are critical for 
-      sustaining the engaged workforce platforms need to compete.
+      Crowdwork platforms are central to the data supply chains that power AI systems and 
+      sustain large-scale academic and commercial research. Yet worker engagement dynamics 
+      remain poorly understood. We study how early procedural frictions shape retention using 
+      approximately 64 million task submissions from Prolific. Focusing on new workers' first 
+      fourteen days, we examine two frictions: task returns, reflecting study design failures, 
+      and duration underestimation, reflecting inaccurate platform information. Using instrumental 
+      variables to address endogeneity, we find that a 10 percentage point increase in returned 
+      tasks reduces retention by 4.4 percentage points, while the same increase in underestimated 
+      tasks reduces retention by 15.4 percentage points. Both frictions operate primarily through 
+      attrition rather than demotivation among surviving workers. These findings suggest that process 
+      reliability and information accuracy are critical levers for sustaining the engaged workforce 
+      that platforms need to function.
     link_text: "Request Draft"
     link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting JMP Draft: First Impressions Matter"
 
