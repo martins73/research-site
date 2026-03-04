@@ -41,6 +41,7 @@ template:
   repo: https://github.com/martins73/research-site
   
 # Open Graph & SEO
+site_name: Martin Gonzalez Cabello – Academic Website
 og_title: Martin Gonzalez Cabello
 og_description: PhD Candidate in Decisions, Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.
 og_image: /assets/social_preview.jpg
