@@ -15,7 +15,7 @@ baseurl: ""
 # Note: "theme" is reserved by Jekyll for gem-based themes, so we use
 #       "color_theme" instead.
 # =============================================================================
-color_theme: iese_web
+color_theme: ucla
 
 # Author Information
 author:
