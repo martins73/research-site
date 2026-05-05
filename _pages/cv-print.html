@@ -203,13 +203,12 @@ exclude_from_nav: true
             <span class="entry-left entry-institution">{{ item.institution }}</span>
             <span class="entry-right">{{ item.location }}</span>
         </div>
-        <span class="entry-role">{{ item.role }}</span>
         <div class="entry-desc">
             <ul>
                 {% for course in item.courses %}
                 <li>
                     <div class="course-row">
-                        <span>{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
+                        <span>{% if course.role %}<em>{{ course.role }}:</em> {% endif %}{{ course.title }} – {{ course.program }}{% if course.students %} ({{ course.students }} students){% endif %}</span>
                         <span class="entry-right">{{ course.year }}</span>
                     </div>
                 </li>

@@ -37,7 +37,7 @@ description: Teaching philosophy and experience in data analytics, operations ma
                     <span class="cv-date">{{ course.year }}</span>
                 </div>
                 
-                <div class="course-role">{{ inst.role }} • {{ inst.institution }}</div>
+                <div class="course-role">{{ course.role }} • {{ inst.institution }}</div>
                 
                 <div class="course-details">
                     {{ course.program }}
