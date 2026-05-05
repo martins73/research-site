@@ -9,6 +9,12 @@ min_items: 2
 
 # Activity items (most recent first)
 items:
+  - date: "June 2026"
+    text: 'I will be joining'
+    link_text: "Google DeepMind"
+    link_url: "https://deepmind.google/"
+    link_suffix: "as a Student Researcher to study the intersection of AI and organizational design."
+
   - date: "May 2026"
     text: 'Scheduled to present "First Impressions Matter" at the'
     link_text: "POMS Annual Conference"
