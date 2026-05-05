@@ -94,6 +94,46 @@
 }
 </script>
 
+{% if page.active_page == 'home' %}
+{%- assign public_papers = site.data.papers.papers | where_exp: "p", "p.link_url contains 'http'" -%}
+{% if public_papers.size > 0 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {% for paper in public_papers %}
+    {
+      "@type": "ScholarlyArticle",
+      "headline": {{ paper.title | jsonify }},
+      "name": {{ paper.title | jsonify }},
+      "inLanguage": "en",
+      "author": [
+        {
+          "@type": "Person",
+          "name": {{ site.author.name | jsonify }},
+          "url": {{ site.url | jsonify }}
+        }{% for coauthor in paper.coauthors %},
+        {
+          "@type": "Person",
+          "name": {{ coauthor.name | jsonify }}{% if coauthor.url %},
+          "url": {{ coauthor.url | jsonify }}{% endif %}
+        }{% endfor %}
+      ],
+      "abstract": {{ paper.abstract | strip | jsonify }},
+      "url": {{ paper.link_url | jsonify }}{% if paper.date_published %},
+      "datePublished": {{ paper.date_published | jsonify }}{% endif %}{% if paper.journal_name %},
+      "isPartOf": {
+        "@type": "Periodical",
+        "name": {{ paper.journal_name | jsonify }}
+      }{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endif %}
+
 <script>
   // 1. Dark mode
   (function() {
