@@ -151,7 +151,6 @@ markdown: kramdown
 sass:
   style: compressed
 plugins:
-  - jekyll-seo-tag
   - jekyll-sitemap
 
 # Pages collection (content pages live in _pages/)
