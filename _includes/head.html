@@ -26,7 +26,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.site_name | default: site.title }}">
 <meta name="twitter:card" content="{{ site.twitter_card }}">
+<meta name="twitter:title" content="{{ page.title | default: site.og_title }}">
+<meta name="twitter:description" content="{{ meta_desc }}">
 <meta name="twitter:image" content="{{ site.og_image | absolute_url }}">
+<meta name="twitter:image:alt" content="{{ site.author.name }} — {{ site.author.job_title }}">
 
 <link rel="icon" type="image/svg+xml" href="{{ site.favicon | relative_url }}?v={{ site.time | date: '%s' }}">
 <link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/logos/favicon-512.png' | relative_url }}">
