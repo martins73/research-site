@@ -162,6 +162,7 @@ collections:
 # Include files that Jekyll would normally skip (underscore-prefixed)
 include:
   - _redirects
+  - _headers
 
 # Exclude from processing
 exclude:
