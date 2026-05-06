@@ -67,7 +67,19 @@ description: Academic CV and professional background in analytics, operations, a
             </div>
 
             <div class="cv-role">{{ item.degree }}</div>
-            <div class="cv-desc">{{ item.description }}</div>
+            {% if item.description.size > 0 %}
+            <div class="cv-desc">
+                {% if item.description.size == 1 %}
+                    {{ item.description[0] }}
+                {% else %}
+                    <ul>
+                        {% for d in item.description %}
+                            <li>{{ d }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            {% endif %}
         </div>
     {% endfor %}
 </section>
@@ -75,7 +87,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### PUBLICATIONS ### -->
 
-{% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
+{% assign publications = site.data.cv.papers.papers | where: "cv_category", "Publication" %}
 {% if publications.size > 0 %}
 <section id="publications" class="section-spacing">
     <h2 class="cv-section-header">Publications</h2>
@@ -94,7 +106,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### WORKING PAPERS ### -->
 
-{% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
+{% assign working_papers = site.data.cv.papers.papers | where: "cv_category", "Working Paper" %}
 {% if working_papers.size > 0 %}
 <section id="working-papers" class="section-spacing">
     <h2 class="cv-section-header">Working Papers</h2>
@@ -113,7 +125,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### SELECTED WORK IN PROGRESS ### -->
 
-{% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
+{% assign wip = site.data.cv.papers.papers | where: "cv_category", "Work in Progress" %}
 {% if wip.size > 0 %}
 <section id="work-in-progress" class="section-spacing">
     <h2 class="cv-section-header">Selected Work in Progress</h2>
@@ -131,7 +143,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### OTHER ARTICLES ### -->
 
-{% assign other_articles = site.data.papers.papers | where: "cv_category", "Other Article" %}
+{% assign other_articles = site.data.cv.papers.papers | where: "cv_category", "Other Article" %}
 {% if other_articles.size > 0 %}
 <section id="other-articles" class="section-spacing">
     <h2 class="cv-section-header">Other Articles</h2>
@@ -197,7 +209,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="teaching" class="section-spacing">
     <h2 class="cv-section-header">Teaching</h2>
 
-    {% for item in site.data.teaching %}
+    {% for item in site.data.cv.teaching %}
         <div class="cv-entry">
             <div class="cv-entry-header scroll-reveal">
                 {% include cv-institution-header.html entity=item %}
@@ -243,15 +255,15 @@ description: Academic CV and professional background in analytics, operations, a
         <div class="cv-entry">
             <div class="cv-entry-header cv-company-header scroll-reveal">
                 <div class="cv-header-group">
-                    {% if company.company_url %}<a href="{{ company.company_url }}" target="_blank" rel="noopener">{% endif %}
-                        <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
-                    {% if company.company_url %}</a>{% endif %}
+                    {% if company.institution_url %}<a href="{{ company.institution_url }}" target="_blank" rel="noopener">{% endif %}
+                        <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+                    {% if company.institution_url %}</a>{% endif %}
 
                     <div>
-                        {% if company.company_url -%}
-                            <a href="{{ company.company_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ company.company }}</a>
+                        {% if company.institution_url -%}
+                            <a href="{{ company.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ company.institution }}</a>
                         {%- else -%}
-                            <span class="cv-title cv-inline">{{ company.company }}</span>
+                            <span class="cv-title cv-inline">{{ company.institution }}</span>
                         {%- endif -%}
                         {% if company.location %}<span class="cv-location">, {{ company.location }}</span>{% endif %}
                     </div>

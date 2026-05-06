@@ -74,7 +74,6 @@
     { "@type": "CollegeOrUniversity", "name": "{{ school.name }}" }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ],
-  "email": "{{ site.author.email }}",
   "image": "{{ site.avatar | absolute_url }}",
   "url": "{{ site.url }}",
   "sameAs": [
@@ -95,7 +94,7 @@
 </script>
 
 {% if page.active_page == 'home' %}
-{%- assign public_papers = site.data.papers.papers | where_exp: "p", "p.link_url contains 'http'" -%}
+{%- assign public_papers = site.data.cv.papers.papers | where_exp: "p", "p.link_url contains 'http'" -%}
 {% if public_papers.size > 0 %}
 <script type="application/ld+json">
 {

@@ -5,11 +5,9 @@ on:
     branches: [main]
     paths:
       - '_data/cv/**'
-      - '_data/papers.yml'
-      - '_data/teaching.yml'
       - '_config.yml'
-      - '_pages/cv-print.html'
-      - '_layouts/cv-print.html'
+      - '_pages/cv-pdf-source.html'
+      - '_layouts/cv-pdf-source.html'
   workflow_dispatch:  # Allow manual trigger
 
 permissions:

@@ -39,11 +39,13 @@ Visual assets are processed to balance high-resolution display with fast load ti
 * **Tools:** Images are resized and converted to WebP via [Squoosh](https://squoosh.app); backgrounds are removed via [remove.bg](https://www.remove.bg).
 
 ### Privacy & Security
-* **Robots.txt:** Blocks unauthorized scraping by AI training bots (GPTBot, CCBot, etc.)
+* **Security Headers:** `_headers` file sets `X-Content-Type-Options`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `Permissions-Policy` (camera/mic/geo/FLoC disabled), and HSTS
+* **Robots.txt:** Blocks unauthorized scraping by AI training bots (GPTBot, CCBot, AnthropicAI, ChatGPT-User)
 * **Link Hardening:** All `target="_blank"` links include `rel="noopener"` to prevent tabnabbing
-* **Privacy-First Analytics:** Configured to respect user privacy
-* **Structured Data:** Schema.org markup for better SEO and discoverability
-* **Open Graph & Meta Tags:** Optimized social media previews
+* **Email Obfuscation:** Cloudflare Scrape Shield rewrites visible `mailto:` links and plain-text addresses at the edge; the JSON-LD Person block omits email entirely
+* **Privacy-First Analytics:** Google Analytics 4 with `anonymize_ip: true` so the last IP octet is dropped on collection
+* **Structured Data:** Schema.org JSON-LD for `Person` (knowsAbout, alumniOf, affiliation) on every page and `ScholarlyArticle` for public papers on the homepage
+* **Open Graph & Meta Tags:** Complete OG + Twitter card metadata for social previews
 
 ### Data-Driven Content
 All dynamic content is managed through YAML files in `_data/`, making updates simple and centralized:
@@ -62,7 +64,7 @@ research-site/
 │
 ├── _pages/                             # Content pages (Jekyll collection)
 │   ├── cv.html                         # Curriculum Vitae (fully data-driven)
-│   ├── cv-print.html                   # Print-optimized CV (used for PDF generation)
+│   ├── cv-pdf-source.html              # Source for the generated CV PDF (consumed only by Puppeteer)
 │   ├── cv-pdf.html                     # PDF viewer page (desktop iframe + mobile canvas)
 │   ├── teaching.md                     # Teaching philosophy + experience
 │   ├── library.html                    # Curated book library
@@ -71,9 +73,7 @@ research-site/
 ├── index.html                          # Homepage (about, research, activity, status)
 │
 ├── _data/                              # YAML data files (single source of truth)
-│   ├── papers.yml                      # Research papers with abstracts and metadata
 │   ├── activity.yml                    # Recent activity feed (papers, talks, etc.)
-│   ├── teaching.yml                    # Teaching experience (feeds CV & Teaching page)
 │   ├── status.yml                      # Current status (location, reading, activities)
 │   ├── last_updated.yml                # Auto-updated timestamp (set by GitHub Actions)
 │   ├── library.yml                     # Bookshelf data (by shelf/category)
@@ -86,6 +86,8 @@ research-site/
 │   │   ├── education.yml               # Degrees and institutions
 │   │   ├── appointments.yml            # Academic appointments
 │   │   ├── industry.yml                # Professional experience (with locations)
+│   │   ├── teaching.yml                # Teaching experience (feeds CV & Teaching page)
+│   │   ├── papers.yml                  # Research papers with abstracts and metadata
 │   │   ├── awards.yml                  # Honors & Awards
 │   │   ├── service.yml                 # Academic service
 │   │   ├── presentations.yml           # Selected presentations
@@ -112,7 +114,7 @@ research-site/
 │
 ├── _layouts/                           # Page templates
 │   ├── default.html                    # Main layout (sidebar + content container)
-│   ├── cv-print.html                   # Minimal layout for PDF generation
+│   ├── cv-pdf-source.html              # Minimal layout for the CV PDF source page
 │   └── pdf-viewer.html                 # Standalone PDF viewer layout
 │
 ├── _drafts/                            # Draft content (not published)
@@ -130,6 +132,7 @@ research-site/
 │
 ├── .github/                            # GitHub Actions and automation
 │   ├── workflows/
+│   │   ├── build.yml                   # Runs jekyll build on every PR (CI)
 │   │   ├── update-status-date.yml      # Auto-updates status.yml timestamp
 │   │   ├── generate-cv-pdf.yml         # Auto-generates CV PDF from data
 │   │   └── generate-favicons.yml       # Auto-generates favicon PNGs from theme config
@@ -139,7 +142,9 @@ research-site/
 │
 ├── sw.js                               # Service worker (offline support, caching)
 ├── robots.txt                          # Bot access control
+├── _headers                            # Cloudflare Pages security headers
 ├── _redirects                          # Cloudflare Pages URL redirects
+├── Gemfile / Gemfile.lock              # Ruby dependencies (lockfile committed for reproducible builds)
 └── README.md                           # This file
 ```
 
@@ -150,7 +155,7 @@ research-site/
 Most site content is controlled through YAML files in `_data/`. This modular approach makes updates simple and reduces errors:
 
 #### 1. Managing Research Papers
-Edit `_data/papers.yml` to add or update papers:
+Edit `_data/cv/papers.yml` to add or update papers:
 - Title, status (Job Market Paper, Publication, Working Paper)
 - Coauthors with URLs
 - Badges (methodology tags like "Empirical Analysis")
@@ -159,8 +164,10 @@ Edit `_data/papers.yml` to add or update papers:
 - **Submission:** Submission status (for working papers)
 - **Highlights:** Optional awards or achievements
 - Link text and URL (Request Draft, Journal Version, View Preprint)
+- **`date_published`** *(optional)*: ISO date or year (e.g., `"2025"` or `"2025-09"`) — used for `ScholarlyArticle` JSON-LD `datePublished`
+- **`journal_name`** *(optional)*: clean journal name (e.g., `"Business Horizons"`) — used for `ScholarlyArticle` JSON-LD `isPartOf`
 
-The CV and Teaching pages automatically pull from this file. The homepage automatically generates paper cards with collapsible abstracts.
+The CV and Teaching pages automatically pull from this file. The homepage automatically generates paper cards with collapsible abstracts. Papers with a real `http(s)` link also auto-emit a `ScholarlyArticle` JSON-LD entry on the homepage; papers with `mailto:` placeholders are skipped from structured data.
 
 #### 2. Adding Research Updates
 Edit `_data/activity.yml` to add:
@@ -189,7 +196,7 @@ The CV is modularized in `_data/cv/`. Update specific files to change sections:
 - **`presentations.yml`**: Selected conference presentations
 - **`references.yml`**: Academic references and contact info
 
-Teaching experience is managed separately in `_data/teaching.yml` (shared by the CV and Teaching pages).
+Teaching experience is managed separately in `_data/cv/teaching.yml` (shared by the CV and Teaching pages).
 
 **Automatic PDF Generation:** When you push changes to any CV data file, the GitHub Action automatically rebuilds the downloadable PDF. No manual export needed.
 
@@ -254,7 +261,7 @@ The site uses vanilla JavaScript (~792 lines in `_includes/scripts.html`) for:
 This site uses Jekyll, deployed via Cloudflare Pages.
 
 ### Prerequisites
-* Ruby 2.7+ and Bundler
+* Ruby 3.3 and Bundler (matches CI and the CV PDF workflow)
 
 ### Setup
 
@@ -279,14 +286,19 @@ This site uses Jekyll, deployed via Cloudflare Pages.
 
 ### GitHub Actions
 
+#### Build (`build.yml`)
+- Triggers on every pull request and on pushes to `main`
+- Runs `bundle exec jekyll build` with `JEKYLL_ENV=production` to catch Liquid template errors, YAML parse errors, and missing includes before they reach production
+- Uses Ruby 3.3 with `bundler-cache` to match the CV PDF workflow
+
 #### Status Date (`update-status-date.yml`)
 - Triggers on push to `_data/status.yml`
 - Updates the "Updated:" date field with the current date
 - Commits and pushes changes
 
 #### CV PDF Generation (`generate-cv-pdf.yml`)
-- Triggers on push to `_data/cv/`, `_data/papers.yml`, `_data/teaching.yml`, `_config.yml`, `_pages/cv-print.html`, or `_layouts/cv-print.html`
-- Builds the Jekyll site, then uses Puppeteer to render `cv-print.html` to PDF
+- Triggers on push to `_data/cv/`, `_config.yml`, `_pages/cv-pdf-source.html`, or `_layouts/cv-pdf-source.html`
+- Builds the Jekyll site, then uses Puppeteer to render `cv-pdf-source.html` to PDF
 - Commits the generated PDF to `assets/martin-gonzalez-cabello-cv.pdf`
 - Can also be triggered manually via `workflow_dispatch`
 
@@ -306,7 +318,7 @@ This site respects user privacy and blocks AI training scrapers:
 - **Allowed:** Google, Bing (for legitimate SEO)
 
 ### Analytics
-- Privacy-first Google Analytics 4 configuration
+- Google Analytics 4 with `anonymize_ip: true` (last IP octet dropped on collection)
 
 ## Architecture Notes
 
@@ -320,20 +332,22 @@ This site minimizes hard-coded HTML. Instead, it treats content as data stored i
 - **Consistency:** Structured data guarantees that dates, locations, and titles follow the same format across the entire site.
 - **Maintenance:** You can edit the site content from a mobile phone (via GitHub mobile) just by editing text files.
 
-**Example:** The CV page is generated dynamically by stitching together multiple data files:
+**Example:** The CV page is generated dynamically by stitching together multiple data files. All institution-anchored sections use a unified vocabulary (`institution`, `institution_url`, `logo`, `location`, `dates`):
 
 ```liquid
-{% for degree in site.data.cv.education %}
+{% for item in site.data.cv.education %}
   <div class="cv-item">
-    <h3>{{ degree.school }}</h3>
-    <p>{{ degree.degree }} ({{ degree.year }})</p>
+    <h3>{{ item.institution }}</h3>
+    <p>{{ item.degree }} ({{ item.dates }})</p>
   </div>
 {% endfor %}
 
-{% for role in site.data.cv.industry %}
+{% for company in site.data.cv.industry %}
   <div class="cv-item">
-    <h3>{{ role.company }}</h3>
-    <p>{{ role.title }}</p>
+    <h3>{{ company.institution }}</h3>
+    {% for position in company.positions %}
+      <p>{{ position.role }} ({{ position.dates }})</p>
+    {% endfor %}
   </div>
 {% endfor %}
 ```

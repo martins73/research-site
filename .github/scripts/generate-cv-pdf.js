@@ -46,7 +46,7 @@ function startServer(directory, port) {
 }
 
 async function generatePDF() {
-  const printPagePath = path.join(SITE_DIR, 'cv-print', 'index.html');
+  const printPagePath = path.join(SITE_DIR, 'cv-pdf-source', 'index.html');
   if (!fs.existsSync(printPagePath)) {
     console.error(`Error: ${printPagePath} not found.`);
     process.exit(1);
@@ -60,7 +60,7 @@ async function generatePDF() {
 
   try {
     const page = await browser.newPage();
-    await page.goto(`http://localhost:${PORT}/cv-print/`, {
+    await page.goto(`http://localhost:${PORT}/cv-pdf-source/`, {
       waitUntil: 'networkidle0',
       timeout: 30000,
     });

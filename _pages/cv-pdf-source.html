@@ -1,8 +1,8 @@
 ---
-layout: cv-print
+layout: cv-pdf-source
 title: "Martin Gonzalez Cabello - Curriculum Vitae"
 sitemap: false
-permalink: /cv-print/
+permalink: /cv-pdf-source/
 exclude_from_nav: true
 ---
 
@@ -59,18 +59,17 @@ exclude_from_nav: true
             <span class="entry-left entry-role">{{ item.degree }}</span>
             <span class="entry-right">{{ item.dates }}</span>
         </div>
-        {% if item.description and item.description != "" %}
+        {% if item.description.size > 0 %}
         <div class="entry-desc">
-            <ul>
-                {% assign desc_items = item.description | split: ". " %}
-                {% if desc_items.size > 1 %}
-                    {% for d in desc_items %}
-                        {% if d != "" %}<li>{{ d }}{% unless d contains "." %}.{% endunless %}</li>{% endif %}
+            {% if item.description.size == 1 %}
+                {{ item.description[0] }}
+            {% else %}
+                <ul>
+                    {% for d in item.description %}
+                        <li>{{ d }}</li>
                     {% endfor %}
-                {% else %}
-                    <li>{{ item.description }}</li>
-                {% endif %}
-            </ul>
+                </ul>
+            {% endif %}
         </div>
         {% endif %}
     </div>
@@ -78,7 +77,7 @@ exclude_from_nav: true
 </section>
 
 <!-- ===== PUBLICATIONS ===== -->
-{% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
+{% assign publications = site.data.cv.papers.papers | where: "cv_category", "Publication" %}
 {% if publications.size > 0 %}
 <section>
     <h2>Publications</h2>
@@ -96,7 +95,7 @@ exclude_from_nav: true
 {% endif %}
 
 <!-- ===== WORKING PAPERS ===== -->
-{% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
+{% assign working_papers = site.data.cv.papers.papers | where: "cv_category", "Working Paper" %}
 {% if working_papers.size > 0 %}
 <section>
     <h2>Working Papers</h2>
@@ -118,7 +117,7 @@ exclude_from_nav: true
 {% endif %}
 
 <!-- ===== SELECTED WORK IN PROGRESS ===== -->
-{% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
+{% assign wip = site.data.cv.papers.papers | where: "cv_category", "Work in Progress" %}
 {% if wip.size > 0 %}
 <section>
     <h2>Selected Work in Progress</h2>
@@ -137,7 +136,7 @@ exclude_from_nav: true
 {% endif %}
 
 <!-- ===== OTHER ARTICLES (when populated) ===== -->
-{% assign other_articles = site.data.papers.papers | where: "cv_category", "Other Article" %}
+{% assign other_articles = site.data.cv.papers.papers | where: "cv_category", "Other Article" %}
 {% if other_articles.size > 0 %}
 <section>
     <h2>Other Articles</h2>
@@ -197,7 +196,7 @@ exclude_from_nav: true
 <!-- ===== TEACHING ===== -->
 <section>
     <h2>Teaching</h2>
-    {% for item in site.data.teaching %}
+    {% for item in site.data.cv.teaching %}
     <div class="entry">
         <div class="entry-row">
             <span class="entry-left entry-institution">{{ item.institution }}</span>
@@ -240,7 +239,7 @@ exclude_from_nav: true
     {% for company in site.data.cv.industry %}
     <div class="entry">
         <div class="entry-row">
-            <span class="entry-left entry-institution">{{ company.company }}</span>
+            <span class="entry-left entry-institution">{{ company.institution }}</span>
             <span class="entry-right">{{ company.location }}</span>
         </div>
         {% for position in company.positions %}
