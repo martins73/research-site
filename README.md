@@ -62,7 +62,7 @@ research-site/
 │
 ├── _pages/                             # Content pages (Jekyll collection)
 │   ├── cv.html                         # Curriculum Vitae (fully data-driven)
-│   ├── cv-print.html                   # Print-optimized CV (used for PDF generation)
+│   ├── cv-pdf-source.html              # Source for the generated CV PDF (consumed only by Puppeteer)
 │   ├── cv-pdf.html                     # PDF viewer page (desktop iframe + mobile canvas)
 │   ├── teaching.md                     # Teaching philosophy + experience
 │   ├── library.html                    # Curated book library
@@ -112,7 +112,7 @@ research-site/
 │
 ├── _layouts/                           # Page templates
 │   ├── default.html                    # Main layout (sidebar + content container)
-│   ├── cv-print.html                   # Minimal layout for PDF generation
+│   ├── cv-pdf-source.html              # Minimal layout for the CV PDF source page
 │   └── pdf-viewer.html                 # Standalone PDF viewer layout
 │
 ├── _drafts/                            # Draft content (not published)
@@ -285,8 +285,8 @@ This site uses Jekyll, deployed via Cloudflare Pages.
 - Commits and pushes changes
 
 #### CV PDF Generation (`generate-cv-pdf.yml`)
-- Triggers on push to `_data/cv/`, `_config.yml`, `_pages/cv-print.html`, or `_layouts/cv-print.html`
-- Builds the Jekyll site, then uses Puppeteer to render `cv-print.html` to PDF
+- Triggers on push to `_data/cv/`, `_config.yml`, `_pages/cv-pdf-source.html`, or `_layouts/cv-pdf-source.html`
+- Builds the Jekyll site, then uses Puppeteer to render `cv-pdf-source.html` to PDF
 - Commits the generated PDF to `assets/martin-gonzalez-cabello-cv.pdf`
 - Can also be triggered manually via `workflow_dispatch`
 

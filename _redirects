@@ -1,3 +1,6 @@
 # Redirect internal-only pages
+/cv-pdf-source/ /cv/ 301
+/cv-pdf-source /cv/ 301
+# Backward compatibility: old /cv-print/ URL renamed to /cv-pdf-source/
 /cv-print/ /cv/ 301
 /cv-print /cv/ 301

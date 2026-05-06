@@ -6,8 +6,8 @@ on:
     paths:
       - '_data/cv/**'
       - '_config.yml'
-      - '_pages/cv-print.html'
-      - '_layouts/cv-print.html'
+      - '_pages/cv-pdf-source.html'
+      - '_layouts/cv-pdf-source.html'
   workflow_dispatch:  # Allow manual trigger
 
 permissions:
