@@ -39,6 +39,7 @@
 <link rel="preload" as="image" href="{{ site.avatar | relative_url }}?v={{ site.avatar_version | default: '1' }}" fetchpriority="high">
 {% assign main_css_path = site.main_css | default: '/assets/css/style.css' %}
 <link rel="stylesheet" href="{{ main_css_path | relative_url }}?v={{ main_css_path | asset_version }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 {% if site.google_analytics %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>

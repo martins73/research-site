@@ -30,11 +30,8 @@
     {% for social in site.data.ui.social %}
       {% assign url = site.social[social.url_key] %}
       {% if url %}
-        <a href="{{ url }}" class="social-link" title="{{ social.name }}" target="_blank" rel="noopener">
-          <svg class="{{ social.class }}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
-               {% if social.stroke %}fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"{% else %}fill="currentColor"{% endif %}>
-            {{ social.icon }}
-          </svg>
+        <a href="{{ url }}" class="social-link" title="{{ social.name }}" aria-label="{{ social.name }}" target="_blank" rel="noopener">
+          <i class="bi {{ social.bi_class }} social-icon" aria-hidden="true"></i>
         </a>
       {% endif %}
     {% endfor %}
