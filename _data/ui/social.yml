@@ -8,7 +8,7 @@
 
 - name: Goodreads
   url_key: goodreads
-  bi_class: bi-book-half
+  bi_class: bi-book
 
 - name: Last.fm
   url_key: lastfm
