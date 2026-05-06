@@ -8,7 +8,7 @@
 
         {% for tool in site.footer.credits %}
           <a href="{{ tool.url }}" target="_blank" rel="noopener" title="{{ tool.name }}" class="{{ tool.name | downcase }}-link">
-            <img src="{{ tool.logo | relative_url }}?v={{ site.time | date: '%s' }}" 
+            <img src="{{ tool.logo | relative_url }}?v={{ tool.logo | asset_version }}"
                  alt="{{ tool.name }}" 
                  width="20" height="20" 
                  class="{{ tool.name | downcase }}-icon" 

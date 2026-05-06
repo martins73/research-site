@@ -1,7 +1,7 @@
 {% assign entity = include.entity %}
 <div class="cv-header-group">
     {% if entity.institution_url %}<a href="{{ entity.institution_url }}" target="_blank" rel="noopener">{% endif %}
-        <img src="{{ entity.logo }}?v={{ site.time | date: '%s' }}" alt="{{ entity.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+        <img src="{{ entity.logo }}?v={{ entity.logo | asset_version }}" alt="{{ entity.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
     {% if entity.institution_url %}</a>{% endif %}
 
     <div>

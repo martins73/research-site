@@ -256,7 +256,7 @@ description: Academic CV and professional background in analytics, operations, a
             <div class="cv-entry-header cv-company-header scroll-reveal">
                 <div class="cv-header-group">
                     {% if company.institution_url %}<a href="{{ company.institution_url }}" target="_blank" rel="noopener">{% endif %}
-                        <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+                        <img src="{{ company.logo }}?v={{ company.logo | asset_version }}" alt="{{ company.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
                     {% if company.institution_url %}</a>{% endif %}
 
                     <div>
