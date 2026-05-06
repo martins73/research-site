@@ -7,7 +7,7 @@
 - name: Google Scholar
   url_key: google_scholar
   icon: |
-    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+    <path d="M12 3 1 8l11 5 9-4.09V17h2V8L12 3zm0 12L3 10.91V14c0 2.76 4.03 5 9 5s9-2.24 9-5v-3.09L12 15z"></path>
   class: social-icon
 
 - name: Goodreads
