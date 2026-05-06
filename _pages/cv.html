@@ -67,7 +67,15 @@ description: Academic CV and professional background in analytics, operations, a
             </div>
 
             <div class="cv-role">{{ item.degree }}</div>
-            <div class="cv-desc">{{ item.description }}</div>
+            {% if item.description.size > 0 %}
+            <div class="cv-desc">
+                <ul>
+                    {% for d in item.description %}
+                        <li>{{ d }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
     {% endfor %}
 </section>
@@ -243,15 +251,15 @@ description: Academic CV and professional background in analytics, operations, a
         <div class="cv-entry">
             <div class="cv-entry-header cv-company-header scroll-reveal">
                 <div class="cv-header-group">
-                    {% if company.company_url %}<a href="{{ company.company_url }}" target="_blank" rel="noopener">{% endif %}
-                        <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.company }}" class="cv-logo" width="28" height="28" loading="lazy">
-                    {% if company.company_url %}</a>{% endif %}
+                    {% if company.institution_url %}<a href="{{ company.institution_url }}" target="_blank" rel="noopener">{% endif %}
+                        <img src="{{ company.logo }}?v={{ site.time | date: '%s' }}" alt="{{ company.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+                    {% if company.institution_url %}</a>{% endif %}
 
                     <div>
-                        {% if company.company_url -%}
-                            <a href="{{ company.company_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ company.company }}</a>
+                        {% if company.institution_url -%}
+                            <a href="{{ company.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ company.institution }}</a>
                         {%- else -%}
-                            <span class="cv-title cv-inline">{{ company.company }}</span>
+                            <span class="cv-title cv-inline">{{ company.institution }}</span>
                         {%- endif -%}
                         {% if company.location %}<span class="cv-location">, {{ company.location }}</span>{% endif %}
                     </div>

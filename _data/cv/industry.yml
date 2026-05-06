@@ -1,5 +1,5 @@
-- company: ACHS (Safety Association of Chile)
-  company_url: https://www.achs.cl/
+- institution: ACHS (Safety Association of Chile)
+  institution_url: https://www.achs.cl/
   logo: /assets/logos/achs.svg
   location: "Santiago, Chile"
   positions:
@@ -16,8 +16,8 @@
         - Created the analytics area from scratch to support data-driven decision-making across the organization
         - Managed the call center (~200 agents) and digital channels (public and transactional sites)
 
-- company: Asociación DEC Chile
-  company_url: https://asociaciondec-cl.org/
+- institution: Asociación DEC Chile
+  institution_url: https://asociaciondec-cl.org/
   logo: /assets/logos/dec.png
   location: "Santiago, Chile"
   positions:
@@ -26,8 +26,8 @@
       description:
         - Founded the Chilean chapter of the Association for the Development of Customer Experience
 
-- company: Oliver Wyman
-  company_url: https://www.oliverwyman.com/
+- institution: Oliver Wyman
+  institution_url: https://www.oliverwyman.com/
   logo: /assets/logos/oliver.svg
   location: "Madrid, Spain; New York, NY"
   positions:
@@ -38,7 +38,7 @@
         - Focused on Financial Services and Telecommunications industries
         - Led engagements in strategy, digital transformation, advanced analytics, and value proposition design
 
-- company: Thinkids Project
+- institution: Thinkids Project
   logo: /assets/logos/thinkids.png
   location: "Madrid, Spain"
   positions:
@@ -47,8 +47,8 @@
       description:
         - Co-founded an organization teaching entrepreneurship to children (ages 8-14) in five countries
 
-- company: Telefonica
-  company_url: https://www.telefonica.com/
+- institution: Telefonica
+  institution_url: https://www.telefonica.com/
   logo: /assets/logos/telefonica.svg
   location: "Madrid, Spain"
   positions:
@@ -57,8 +57,8 @@
       description:
         - Analyzed the global EdTech startup ecosystem, identifying key indicators, trends, and investment opportunities
 
-- company: Accenture
-  company_url: https://www.accenture.com/
+- institution: Accenture
+  institution_url: https://www.accenture.com/
   logo: /assets/logos/accenture.svg
   location: "Madrid, Spain"
   positions:

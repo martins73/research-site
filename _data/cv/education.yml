@@ -4,7 +4,8 @@
   logo: /assets/logos/ucla.svg
   location: Los Angeles, CA
   dates: "2021 - 2027"
-  description: "Dissertation Committee: Charles Corbett, Auyon Siddiq, Felipe Caro, Brett Hollenbeck"
+  description:
+    - "Dissertation Committee: Charles Corbett, Auyon Siddiq, Felipe Caro, Brett Hollenbeck"
 
 - degree: Master of Business Administration (MBA)
   institution: MIT Sloan School of Management
@@ -12,7 +13,8 @@
   logo: /assets/logos/mit.svg
   location: Cambridge, MA
   dates: "2013 - 2015"
-  description: Entrepreneurship & Innovation Track
+  description:
+    - Entrepreneurship & Innovation Track
 
 - degree: Master in Industrial Technology & Operations
   institution: Illinois Institute of Technology
@@ -20,7 +22,8 @@
   logo: /assets/logos/iit.png
   location: Chicago, IL
   dates: "2010"
-  description: Joint degree program with Universidad Politécnica de Madrid
+  description:
+    - Joint degree program with Universidad Politécnica de Madrid
 
 - degree: B.Sc. & M.Sc. in Industrial Engineering
   institution: Universidad Politécnica de Madrid
@@ -28,4 +31,5 @@
   logo: /assets/logos/upm.png
   location: Madrid, Spain
   dates: "2005 - 2009"
-  description: "Research Intern: Applied Mathematics (2007) and Business Administration (2008)"
+  description:
+    - "Research Intern: Applied Mathematics (2007) and Business Administration (2008)"

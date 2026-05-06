@@ -59,17 +59,12 @@ exclude_from_nav: true
             <span class="entry-left entry-role">{{ item.degree }}</span>
             <span class="entry-right">{{ item.dates }}</span>
         </div>
-        {% if item.description and item.description != "" %}
+        {% if item.description.size > 0 %}
         <div class="entry-desc">
             <ul>
-                {% assign desc_items = item.description | split: ". " %}
-                {% if desc_items.size > 1 %}
-                    {% for d in desc_items %}
-                        {% if d != "" %}<li>{{ d }}{% unless d contains "." %}.{% endunless %}</li>{% endif %}
-                    {% endfor %}
-                {% else %}
-                    <li>{{ item.description }}</li>
-                {% endif %}
+                {% for d in item.description %}
+                    <li>{{ d }}</li>
+                {% endfor %}
             </ul>
         </div>
         {% endif %}
@@ -240,7 +235,7 @@ exclude_from_nav: true
     {% for company in site.data.cv.industry %}
     <div class="entry">
         <div class="entry-row">
-            <span class="entry-left entry-institution">{{ company.company }}</span>
+            <span class="entry-left entry-institution">{{ company.institution }}</span>
             <span class="entry-right">{{ company.location }}</span>
         </div>
         {% for position in company.positions %}
