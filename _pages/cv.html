@@ -75,7 +75,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### PUBLICATIONS ### -->
 
-{% assign publications = site.data.papers.papers | where: "cv_category", "Publication" %}
+{% assign publications = site.data.cv.papers.papers | where: "cv_category", "Publication" %}
 {% if publications.size > 0 %}
 <section id="publications" class="section-spacing">
     <h2 class="cv-section-header">Publications</h2>
@@ -94,7 +94,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### WORKING PAPERS ### -->
 
-{% assign working_papers = site.data.papers.papers | where: "cv_category", "Working Paper" %}
+{% assign working_papers = site.data.cv.papers.papers | where: "cv_category", "Working Paper" %}
 {% if working_papers.size > 0 %}
 <section id="working-papers" class="section-spacing">
     <h2 class="cv-section-header">Working Papers</h2>
@@ -113,7 +113,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### SELECTED WORK IN PROGRESS ### -->
 
-{% assign wip = site.data.papers.papers | where: "cv_category", "Work in Progress" %}
+{% assign wip = site.data.cv.papers.papers | where: "cv_category", "Work in Progress" %}
 {% if wip.size > 0 %}
 <section id="work-in-progress" class="section-spacing">
     <h2 class="cv-section-header">Selected Work in Progress</h2>
@@ -131,7 +131,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 <!-- ### OTHER ARTICLES ### -->
 
-{% assign other_articles = site.data.papers.papers | where: "cv_category", "Other Article" %}
+{% assign other_articles = site.data.cv.papers.papers | where: "cv_category", "Other Article" %}
 {% if other_articles.size > 0 %}
 <section id="other-articles" class="section-spacing">
     <h2 class="cv-section-header">Other Articles</h2>
@@ -197,7 +197,7 @@ description: Academic CV and professional background in analytics, operations, a
 <section id="teaching" class="section-spacing">
     <h2 class="cv-section-header">Teaching</h2>
 
-    {% for item in site.data.teaching %}
+    {% for item in site.data.cv.teaching %}
         <div class="cv-entry">
             <div class="cv-entry-header scroll-reveal">
                 {% include cv-institution-header.html entity=item %}

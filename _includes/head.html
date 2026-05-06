@@ -94,7 +94,7 @@
 </script>
 
 {% if page.active_page == 'home' %}
-{%- assign public_papers = site.data.papers.papers | where_exp: "p", "p.link_url contains 'http'" -%}
+{%- assign public_papers = site.data.cv.papers.papers | where_exp: "p", "p.link_url contains 'http'" -%}
 {% if public_papers.size > 0 %}
 <script type="application/ld+json">
 {

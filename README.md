@@ -71,9 +71,7 @@ research-site/
 ├── index.html                          # Homepage (about, research, activity, status)
 │
 ├── _data/                              # YAML data files (single source of truth)
-│   ├── papers.yml                      # Research papers with abstracts and metadata
 │   ├── activity.yml                    # Recent activity feed (papers, talks, etc.)
-│   ├── teaching.yml                    # Teaching experience (feeds CV & Teaching page)
 │   ├── status.yml                      # Current status (location, reading, activities)
 │   ├── last_updated.yml                # Auto-updated timestamp (set by GitHub Actions)
 │   ├── library.yml                     # Bookshelf data (by shelf/category)
@@ -86,6 +84,8 @@ research-site/
 │   │   ├── education.yml               # Degrees and institutions
 │   │   ├── appointments.yml            # Academic appointments
 │   │   ├── industry.yml                # Professional experience (with locations)
+│   │   ├── teaching.yml                # Teaching experience (feeds CV & Teaching page)
+│   │   ├── papers.yml                  # Research papers with abstracts and metadata
 │   │   ├── awards.yml                  # Honors & Awards
 │   │   ├── service.yml                 # Academic service
 │   │   ├── presentations.yml           # Selected presentations
@@ -150,7 +150,7 @@ research-site/
 Most site content is controlled through YAML files in `_data/`. This modular approach makes updates simple and reduces errors:
 
 #### 1. Managing Research Papers
-Edit `_data/papers.yml` to add or update papers:
+Edit `_data/cv/papers.yml` to add or update papers:
 - Title, status (Job Market Paper, Publication, Working Paper)
 - Coauthors with URLs
 - Badges (methodology tags like "Empirical Analysis")
@@ -189,7 +189,7 @@ The CV is modularized in `_data/cv/`. Update specific files to change sections:
 - **`presentations.yml`**: Selected conference presentations
 - **`references.yml`**: Academic references and contact info
 
-Teaching experience is managed separately in `_data/teaching.yml` (shared by the CV and Teaching pages).
+Teaching experience is managed separately in `_data/cv/teaching.yml` (shared by the CV and Teaching pages).
 
 **Automatic PDF Generation:** When you push changes to any CV data file, the GitHub Action automatically rebuilds the downloadable PDF. No manual export needed.
 
@@ -285,7 +285,7 @@ This site uses Jekyll, deployed via Cloudflare Pages.
 - Commits and pushes changes
 
 #### CV PDF Generation (`generate-cv-pdf.yml`)
-- Triggers on push to `_data/cv/`, `_data/papers.yml`, `_data/teaching.yml`, `_config.yml`, `_pages/cv-print.html`, or `_layouts/cv-print.html`
+- Triggers on push to `_data/cv/`, `_config.yml`, `_pages/cv-print.html`, or `_layouts/cv-print.html`
 - Builds the Jekyll site, then uses Puppeteer to render `cv-print.html` to PDF
 - Commits the generated PDF to `assets/martin-gonzalez-cabello-cv.pdf`
 - Can also be triggered manually via `workflow_dispatch`

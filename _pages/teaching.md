@@ -29,7 +29,7 @@ description: Teaching philosophy and experience in data analytics, operations ma
 ## Teaching Experience
 
 <section id="history" class="section-spacing">
-    {% for inst in site.data.teaching %}
+    {% for inst in site.data.cv.teaching %}
         {% for course in inst.courses %}
             <div class="cv-entry scroll-reveal">
                 <div class="course-header">

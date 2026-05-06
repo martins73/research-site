@@ -54,7 +54,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
     <h2>Research</h2>
 
     <div class="research-grid">
-        {% for paper in site.data.papers.papers %}
+        {% for paper in site.data.cv.papers.papers %}
         <div class="paper-card scroll-reveal">
             {% if paper.status_class != "" %}
             <span class="paper-tag {{ paper.status_class }}">{{ paper.status }}</span>
