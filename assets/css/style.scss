@@ -500,25 +500,15 @@ h1, h2, h3, .name {
     gap: var(--space-4); 
 }
 
-.social-icon { 
-    fill: var(--text-light); 
-    transition: fill 0.2s; 
+.social-icon {
+    color: var(--text-light);
+    font-size: 24px;
+    line-height: 1;
+    transition: color 0.2s, transform 0.2s;
 }
 
-.social-link:hover .social-icon { 
-    fill: var(--accent); 
-    transform: scale(1.1);
-}
-
-/* NEW - Special class for outline icons only */
-.social-icon-outline {
-    fill: none;
-    stroke: var(--text-light);
-    transition: stroke 0.2s, transform 0.2s;
-}
-
-.social-link:hover .social-icon-outline {
-    stroke: var(--accent);
+.social-link:hover .social-icon {
+    color: var(--accent);
     transform: scale(1.1);
 }
 
