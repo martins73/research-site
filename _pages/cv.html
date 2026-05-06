@@ -69,11 +69,15 @@ description: Academic CV and professional background in analytics, operations, a
             <div class="cv-role">{{ item.degree }}</div>
             {% if item.description.size > 0 %}
             <div class="cv-desc">
-                <ul>
-                    {% for d in item.description %}
-                        <li>{{ d }}</li>
-                    {% endfor %}
-                </ul>
+                {% if item.description.size == 1 %}
+                    {{ item.description[0] }}
+                {% else %}
+                    <ul>
+                        {% for d in item.description %}
+                            <li>{{ d }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
             {% endif %}
         </div>
