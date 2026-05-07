@@ -2,6 +2,11 @@
   url_key: linkedin
   bi_class: bi-linkedin
 
+- name: ORCID
+  url_key: orcid
+  svg: >-
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M294.75 188.19h-45.92V342h47.47c66.61 0 81.91-50.59 81.91-76.91 0-42.88-27.34-76.9-83.46-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM175.61 380.19h-31.93V174.55h31.93zm-15.96-225.76a20.32 20.32 0 1 1 20.32-20.32 20.32 20.32 0 0 1-20.32 20.32zM300 380.19h-79V174.55h77.47c73.7 0 106.13 52.75 106.13 102.81-.04 54.5-42.61 102.83-104.6 102.83z"/></svg>
+
 - name: Google Scholar
   url_key: google_scholar
   bi_class: bi-mortarboard-fill

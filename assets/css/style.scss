@@ -507,6 +507,18 @@ h1, h2, h3, .name {
     transition: color 0.2s, transform 0.2s;
 }
 
+span.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.social-icon svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+}
+
 .social-link:hover .social-icon {
     color: var(--accent);
     transform: scale(1.1);

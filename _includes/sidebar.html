@@ -31,7 +31,11 @@
       {% assign url = site.social[social.url_key] %}
       {% if url %}
         <a href="{{ url }}" class="social-link" title="{{ social.name }}" aria-label="{{ social.name }}" target="_blank" rel="noopener">
-          <i class="bi {{ social.bi_class }} social-icon" aria-hidden="true"></i>
+          {% if social.svg %}
+            <span class="social-icon">{{ social.svg }}</span>
+          {% else %}
+            <i class="bi {{ social.bi_class }} social-icon" aria-hidden="true"></i>
+          {% endif %}
         </a>
       {% endif %}
     {% endfor %}
