@@ -9,11 +9,23 @@ min_items: 2
 
 # Activity items (most recent first)
 items:
+  - date: "July 2026"
+    text: 'Scheduled to present "First Impressions Matter" at the'
+    link_text: "INFORMS MSOM Conference"
+    link_url: "https://www.hbs.edu/about/research/msom-conference-2026"
+    link_suffix: "in Boston, MA."
+    
   - date: "June 2026"
     text: 'I will be joining'
     link_text: "Google DeepMind"
     link_url: "https://deepmind.google/"
     link_suffix: "as a Student Researcher to study the intersection of AI and organizational design."
+
+  - date: "May 2026"
+    text: 'Scheduled to present "First Impressions Matter" at the'
+    link_text: "IESE Marketing Seminar"
+    link_url: "https://www.iese.edu/faculty-research/academic-departments/marketing/"
+    link_suffix: "in Barcelona, Spain."
 
   - date: "May 2026"
     text: 'Scheduled to present "First Impressions Matter" at the'
@@ -25,12 +37,6 @@ items:
     text: 'Major Revision for "Searching for Serendipity" in <em>Strategic Management Journal</em>.'
     link_text: "Preprint available"
     link_url: "https://osf.io/preprints/socarxiv/ve8mx"
-    link_suffix: ""
-
-  - date: "Nov 2025"
-    text: "Submitted \"The Impact of Information Systems on Experts' Decisions\" to <em>American Economic Journal: Applied Economics</em>."
-    link_text: ""
-    link_url: ""
     link_suffix: ""
 
   - date: "Jan 2025"
