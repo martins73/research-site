@@ -13,3 +13,7 @@
 - name: Last.fm
   url_key: lastfm
   bi_class: bi-music-note-beamed
+
+- name: My Flightradar24
+  url_key: flightradar24
+  bi_class: bi-airplane
