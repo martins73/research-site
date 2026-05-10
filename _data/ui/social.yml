@@ -15,5 +15,5 @@
   bi_class: bi-music-note-beamed
 
 - name: My Flightradar24
-  url_key: flightradar24
+  url_key: flightradar
   bi_class: bi-airplane
