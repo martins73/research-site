@@ -1,0 +1,10 @@
+# Set any of the optional values below to "" to hide the relevant "Now" tile.
+
+location:
+  text: "Los Angeles, CA"
+  emoji: "📍"
+
+reading: []
+
+playing: ""
+watching: ""

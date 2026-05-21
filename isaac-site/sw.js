@@ -1,0 +1,73 @@
+---
+layout: null
+---
+{%- assign precache_paths = "/assets/css/style.css,/assets/logos/favicon.svg,/assets/fonts/atkinson-regular.woff2,/assets/fonts/atkinson-bold.woff2,/assets/fonts/merriweather-light.woff2,/assets/fonts/merriweather-regular.woff2,/assets/fonts/merriweather-bold.woff2" | split: "," -%}
+const CACHE_NAME = 'v{{ precache_paths | assets_version }}-{{ site.avatar_version | default: "1" }}';
+
+const PRECACHE = [
+  {%- for path in precache_paths %}
+  '{{ path | relative_url }}?v={{ path | asset_version }}',
+  {%- endfor %}
+  '{{ "/assets/profile_picture.webp" | relative_url }}?v={{ site.avatar_version | default: "1" }}'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(PRECACHE))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(
+        keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+      ))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  if (request.method !== 'GET') return;
+
+  const isPage = request.mode === 'navigate' ||
+                 request.headers.get('accept')?.includes('text/html');
+
+  if (isPage) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  const isStatic = /\.(css|js|png|jpg|webp|svg|woff2?|ttf)(\?.*)?$/.test(url.pathname);
+
+  if (isStatic) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.match(request).then((cached) => {
+          const fetchPromise = fetch(request).then((response) => {
+            if (response.ok) {
+              cache.put(request, response.clone());
+            }
+            return response;
+          }).catch(() => cached);
+
+          return cached || fetchPromise;
+        })
+      )
+    );
+    return;
+  }
+});
