@@ -1,8 +1,0 @@
-# RECENT ACTIVITY CONTROL
-# Set show_section to true and add items below to display the "Recent Activity"
-# section on the homepage.
-
-show_section: false
-min_items: 2
-
-items: []
