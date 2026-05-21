@@ -1,0 +1,11 @@
+{%- assign coauthors = include.coauthors | default: empty -%}
+{%- assign coauthor_count = coauthors | size -%}
+{%- for coauthor in coauthors -%}
+    {%- if coauthor_count == 1 or forloop.first -%}
+        {{ coauthor.name }}
+    {%- elsif forloop.last -%}
+        {{ ' and ' | append: coauthor.name }}
+    {%- else -%}
+        {{ ', ' | append: coauthor.name }}
+    {%- endif -%}
+{%- endfor -%}

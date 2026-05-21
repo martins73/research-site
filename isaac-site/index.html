@@ -1,0 +1,160 @@
+---
+layout: default
+title: Isaac Tucker
+active_page: home
+permalink: /
+description: PhD Candidate at UCLA Anderson researching strategy, search, and the dynamics of innovation and human capital.
+---
+
+<section id="about">
+    <h1 class="scroll-reveal">About Me</h1>
+    <p class="lead scroll-reveal">I study strategy, search, and the dynamics of innovation and human capital.</p>
+
+    <p class="scroll-reveal">Hello! I am a PhD Candidate in Management at UCLA Anderson School of Management, where I expect to graduate in 2027.</p>
+
+    <p class="scroll-reveal">My research sits at the intersection of <strong>strategy</strong> and <strong>organizations</strong>. I use formal models and large-scale empirical analysis to study how firms and individuals search for valuable ideas, how performance is shaped by chance and capability, and how worker volatility affects human capital management.</p>
+
+    <p class="scroll-reveal">Before returning to academia, I spent over a decade in industry at <strong>BlackLine</strong>, where I rose from Solutions Consultant to Chief Product Officer. That experience shapes how I think about strategy, product, and people inside organizations — and what questions I find worth asking as a researcher.</p>
+
+    <p class="scroll-reveal">I hold an M.A. in Geopolitics and the Global Economy from University College Dublin and a B.A. in Geography from UCLA.</p>
+</section>
+
+{% if site.data.activity.show_section and site.data.activity.items.size >= site.data.activity.min_items %}
+<section id="news">
+    <h2>Recent Activity</h2>
+    <ul class="news-list">
+        {% for item in site.data.activity.items %}
+        <li class="news-item scroll-reveal">
+            <span class="news-date">{{ item.date }}</span>
+            <span class="news-text">
+                {{ item.text }}
+                {% if item.link_url and item.link_url != "" %}
+                <a href="{{ item.link_url }}" target="_blank" rel="noopener" class="news-link">{{ item.link_text }}</a>
+                {% endif %}
+                {% if item.link_suffix and item.link_suffix != "" %}
+                {{ item.link_suffix }}
+                {% endif %}
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+<section id="research">
+    <h2>Research</h2>
+
+    <div class="research-grid">
+        {% for paper in site.data.cv.papers.papers %}
+        <div class="paper-card scroll-reveal">
+            {% if paper.status_class != "" %}
+            <span class="paper-tag {{ paper.status_class }}">{{ paper.status }}</span>
+            {% else %}
+            <span class="paper-tag">{{ paper.status }}</span>
+            {% endif %}
+
+            <h3 class="card-title">{{ paper.title }}</h3>
+
+            {% if paper.coauthors.size > 0 %}
+            <div class="author-list">
+                with
+                {% for coauthor in paper.coauthors %}
+                {% if coauthor.url %}<a href="{{ coauthor.url }}" target="_blank" rel="noopener" class="author-link">{{ coauthor.name }}</a>{% else %}{{ coauthor.name }}{% endif %}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if paper.badges.size > 0 %}
+            <div class="badge-container">
+                {% for badge in paper.badges %}
+                <span class="tech-badge">{{ badge }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if paper.publication != "" %}
+            <p class="paper-meta"><em>{{ paper.publication }}</em></p>
+            {% endif %}
+
+            {% if paper.submission != "" %}
+            <p class="paper-meta"><em>{{ paper.submission }}</em></p>
+            {% endif %}
+
+            {% if paper.highlights != "" %}
+            <p class="paper-highlights">{{ paper.highlights }}</p>
+            {% endif %}
+
+            {% if paper.abstract != "" and paper.abstract %}
+            <div class="paper-abstract-container">
+                <div class="paper-abstract collapsed" id="abstract-{{ forloop.index }}">
+                    {{ paper.abstract | markdownify }}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="paper-actions">
+                {% if paper.abstract != "" and paper.abstract %}
+                <button class="btn-abstract" data-abstract="{{ forloop.index }}" aria-expanded="false" aria-controls="abstract-{{ forloop.index }}">
+                    {{ site.ui_text.research.show_abstract | default: "Show Abstract" }}
+                </button>
+                {% endif %}
+                {% if paper.link_url and paper.link_url != "" %}
+                <a href="{{ paper.link_url }}" class="card-link" {% if paper.link_url contains 'http' %}target="_blank" rel="noopener"{% endif %}>{{ paper.link_text }}</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% if site.data.status %}
+<section id="now" class="now-section">
+    <div class="now-header">
+        <h2 class="now-title">Now</h2>
+        <span class="now-updated">
+            Updated: {{ site.data.last_updated.date }}
+        </span>
+    </div>
+
+    <div class="now-grid">
+        {% if site.data.status.location.text != "" %}
+        <div class="scroll-reveal">
+            <h4 class="now-label">Location</h4>
+            <div class="now-value">
+                <span>{{ site.data.status.location.emoji }}</span>
+                <span>{{ site.data.status.location.text }}</span>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if site.data.status.reading.size > 0 %}
+        <div class="scroll-reveal">
+            <h4 class="now-label">Reading</h4>
+            {% for book in site.data.status.reading %}
+                <div class="now-book">
+                    <a href="{{ book.link }}" target="_blank" rel="noopener" class="now-book-link">
+                        {{ book.title }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if site.data.status.playing != "" or site.data.status.watching != "" %}
+        <div class="scroll-reveal">
+             <h4 class="now-label">Off Duty</h4>
+             {% if site.data.status.playing != "" %}
+             <div class="now-activity">
+                <span>🎮</span> <span>{{ site.data.status.playing }}</span>
+             </div>
+             {% endif %}
+             {% if site.data.status.watching != "" %}
+             <div class="now-activity">
+                <span>📺</span> <span>{{ site.data.status.watching }}</span>
+             </div>
+             {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endif %}

@@ -1,0 +1,23 @@
+- institution: BlackLine
+  institution_url: https://www.blackline.com
+  logo: ""
+  location: "Los Angeles, CA"
+  positions:
+    - role: Chief Product Officer
+      dates: "2018 - 2021"
+      description: []
+    - role: Vice President, Product Management
+      dates: "2016 - 2018"
+      description: []
+    - role: Director, Product Management
+      dates: "2015 - 2016"
+      description: []
+    - role: Director, Mid-Market Sales and Marketing
+      dates: "2013 - 2015"
+      description: []
+    - role: Director, Digital Marketing
+      dates: "2012 - 2014"
+      description: []
+    - role: Solutions Consultant
+      dates: "2009 - 2012"
+      description: []

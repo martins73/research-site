@@ -1,0 +1,20 @@
+# 1. Block AI Scrapers & Data Collectors
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: AnthropicAI
+Disallow: /
+
+# 2. Allow Google & Bing (For SEO)
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# 3. Locate Sitemap
+Sitemap: https://martin.gonzalezcabello.com/sitemap.xml

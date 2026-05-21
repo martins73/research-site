@@ -1,0 +1,13 @@
+# Jekyll build output
+_site/
+
+# Bundler
+.bundle/
+vendor/
+
+# Node
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
