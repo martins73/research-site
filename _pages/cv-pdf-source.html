@@ -85,8 +85,7 @@ exclude_from_nav: true
     <div class="paper-entry">
         <div class="paper-title-text">{{ paper.title }}</div>
         <div class="paper-meta">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}.
+            {% if paper.coauthors.size > 0 %}with {% include cv-coauthors.html coauthors=paper.coauthors %}.{% endif %}
             {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
@@ -108,8 +107,10 @@ exclude_from_nav: true
             </span>
         </div>
         <div class="paper-meta">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}{% if paper.submission != "" %}, <em>{{ paper.submission }}</em>{% endif %}
+            {% if paper.coauthors.size > 0 -%}
+            with {% include cv-coauthors.html coauthors=paper.coauthors %}{% if paper.submission != "" %}, {% endif %}
+            {%- endif %}
+            {% if paper.submission != "" %}<em>{{ paper.submission }}</em>{% endif %}
         </div>
     </div>
     {% endfor %}
@@ -127,8 +128,7 @@ exclude_from_nav: true
             <span class="paper-title-text">{{ paper.title }}</span>
         </div>
         <div class="paper-meta">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}
+            {% if paper.coauthors.size > 0 %}with {% include cv-coauthors.html coauthors=paper.coauthors %}{% endif %}
         </div>
     </div>
     {% endfor %}
@@ -147,8 +147,7 @@ exclude_from_nav: true
             {% assign pub_parts = paper.publication | split: "(" %}
         </div>
         <div class="paper-meta">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}.
+            {% if paper.coauthors.size > 0 %}with {% include cv-coauthors.html coauthors=paper.coauthors %}.{% endif %}
             {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>

@@ -64,12 +64,14 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 
             <h3 class="card-title">{{ paper.title }}</h3>
 
+            {% if paper.coauthors.size > 0 %}
             <div class="author-list">
                 with
                 {% for coauthor in paper.coauthors %}
                 <a href="{{ coauthor.url }}" target="_blank" rel="noopener" class="author-link">{{ coauthor.name }}</a>{% unless forloop.last %}, {% endunless %}
                 {% endfor %}
             </div>
+            {% endif %}
 
             {% if paper.badges.size > 0 %}
             <div class="badge-container">

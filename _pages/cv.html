@@ -95,9 +95,10 @@ description: Academic CV and professional background in analytics, operations, a
     <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}
-            {% if paper.publication != "" %}<br><em>{{ paper.publication }}</em>{% endif %}
+            {% if paper.coauthors.size > 0 -%}
+            with {% include cv-coauthors.html coauthors=paper.coauthors %}{% if paper.publication != "" %}<br>{% endif %}
+            {%- endif %}
+            {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
     {% endfor %}
@@ -114,9 +115,10 @@ description: Academic CV and professional background in analytics, operations, a
     <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}
-            {% if paper.submission != "" %}<br>{{ paper.submission }}{% endif %}
+            {% if paper.coauthors.size > 0 -%}
+            with {% include cv-coauthors.html coauthors=paper.coauthors %}{% if paper.submission != "" %}<br>{% endif %}
+            {%- endif %}
+            {% if paper.submission != "" %}{{ paper.submission }}{% endif %}
         </div>
     </div>
     {% endfor %}
@@ -133,8 +135,9 @@ description: Academic CV and professional background in analytics, operations, a
     <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}
+            {% if paper.coauthors.size > 0 %}
+            with {% include cv-coauthors.html coauthors=paper.coauthors %}
+            {% endif %}
         </div>
     </div>
     {% endfor %}
@@ -151,9 +154,10 @@ description: Academic CV and professional background in analytics, operations, a
     <div class="cv-entry scroll-reveal">
         <span class="cv-title">{{ paper.title }}</span>
         <div class="cv-desc cv-desc-no-indent">
-            with
-            {% include cv-coauthors.html coauthors=paper.coauthors %}
-            {% if paper.publication != "" %}<br><em>{{ paper.publication }}</em>{% endif %}
+            {% if paper.coauthors.size > 0 -%}
+            with {% include cv-coauthors.html coauthors=paper.coauthors %}{% if paper.publication != "" %}<br>{% endif %}
+            {%- endif %}
+            {% if paper.publication != "" %}<em>{{ paper.publication }}</em>{% endif %}
         </div>
     </div>
     {% endfor %}
