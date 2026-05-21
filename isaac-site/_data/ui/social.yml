@@ -1,7 +1,0 @@
-- name: LinkedIn
-  url_key: linkedin
-  bi_class: bi-linkedin
-
-- name: Google Scholar
-  url_key: google_scholar
-  bi_class: bi-mortarboard-fill
