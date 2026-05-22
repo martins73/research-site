@@ -1,11 +1,18 @@
 {%- assign coauthors = include.coauthors | default: empty -%}
 {%- assign coauthor_count = coauthors | size -%}
 {%- for coauthor in coauthors -%}
+    {%- capture name_html -%}
+        {%- if coauthor.url and coauthor.url != "" -%}
+            <a href="{{ coauthor.url }}" target="_blank" rel="noopener" class="coauthor-link">{{ coauthor.name }}</a>
+        {%- else -%}
+            {{ coauthor.name }}
+        {%- endif -%}
+    {%- endcapture -%}
     {%- if coauthor_count == 1 or forloop.first -%}
-        {{ coauthor.name }}
+        {{ name_html }}
     {%- elsif forloop.last -%}
-        {{ ' and ' | append: coauthor.name }}
+        {{ ' and ' | append: name_html }}
     {%- else -%}
-        {{ ', ' | append: coauthor.name }}
+        {{ ', ' | append: name_html }}
     {%- endif -%}
 {%- endfor -%}
