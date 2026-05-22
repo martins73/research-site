@@ -689,6 +689,15 @@ h2 {
     color: var(--accent);
 }
 
+.coauthor-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.coauthor-link:hover {
+    color: var(--accent);
+}
+
 .badge-container {
     margin-bottom: var(--space-3);
 }
