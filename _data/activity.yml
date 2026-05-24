@@ -28,7 +28,7 @@ items:
     link_suffix: "in Barcelona, Spain."
 
   - date: "May 2026"
-    text: 'Scheduled to present "First Impressions Matter" at the'
+    text: 'Presented "First Impressions Matter" at the'
     link_text: "POMS Annual Conference"
     link_url: "https://pomsmeetings.org/conf-2026/"
     link_suffix: "in Reno, NV."
