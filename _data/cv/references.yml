@@ -11,10 +11,10 @@
   institution: "UCLA Anderson School of Management"
   email: "auyon.siddiq@anderson.ucla.edu"
 
-# - name: "Felipe Caro"
-#   title: "Professor of Decisions, Operations and Technology Management; Susan Wojcicki Chair in Data Science and Innovation"
-#   institution: "UCLA Anderson School of Management"
-#   email: "felipe.caro@anderson.ucla.edu"
+- name: "Felipe Caro"
+  title: "Professor of Decisions, Operations and Technology Management; Susan Wojcicki Chair in Data Science and Innovation"
+  institution: "UCLA Anderson School of Management"
+  email: "felipe.caro@anderson.ucla.edu"
 
 - name: "Brett Hollenbeck"
   title: "Associate Professor of Marketing"
