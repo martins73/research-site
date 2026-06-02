@@ -29,30 +29,6 @@
 }
 
 @font-face {
-    font-family: 'Atkinson Hyperlegible';
-    src: url('{{ "/assets/fonts/atkinson-bold-italic.woff2" | relative_url }}') format('woff2');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Merriweather';
-    src: url('{{ "/assets/fonts/merriweather-light.woff2" | relative_url }}') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Merriweather';
-    src: url('{{ "/assets/fonts/merriweather-light-italic.woff2" | relative_url }}') format('woff2');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'Merriweather';
     src: url('{{ "/assets/fonts/merriweather-regular.woff2" | relative_url }}') format('woff2');
     font-weight: 400;
@@ -605,7 +581,7 @@ h2 {
 .lead {
     font-size: var(--text-3xl);
     color: var(--text-secondary);
-    font-weight: 300; 
+    font-weight: 400;
     line-height: var(--leading-normal);
     margin-bottom: var(--space-8);
     font-family: var(--font-heading);

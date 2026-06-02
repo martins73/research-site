@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-{%- assign precache_paths = "/assets/css/style.css,/assets/logos/favicon.svg,/assets/fonts/atkinson-regular.woff2,/assets/fonts/atkinson-bold.woff2,/assets/fonts/merriweather-light.woff2,/assets/fonts/merriweather-regular.woff2,/assets/fonts/merriweather-bold.woff2" | split: "," -%}
+{%- assign precache_paths = "/assets/css/style.css,/assets/logos/favicon.svg,/assets/fonts/atkinson-regular.woff2,/assets/fonts/atkinson-bold.woff2,/assets/fonts/merriweather-regular.woff2,/assets/fonts/merriweather-bold.woff2" | split: "," -%}
 const CACHE_NAME = 'v{{ precache_paths | assets_version }}-{{ site.avatar_version | default: "1" }}';
 
 const PRECACHE = [
