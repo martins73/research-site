@@ -16,7 +16,7 @@ items:
     link_suffix: "in Boston, MA."
     
   - date: "June 2026"
-    text: 'I will be joining'
+    text: 'I joined'
     link_text: "Google DeepMind"
     link_url: "https://deepmind.google/"
     link_suffix: "as a Student Researcher to study the intersection of AI and organizational design."
