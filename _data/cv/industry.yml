@@ -1,3 +1,13 @@
+- institution: Google DeepMind
+  institution_url: https://deepmind.google/
+  logo: /assets/logos/gemini.svg
+  location: "Mountain View, CA"
+  positions:
+    - role: PhD Student Researcher
+      dates: "2026 - Present"
+      description:
+        - Researching the impact of AI on organizations, studying how AI adoption reshapes work, decision-making, and productivity
+
 - institution: ACHS (Safety Association of Chile)
   institution_url: https://www.achs.cl/
   logo: /assets/logos/achs.svg
