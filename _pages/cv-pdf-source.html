@@ -285,7 +285,7 @@ exclude_from_nav: true
     <h2>References</h2>
     {% for ref in site.data.cv.references %}
     <div class="entry">
-        <div><strong>{% if ref.profile_url %}<a href="{{ ref.profile_url }}">{{ ref.name }}</a>{% else %}{{ ref.name }}{% endif %}</strong></div>
+        <div><strong>{% if ref.profile_url %}<a href="{{ ref.profile_url }}">{{ ref.name }}</a>{% else %}{{ ref.name }}{% endif %}</strong>{% if ref.role %} ({{ ref.role }}){% endif %}</div>
         <div class="entry-desc">
             {{ ref.title }}, {{ ref.institution }}
         </div>

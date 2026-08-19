@@ -1,12 +1,14 @@
 # currently empty to hide section
 #[]
 
-- name: "Charles Corbett (Advisor)"
+- name: "Charles Corbett"
+  role: "Co-Advisor"
   title: "Professor of Operations Management and Sustainability; IBM Chair in Management"
   institution: "UCLA Anderson School of Management"
   profile_url: "https://www.anderson.ucla.edu/faculty-and-research/decisions-operations-and-technology-management/faculty/corbett"
 
 - name: "Auyon Siddiq"
+  role: "Co-Advisor"
   title: "Associate Professor of Decisions, Operations and Technology Management"
   institution: "UCLA Anderson School of Management"
   profile_url: "https://www.anderson.ucla.edu/faculty-and-research/decisions-operations-and-technology-management/faculty/siddiq"

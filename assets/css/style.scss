@@ -1225,6 +1225,11 @@ a .cv-logo:hover {
     text-decoration: underline;
 }
 
+.cv-ref-role {
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
 .cv-ref-note {
     color: var(--text-secondary);
     font-style: italic;

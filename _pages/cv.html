@@ -327,7 +327,8 @@ description: Academic CV and professional background in analytics, operations, a
                             <a href="{{ ref.profile_url }}" target="_blank" rel="noopener" class="cv-ref-link">{{ ref.name }}</a>
                         {%- else -%}
                             {{ ref.name }}
-                        {%- endif %}
+                        {%- endif -%}
+                        {%- if ref.role %} <span class="cv-ref-role">({{ ref.role }})</span>{% endif %}
                     </div>
                     <div class="cv-desc cv-desc-no-indent">
                         <span class="cv-ref-line">{{ ref.title }}</span>
