@@ -323,19 +323,21 @@ description: Academic CV and professional background in analytics, operations, a
                 <span class="cv-ref-bullet">&bull;</span>
                 <div class="cv-ref-content">
                     <div class="cv-title cv-ref-name">
-                        {{ ref.name }}
+                        {% if ref.profile_url -%}
+                            <a href="{{ ref.profile_url }}" target="_blank" rel="noopener" class="cv-ref-link">{{ ref.name }}</a>
+                        {%- else -%}
+                            {{ ref.name }}
+                        {%- endif %}
                     </div>
                     <div class="cv-desc cv-desc-no-indent">
                         <span class="cv-ref-line">{{ ref.title }}</span>
                         <span class="cv-ref-line cv-ref-institution">{{ ref.institution }}</span>
-                        <a href="mailto:{{ ref.email }}" class="cv-ref-email">
-                            {{ ref.email }}
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
+        <p class="cv-desc cv-ref-note">Contact information available upon request.</p>
     </div>
 </section>
 {% endif %}
