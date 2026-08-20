@@ -316,9 +316,9 @@ description: Academic CV and professional background in analytics, operations, a
 {% if site.data.cv.references.size > 0 %}
 <section id="references" class="section-spacing">
     <h2 class="cv-section-header">References</h2>
-    <div>
+    <div class="scroll-reveal">
         {% for ref in site.data.cv.references %}
-        <div class="cv-entry cv-ref-entry scroll-reveal">
+        <div class="cv-entry cv-ref-entry">
             <div class="cv-ref-row">
                 <span class="cv-ref-bullet">&bull;</span>
                 <div class="cv-ref-content">
@@ -338,7 +338,7 @@ description: Academic CV and professional background in analytics, operations, a
             </div>
         </div>
         {% endfor %}
-        <p class="cv-ref-note scroll-reveal">Contact information available upon request.</p>
+        <p class="cv-ref-note">Contact information available upon request.</p>
     </div>
 </section>
 {% endif %}
