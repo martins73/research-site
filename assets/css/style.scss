@@ -404,12 +404,16 @@ h1, h2, h3, .name {
     letter-spacing: -0.5px; 
 }
 
-.affiliation { 
-    font-size: var(--text-md); 
-    color: var(--text-light); 
-    margin-bottom: var(--space-8); 
+.affiliation {
+    font-size: var(--text-md);
+    color: var(--text-light);
+    margin-bottom: var(--space-8);
     font-family: var(--font-body);
 }
+
+/* Desktop keeps the stacked two-line affiliation; mobile swaps to a
+   middot separator so it sits on one line beside the avatar. */
+.affiliation-sep { display: none; }
 
 /* Navigation Buttons */
 .sidebar-btn { 
@@ -1807,14 +1811,102 @@ a .cv-logo:hover {
         box-shadow: none; 
     }
     
-    .sidebar { 
-        position: static; 
-        border-bottom: 1px solid var(--border); 
-        padding-bottom: var(--space-8); 
-        margin-bottom: var(--space-8); 
-        height: auto; 
+    /* --- Mobile header ---
+       The desktop sidebar stacks into a full screen of chrome on a phone,
+       pushing every word of content below the fold. On mobile the same
+       elements are recomposed into a compact header: identity on one row,
+       navigation as a scrolling pill rail, actions on a single line. */
+    .sidebar {
+        position: static;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: var(--space-6);
+        margin-bottom: 0;   /* the container's grid gap already separates them */
+        height: auto;
         overflow-y: visible;
-    } 
+        text-align: left;
+        /* Grid items default to min-width:auto, which would let the pill rail
+           push the page wider instead of scrolling inside itself. */
+        min-width: 0;
+    }
+
+    .sidebar-identity {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .profile-img {
+        width: 84px;
+        height: 84px;
+        flex: none;
+        border-width: 3px;
+        margin-bottom: 0;
+    }
+
+    .sidebar-identity-text { min-width: 0; }
+
+    .name {
+        font-size: var(--text-4xl);
+        line-height: var(--leading-snug);
+        margin-bottom: var(--space-1);
+    }
+
+    .affiliation {
+        margin-bottom: 0;
+        line-height: var(--leading-snug);
+    }
+
+    .affiliation-sep { display: inline; }
+    .affiliation-break { display: none; }
+
+    /* Navigation: horizontal pill rail. Scrolls if entries are added,
+       so the header height stays constant as the site grows. */
+    .sidebar-nav-group {
+        display: flex;
+        gap: var(--space-2);
+        margin-top: var(--space-5);
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sidebar-nav-group::-webkit-scrollbar { display: none; }
+
+    .sidebar-nav-group .sidebar-btn {
+        width: auto;
+        flex: none;
+        margin-bottom: 0;
+        padding: var(--space-2) var(--space-4);
+        border-radius: 999px;
+        white-space: nowrap;
+    }
+
+    /* Actions: email, socials and theme toggle share one row. */
+    .sidebar-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        margin-top: var(--space-4);
+    }
+
+    .sidebar-actions .sidebar-btn {
+        width: auto;
+        margin-bottom: 0;
+        padding: var(--space-2) var(--space-5);
+    }
+
+    .social-links {
+        margin-top: 0;
+        margin-left: auto;
+        gap: var(--space-3);
+    }
+
+    .theme-toggle {
+        margin: 0;
+        width: 38px;
+        height: 38px;
+        flex: none;
+    }
     
     .research-grid, .now-grid { grid-template-columns: 1fr; gap: var(--space-8); }
     .cv-page-header { flex-direction: column; align-items: flex-start; }
