@@ -31,8 +31,11 @@ sitemap: false
 
   <div class="notfound-actions">
     <a class="sidebar-btn btn-primary" href="{{ '/' | relative_url }}">Back to the start</a>
-    <a class="sidebar-btn btn-outline" href="{{ '/human-supply-chain/' | relative_url }}">The research</a>
-    <a class="sidebar-btn btn-outline" href="{{ '/cv/' | relative_url }}">Curriculum vitae</a>
+    {%- for item in site.data.ui.navigation %}
+      {%- unless item.url == '/' %}
+    <a class="sidebar-btn btn-outline" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {%- endunless %}
+    {%- endfor %}
   </div>
 </section>
 
