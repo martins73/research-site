@@ -265,9 +265,9 @@ description: Academic CV and professional background in analytics, operations, a
 
                     <div>
                         {% if company.institution_url -%}
-                            <a href="{{ company.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ company.institution }}</a>
+                            <a href="{{ company.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline"{% if company.institution_lang %} lang="{{ company.institution_lang }}"{% endif %}>{{ company.institution }}</a>
                         {%- else -%}
-                            <span class="cv-title cv-inline">{{ company.institution }}</span>
+                            <span class="cv-title cv-inline"{% if company.institution_lang %} lang="{{ company.institution_lang }}"{% endif %}>{{ company.institution }}</span>
                         {%- endif -%}
                         {% if company.location %}<span class="cv-location">, {{ company.location }}</span>{% endif %}
                     </div>

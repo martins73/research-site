@@ -1,20 +1,83 @@
-# 1. Block AI Scrapers & Data Collectors
+# =============================================================================
+# 1. AI training / data-collection crawlers
+#
+# These tokens are the ones the operators actually publish. The previous list
+# used "AnthropicAI", which is not a crawler token and therefore matched
+# nothing. Blocking here covers model training and bulk collection; it does
+# not block the search engines in section 2.
+# =============================================================================
+
+# Anthropic
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# OpenAI
 User-agent: GPTBot
 Disallow: /
 
 User-agent: ChatGPT-User
 Disallow: /
 
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Google (Gemini / Vertex training; Googlebot itself is unaffected)
+User-agent: Google-Extended
+Disallow: /
+
+# Apple (Apple Intelligence training; Applebot itself is unaffected)
+User-agent: Applebot-Extended
+Disallow: /
+
+# Meta
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# Others
+User-agent: PerplexityBot
+Disallow: /
+
 User-agent: CCBot
 Disallow: /
 
-User-agent: AnthropicAI
+User-agent: Bytespider
 Disallow: /
 
-# 2. Allow Google & Bing (For SEO)
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+# =============================================================================
+# 2. Everything else, including search engines
+# =============================================================================
 User-agent: *
 Allow: /
 Disallow: /404.html
 
-# 3. Locate Sitemap
+# =============================================================================
+# 3. Sitemap
+# =============================================================================
 Sitemap: https://martin.gonzalezcabello.com/sitemap.xml

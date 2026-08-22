@@ -36,6 +36,8 @@
 <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/logos/favicon-192.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="192x192" href="{{ '/assets/logos/favicon-192.png' | relative_url }}">
 <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+{%- assign theme_colors = site.data.theme.themes[site.color_theme] %}
+<meta name="theme-color" content="{{ theme_colors.light.accent }}">
 <link rel="preload" as="image" href="{{ site.avatar | relative_url }}?v={{ site.avatar_version | default: '1' }}" fetchpriority="high">
 {% assign main_css_path = site.main_css | default: '/assets/css/style.css' %}
 <link rel="stylesheet" href="{{ main_css_path | relative_url }}?v={{ main_css_path | asset_version }}">
@@ -139,6 +141,11 @@
   (function() {
     var theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
+    // Keep the browser chrome (mobile address bar) in step with the theme.
+    if (theme === 'dark') {
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', '#1e293b'); // matches --bg-paper in dark mode
+    }
   })();
 
   // 2. Shared runtime config bridge for inline scripts

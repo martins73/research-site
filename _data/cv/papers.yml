@@ -1,14 +1,14 @@
 papers:
-  - title: "First Impressions Matter: Task frictions and Retention on a Crowdwork Platform"
+  - title: "First Impressions Matter: Task Frictions and Retention on a Crowdwork Platform"
     status: "Job Market Paper"
     status_class: "job-market"
     cv_category: "Working Paper"
     coauthors:
-      - name: "A. Siddiq"
+      - name: "Auyon Siddiq"
         url: "https://www.auyonsiddiq.com/"
-      - name: "C. Corbett"
+      - name: "Charles Corbett"
         url: "https://scholar.google.com/citations?user=lYJUXeAAAAAJ"
-      - name: "A. Gordon"
+      - name: "Andrew Gordon"
         url: "https://scholar.google.com/citations?user=ljiiovIAAAAJ"
     badges:
       - "Empirical Analysis"
@@ -30,18 +30,18 @@ papers:
       reliability and information accuracy are critical levers for sustaining the engaged workforce 
       that platforms need to function.
     link_text: "Request Draft"
-    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting JMP Draft: First Impressions Matter"
+    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting%20JMP%20Draft%3A%20First%20Impressions%20Matter"
 
   - title: "Fairness in Crowdwork: Making the Human AI Supply Chain More Humane"
     status: "Publication"
     status_class: ""
     cv_category: "Publication"
     coauthors:
-      - name: "A. Siddiq"
+      - name: "Auyon Siddiq"
         url: "https://www.auyonsiddiq.com/"
-      - name: "C. Corbett"
+      - name: "Charles Corbett"
         url: "https://scholar.google.com/citations?user=lYJUXeAAAAAJ"
-      - name: "C. Hu"
+      - name: "Catherine Hu"
         url: "https://www.linkedin.com/in/catherinehhu/"
     badges: []
     submission: ""
@@ -70,9 +70,9 @@ papers:
     status_class: ""
     cv_category: "Working Paper"
     coauthors:
-      - name: "I. Tucker"
+      - name: "Isaac Tucker"
         url: "https://scholar.google.com/citations?user=_XhBG4cAAAAJ"
-      - name: "O. Sorenson"
+      - name: "Olav Sorenson"
         url: "https://www.olavsorenson.net/?page_id=2"
     badges:
       - "NK Modeling"
@@ -99,11 +99,11 @@ papers:
     status_class: ""
     cv_category: "Working Paper"
     coauthors:
-      - name: "J.P. Atal"
+      - name: "Juan Pablo Atal"
         url: "https://sites.google.com/site/juanpabloatal/"
-      - name: "J. Ale-Chilet"
+      - name: "Jorge Alé-Chilet"
         url: "https://sites.google.com/site/jorgealechilet/"
-      - name: "A. Benitez"
+      - name: "Alejandra Benítez"
         url: "https://alejandrabenitezu.com/"
     badges: []
     submission: "In preparation for resubmission"
@@ -121,4 +121,4 @@ papers:
       management's preferences.
       These findings provide lessons for the design of information systems for decision-makers.
     link_text: "Request Draft"
-    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting Draft: Impact of Information Systems"
+    link_url: "mailto:martin@gonzalezcabello.com?subject=Requesting%20Draft%3A%20Impact%20of%20Information%20Systems"

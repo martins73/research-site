@@ -1,15 +1,17 @@
 {% assign entity = include.entity %}
 <div class="cv-header-group">
-    {% if entity.institution_url %}<a href="{{ entity.institution_url }}" target="_blank" rel="noopener">{% endif %}
-        <img src="{{ entity.logo }}?v={{ entity.logo | asset_version }}" alt="{{ entity.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
-    {% if entity.institution_url %}</a>{% endif %}
+    {% if entity.logo %}
+        {% if entity.institution_url %}<a href="{{ entity.institution_url }}" target="_blank" rel="noopener">{% endif %}
+            <img src="{{ entity.logo }}?v={{ entity.logo | asset_version }}" alt="{{ entity.institution }}" class="cv-logo" width="28" height="28" loading="lazy">
+        {% if entity.institution_url %}</a>{% endif %}
+    {% endif %}
 
     <div>
         {% if entity.institution_url -%}
-            <a href="{{ entity.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline">{{ entity.institution }}</a>
+            <a href="{{ entity.institution_url }}" target="_blank" rel="noopener" class="cv-institution-link cv-title cv-inline"{% if entity.institution_lang %} lang="{{ entity.institution_lang }}"{% endif %}>{{ entity.institution }}</a>
         {%- else -%}
-            <span class="cv-title cv-inline">{{ entity.institution }}</span>
+            <span class="cv-title cv-inline"{% if entity.institution_lang %} lang="{{ entity.institution_lang }}"{% endif %}>{{ entity.institution }}</span>
         {%- endif -%}
-        <span class="cv-location">, {{ entity.location }}</span>
+        {%- if entity.location %}<span class="cv-location">, {{ entity.location }}</span>{% endif -%}
     </div>
 </div>

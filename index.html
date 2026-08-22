@@ -121,7 +121,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
 
     <div class="now-grid">
         <div class="scroll-reveal">
-            <h4 class="now-label">Location</h4>
+            <h3 class="now-label">Location</h3>
             <div class="now-value">
                 <span>{{ site.data.status.location.emoji }}</span>
                 <span>{{ site.data.status.location.text }}</span>
@@ -129,14 +129,14 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
         </div>
 
         <div class="scroll-reveal">
-            <h4 class="now-label">
+            <h3 class="now-label">
                 <a href="{{ '/library/' | relative_url }}" class="now-label-link" title="View Full Library">
   Reading
 </a>
-            </h4>
+            </h3>
             {% for book in site.data.status.reading %}
                 <div class="now-book">
-                    <a href="{{ book.link }}" target="_blank" rel="noopener" class="now-book-link">
+                    <a href="{{ book.link }}" target="_blank" rel="noopener" class="now-book-link"{% if book.lang %} lang="{{ book.lang }}"{% endif %}>
                         {{ book.title }}
                     </a>
                 </div>
@@ -144,7 +144,7 @@ description: Researching the human supply chain of AI, crowdwork platforms, fair
         </div>
 
         <div class="scroll-reveal">
-             <h4 class="now-label">Off Duty</h4>
+             <h3 class="now-label">Off Duty</h3>
              {% if site.data.status.playing != "" %}
              <div class="now-activity">
                 <span>🎮</span> <span>{{ site.data.status.playing }}</span>

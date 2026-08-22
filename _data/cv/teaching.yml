@@ -30,6 +30,7 @@
       role: "Teaching Assistant"
 
 - institution: "Universidad Politécnica de Madrid"
+  institution_lang: "es"
   institution_url: "https://www.upm.es"
   logo: "/assets/logos/upm.png"
   location: "Madrid, Spain"

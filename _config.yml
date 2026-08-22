@@ -152,6 +152,7 @@ google_analytics: G-SKK42FETN2
 markdown: kramdown
 sass:
   style: compressed
+  sourcemap: never   # the .map is 51KB and is only useful when editing locally
 plugins:
   - jekyll-sitemap
 

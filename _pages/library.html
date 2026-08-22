@@ -14,13 +14,13 @@ description: Curated list of my favorite books.
     </div>
 
     {% for shelf in site.data.library %}
-    <h3 class="bookshelf-title">{{ shelf.shelf }}</h3>
+    <h2 class="bookshelf-title">{{ shelf.shelf }}</h2>
     <div class="book-grid">
         {% for book in shelf.books %}
         <div class="book-item scroll-reveal">
             <div class="book-meta">{{ book.meta }}</div>
             <div class="book-content">
-                <span class="book-title">{{ book.title }}</span>
+                <span class="book-title"{% if book.lang %} lang="{{ book.lang }}"{% endif %}>{{ book.title }}</span>
                 <span class="book-author">{{ book.author }}</span>
                 <p class="book-comment">{{ book.comment }}</p>
             </div>

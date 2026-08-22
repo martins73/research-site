@@ -64,7 +64,7 @@
     --text-secondary: #334155;
     --text-tertiary: #475569;
     --text-light: #64748b;
-    --text-muted: #94a3b8;
+    --text-muted: #64748b;
     --text-lighter: #cbd5e1;
 
     /* Colors - Accent (from _data/theme/themes.yml) */
@@ -72,6 +72,13 @@
     --accent-rgb: {{ site.data.theme.themes[site.color_theme].light.accent_rgb }};
     --accent-hover: {{ site.data.theme.themes[site.color_theme].light.accent_hover }};
     --accent-orange: {{ site.data.theme.themes[site.color_theme].light.accent_orange }};
+    /* --on-accent: text placed ON the solid accent (buttons, skip link).
+       --accent-on-tint: the accent shade that stays legible on --bg-accent.
+       Both are needed because one accent value cannot satisfy both uses in
+       dark mode: readable on the page means light, readable under white text
+       means dark. */
+    --on-accent: {{ site.data.theme.themes[site.color_theme].light.on_accent | default: '#FFFFFF' }};
+    --accent-on-tint: {{ site.data.theme.themes[site.color_theme].light.accent_on_tint | default: site.data.theme.themes[site.color_theme].light.accent }};
 
     /* Colors - Border */
     --border: #e2e8f0;
@@ -140,7 +147,7 @@
     --text-secondary: #e2e8f0;
     --text-tertiary: #cbd5e1;
     --text-light: #94a3b8;
-    --text-muted: #64748b;
+    --text-muted: #94a3b8;
     --text-lighter: #475569;
 
     /* Colors - Accent (from _data/theme/themes.yml) */
@@ -148,6 +155,8 @@
     --accent-rgb: {{ site.data.theme.themes[site.color_theme].dark.accent_rgb }};
     --accent-hover: {{ site.data.theme.themes[site.color_theme].dark.accent_hover }};
     --accent-orange: {{ site.data.theme.themes[site.color_theme].dark.accent_orange }};
+    --on-accent: {{ site.data.theme.themes[site.color_theme].dark.on_accent | default: '#0F172A' }};
+    --accent-on-tint: {{ site.data.theme.themes[site.color_theme].dark.accent_on_tint | default: site.data.theme.themes[site.color_theme].dark.accent }};
 
     /* Colors - Border */
     --border: #334155;
@@ -196,7 +205,7 @@
 
 [data-theme="dark"] .modal-close:hover {
     background: var(--accent);
-    color: white;
+    color: var(--on-accent);
     border-color: var(--accent);
 }
 
@@ -276,7 +285,7 @@ html {
     z-index: 9999;
     padding: var(--space-2) var(--space-4);
     background-color: var(--accent);
-    color: #fff;
+    color: var(--on-accent);
     font-family: var(--font-body);
     font-size: var(--text-sm);
     font-weight: 700;
@@ -439,7 +448,7 @@ h1, h2, h3, .name {
 
 .btn-primary { 
     background-color: var(--accent); 
-    color: white; 
+    color: var(--on-accent); 
     border: 1px solid var(--accent); 
     box-shadow: 0 2px 4px rgba(var(--accent-rgb), 0.2); 
 }
@@ -457,13 +466,13 @@ h1, h2, h3, .name {
 
 .btn-outline:hover { 
     border-color: var(--accent); 
-    color: var(--accent); 
+    color: var(--accent-on-tint); 
     background-color: var(--bg-accent);
 }
 
 .btn-active { 
     background-color: var(--bg-accent); 
-    color: var(--accent); 
+    color: var(--accent-on-tint); 
     border: 1px solid var(--info-bg-hover);
     font-weight: 600; 
 }
@@ -754,7 +763,7 @@ h2 {
 .btn-abstract {
     font-size: var(--text-md);
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-on-tint);
     background: var(--bg-accent);
     border: 2px solid var(--accent);
     border-radius: 6px;
@@ -766,7 +775,7 @@ h2 {
 
 .btn-abstract:hover {
     background: var(--accent);
-    color: white;
+    color: var(--on-accent);
     border-color: var(--accent);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(var(--accent-rgb), 0.2);
@@ -896,9 +905,14 @@ h2 {
 }
 
 .now-label {
+    /* An h3 for correct document outline; the visual treatment is a small
+       uppercase label, so the heading defaults are reset explicitly. */
+    font-family: var(--font-body);
     font-size: var(--text-sm-plus);
+    font-weight: 700;
     text-transform: uppercase;
     color: var(--text-light);
+    margin-top: 0;
     margin-bottom: var(--space-4);
     letter-spacing: 0.5px;
 }
@@ -1276,9 +1290,13 @@ a .cv-logo:hover {
 }
 
 .bookshelf-title {
+    /* An h2 for correct document outline; the rule below draws its own
+       trailing line via ::after, so the h2 underline is suppressed. */
     font-family: var(--font-heading);
     font-size: var(--text-5xl);
     color: var(--text-primary);
+    border-bottom: none;
+    padding-bottom: 0;
     margin-top: var(--space-12);
     margin-bottom: var(--space-6);
     display: flex;
@@ -1629,7 +1647,7 @@ a .cv-logo:hover {
 
 .modal-close:hover {
     background: var(--accent);
-    color: white;
+    color: var(--on-accent);
     border-color: var(--accent);
     transform: rotate(90deg);
 }
@@ -1724,6 +1742,97 @@ a .cv-logo:hover {
     50% { opacity: 0; }
 }
 
+
+/* ============================================================================
+   14c. 404 PAGE
+   ============================================================================
+   Styled as a crowdwork platform's return notice, which is the subject of the
+   job market paper linked from it.
+*/
+
+.notfound-code {
+    font-family: var(--font-heading);
+    font-size: var(--text-6xl);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent-orange);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4) 0;
+}
+
+.notfound-title {
+    font-size: var(--text-h1);
+    margin-bottom: var(--space-4);
+}
+
+.notfound-receipt {
+    border: 1px dashed var(--border-medium);
+    border-radius: 6px;
+    margin: var(--space-8) 0;
+    max-width: 30rem;
+    background: var(--bg-body);
+}
+
+.notfound-receipt-head {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    padding: var(--space-3) var(--space-5);
+    border-bottom: 1px dashed var(--border-medium);
+}
+
+.notfound-receipt-body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-6);
+    margin: 0;
+    padding: var(--space-5);
+    font-size: var(--text-md);
+}
+
+.notfound-receipt-body dt {
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    letter-spacing: 0.06em;
+    align-self: center;
+}
+
+.notfound-receipt-body dd {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.notfound-receipt-body code {
+    font-size: var(--text-md);
+    word-break: break-all;
+}
+
+.notfound-rejected {
+    color: var(--accent-orange);
+    font-weight: 700;
+}
+
+.notfound-aside {
+    color: var(--text-tertiary);
+    max-width: 42rem;
+}
+
+.notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+}
+
+.notfound-actions .sidebar-btn {
+    width: auto;
+    margin-bottom: 0;
+    padding: var(--space-3) var(--space-6);
+}
 
 /* ============================================================================
    15. PRINT STYLES (for CV)
