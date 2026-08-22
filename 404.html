@@ -1,0 +1,50 @@
+---
+layout: default
+title: Task Returned
+permalink: /404.html
+description: This page could not be found.
+sitemap: false
+---
+
+<section id="not-found" class="notfound">
+  <p class="notfound-code" aria-hidden="true">404</p>
+
+  <h1 class="notfound-title">This task was returned.</h1>
+
+  <p class="lead">The page you asked for isn&rsquo;t here. Either it never existed, or it moved and I forgot to leave a forwarding address.</p>
+
+  <div class="notfound-receipt" role="note" aria-label="Return notice">
+    <div class="notfound-receipt-head">Return Notice</div>
+    <dl class="notfound-receipt-body">
+      <dt>Task</dt>
+      <dd><code id="notfound-path">the page you requested</code></dd>
+      <dt>Status</dt>
+      <dd class="notfound-rejected">Returned &mdash; not found</dd>
+      <dt>Reason</dt>
+      <dd>Study design error (mine, not yours)</dd>
+      <dt>Compensation</dt>
+      <dd>Your time back, with apologies</dd>
+    </dl>
+  </div>
+
+  <p class="notfound-aside">I study this exact problem, which makes it worse. In my job market paper, a 10 percentage point increase in returned tasks cuts worker retention by 3.7 points. So please don&rsquo;t churn &mdash; here is somewhere better to go.</p>
+
+  <div class="notfound-actions">
+    <a class="sidebar-btn btn-primary" href="{{ '/' | relative_url }}">Back to the start</a>
+    <a class="sidebar-btn btn-outline" href="{{ '/human-supply-chain/' | relative_url }}">The research</a>
+    <a class="sidebar-btn btn-outline" href="{{ '/cv/' | relative_url }}">Curriculum vitae</a>
+  </div>
+</section>
+
+<script>
+  // Fill in the path that was actually requested. Kept inline because it is
+  // specific to this page and must run before the receipt is read.
+  (function () {
+    var el = document.getElementById('notfound-path');
+    if (!el) return;
+    var path = (window.location.pathname || '') + (window.location.search || '');
+    if (path && path !== '/404.html') {
+      el.textContent = path.length > 48 ? path.slice(0, 47) + '…' : path;
+    }
+  })();
+</script>

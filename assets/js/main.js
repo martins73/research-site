@@ -294,10 +294,20 @@ document.addEventListener("DOMContentLoaded", function () {
       themeToggle.setAttribute("title", label);
     };
 
+    // Browser chrome (the mobile address bar) follows the theme. Light uses the
+    // accent; dark uses --bg-paper so the bar blends into the page.
+    const THEME_COLORS = { light: CONFIG.themeColor, dark: "#1e293b" };
+
+    const updateThemeColorMeta = (theme) => {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", THEME_COLORS[theme] || THEME_COLORS.light);
+    };
+
     const setTheme = (theme) => {
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
       updateThemeLabels(theme);
+      updateThemeColorMeta(theme);
     };
 
     // Set initial theme labels (theme itself is set in head.html)

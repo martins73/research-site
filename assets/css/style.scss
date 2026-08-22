@@ -1744,6 +1744,97 @@ a .cv-logo:hover {
 
 
 /* ============================================================================
+   14c. 404 PAGE
+   ============================================================================
+   Styled as a crowdwork platform's return notice, which is the subject of the
+   job market paper linked from it.
+*/
+
+.notfound-code {
+    font-family: var(--font-heading);
+    font-size: var(--text-6xl);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent-orange);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4) 0;
+}
+
+.notfound-title {
+    font-size: var(--text-h1);
+    margin-bottom: var(--space-4);
+}
+
+.notfound-receipt {
+    border: 1px dashed var(--border-medium);
+    border-radius: 6px;
+    margin: var(--space-8) 0;
+    max-width: 30rem;
+    background: var(--bg-body);
+}
+
+.notfound-receipt-head {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    padding: var(--space-3) var(--space-5);
+    border-bottom: 1px dashed var(--border-medium);
+}
+
+.notfound-receipt-body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-6);
+    margin: 0;
+    padding: var(--space-5);
+    font-size: var(--text-md);
+}
+
+.notfound-receipt-body dt {
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    letter-spacing: 0.06em;
+    align-self: center;
+}
+
+.notfound-receipt-body dd {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.notfound-receipt-body code {
+    font-size: var(--text-md);
+    word-break: break-all;
+}
+
+.notfound-rejected {
+    color: var(--accent-orange);
+    font-weight: 700;
+}
+
+.notfound-aside {
+    color: var(--text-tertiary);
+    max-width: 42rem;
+}
+
+.notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+}
+
+.notfound-actions .sidebar-btn {
+    width: auto;
+    margin-bottom: 0;
+    padding: var(--space-3) var(--space-6);
+}
+
+/* ============================================================================
    15. PRINT STYLES (for CV)
    ============================================================================ */
 
