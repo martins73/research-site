@@ -23,10 +23,11 @@
   location: Chicago, IL
   dates: "2010"
   description:
-    - Joint degree program with Universidad Politécnica de Madrid
+    - Joint degree program with <span lang="es">Universidad Politécnica de Madrid</span>
 
 - degree: B.Sc. & M.Sc. in Industrial Engineering
   institution: Universidad Politécnica de Madrid
+  institution_lang: "es"
   institution_url: https://www.upm.es
   logo: /assets/logos/upm.png
   location: Madrid, Spain

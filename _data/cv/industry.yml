@@ -27,6 +27,7 @@
         - Managed the call center (~200 agents) and digital channels (public and transactional sites)
 
 - institution: Asociación DEC Chile
+  institution_lang: "es"
   institution_url: https://asociaciondec-cl.org/
   logo: /assets/logos/dec.png
   location: "Santiago, Chile"
