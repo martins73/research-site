@@ -43,11 +43,12 @@
   location: "Madrid, Spain; New York, NY"
   positions:
     - role: Management Consultant
-      dates: "2011 - 2017"
+      dates: "2011 - 2013, 2015 - 2017"
       description:
         - Based in Madrid and New York with global projects across Europe, Latin America, the Middle East and the US
         - Focused on Financial Services and Telecommunications industries
         - Led engagements in strategy, digital transformation, advanced analytics, and value proposition design
+        - Sponsored by the firm to pursue a full-time MBA at MIT Sloan (2013 - 2015), rejoining the firm upon graduation
 
 - institution: Thinkids Project
   logo: /assets/logos/thinkids.png
