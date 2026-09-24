@@ -287,7 +287,9 @@ exclude_from_nav: true
     <div class="entry">
         <div><strong>{% if ref.profile_url %}<a href="{{ ref.profile_url }}">{{ ref.name }}</a>{% else %}{{ ref.name }}{% endif %}</strong>{% if ref.role %} ({{ ref.role }}){% endif %}</div>
         <div class="entry-desc">
-            {{ ref.title }}, {{ ref.institution }}
+            {{ ref.title }}<br>
+            {{ ref.institution }}{% if ref.location %}<br>
+            {{ ref.location }}{% endif %}
         </div>
     </div>
     {% endfor %}
