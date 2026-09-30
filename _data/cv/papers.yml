@@ -4,8 +4,8 @@ papers:
     status_class: "job-market"
     cv_category: "Working Paper"
     coauthors:
-      - name: "Auyon Siddiq"
-        url: "https://www.auyonsiddiq.com/"
+      #- name: "Auyon Siddiq"
+      #  url: "https://www.auyonsiddiq.com/"
       - name: "Charles Corbett"
         url: "https://scholar.google.com/citations?user=lYJUXeAAAAAJ"
       - name: "Andrew Gordon"
