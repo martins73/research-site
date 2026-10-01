@@ -1,0 +1,18 @@
+<div id="talkmap-modal" class="modal-overlay talkmap-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="talkmap-title">
+  <div class="modal-content talkmap-content">
+    <button id="talkmap-close" class="modal-close" type="button" aria-label="Close map">×</button>
+    <h2 id="talkmap-title" class="talkmap-title">Where I've presented</h2>
+    <p id="talkmap-stats" class="talkmap-stats"></p>
+    <div class="talkmap-filters" id="talkmap-filters" role="group" aria-label="Filter by paper"></div>
+    <div class="talkmap-frame" id="talkmap-frame" data-home="{{ site.talkmap_home.lat }},{{ site.talkmap_home.lon }}" data-home-label="{{ site.author.affiliation_short }}" data-src="{{ '/assets/maps/talks-basemap.svg' | relative_url }}?v={{ '/assets/maps/talks-basemap.svg' | asset_version }}">
+      <div class="talkmap-tip" id="talkmap-tip" hidden></div>
+    </div>
+    <ul class="talkmap-legend">
+      <li><span class="talkmap-swatch"></span>Talk (larger = more talks)</li>
+      <li><span class="talkmap-swatch is-upcoming"></span>Upcoming</li>
+      <li><span class="talkmap-swatch is-home"></span>{{ site.author.affiliation_short }}</li>
+    </ul>
+  </div>
+</div>
+<script type="application/json" id="talkmap-data">{{ site.data.cv.presentations | jsonify }}</script>
+<script type="application/json" id="talkmap-locations">{{ site.data.talk_locations | jsonify }}</script>

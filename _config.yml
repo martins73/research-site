@@ -66,6 +66,9 @@ mobile_breakpoint: 768
 avatar: /assets/profile_picture.webp
 avatar_version: 1   # Bump this number only when you update the profile picture
 spin_duration: 3200
+talkmap_home:             # Home marker on the talks map easter egg (CV page)
+  lat: 34.0689
+  lon: -118.4452
 service_worker: /sw.js
 
 # Client-side interaction toggles

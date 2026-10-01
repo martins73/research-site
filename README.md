@@ -55,6 +55,7 @@ All dynamic content is managed through YAML files in `_data/`, making updates si
 * **Teaching Experience:** Course history with student counts and institutions
 * **Status/Now:** Current location, reading list, and activities
 * **Library:** Curated book lists with personalized commentary
+* **Talks Map (easter egg):** Clicking "Conference Presentations & Talks" on the CV opens a map of every talk. Just add the city to `_data/cv/presentations.yml`; the *Geocode Talk Locations* workflow looks it up via OpenStreetMap Nominatim and caches it in `_data/talk_locations.yml`
 
 ## Project Structure
 
