@@ -107,12 +107,13 @@ papers:
     status_class: ""
     cv_category: "Working Paper"
     coauthors:
-      - name: "Juan Pablo Atal"
-        url: "https://sites.google.com/site/juanpabloatal/"
       - name: "Jorge Alé-Chilet"
         url: "https://sites.google.com/site/jorgealechilet/"
+      - name: "Juan Pablo Atal"
+        url: "https://sites.google.com/site/juanpabloatal/"
       - name: "Alejandra Benítez"
         url: "https://alejandrabenitezu.com/"
+    author_position: 4   # Alphabetical author order
     badges: []
     submission: "Submitted to The Review of Economics and Statistics"
     publication: ""
