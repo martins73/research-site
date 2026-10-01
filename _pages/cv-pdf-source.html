@@ -11,8 +11,9 @@ exclude_from_nav: true
     <h1>{{ site.author.name }}</h1>
     <div class="cv-header-contact">
         <strong>{{ site.author.affiliation }}</strong><br>
-        {{ site.author.cv_address }}<br>
-        {{ site.author.cv_phone }} | {{ site.author.email }}
+        {%- comment -%} cv_address / cv_phone come from repository secrets at PDF build time {%- endcomment -%}
+        {% if site.cv_private.address %}{{ site.cv_private.address }}<br>{% endif %}
+        {% if site.cv_private.phone %}{{ site.cv_private.phone }} | {% endif %}{{ site.author.email }}
     </div>
     <div class="cv-header-updated">
         Last Updated: {{ site.time | date: "%B %Y" }}

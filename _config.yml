@@ -29,9 +29,10 @@ author:
   affiliation: UCLA Anderson School of Management
   affiliation_short: UCLA Anderson
   affiliation_url: https://www.anderson.ucla.edu
-  # CV-only contact info (not shown on public website, only in generated PDF)
-  cv_phone: "+1 857 313 8511"
-  cv_address: "B-501 Gold Hall, 110 Westwood Plaza, Los Angeles, California 90095"
+  # CV-only contact info (cv_phone, cv_address) is NOT stored here, because
+  # this repository is public. The "Generate CV PDF" workflow reads it from the
+  # repository secrets CV_PHONE and CV_ADDRESS. For a local PDF build, put them
+  # in _config.cv-private.yml (git-ignored); see README.
 
 # Template Attribution
 template:

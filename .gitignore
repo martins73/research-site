@@ -11,3 +11,6 @@ node_modules/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Private CV contact info for local PDF builds (see README)
+_config.cv-private.yml
