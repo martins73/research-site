@@ -113,6 +113,7 @@ papers:
         url: "https://sites.google.com/site/juanpabloatal/"
       - name: "Alejandra Benítez"
         url: "https://alejandrabenitezu.com/"
+    author_position: 4   # Alphabetical author order
     badges: []
     submission: "Submitted to The Review of Economics and Statistics"
     publication: ""
