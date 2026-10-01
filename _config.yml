@@ -24,7 +24,6 @@ author:
   given_name: Martin
   family_name: Gonzalez Cabello
   citation_name: Martin Gonzalez-Cabello   # As it appears on publications (used in generated BibTeX)
-  orcid: "0009-0001-3504-7998"
   email: martin@gonzalezcabello.com
   title_short: PhD Candidate
   job_title: PhD Candidate in Decisions, Operations & Technology Management
@@ -56,6 +55,7 @@ twitter_card: summary_large_image
 social:
   linkedin: https://www.linkedin.com/in/martingc/
   google_scholar: https://scholar.google.com/citations?user=5OSLJwQAAAAJ
+  orcid: https://orcid.org/0009-0001-3504-7998
   goodreads: https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello
   lastfm: https://www.last.fm/user/tinjr
   # twitter: https://x.com/martins73  # temporarily hidden
