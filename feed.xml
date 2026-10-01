@@ -1,0 +1,42 @@
+---
+layout: null
+sitemap: false
+---
+{%- comment -%}
+  Atom feed of the homepage "Recent Activity" list (_data/activity.yml).
+  Nothing to maintain: add items to activity.yml as usual. Entry ids are
+  built from each item's date and text, so editing an item's wording makes
+  feed readers treat it as new.
+{%- endcomment -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title | xml_escape }}: Recent Activity</title>
+  <subtitle>{{ site.description | xml_escape }}</subtitle>
+  <link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html"/>
+  <id>{{ '/feed.xml' | absolute_url }}</id>
+  {%- assign items = site.data.activity.items %}
+  {%- if items.size > 0 %}
+  <updated>{{ items.first.date | date_to_xmlschema }}</updated>
+  {%- else %}
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  {%- endif %}
+  <author>
+    <name>{{ site.author.name | xml_escape }}</name>
+    <uri>{{ '/' | absolute_url }}</uri>
+  </author>
+  <icon>{{ '/assets/logos/favicon-192.png' | absolute_url }}</icon>
+  {%- for item in items %}
+  {%- capture body %}{{ item.text }}{% if item.link_url and item.link_url != "" %} <a href="{{ item.link_url }}">{{ item.link_text }}</a>{% endif %}{% if item.link_suffix and item.link_suffix != "" %} {{ item.link_suffix }}{% endif %}{% endcapture %}
+  <entry>
+    <title>{{ body | strip_html | normalize_whitespace | truncate: 120 | xml_escape }}</title>
+    <id>{{ '/' | absolute_url }}#{{ item.date | append: ' ' | append: item.text | append: ' ' | append: item.link_text | slugify | truncate: 90, '' }}</id>
+    <updated>{{ item.date | date_to_xmlschema }}</updated>
+    {%- if item.link_url and item.link_url != "" and item.link_url contains 'http' %}
+    <link href="{{ item.link_url | xml_escape }}" rel="related"/>
+    {%- endif %}
+    <link href="{{ '/#news' | absolute_url }}" rel="alternate" type="text/html"/>
+    <content type="html">{{ body | strip | xml_escape }}</content>
+  </entry>
+  {%- endfor %}
+</feed>

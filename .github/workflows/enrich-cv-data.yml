@@ -1,0 +1,53 @@
+name: Update Talk Locations and Citations
+
+# Fills in data you would otherwise type by hand:
+#   - coordinates for each talk city  -> _data/talk_locations.yml (talks map)
+#   - BibTeX for each paper with a DOI -> _data/citations.yml     (Cite button)
+# Only new entries are looked up; existing ones are never overwritten.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_data/cv/presentations.yml'
+      - '_data/cv/papers.yml'
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Look up new talk locations
+        run: python .github/scripts/geocode_talks.py
+
+      - name: Fetch BibTeX for new DOIs
+        run: python .github/scripts/fetch_citations.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/talk_locations.yml _data/citations.yml
+          if git diff --staged --quiet; then
+            echo "Nothing new to look up"
+          else
+            git commit -m "Update talk locations and citations"
+            # The CV PDF workflow may push on the same trigger
+            git pull --rebase origin main
+            git push
+          fi

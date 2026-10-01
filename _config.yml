@@ -23,15 +23,17 @@ author:
   alternate_name: Martin Gonzalez
   given_name: Martin
   family_name: Gonzalez Cabello
+  citation_name: Martin Gonzalez-Cabello   # As it appears on publications (used in generated BibTeX)
   email: martin@gonzalezcabello.com
   title_short: PhD Candidate
   job_title: PhD Candidate in Decisions, Operations & Technology Management
   affiliation: UCLA Anderson School of Management
   affiliation_short: UCLA Anderson
   affiliation_url: https://www.anderson.ucla.edu
-  # CV-only contact info (not shown on public website, only in generated PDF)
-  cv_phone: "+1 857 313 8511"
-  cv_address: "B-501 Gold Hall, 110 Westwood Plaza, Los Angeles, California 90095"
+  # CV-only contact info (cv_phone, cv_address) is NOT stored here, because
+  # this repository is public. The "Generate CV PDF" workflow reads it from the
+  # repository secrets CV_PHONE and CV_ADDRESS. For a local PDF build, put them
+  # in _config.cv-private.yml (git-ignored); see README.
 
 # Template Attribution
 template:
@@ -53,6 +55,7 @@ twitter_card: summary_large_image
 social:
   linkedin: https://www.linkedin.com/in/martingc/
   google_scholar: https://scholar.google.com/citations?user=5OSLJwQAAAAJ
+  orcid: https://orcid.org/0009-0001-3504-7998
   goodreads: https://www.goodreads.com/user/show/29425606-mart-n-gonz-lez-cabello
   lastfm: https://www.last.fm/user/tinjr
   # twitter: https://x.com/martins73  # temporarily hidden
@@ -66,6 +69,9 @@ mobile_breakpoint: 768
 avatar: /assets/profile_picture.webp
 avatar_version: 1   # Bump this number only when you update the profile picture
 spin_duration: 3200
+talkmap_home:             # Home marker on the talks map easter egg (CV page)
+  lat: 34.0689
+  lon: -118.4452
 service_worker: /sw.js
 
 # Client-side interaction toggles
@@ -111,6 +117,9 @@ ui_text:
   research:
     show_abstract: "Show Abstract"
     hide_abstract: "Hide Abstract"
+    cite: "Cite"
+    copy_bibtex: "Copy BibTeX"
+    copied: "Copied"
   console:
     greeting: "👋 Hi, I'm"
     repo: "Interested in my code? Check out the repo:"
@@ -176,6 +185,8 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
+  - Dockerfile
+  - docker-compose.yaml
 
 # Defaults
 defaults:

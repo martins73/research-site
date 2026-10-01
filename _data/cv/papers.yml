@@ -1,3 +1,8 @@
+# Optional fields used by the "Cite" button on the homepage:
+#   doi:             BibTeX is then fetched automatically from doi.org
+#                    (see .github/scripts/fetch_citations.py).
+#   author_position: your place in the author list (default 1) when the
+#                    BibTeX is generated here, i.e. for papers without a DOI.
 papers:
   - title: "First Impressions Matter: Task Frictions and Retention on a Crowdwork Platform"
     status: "Job Market Paper"
@@ -64,6 +69,7 @@ papers:
       that AI technologies are responsibly sourced.
     link_text: "Paper Link"
     link_url: "https://www.sciencedirect.com/science/article/pii/S0007681324001265"
+    doi: "10.1016/j.bushor.2024.09.003"
 
   - title: "Searching for Serendipity"
     status: "Working Paper"
@@ -93,6 +99,8 @@ papers:
       valuable discoveries.
     link_text: "Paper Link"
     link_url: "https://osf.io/preprints/socarxiv/ve8mx"
+    doi: "10.31235/osf.io/ve8mx_v2"
+    author_position: 2
 
   - title: "The Impact of Information Systems in High-Stakes Decisions: Evidence from Physicians"
     status: "Working Paper"

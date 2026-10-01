@@ -1,0 +1,38 @@
+{%- comment -%}
+  BibTeX for one paper (include param: paper).
+  1. A DOI with a cached entry in _data/citations.yml wins (fetched from
+     doi.org by the "Update Talk Locations and Citations" workflow).
+  2. Otherwise the entry is built from papers.yml. author_position places
+     the site author in the coauthor list (default: first).
+{%- endcomment -%}
+{%- assign p = include.paper -%}
+{%- assign cached = nil -%}
+{%- if p.doi -%}{%- assign cached = site.data.citations[p.doi] -%}{%- endif -%}
+{%- if cached -%}
+{{ cached | strip }}
+{%- else -%}
+{%- assign me = site.author.citation_name | default: site.author.name -%}
+{%- assign pos = p.author_position | default: 1 -%}
+{%- assign total = p.coauthors.size | plus: 1 -%}
+{%- if pos > total -%}{%- assign pos = total -%}{%- endif -%}
+{%- assign ci = 0 -%}
+{%- capture authors -%}
+{%- for i in (1..total) -%}
+{%- unless forloop.first -%}{{ " and " }}{%- endunless -%}
+{%- if i == pos -%}{{ me }}{%- else -%}{{ p.coauthors[ci].name }}{%- assign ci = ci | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign first_word = "" -%}
+{%- assign words = p.title | split: " " -%}
+{%- for w in words -%}
+{%- assign word = w | downcase | remove: ":" | remove: "," -%}
+{%- unless word == "the" or word == "and" or word.size < 3 -%}{%- assign first_word = word -%}{%- break -%}{%- endunless -%}
+{%- endfor -%}
+{%- assign key_name = site.author.family_name | downcase | replace: " ", "" | replace: "-", "" -%}
+{%- if p.status contains "Job Market" -%}{%- assign note = "Job market paper" -%}{%- else -%}{%- assign note = p.status | default: "Working paper" | capitalize -%}{%- endif -%}
+@unpublished{ {{- key_name }}_{{ first_word -}},
+  title = { {{- p.title -}} },
+  author = { {{- authors | strip -}} },
+  note = { {{- note -}} }
+}
+{%- endif -%}

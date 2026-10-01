@@ -36,6 +36,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/logos/favicon-192.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="192x192" href="{{ '/assets/logos/favicon-192.png' | relative_url }}">
 <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}: Recent Activity" href="{{ '/feed.xml' | relative_url }}">
 {%- assign theme_colors = site.data.theme.themes[site.color_theme] %}
 <meta name="theme-color" content="{{ theme_colors.light.accent }}">
 <link rel="preload" as="image" href="{{ site.avatar | relative_url }}?v={{ site.avatar_version | default: '1' }}" fetchpriority="high">
@@ -48,7 +49,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', '{{ site.google_analytics }}', { 'anonymize_ip': true });
+  gtag('config', '{{ site.google_analytics }}');
 </script>
 {% endif %}
 
@@ -122,7 +123,8 @@
         }{% endfor %}
       ],
       "abstract": {{ paper.abstract | strip | jsonify }},
-      "url": {{ paper.link_url | jsonify }}{% if paper.date_published %},
+      "url": {{ paper.link_url | jsonify }}{% if paper.doi %},
+      "sameAs": {{ paper.doi | prepend: "https://doi.org/" | jsonify }}{% endif %}{% if paper.date_published %},
       "datePublished": {{ paper.date_published | jsonify }}{% endif %}{% if paper.journal_name %},
       "isPartOf": {
         "@type": "Periodical",

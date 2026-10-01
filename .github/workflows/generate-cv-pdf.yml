@@ -29,8 +29,20 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
+      # Phone and address live in repository secrets, not in the public repo.
+      # They are written to a throwaway config file used only for this build.
+      - name: Write private CV contact config
+        env:
+          CV_PHONE: ${{ secrets.CV_PHONE }}
+          CV_ADDRESS: ${{ secrets.CV_ADDRESS }}
+        run: |
+          if [ -z "$CV_PHONE" ] || [ -z "$CV_ADDRESS" ]; then
+            echo "::warning::CV_PHONE or CV_ADDRESS secret is not set; the PDF header will omit it"
+          fi
+          ruby -ryaml -e 'puts({ "cv_private" => { "phone" => ENV["CV_PHONE"].to_s, "address" => ENV["CV_ADDRESS"].to_s } }.to_yaml)' > _config.cv-private.yml
+
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --config _config.yml,_config.cv-private.yml
 
       - name: Setup Node.js
         uses: actions/setup-node@v5

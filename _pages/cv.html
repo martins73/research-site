@@ -186,7 +186,7 @@ description: Academic CV and professional background in analytics, operations, a
 
 {% if site.data.cv.presentations.size > 0 %}
 <section id="presentations" class="section-spacing">
-    <h2 class="cv-section-header">Conference Presentations &amp; Talks</h2>
+    <h2 class="cv-section-header"><span class="talkmap-link" title="See them on a map">Conference Presentations &amp; Talks</span></h2>
     {% for paper in site.data.cv.presentations %}
     <div class="cv-entry cv-paper-block">
         <div class="cv-paper-title scroll-reveal">
@@ -206,6 +206,7 @@ description: Academic CV and professional background in analytics, operations, a
     </div>
     {% endfor %}
 </section>
+{% include talkmap-modal.html %}
 {% endif %}
 
 <!-- ### TEACHING ### -->

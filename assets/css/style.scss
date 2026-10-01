@@ -790,6 +790,44 @@ h2 {
     outline-offset: 2px;
 }
 
+/* -- Cite: BibTeX block toggled by the "Cite" button -- */
+.paper-cite {
+    margin-bottom: var(--space-4);
+}
+
+.paper-bibtex {
+    margin: 0 0 var(--space-2);
+    padding: var(--space-3);
+    max-width: 100%;
+    overflow-x: auto;
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+    color: var(--text-secondary);
+}
+
+.btn-copy {
+    font: inherit;
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--accent-on-tint);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.btn-copy:hover { color: var(--accent); }
+
+.btn-copy:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 .card-link {
     font-size: var(--text-md);
     font-weight: 600;
@@ -830,6 +868,28 @@ h2 {
 /* ============================================================================
    6. NEWS SECTION
    ============================================================================ */
+
+.news-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Atom feed icon next to "Recent Activity" (bi-rss, Bootstrap Icons 1.11.3) */
+.feed-link {
+    display: inline-flex;
+    color: var(--text-light);
+    border-radius: 3px;
+    transition: color 0.2s ease;
+}
+
+.feed-link:hover { color: var(--accent); }
+
+.feed-link:focus-visible {
+    outline: 2px solid rgba(var(--accent-rgb), 0.4);
+    outline-offset: 2px;
+}
+
 
 .news-list { 
     list-style: none; 
@@ -1678,10 +1738,221 @@ a .cv-logo:hover {
     font-size: var(--text-xl-plus);
 }
 
-@keyframes fadeIn { 
-    from { opacity: 0; } 
-    to { opacity: 1; } 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
+
+/* -- Talks map (CV: click "Conference Presentations & Talks") -- */
+.talkmap-link {
+    cursor: zoom-in;
+    border-radius: 2px;
+    transition: color 0.2s ease;
+}
+
+.talkmap-link:hover { color: var(--accent); }
+
+.talkmap-link:focus-visible {
+    outline: 2px solid rgba(var(--accent-rgb), 0.4);
+    outline-offset: 2px;
+}
+
+.talkmap-content {
+    width: min(960px, 94vw);
+    max-width: none;
+    max-height: 92vh;
+    overflow-y: auto;
+    text-align: left;
+    background: var(--bg-paper);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px -10px var(--shadow-color, rgba(0, 0, 0, 0.15));
+}
+
+.talkmap-content .modal-close {
+    top: var(--space-3);
+    right: var(--space-3);
+}
+
+.talkmap-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl-plus);
+    color: var(--text-primary);
+    margin: 0 var(--space-10) 0 0;
+    padding: 0;
+    border: none;
+}
+
+.talkmap-stats {
+    margin: var(--space-1) 0 var(--space-3);
+    color: var(--text-light);
+    font-size: var(--text-base);
+    font-variant-numeric: tabular-nums;
+}
+
+.talkmap-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.talkmap-chip {
+    font: inherit;
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    background: var(--bg-paper);
+    border: 1px solid var(--border-medium);
+    border-radius: 999px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.talkmap-chip:hover { border-color: var(--accent); }
+
+.talkmap-chip[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+}
+
+.talkmap-chip:focus-visible {
+    outline: 2px solid rgba(var(--accent-rgb), 0.5);
+    outline-offset: 2px;
+}
+
+.talkmap-frame {
+    position: relative;
+    aspect-ratio: 1000 / 560;
+    max-width: 100%;
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.talkmap-frame svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.talkmap-land { fill: var(--bg-accent); stroke: var(--border-medium); stroke-width: 0.8; }
+.talkmap-border { fill: none; stroke: var(--border-medium); stroke-width: 0.5; }
+.talkmap-inset { fill: var(--bg-body); stroke: var(--border-medium); stroke-width: 1; }
+
+.talkmap-inset-label {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    fill: var(--text-light);
+}
+
+.talkmap-dot {
+    fill: var(--accent);
+    fill-opacity: 0.9;
+    stroke: var(--bg-paper);
+    stroke-width: 1.5;
+    cursor: pointer;
+}
+
+.talkmap-dot.is-upcoming { fill: var(--accent-orange); }
+.talkmap-dot:focus { outline: none; }
+.talkmap-dot:focus-visible { stroke: var(--text-primary); stroke-width: 2.5; }
+
+.talkmap-ring {
+    fill: none;
+    stroke: var(--accent-orange);
+    stroke-width: 1.5;
+    stroke-dasharray: 3 3;
+}
+
+.talkmap-home { fill: none; stroke: var(--text-primary); stroke-width: 1.5; }
+
+.talkmap-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    fill: var(--text-primary);
+    paint-order: stroke;
+    stroke: var(--bg-body);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.talkmap-label.is-home { fill: var(--text-light); font-style: italic; }
+
+.talkmap-city { transition: opacity 0.2s; }
+.talkmap-city.is-dim { opacity: 0.15; }
+
+.talkmap-tip {
+    position: absolute;
+    z-index: 1;
+    max-width: 260px;
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-paper);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px var(--shadow-color, rgba(0, 0, 0, 0.12));
+    font-size: var(--text-base);
+    pointer-events: none;
+}
+
+.talkmap-tip strong { font-family: var(--font-heading); }
+.talkmap-tip ul { margin: var(--space-1) 0 0; padding-left: var(--space-4); }
+.talkmap-tip span { display: block; color: var(--text-light); font-size: var(--text-sm); }
+
+.talkmap-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-5);
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--text-light);
+    font-size: var(--text-base);
+}
+
+.talkmap-legend li { display: inline-flex; align-items: center; gap: var(--space-2); }
+
+.talkmap-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.talkmap-swatch.is-upcoming { background: var(--accent-orange); }
+.talkmap-swatch.is-home { background: none; border: 1.5px solid var(--text-primary); }
+
+.talkmap-error {
+    margin: 0;
+    padding: var(--space-5);
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* Phones: the map is ~1/3 scale, so labels become unreadable; the tooltip
+   carries the city name instead, and dots grow to stay tappable. */
+@media (max-width: 600px) {
+    .talkmap-label { display: none; }
+    .talkmap-dot, .talkmap-ring, .talkmap-home {
+        transform: scale(1.8);
+        transform-box: fill-box;
+        transform-origin: center;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .talkmap-ring {
+        animation: talkmap-spin 12s linear infinite;
+        transform-box: fill-box;
+        transform-origin: center;
+    }
+}
+
+@keyframes talkmap-spin { to { transform: rotate(360deg); } }
 
 
 /* ============================================================================

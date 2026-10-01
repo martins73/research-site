@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       research: {
         show: {{ site.ui_text.research.show_abstract | default: 'Show Abstract' | jsonify }},
-        hide: {{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' | jsonify }}
+        hide: {{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' | jsonify }},
+        copied: {{ site.ui_text.research.copied | default: 'Copied' | jsonify }}
       },
       console: {
         greeting: {{ site.ui_text.console.greeting | default: "👋 Hi, I'm" | jsonify }},
@@ -267,6 +268,273 @@ document.addEventListener("DOMContentLoaded", function () {
             firstElement.focus();
           }
         }
+      }
+    });
+  }
+
+  /* ============================================================================
+     2b. TALKS MAP EASTER EGG
+     ============================================================================
+
+     Clicking the "Conference Presentations & Talks" heading on the CV opens a
+     map of every talk in _data/cv/presentations.yml. Coordinates come from
+     _data/talk_locations.yml, which the "Update Talk Locations and Citations" workflow
+     fills in automatically from each talk's city.
+
+     - The base map (/assets/maps/talks-basemap.svg) is fetched on first open,
+       so CV visitors who never click pay nothing for it.
+     - US talks are placed with the same Albers projection the base map was
+       drawn with; European talks go in the inset (Mercator). Projection
+       parameters ride along on the SVG as data-* attributes.
+     - Same modal behavior as the family modal: Escape/backdrop close, focus
+       trap, focus returns to the heading.
+  */
+  const mapModal = document.getElementById("talkmap-modal");
+  const mapTriggers = document.querySelectorAll(".talkmap-link");
+  const mapDataEl = document.getElementById("talkmap-data");
+
+  if (mapModal && mapTriggers.length > 0 && mapDataEl) {
+    const papers = JSON.parse(mapDataEl.textContent);
+    const locationsEl = document.getElementById("talkmap-locations");
+    const coords = (locationsEl && JSON.parse(locationsEl.textContent)) || {};
+    const frame = document.getElementById("talkmap-frame");
+    const tip = document.getElementById("talkmap-tip");
+    const filtersEl = document.getElementById("talkmap-filters");
+    const mapClose = document.getElementById("talkmap-close");
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const DEG = Math.PI / 180;
+    const SCHEDULED = /\s*\(scheduled\)\s*/i;
+    let lastFocused = null;
+    let loaded = null;
+    let activePaper = "all";
+
+    // Short paper name for filter chips: the part before the subtitle colon
+    const shortTitle = (title) => title.split(":")[0].trim();
+
+    // Group talks by city
+    const cities = new Map();
+    papers.forEach((paper, i) => {
+      (paper.talks || []).forEach((talk) => {
+        if (!cities.has(talk.location)) {
+          const c = coords[talk.location] || {};
+          cities.set(talk.location, { name: talk.location, lat: c.lat, lon: c.lon, talks: [] });
+        }
+        cities.get(talk.location).talks.push({
+          event: talk.event.replace(SCHEDULED, " ").trim(),
+          upcoming: SCHEDULED.test(talk.event),
+          year: talk.year,
+          paper: i
+        });
+      });
+    });
+    cities.forEach((c) => c.talks.sort((a, b) => b.year - a.year));
+
+    // Stats line: talks, cities, countries, year range
+    const allTalks = [...cities.values()].flatMap((c) => c.talks);
+    const years = allTalks.map((t) => Number(t.year));
+    const countries = new Set([...cities.keys()].map((loc) => {
+      const last = loc.split(",").pop().trim();
+      return /^[A-Z]{2}$/.test(last) ? "USA" : last;
+    }));
+    document.getElementById("talkmap-stats").textContent =
+      `${allTalks.length} talks · ${cities.size} cities · ${countries.size} countries · ` +
+      `${Math.min(...years)}–${Math.max(...years)}`;
+
+    // Projections (must match the generator of talks-basemap.svg)
+    const conicN = (Math.sin(29.5 * DEG) + Math.sin(45.5 * DEG)) / 2;
+    const conicC = 1 + Math.sin(29.5 * DEG) * (2 * conicN - Math.sin(29.5 * DEG));
+    const conicR0 = Math.sqrt(conicC) / conicN;
+    const makeProjector = (svg) => {
+      const [ak, ab, ac] = svg.dataset.albers.split(",").map(Number);
+      const [mk, mx, my] = svg.dataset.mercator.split(",").map(Number);
+      return (lat, lon) => {
+        if (lat == null || lon == null) return null;
+        if (lon > -25 && lon < 45 && lat > 30 && lat < 72) {
+          return { x: mk * lon * DEG + mx, y: -mk * Math.log(Math.tan(Math.PI / 4 + lat * DEG / 2)) + my, inset: true };
+        }
+        if (lon > -125 && lon < -66 && lat > 24 && lat < 50) {
+          const r = Math.sqrt(conicC - 2 * conicN * Math.sin(lat * DEG)) / conicN;
+          const a = (lon + 96) * DEG * conicN;
+          return { x: ak * r * Math.sin(a) + ab, y: -ak * (conicR0 - r * Math.cos(a)) + ac, inset: false };
+        }
+        return null; // Not geocoded yet, or outside both maps: not plotted
+      };
+    };
+
+    const svgEl = (tag, attrs) => {
+      const el = document.createElementNS(SVG_NS, tag);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      return el;
+    };
+
+    const showTip = (city, dot) => {
+      tip.replaceChildren();
+      const title = document.createElement("strong");
+      title.textContent = city.name;
+      const list = document.createElement("ul");
+      city.talks.forEach((t) => {
+        const li = document.createElement("li");
+        li.textContent = `${t.event}, ${t.year}${t.upcoming ? " (upcoming)" : ""}`;
+        const sub = document.createElement("span");
+        sub.textContent = shortTitle(papers[t.paper].title);
+        li.appendChild(sub);
+        list.appendChild(li);
+      });
+      tip.append(title, list);
+      tip.hidden = false;
+      const d = dot.getBoundingClientRect();
+      const f = frame.getBoundingClientRect();
+      let x = d.right - f.left + 8;
+      if (x + tip.offsetWidth > f.width) x = d.left - f.left - tip.offsetWidth - 8;
+      tip.style.left = `${Math.max(4, x)}px`;
+      tip.style.top = `${Math.max(4, d.top - f.top - 8)}px`;
+    };
+    const hideTip = () => { tip.hidden = true; };
+
+    const drawMarkers = (svg) => {
+      const project = makeProjector(svg);
+      const layer = svgEl("g", { class: "talkmap-marks" });
+
+      const [hlat, hlon] = frame.dataset.home.split(",").map(Number);
+      const home = project(hlat, hlon);
+      if (home) {
+        layer.appendChild(svgEl("circle", { class: "talkmap-home", cx: home.x, cy: home.y, r: 6 }));
+        const label = svgEl("text", { class: "talkmap-label is-home", x: home.x + 10, y: home.y + 16 });
+        label.textContent = frame.dataset.homeLabel;
+        layer.appendChild(label);
+      }
+
+      cities.forEach((city) => {
+        const p = project(city.lat, city.lon);
+        if (!p) return;
+        const r = 6 + (city.talks.length - 1) * 3;
+        const allUpcoming = city.talks.every((t) => t.upcoming);
+        const g = svgEl("g", { class: "talkmap-city", transform: `translate(${p.x.toFixed(1)},${p.y.toFixed(1)})` });
+        g.dataset.papers = [...new Set(city.talks.map((t) => t.paper))].join(",");
+        if (city.talks.some((t) => t.upcoming)) {
+          g.appendChild(svgEl("circle", { class: "talkmap-ring", r: r + 5 }));
+        }
+        const dot = svgEl("circle", {
+          class: `talkmap-dot${allUpcoming ? " is-upcoming" : ""}`,
+          r,
+          tabindex: 0,
+          role: "button",
+          "aria-label": `${city.name}: ${city.talks.length} talk${city.talks.length > 1 ? "s" : ""}`
+        });
+        dot.addEventListener("mouseenter", () => showTip(city, dot));
+        dot.addEventListener("focus", () => showTip(city, dot));
+        dot.addEventListener("click", () => showTip(city, dot));
+        dot.addEventListener("mouseleave", hideTip);
+        dot.addEventListener("blur", hideTip);
+        const label = p.inset
+          ? svgEl("text", { class: "talkmap-label", y: r + 14, "text-anchor": "middle" })
+          : svgEl("text", { class: "talkmap-label", x: r + 5, dy: "0.35em" });
+        label.textContent = city.name.split(",")[0];
+        g.append(dot, label);
+        layer.appendChild(g);
+      });
+      svg.appendChild(layer);
+    };
+
+    const applyFilter = () => {
+      filtersEl.querySelectorAll("button").forEach((b) => {
+        b.setAttribute("aria-pressed", String(b.dataset.paper === activePaper));
+      });
+      frame.querySelectorAll(".talkmap-city").forEach((g) => {
+        const match = activePaper === "all" || g.dataset.papers.split(",").includes(activePaper);
+        g.classList.toggle("is-dim", !match);
+      });
+    };
+
+    [{ key: "all", label: "All papers" }]
+      .concat(papers.map((p, i) => ({ key: String(i), label: shortTitle(p.title), title: p.title })))
+      .forEach((f) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "talkmap-chip";
+        b.dataset.paper = f.key;
+        b.textContent = f.label;
+        if (f.title) b.title = f.title;
+        b.addEventListener("click", () => { activePaper = f.key; applyFilter(); });
+        filtersEl.appendChild(b);
+      });
+    applyFilter();
+
+    const loadMap = () => {
+      if (!loaded) {
+        loaded = fetch(frame.dataset.src)
+          .then((res) => {
+            if (!res.ok) throw new Error(res.status);
+            return res.text();
+          })
+          .then((text) => {
+            const svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement;
+            svg.setAttribute("role", "img");
+            svg.setAttribute("aria-label", "Map of talk locations");
+            frame.insertBefore(document.importNode(svg, true), tip);
+            drawMarkers(frame.querySelector("svg"));
+            applyFilter();
+          })
+          .catch(() => {
+            loaded = null; // Allow a retry on the next open
+            const msg = document.createElement("p");
+            msg.className = "talkmap-error";
+            msg.textContent = "The map could not load. Please try again.";
+            frame.replaceChildren(msg, tip);
+          });
+      }
+      return loaded;
+    };
+
+    const openMap = () => {
+      lastFocused = document.activeElement;
+      mapModal.style.display = "flex";
+      mapModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if (mapClose) mapClose.focus();
+      loadMap();
+    };
+
+    const closeMap = () => {
+      hideTip();
+      mapModal.style.display = "none";
+      mapModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    };
+
+    mapTriggers.forEach((trigger) => {
+      trigger.setAttribute("role", "button");
+      trigger.setAttribute("tabindex", "0");
+      trigger.setAttribute("aria-haspopup", "dialog");
+      trigger.addEventListener("click", (e) => { e.preventDefault(); openMap(); });
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openMap();
+        }
+      });
+    });
+
+    if (mapClose) mapClose.addEventListener("click", closeMap);
+    mapModal.addEventListener("click", (e) => { if (e.target === mapModal) closeMap(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mapModal.style.display === "flex") closeMap();
+    });
+
+    // Focus Trap
+    mapModal.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      const focusable = mapModal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     });
   }
@@ -644,6 +912,46 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   })();
+
+  /* ============================================================================
+     7b. CITE / COPY BIBTEX
+     ============================================================================
+     "Cite" toggles the BibTeX block on a paper card; "Copy BibTeX" copies it.
+     BibTeX is rendered at build time by _includes/paper-bibtex.html.
+  */
+  document.addEventListener("click", function (e) {
+    const citeButton = e.target.closest("[data-cite]");
+    if (citeButton) {
+      const block = document.getElementById("cite-" + citeButton.getAttribute("data-cite"));
+      if (!block) return;
+      block.hidden = !block.hidden;
+      citeButton.setAttribute("aria-expanded", String(!block.hidden));
+      return;
+    }
+
+    const copyButton = e.target.closest("[data-copy]");
+    if (copyButton) {
+      const code = document.getElementById(copyButton.getAttribute("data-copy"));
+      if (!code) return;
+      const label = copyButton.textContent;
+      const done = () => {
+        copyButton.textContent = CONFIG.text.research.copied;
+        setTimeout(() => { copyButton.textContent = label; }, 2000);
+      };
+      const selectText = () => {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(code.textContent).then(done, selectText);
+      } else {
+        selectText(); // Let the visitor copy manually
+      }
+    }
+  });
 
   /* ============================================================================
      8. SCROLL REVEAL

@@ -1,16 +1,16 @@
 # =============================================================================
-# 1. AI training / data-collection crawlers
+# 1. AI training / data-collection crawlers (blocked)
 #
-# These tokens are the ones the operators actually publish. The previous list
-# used "AnthropicAI", which is not a crawler token and therefore matched
-# nothing. Blocking here covers model training and bulk collection; it does
-# not block the search engines in section 2.
+# Only crawlers that collect content for model training are blocked here.
+# AI *search* and user-initiated agents are allowed in section 2, so assistants
+# like ChatGPT, Claude and Perplexity can still find and cite this site.
 # =============================================================================
 
 # Anthropic
 User-agent: ClaudeBot
 Disallow: /
 
+# Legacy Anthropic tokens, kept for older crawlers
 User-agent: anthropic-ai
 Disallow: /
 
@@ -21,13 +21,8 @@ Disallow: /
 User-agent: GPTBot
 Disallow: /
 
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: OAI-SearchBot
-Disallow: /
-
-# Google (Gemini / Vertex training; Googlebot itself is unaffected)
+# Google (Gemini training, and also Gemini Apps grounding; Google Search is
+# unaffected). Remove this block to let Gemini cite the site live.
 User-agent: Google-Extended
 Disallow: /
 
@@ -43,9 +38,6 @@ User-agent: FacebookBot
 Disallow: /
 
 # Others
-User-agent: PerplexityBot
-Disallow: /
-
 User-agent: CCBot
 Disallow: /
 
@@ -71,13 +63,28 @@ User-agent: ImagesiftBot
 Disallow: /
 
 # =============================================================================
-# 2. Everything else, including search engines
+# 2. AI search and user-initiated agents (allowed)
+#
+# Sources: OpenAI developers.openai.com/api/docs/bots, Anthropic
+# support.claude.com/en/articles/8896518, Perplexity docs.perplexity.ai/guides/bots
+# =============================================================================
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+Disallow: /404.html
+
+# =============================================================================
+# 3. Everything else, including search engines
 # =============================================================================
 User-agent: *
 Allow: /
 Disallow: /404.html
 
 # =============================================================================
-# 3. Sitemap
+# 4. Sitemap
 # =============================================================================
 Sitemap: https://martin.gonzalezcabello.com/sitemap.xml
