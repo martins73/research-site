@@ -869,6 +869,28 @@ h2 {
    6. NEWS SECTION
    ============================================================================ */
 
+.news-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Atom feed icon next to "Recent Activity" (bi-rss, Bootstrap Icons 1.11.3) */
+.feed-link {
+    display: inline-flex;
+    color: var(--text-light);
+    border-radius: 3px;
+    transition: color 0.2s ease;
+}
+
+.feed-link:hover { color: var(--accent); }
+
+.feed-link:focus-visible {
+    outline: 2px solid rgba(var(--accent-rgb), 0.4);
+    outline-offset: 2px;
+}
+
+
 .news-list { 
     list-style: none; 
     padding: 0; 
