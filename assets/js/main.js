@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       research: {
         show: {{ site.ui_text.research.show_abstract | default: 'Show Abstract' | jsonify }},
-        hide: {{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' | jsonify }}
+        hide: {{ site.ui_text.research.hide_abstract | default: 'Hide Abstract' | jsonify }},
+        copied: {{ site.ui_text.research.copied | default: 'Copied' | jsonify }}
       },
       console: {
         greeting: {{ site.ui_text.console.greeting | default: "👋 Hi, I'm" | jsonify }},
@@ -277,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
      Clicking the "Conference Presentations & Talks" heading on the CV opens a
      map of every talk in _data/cv/presentations.yml. Coordinates come from
-     _data/talk_locations.yml, which the "Geocode Talk Locations" workflow
+     _data/talk_locations.yml, which the "Update Talk Locations and Citations" workflow
      fills in automatically from each talk's city.
 
      - The base map (/assets/maps/talks-basemap.svg) is fetched on first open,
@@ -911,6 +912,46 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   })();
+
+  /* ============================================================================
+     7b. CITE / COPY BIBTEX
+     ============================================================================
+     "Cite" toggles the BibTeX block on a paper card; "Copy BibTeX" copies it.
+     BibTeX is rendered at build time by _includes/paper-bibtex.html.
+  */
+  document.addEventListener("click", function (e) {
+    const citeButton = e.target.closest("[data-cite]");
+    if (citeButton) {
+      const block = document.getElementById("cite-" + citeButton.getAttribute("data-cite"));
+      if (!block) return;
+      block.hidden = !block.hidden;
+      citeButton.setAttribute("aria-expanded", String(!block.hidden));
+      return;
+    }
+
+    const copyButton = e.target.closest("[data-copy]");
+    if (copyButton) {
+      const code = document.getElementById(copyButton.getAttribute("data-copy"));
+      if (!code) return;
+      const label = copyButton.textContent;
+      const done = () => {
+        copyButton.textContent = CONFIG.text.research.copied;
+        setTimeout(() => { copyButton.textContent = label; }, 2000);
+      };
+      const selectText = () => {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(code.textContent).then(done, selectText);
+      } else {
+        selectText(); // Let the visitor copy manually
+      }
+    }
+  });
 
   /* ============================================================================
      8. SCROLL REVEAL

@@ -122,7 +122,8 @@
         }{% endfor %}
       ],
       "abstract": {{ paper.abstract | strip | jsonify }},
-      "url": {{ paper.link_url | jsonify }}{% if paper.date_published %},
+      "url": {{ paper.link_url | jsonify }}{% if paper.doi %},
+      "sameAs": {{ paper.doi | prepend: "https://doi.org/" | jsonify }}{% endif %}{% if paper.date_published %},
       "datePublished": {{ paper.date_published | jsonify }}{% endif %}{% if paper.journal_name %},
       "isPartOf": {
         "@type": "Periodical",

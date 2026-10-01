@@ -23,6 +23,8 @@ author:
   alternate_name: Martin Gonzalez
   given_name: Martin
   family_name: Gonzalez Cabello
+  citation_name: Martin Gonzalez-Cabello   # As it appears on publications (used in generated BibTeX)
+  orcid: "0009-0001-3504-7998"
   email: martin@gonzalezcabello.com
   title_short: PhD Candidate
   job_title: PhD Candidate in Decisions, Operations & Technology Management
@@ -115,6 +117,9 @@ ui_text:
   research:
     show_abstract: "Show Abstract"
     hide_abstract: "Hide Abstract"
+    cite: "Cite"
+    copy_bibtex: "Copy BibTeX"
+    copied: "Copied"
   console:
     greeting: "👋 Hi, I'm"
     repo: "Interested in my code? Check out the repo:"
