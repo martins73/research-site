@@ -9,6 +9,9 @@ min_items: 2
 
 # Activity items (most recent first)
 items:
+  - date: "Nov 2026"
+    text: 'I will present "First Impressions Matter" at the INFORMS Annual Meeting in San Francisco on Sunday, November 1, at 8:00 AM, in the invited session "Fairness and Welfare in Service Operations" (Moscone South-151).'
+
   - date: "Oct 2026"
     text: 'I am on the 2026-27 academic job market. My'
     link_text: "CV"
