@@ -3,20 +3,25 @@
   logo: /assets/logos/deepmind.svg
   location: "Mountain View, CA"
   positions:
-    - role: PhD Student Researcher
-      dates: "2026 - Present"
+    - role: Student Researcher, Organizational AI Lab
+      dates: "2026"
       description:
-        - Researching the impact of AI on organizations, studying how AI adoption reshapes work, decision-making, and productivity
+        - Summer student researcher, continuing part-time through the end of 2026
+        - Studying how agentic AI is changing the way teams work and how their members collaborate
 
 - institution: ACHS (Safety Association of Chile)
   institution_url: https://www.achs.cl/
   logo: /assets/logos/achs.svg
   location: "Santiago, Chile"
   positions:
+    - role: Advanced Analytics Advisor to the CEO
+      dates: "2021"
+      description:
+        - Advised the chief executive on advanced analytics from September to December 2021, after starting the PhD
     - role: Head of Advanced Analytics
       dates: "2019 - 2021"
       description:
-        - Created and led the analytics department, applying machine learning to healthcare and job safety decision-making
+        - Grew the advanced analytics team from five people to more than fifty, applying machine learning to healthcare and job safety decision-making
         - Launched the Research and Innovation area, promoting collaboration with universities and startups across ~10 projects
         - Project sponsor at MIT Analytics Lab (2020), providing data, guidance, and computing resources to the student team
     - role: Head of Customer Experience, Analytics and Remote Channels
@@ -35,7 +40,7 @@
     - role: Founder and President
       dates: "2018 - 2021"
       description:
-        - Founded the Chilean chapter of the Association for the Development of Customer Experience
+        - Founded the Chilean chapter of the Association for the Development of Customer Experience, which now has more than seventy of the largest brands in Chile as members
 
 - institution: Oliver Wyman
   institution_url: https://www.oliverwyman.com/
