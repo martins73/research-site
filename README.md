@@ -69,7 +69,7 @@ research-site/
 │   ├── cv-pdf.html                     # PDF viewer page (desktop iframe + mobile canvas)
 │   ├── teaching.md                     # Teaching philosophy + experience
 │   ├── library.html                    # Curated book library
-│   └── human-supply-chain.md           # Research manifesto
+│   └── research.md                     # Research page (question, agenda, approach)
 │
 ├── _data/                              # YAML data files (single source of truth)
 │   ├── activity.yml                    # Recent activity (homepage list + Atom feed)

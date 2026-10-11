@@ -9,6 +9,12 @@ min_items: 2
 
 # Activity items (most recent first)
 items:
+  - date: "Oct 2026"
+    text: 'I am on the 2026-27 academic job market. My'
+    link_text: "CV"
+    link_url: "https://martin.gonzalezcabello.com/cv/"
+    link_suffix: "has the details."
+
   - date: "July 2026"
     text: 'Presented "First Impressions Matter" at the'
     link_text: "INFORMS MSOM Conference"
@@ -19,7 +25,7 @@ items:
     text: 'I joined'
     link_text: "Google DeepMind"
     link_url: "https://deepmind.google/"
-    link_suffix: "as a Student Researcher to study the intersection of AI and organizational design."
+    link_suffix: "as a Student Researcher in the Organizational AI Lab, studying how agentic AI is changing the way teams work."
 
   - date: "May 2026"
     text: 'Presented "First Impressions Matter" at the'

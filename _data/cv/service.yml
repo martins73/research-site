@@ -1,7 +1,6 @@
-# currently empty to hide section
-[]
-
-# FUTURE EXAMPLE:
-# - role: "Ad-Hoc Reviewer"
-#   organization: "Management Science"
-#   year: "2025"
+- role: "Reviewer"
+  organization: "INFORMS BOM Section Best Working Paper Competition"
+  year: "2026"
+- role: "International Student Ambassador"
+  organization: "UCLA Dashew Center for International Students and Scholars"
+  year: "2023 - 2025"

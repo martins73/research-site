@@ -1,6 +1,6 @@
 # Site Settings
 title: Martin Gonzalez Cabello
-description: PhD Candidate at UCLA Anderson researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.
+description: PhD Candidate at UCLA Anderson studying the impact of AI on organizations and the people who work in them.
 url: https://martin.gonzalezcabello.com
 baseurl: ""
 
@@ -44,7 +44,7 @@ template:
 # Open Graph & SEO
 site_name: Martin Gonzalez Cabello
 og_title: Martin Gonzalez Cabello
-og_description: PhD Candidate in Decisions, Operations & Technology Management at UCLA Anderson. Researching the human supply chain of AI, crowdwork platforms, and algorithmic fairness.
+og_description: PhD Candidate in Decisions, Operations & Technology Management at UCLA Anderson, studying the impact of AI on organizations and the people who work in them.
 og_image: /assets/social_preview.jpg
 og_image_type: image/jpeg
 og_image_width: 1200

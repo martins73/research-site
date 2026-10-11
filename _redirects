@@ -4,3 +4,6 @@
 # Backward compatibility: old /cv-print/ URL renamed to /cv-pdf-source/
 /cv-print/ /cv/ 301
 /cv-print /cv/ 301
+# Old research manifesto URL, now the Research page
+/human-supply-chain/ /research/ 301
+/human-supply-chain /research/ 301
