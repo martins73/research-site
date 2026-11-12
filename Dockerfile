@@ -2,7 +2,7 @@
 #   docker compose up        -> http://localhost:4000 (live reload)
 # The repository is mounted into /site at runtime, so edits show up
 # without rebuilding the image. Rebuild only when Gemfile.lock changes.
-FROM ruby:3.3-slim
+FROM ruby:4.0-slim
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential git \

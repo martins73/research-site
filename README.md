@@ -157,6 +157,7 @@ research-site/
 ├── _headers                            # Cloudflare Pages security headers
 ├── _redirects                          # Cloudflare Pages URL redirects
 ├── Gemfile / Gemfile.lock              # Ruby dependencies (lockfile committed for reproducible builds)
+├── .ruby-version                       # Ruby version for Cloudflare Pages, CI and local builds
 └── README.md                           # This file
 ```
 
@@ -292,7 +293,9 @@ All JavaScript is vanilla and lives in `assets/js/main.js` (about 1,100 lines). 
 
 ## Local Development
 
-This site uses Jekyll and is deployed via Cloudflare Pages. There are two ways to preview it locally.
+This site uses Jekyll and is deployed via Cloudflare Pages. In the Pages project settings, the build command must be `bundle exec jekyll build` (not the preset `jekyll build`, which can load gem versions other than those in `Gemfile.lock` and fail) and the output directory `_site`.
+
+There are two ways to preview it locally.
 
 ### Option A: Docker (no Ruby install needed)
 Requires [Docker](https://www.docker.com/).
@@ -306,7 +309,7 @@ Then open `http://localhost:4000`. Edits to content and data files rebuild the s
 In **VS Code**, the same setup is available as a dev container: run *Dev Containers: Reopen in Container*.
 
 ### Option B: Ruby
-Requires Ruby 3.3 and Bundler (the same versions CI uses).
+Requires the Ruby version in `.ruby-version` and Bundler. Cloudflare Pages and the GitHub Actions workflows read the same file.
 ```bash
 git clone https://github.com/martins73/research-site.git
 cd research-site
@@ -331,7 +334,7 @@ Then build with `bundle exec jekyll build --config _config.yml,_config.cv-privat
 #### Build (`build.yml`)
 - Triggers on every pull request and on pushes to `main`
 - Runs `bundle exec jekyll build` with `JEKYLL_ENV=production` to catch Liquid template errors, YAML parse errors and missing includes before they reach production
-- Uses Ruby 3.3 with `bundler-cache` to match the CV PDF workflow
+- Uses the Ruby version in `.ruby-version` with `bundler-cache`, the same as the CV PDF workflow and Cloudflare Pages
 
 #### CV PDF Generation (`generate-cv-pdf.yml`)
 - Triggers on push to `_data/cv/`, `_config.yml`, `_pages/cv-pdf-source.html` or `_layouts/cv-pdf-source.html`, or manually via `workflow_dispatch`
